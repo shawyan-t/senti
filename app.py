@@ -34,107 +34,272 @@ st.set_page_config(
 # Custom CSS for improved aesthetics
 st.markdown("""
 <style>
-    .main {
-        background-color: #f8f9fa;
+    /* Light/Dark Mode Variables */
+    :root {
+        --background-color: #ffffff;
+        --text-color: #333333;
+        --card-bg-color: #ffffff;
+        --accent-color: #3B82F6;
+        --header-color: #1E3A8A;
+        --neutral-text: #4B5563;
+        --border-color: #E5E7EB;
+        --button-color: #1E3A8A;
+        --button-hover: #2563EB;
     }
+    
+    /* Dark mode class will be toggled via JavaScript */
+    .dark-mode {
+        --background-color: #1E293B;
+        --text-color: #F3F4F6;
+        --card-bg-color: #2D3748;
+        --accent-color: #60A5FA;
+        --header-color: #93C5FD;
+        --neutral-text: #D1D5DB;
+        --border-color: #4B5563;
+        --button-color: #3B82F6;
+        --button-hover: #60A5FA;
+    }
+    
+    /* Base Styles */
+    .main {
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    
     .stApp {
         max-width: 1200px;
         margin: 0 auto;
     }
+    
+    /* Typography */
     h1, h2, h3 {
-        color: #1E3A8A;
+        color: var(--header-color);
+        font-family: 'Roboto', sans-serif;
     }
+    
+    h1 {
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+    
+    p {
+        color: var(--text-color);
+    }
+    
+    /* Cards */
     .sentiment-card {
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin-bottom: 20px;
-        background-color: white;
+        background-color: var(--card-bg-color);
         transition: transform 0.3s ease;
+        color: var(--text-color);
     }
+    
     .sentiment-card:hover {
         transform: translateY(-5px);
     }
+    
+    /* Sentiment Labels */
     .positive-label {
         color: #10B981;
         font-weight: bold;
     }
+    
     .neutral-label {
         color: #6B7280;
         font-weight: bold;
     }
+    
     .negative-label {
         color: #EF4444;
         font-weight: bold;
     }
+    
     .mostly-positive-label {
         color: #34D399;
         font-weight: bold;
     }
+    
     .mostly-negative-label {
         color: #F87171;
         font-weight: bold;
     }
+    
+    /* Metric Cards */
     .metric-card {
-        background-color: white;
+        background-color: var(--card-bg-color);
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         text-align: center;
+        color: var(--text-color);
     }
+    
+    /* Buttons */
     .stButton>button {
-        background-color: #1E3A8A;
+        background-color: var(--button-color);
         color: white;
         border-radius: 5px;
         padding: 0.5rem 1rem;
         font-weight: bold;
     }
+    
     .stButton>button:hover {
-        background-color: #2563EB;
-        border-color: #2563EB;
+        background-color: var(--button-hover);
+        border-color: var(--button-hover);
     }
+    
+    /* Section Dividers */
     .section-divider {
         margin-top: 2rem;
         margin-bottom: 2rem;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 1px solid var(--border-color);
     }
+    
+    /* Sidebar */
     .sidebar .sidebar-content {
-        background-color: #1E3A8A;
+        background-color: var(--card-bg-color);
     }
+    
+    /* Loader Animation */
     .loader {
-        border: 8px solid #f3f3f3;
-        border-top: 8px solid #3498db;
+        border: 8px solid var(--border-color);
+        border-top: 8px solid var(--accent-color);
         border-radius: 50%;
         width: 50px;
         height: 50px;
         animation: spin 1s linear infinite;
         margin: 20px auto;
     }
+    
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+    
+    /* Source Card */
     .source-card {
-        border-left: 4px solid #3B82F6;
+        border-left: 4px solid var(--accent-color);
         padding-left: 1rem;
         margin-bottom: 1rem;
+        background-color: var(--card-bg-color);
+        color: var(--text-color);
     }
+    
+    /* Tabs */
     .stTabs [data-baseweb="tab-list"] {
         gap: 1rem;
     }
+    
     .stTabs [data-baseweb="tab"] {
         height: 4rem;
         white-space: pre-wrap;
-        background-color: white;
+        background-color: var(--card-bg-color);
         border-radius: 5px 5px 0 0;
         padding: 1rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        color: var(--text-color);
     }
+    
     .stTabs [aria-selected="true"] {
-        background-color: #EFF6FF;
-        border-bottom: 2px solid #3B82F6;
+        background-color: var(--accent-color);
+        color: white;
+        border-bottom: 2px solid var(--accent-color);
+    }
+    
+    /* Theme Toggle Switch */
+    .theme-switch-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+    }
+    
+    .theme-switch {
+        display: inline-block;
+        height: 24px;
+        position: relative;
+        width: 48px;
+    }
+    
+    .theme-switch input {
+        display: none;
+    }
+    
+    .slider {
+        background-color: #ccc;
+        bottom: 0;
+        cursor: pointer;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: .4s;
+        border-radius: 24px;
+    }
+    
+    .slider:before {
+        background-color: white;
+        bottom: 4px;
+        content: "";
+        height: 16px;
+        left: 4px;
+        position: absolute;
+        transition: .4s;
+        width: 16px;
+        border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+        background-color: var(--accent-color);
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(24px);
+    }
+    
+    /* Fix the topic text color */
+    .topic-text {
+        color: var(--text-color);
+    }
+    
+    /* Hide fullscreen button on placeholder images */
+    button[title="View fullscreen"] {
+        display: none;
     }
 </style>
+
+<script>
+// Function to toggle dark mode
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+}
+
+// Check for saved theme preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('darkMode');
+    if (savedTheme === 'true') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('theme-toggle').checked = true;
+    }
+});
+</script>
+""", unsafe_allow_html=True)
+
+# Add theme toggle switch at the top of the app
+st.markdown("""
+<div class="theme-switch-wrapper">
+    <span style="margin-right:10px;">🌞</span>
+    <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle" onclick="toggleDarkMode()">
+        <span class="slider"></span>
+    </label>
+    <span style="margin-left:10px;">🌙</span>
+</div>
 """, unsafe_allow_html=True)
 
 # Initialize session state
@@ -378,9 +543,9 @@ if st.session_state.page == 'home':
             
             st.markdown(f"""
             <div class='sentiment-card' style='border-top: 3px solid {color};'>
-                <h3>{topic["topic"]}</h3>
-                <p>Sentiment: <span class='{sentiment_class}'>{topic["sentiment"].replace('_', ' ').title()} {emoji}</span></p>
-                <p>Mentions: {topic["count"]}</p>
+                <h3 class="topic-text">{topic["topic"]}</h3>
+                <p class="topic-text">Sentiment: <span class='{sentiment_class}'>{topic["sentiment"].replace('_', ' ').title()} {emoji}</span></p>
+                <p class="topic-text">Mentions: {topic["count"]}</p>
             </div>
             """, unsafe_allow_html=True)
     
@@ -393,24 +558,24 @@ if st.session_state.page == 'home':
     with feat_col1:
         st.markdown("""
         <div class='sentiment-card'>
-            <h3>🌍 Global Sentiment Mapping</h3>
-            <p>Visualize sentiment distribution across different geographical regions with interactive heatmaps and 3D globe visualizations.</p>
+            <h3 class="topic-text">🌍 Global Sentiment Mapping</h3>
+            <p class="topic-text">Visualize sentiment distribution across different geographical regions with interactive heatmaps and 3D globe visualizations.</p>
         </div>
         """, unsafe_allow_html=True)
     
     with feat_col2:
         st.markdown("""
         <div class='sentiment-card'>
-            <h3>📈 Temporal Analysis</h3>
-            <p>Track sentiment changes over time with detailed trend analysis and forecasting capabilities.</p>
+            <h3 class="topic-text">📈 Temporal Analysis</h3>
+            <p class="topic-text">Track sentiment changes over time with detailed trend analysis and forecasting capabilities.</p>
         </div>
         """, unsafe_allow_html=True)
     
     with feat_col3:
         st.markdown("""
         <div class='sentiment-card'>
-            <h3>🧠 Advanced AI Analysis</h3>
-            <p>Leverage state-of-the-art language models to extract nuanced sentiment insights, topics, and metadata.</p>
+            <h3 class="topic-text">🧠 Advanced AI Analysis</h3>
+            <p class="topic-text">Leverage state-of-the-art language models to extract nuanced sentiment insights, topics, and metadata.</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -426,8 +591,8 @@ elif st.session_state.page == 'input':
     with input_col1:
         st.markdown("""
         <div class='sentiment-card' style='text-align:center;'>
-            <h3>📝 Text Input</h3>
-            <p>Analyze sentiment from direct text entry</p>
+            <h3 class="topic-text">📝 Text Input</h3>
+            <p class="topic-text">Analyze sentiment from direct text entry</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -437,8 +602,8 @@ elif st.session_state.page == 'input':
     with input_col2:
         st.markdown("""
         <div class='sentiment-card' style='text-align:center;'>
-            <h3>📄 PDF Document</h3>
-            <p>Extract and analyze text from PDF files</p>
+            <h3 class="topic-text">📄 PDF Document</h3>
+            <p class="topic-text">Extract and analyze text from PDF files</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -448,8 +613,8 @@ elif st.session_state.page == 'input':
     with input_col3:
         st.markdown("""
         <div class='sentiment-card' style='text-align:center;'>
-            <h3>🌐 Website URL</h3>
-            <p>Analyze content from any web page</p>
+            <h3 class="topic-text">🌐 Website URL</h3>
+            <p class="topic-text">Analyze content from any web page</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -539,17 +704,19 @@ elif st.session_state.page == 'analysis':
         
         with col1:
             st.markdown(f"""
-            <div style='background-color:white; padding:20px; border-radius:10px; text-align:center; box-shadow:0 4px 6px rgba(0,0,0,0.1);'>
+            <div class='sentiment-card' style='text-align:center;'>
                 <h1 style='font-size:5rem; margin:0;'>{sentiment_emoji}</h1>
                 <h3 class='{sentiment_class}' style='margin:0; text-transform:capitalize;'>{display_sentiment.replace('_', ' ')}</h3>
-                <p>Score: {sentiment_score:.2f}</p>
+                <p class='topic-text'>Score: {sentiment_score:.2f}</p>
             </div>
             """, unsafe_allow_html=True)
         
         with col2:
             # Summary of the analyzed content
             st.subheader("Summary")
-            st.markdown(f"<div style='background-color:white; padding:20px; border-radius:10px; box-shadow:0 4px 6px rgba(0,0,0,0.1);'>{result['summary']}</div>", unsafe_allow_html=True)
+            st.markdown(f"""<div class='sentiment-card'>
+                <p class='topic-text'>{result['summary']}</p>
+            </div>""", unsafe_allow_html=True)
         
         # Metadata section
         st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
@@ -558,29 +725,29 @@ elif st.session_state.page == 'analysis':
         meta_col1, meta_col2, meta_col3 = st.columns(3)
         
         with meta_col1:
-            st.markdown("<h4>📊 Topics</h4>", unsafe_allow_html=True)
+            st.markdown("<h4 class='topic-text'>📊 Topics</h4>", unsafe_allow_html=True)
             topics = result['metadata']['topics']
             if topics:
                 for topic in topics:
-                    st.markdown(f"<div style='background-color:#EFF6FF; padding:8px 12px; border-radius:5px; margin-bottom:5px;'>{topic}</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='sentiment-card'><p class='topic-text'>{topic}</p></div>", unsafe_allow_html=True)
             else:
                 st.info("No topics identified")
         
         with meta_col2:
-            st.markdown("<h4>🌎 Regions</h4>", unsafe_allow_html=True)
+            st.markdown("<h4 class='topic-text'>🌎 Regions</h4>", unsafe_allow_html=True)
             regions = result['metadata']['regions']
             if regions:
                 for region in regions:
-                    st.markdown(f"<div style='background-color:#ECFDF5; padding:8px 12px; border-radius:5px; margin-bottom:5px;'>{region}</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='sentiment-card'><p class='topic-text'>{region}</p></div>", unsafe_allow_html=True)
             else:
                 st.info("No regions identified")
         
         with meta_col3:
-            st.markdown("<h4>💹 Commodities</h4>", unsafe_allow_html=True)
+            st.markdown("<h4 class='topic-text'>💹 Commodities</h4>", unsafe_allow_html=True)
             commodities = result['metadata']['commodities']
             if commodities:
                 for commodity in commodities:
-                    st.markdown(f"<div style='background-color:#FEF3C7; padding:8px 12px; border-radius:5px; margin-bottom:5px;'>{commodity}</div>", unsafe_allow_html=True)
+                    st.markdown(f"<div class='sentiment-card'><p class='topic-text'>{commodity}</p></div>", unsafe_allow_html=True)
             else:
                 st.info("No commodities identified")
         
@@ -817,9 +984,9 @@ elif st.session_state.page == 'dashboard':
                 
                 # Source card with enhanced styling
                 st.markdown(f"""
-                <div style='background-color:white; padding:20px; border-radius:10px; margin-bottom:20px; box-shadow:0 4px 6px rgba(0,0,0,0.1);'>
-                    <h3>{source['source']} <span class='{sentiment_class}'>{sentiment_emoji}</span></h3>
-                    <p style='color:#6B7280;'>Date: {source['timestamp'].split('T')[0] if 'timestamp' in source else 'N/A'} | Type: {source['source_type']}</p>
+                <div class='sentiment-card'>
+                    <h3 class='topic-text'>{source['source']} <span class='{sentiment_class}'>{sentiment_emoji}</span></h3>
+                    <p class='topic-text'>Date: {source['timestamp'].split('T')[0] if 'timestamp' in source else 'N/A'} | Type: {source['source_type']}</p>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -828,12 +995,17 @@ elif st.session_state.page == 'dashboard':
                 
                 with col1:
                     # Summary
-                    st.markdown("<h4>Summary</h4>", unsafe_allow_html=True)
-                    st.markdown(f"<div style='background-color:#F9FAFB; padding:15px; border-radius:5px;'>{source['summary']}</div>", unsafe_allow_html=True)
+                    st.markdown("<h4 class='topic-text'>Summary</h4>", unsafe_allow_html=True)
+                    st.markdown(f"""<div class='sentiment-card'>
+                        <p class='topic-text'>{source['summary']}</p>
+                    </div>""", unsafe_allow_html=True)
                 
                 with col2:
                     # Metadata and sentiment
-                    st.markdown("<h4>Analysis Details</h4>", unsafe_allow_html=True)
+                    st.markdown("<h4 class='topic-text'>Analysis Details</h4>", unsafe_allow_html=True)
+                    
+                    # Wrap in a card
+                    st.markdown("""<div class='sentiment-card'>""", unsafe_allow_html=True)
                     
                     # Sentiment score with visual indicator
                     score = source['sentiment']['score']
@@ -843,31 +1015,34 @@ elif st.session_state.page == 'dashboard':
                     gauge_value = (score + 1) / 2  # Normalize from -1,1 to 0,1
                     
                     st.markdown(f"""
-                    <p>Sentiment: <span class='{sentiment_class}'>{sentiment.capitalize()}</span></p>
-                    <p>Score: {score:.2f}</p>
+                    <p class='topic-text'>Sentiment: <span class='{sentiment_class}'>{sentiment.capitalize()}</span></p>
+                    <p class='topic-text'>Score: {score:.2f}</p>
                     """, unsafe_allow_html=True)
                     
                     # Create mini progress bar as sentiment gauge
                     st.progress(gauge_value)
                     
                     # Topics, regions and commodities
-                    st.markdown("<h5>Topics</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 class='topic-text'>Topics</h5>", unsafe_allow_html=True)
                     if source['metadata']['topics']:
-                        st.markdown(", ".join([f"<span style='background-color:#EFF6FF; padding:2px 6px; border-radius:3px; margin-right:5px;'>{topic}</span>" for topic in source['metadata']['topics']]), unsafe_allow_html=True)
+                        st.markdown(", ".join([f"<span class='topic-text' style='background-color:#EFF6FF; padding:2px 6px; border-radius:3px; margin-right:5px;'>{topic}</span>" for topic in source['metadata']['topics']]), unsafe_allow_html=True)
                     else:
-                        st.markdown("<em>None identified</em>", unsafe_allow_html=True)
+                        st.markdown("<em class='topic-text'>None identified</em>", unsafe_allow_html=True)
                     
-                    st.markdown("<h5>Regions</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 class='topic-text'>Regions</h5>", unsafe_allow_html=True)
                     if source['metadata']['regions']:
-                        st.markdown(", ".join([f"<span style='background-color:#ECFDF5; padding:2px 6px; border-radius:3px; margin-right:5px;'>{region}</span>" for region in source['metadata']['regions']]), unsafe_allow_html=True)
+                        st.markdown(", ".join([f"<span class='topic-text' style='background-color:#ECFDF5; padding:2px 6px; border-radius:3px; margin-right:5px;'>{region}</span>" for region in source['metadata']['regions']]), unsafe_allow_html=True)
                     else:
-                        st.markdown("<em>None identified</em>", unsafe_allow_html=True)
+                        st.markdown("<em class='topic-text'>None identified</em>", unsafe_allow_html=True)
                     
-                    st.markdown("<h5>Commodities</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 class='topic-text'>Commodities</h5>", unsafe_allow_html=True)
                     if source['metadata']['commodities']:
-                        st.markdown(", ".join([f"<span style='background-color:#FEF3C7; padding:2px 6px; border-radius:3px; margin-right:5px;'>{commodity}</span>" for commodity in source['metadata']['commodities']]), unsafe_allow_html=True)
+                        st.markdown(", ".join([f"<span class='topic-text' style='background-color:#FEF3C7; padding:2px 6px; border-radius:3px; margin-right:5px;'>{commodity}</span>" for commodity in source['metadata']['commodities']]), unsafe_allow_html=True)
                     else:
-                        st.markdown("<em>None identified</em>", unsafe_allow_html=True)
+                        st.markdown("<em class='topic-text'>None identified</em>", unsafe_allow_html=True)
+                        
+                    # Close the card div
+                    st.markdown("""</div>""", unsafe_allow_html=True)
                 
                 # Full text expander
                 with st.expander("View Full Text"):
