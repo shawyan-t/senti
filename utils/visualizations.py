@@ -353,7 +353,17 @@ def create_commodity_price_chart(data):
             commodity_counts[commodity] = commodity_counts.get(commodity, 0) + 1
     
     if commodity_counts:
-        primary_commodity = max(commodity_counts, key=commodity_counts.get)
+        # Find the commodity with the highest count
+        max_count = 0
+        primary_commodity = None
+        for commodity, count in commodity_counts.items():
+            if count > max_count:
+                max_count = count
+                primary_commodity = commodity
+        
+        # Fallback if no primary commodity was found
+        if primary_commodity is None:
+            primary_commodity = list(all_commodities)[0] if all_commodities else 'Oil'
     else:
         primary_commodity = list(all_commodities)[0] if all_commodities else 'Oil'
     
@@ -386,11 +396,11 @@ def create_commodity_price_chart(data):
     fig.update_layout(
         yaxis2=dict(
             title='Sentiment Score',
-            titlefont=dict(color='royalblue'),
             tickfont=dict(color='royalblue'),
             overlaying='y',
             side='right',
-            range=[-1, 1]
+            range=[-1, 1],
+            titlefont=dict(color='royalblue')  # Title font is set directly as a property
         )
     )
     

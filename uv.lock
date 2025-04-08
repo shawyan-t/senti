@@ -964,7 +964,9 @@ dependencies = [
     { name = "plotly" },
     { name = "pycountry" },
     { name = "pypdf2" },
+    { name = "requests" },
     { name = "streamlit" },
+    { name = "streamlit-lottie" },
     { name = "trafilatura" },
 ]
 
@@ -976,7 +978,9 @@ requires-dist = [
     { name = "plotly", specifier = ">=6.0.1" },
     { name = "pycountry", specifier = ">=24.6.1" },
     { name = "pypdf2", specifier = ">=3.0.1" },
+    { name = "requests", specifier = ">=2.32.3" },
     { name = "streamlit", specifier = ">=1.44.1" },
+    { name = "streamlit-lottie", specifier = ">=0.0.5" },
     { name = "trafilatura", specifier = ">=2.0.0" },
 ]
 
@@ -1129,6 +1133,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/3e/c0/7286284567e5045f0c587c426d0c41aee5d10c0a2e360e627a83037e9f0c/streamlit-1.44.1.tar.gz", hash = "sha256:c6914ed6d5b76870b461510476806db370f36425ae0e6654d227c988288198d3", size = 9423685 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/eb/17/fc425e1d4d86e31b2aaf0812a2ef2163763a0670d671720c7c36e8679323/streamlit-1.44.1-py3-none-any.whl", hash = "sha256:9fe355f58b11f4eb71e74f115ce1f38c4c9eaff2733e6bcffb510ac1298a5990", size = 9812242 },
+]
+
+[[package]]
+name = "streamlit-lottie"
+version = "0.0.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "streamlit" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/4b/d4/e13ac9bde5b81b308d061092a420008af78c8b08547739423195596452d8/streamlit-lottie-0.0.5.tar.gz", hash = "sha256:c61589fb92bdf1dd5bd0a2ea75315d92e3383f46059b3704515d096a1e953d79", size = 792567 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/52/b5/8ad7fa3101ec5baed712107a4cf304f174261f2ed2bebe063ad1fbedfe88/streamlit_lottie-0.0.5-py3-none-any.whl", hash = "sha256:98656d6f1cc99c5d96fb8329bafbcdbb65709ad0a05176dffdf4755f6fc04cff", size = 802386 },
 ]
 
 [[package]]
