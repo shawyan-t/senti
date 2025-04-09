@@ -13,16 +13,12 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import pycountry
 import trafilatura
-import praw
 
 # API Keys - These will be populated from environment variables
 TWITTER_API_KEY = os.environ.get("TWITTER_API_KEY", "")
 TWITTER_API_SECRET = os.environ.get("TWITTER_API_SECRET", "")
 NEWS_API_KEY = os.environ.get("NEWSAPI_KEY", "")
 GOOGLE_TRENDS_API_KEY = os.environ.get("GOOGLE_TRENDS_API_KEY", "")
-REDDIT_CLIENT_ID = os.environ.get("REDDIT_CLIENT_ID", "")
-REDDIT_CLIENT_SECRET = os.environ.get("REDDIT_CLIENT_SECRET", "")
-REDDIT_USER_AGENT = "python:sentim:v1.0 (by /u/Awkward_Sandwich_184)"  # Using details from user's app
 
 class ExternalDataFetcher:
     """Handles fetching data from external sources like news, social media, etc."""
@@ -31,21 +27,7 @@ class ExternalDataFetcher:
         self.twitter_api_available = bool(TWITTER_API_KEY and TWITTER_API_SECRET)
         self.news_api_available = bool(NEWS_API_KEY)
         self.google_trends_api_available = bool(GOOGLE_TRENDS_API_KEY)
-        self.reddit_api_available = bool(REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET)
         self.twitter_bearer_token = None
-        self.reddit_instance = None
-        
-        # Initialize Reddit client if credentials are available
-        if self.reddit_api_available:
-            try:
-                self.reddit_instance = praw.Reddit(
-                    client_id=REDDIT_CLIENT_ID,
-                    client_secret=REDDIT_CLIENT_SECRET,
-                    user_agent=REDDIT_USER_AGENT
-                )
-            except Exception as e:
-                print(f"Error initializing Reddit API: {e}")
-                self.reddit_api_available = False
         
         # Get Twitter bearer token if keys are available
         if self.twitter_api_available:
@@ -81,8 +63,7 @@ class ExternalDataFetcher:
         return {
             "twitter_api": self.twitter_api_available and self.twitter_bearer_token is not None,
             "news_api": self.news_api_available,
-            "google_trends_api": self.google_trends_api_available,
-            "reddit_api": self.reddit_api_available
+            "google_trends_api": self.google_trends_api_available
         }
     
     def fetch_news_articles(self, query, days_back=7, limit=10):
@@ -293,61 +274,6 @@ class ExternalDataFetcher:
             print(f"Error fetching Google Trends data: {e}")
             return {}
     
-    def fetch_reddit_posts(self, query, limit=15, time_filter='month'):
-        """
-        Fetch Reddit posts related to a query using PRAW.
-        
-        Args:
-            query (str): Search query
-            limit (int): Maximum number of posts to return
-            time_filter (str): Time filter ('day', 'week', 'month', 'year', 'all')
-            
-        Returns:
-            list: List of dictionaries with Reddit post data or empty list if API not available
-        """
-        if not self.reddit_api_available or not self.reddit_instance:
-            print("Reddit API credentials not available. Cannot fetch Reddit posts.")
-            return []
-            
-        try:
-            processed_posts = []
-            # Search for posts
-            for submission in self.reddit_instance.subreddit('all').search(query, limit=limit, sort='relevance', time_filter=time_filter):
-                # Extract post data and metrics
-                post_data = {
-                    'id': submission.id,
-                    'title': submission.title,
-                    'text': submission.selftext[:500] if submission.selftext else '',
-                    'subreddit': submission.subreddit.display_name,
-                    'score': submission.score,
-                    'comments': submission.num_comments,
-                    'created_utc': datetime.fromtimestamp(submission.created_utc).isoformat(),
-                    'url': f"https://www.reddit.com{submission.permalink}",
-                    'upvote_ratio': submission.upvote_ratio
-                }
-                
-                # Add some top comments if available
-                post_data['top_comments'] = []
-                try:
-                    submission.comments.replace_more(limit=0)  # Don't fetch MoreComments
-                    for comment in submission.comments.list()[:3]:  # Get top 3 comments
-                        if hasattr(comment, 'body') and comment.body:
-                            post_data['top_comments'].append({
-                                'text': comment.body[:200],
-                                'score': comment.score,
-                                'created_utc': datetime.fromtimestamp(comment.created_utc).isoformat()
-                            })
-                except Exception as e:
-                    print(f"Error fetching comments for post {submission.id}: {e}")
-                
-                processed_posts.append(post_data)
-            
-            return processed_posts
-                
-        except Exception as e:
-            print(f"Error fetching Reddit posts: {e}")
-            return []
-    
     def get_country_interest_data(self, query):
         """
         Get country interest data from Google Trends.
@@ -393,8 +319,7 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
     sources = {
         'news': [],
         'twitter': [],
-        'web': [],
-        'reddit': []
+        'web': []
     }
     
     # 1. Get news articles for main topic and subtopics
@@ -413,23 +338,6 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
     # 3. Web scraping
     web_content = fetcher.web_scrape_for_topic(topic)
     sources['web'].extend(web_content)
-    
-    # 4. Reddit data
-    time_filter = 'month'
-    if days_back <= 7:
-        time_filter = 'week'
-    elif days_back <= 1:
-        time_filter = 'day'
-    elif days_back >= 365:
-        time_filter = 'year'
-    
-    reddit_posts = fetcher.fetch_reddit_posts(topic, limit=10, time_filter=time_filter)
-    sources['reddit'].extend(reddit_posts)
-    
-    # Also get Reddit posts for subtopics
-    for subtopic in subtopics:
-        subtopic_posts = fetcher.fetch_reddit_posts(f"{topic} {subtopic}", limit=5, time_filter=time_filter)
-        sources['reddit'].extend(subtopic_posts)
     
     # Keywords and topics data
     keyword_data = {
@@ -461,17 +369,6 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
     # Add web content
     for content in sources['web']:
         all_source_texts.append(content.get('title', '') + ': ' + content.get('content', '')[:500])
-    
-    # Add Reddit content
-    for post in sources['reddit']:
-        # Add the post title and text
-        post_text = f"{post.get('title', '')} [{post.get('subreddit', '')}]: {post.get('text', '')}"
-        all_source_texts.append(post_text)
-        
-        # Add top comments
-        for comment in post.get('top_comments', []):
-            if comment.get('score', 0) > 5:  # Only include comments with significant engagement
-                all_source_texts.append(f"Reddit comment: {comment.get('text', '')}")
     
     # Overall sentiment from all sources
     combined_text = '\n\n'.join(all_source_texts)
