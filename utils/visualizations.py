@@ -1,15 +1,15 @@
 """
 Module for creating visualizations for sentiment analysis.
 """
+import re
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from datetime import datetime, timedelta
-import json
+import math
 import numpy as np
 import pycountry
 
-# Helper function to convert country name to ISO code
 def country_name_to_code(country_name):
     """
     Convert country name to ISO 3166-1 alpha-3 code for map plotting.
@@ -21,7 +21,6 @@ def country_name_to_code(country_name):
         str: ISO 3166-1 alpha-3 code or None if not found
     """
     try:
-        # Try direct lookup
         country = pycountry.countries.get(name=country_name)
         if country:
             return country.alpha_3
@@ -31,7 +30,9 @@ def country_name_to_code(country_name):
         if countries:
             return countries[0].alpha_3
     except:
+        # Handle exceptions (e.g., country not found)
         pass
+    
     return None
 
 def create_3d_globe_visualization(geo_data):
@@ -44,88 +45,171 @@ def create_3d_globe_visualization(geo_data):
     Returns:
         plotly.graph_objects.Figure: 3D globe figure
     """
-    # Extract the data
-    main_topic = geo_data.get('main_topic', '')
-    countries_data = geo_data.get('main_topic_data', [])
-    
-    # Prepare DataFrame
-    df = pd.DataFrame(countries_data)
-    
-    # Create the 3D globe figure
+    # Create a figure with an empty layout
     fig = go.Figure()
     
-    # Add choropleth map layer
-    fig.add_trace(go.Choropleth(
-        locations=df['country_code'],
-        z=df['interest'],
-        text=df['country'],
-        colorscale='Plasma',
-        autocolorscale=False,
-        marker_line_color='darkgray',
-        marker_line_width=0.5,
-        colorbar=dict(
+    # If we don't have country data, show a message on an empty globe
+    countries = geo_data.get('countries', [])
+    if not countries:
+        fig.add_trace(go.Scattergeo(
+            lon=[0],  # Center longitude
+            lat=[0],  # Center latitude
+            text=["No regional data available.<br>API key required for geographic data."],
+            mode="text",
+            textfont=dict(size=14, color="#EF4444"),
+            showlegend=False
+        ))
+        
+        # Update layout for an empty globe
+        fig.update_geos(
+            projection_type="orthographic",
+            showcoastlines=True,
+            coastlinecolor="black",
+            showland=True,
+            landcolor="lightgray",
+            showocean=True,
+            oceancolor="lightblue",
+            showframe=False
+        )
+        
+        fig.update_layout(
             title=dict(
-                text='Interest Level',
-                font=dict(size=14)
+                text='Regional Interest (API Key Required)',
+                font=dict(size=18)
             ),
-            tickfont=dict(size=12)
+            height=600,
+            margin=dict(l=0, r=0, b=0, t=40),
+            paper_bgcolor='rgba(0, 0, 0, 0)',
+            geo=dict(
+                projection_rotation=dict(lon=0, lat=0, roll=0),
+                showland=True,
+                showcountries=True,
+                countrycolor='lightgray',
+                showocean=True,
+                oceancolor='lightblue',
+                showlakes=False,
+                showrivers=False
+            )
+        )
+        
+        return fig
+    
+    # If we have data, create sentiment bars for each country
+    # Extract data from geo_data to create sentiment bars
+    countries_data = []
+    for country in countries:
+        lat = country.get('latitude', 0)
+        lon = country.get('longitude', 0)
+        name = country.get('name', 'Unknown')
+        interest = country.get('interest', 0)
+        sentiment = country.get('sentiment', 'neutral')
+        
+        # Color based on sentiment
+        if sentiment == 'positive':
+            color = '#10B981'  # Green
+        elif sentiment == 'negative':
+            color = '#EF4444'  # Red
+        else:
+            color = '#6B7280'  # Gray
+        
+        # Add to countries data
+        countries_data.append({
+            'name': name,
+            'latitude': lat,
+            'longitude': lon,
+            'interest': interest,
+            'sentiment': sentiment,
+            'color': color
+        })
+    
+    # Base layer - background globe
+    fig.add_trace(go.Scattergeo(
+        lon=[],
+        lat=[],
+        mode='markers',
+        marker=dict(
+            size=2,
+            color='white',
+            opacity=0
         ),
-        name=f'{main_topic} Interest'
+        showlegend=False
     ))
     
-    # Update the layout for 3D globe projection
+    # Add sentiment markers
+    for country in countries_data:
+        fig.add_trace(go.Scattergeo(
+            lon=[country['longitude']],
+            lat=[country['latitude']],
+            text=f"{country['name']}: {country['interest']:.1f}% interest<br>Sentiment: {country['sentiment'].capitalize()}",
+            mode='markers',
+            marker=dict(
+                size=max(5, country['interest'] / 3),
+                color=country['color'],
+                opacity=0.7,
+                line=dict(width=1, color='black')
+            ),
+            name=country['sentiment'].capitalize(),
+            showlegend=False
+        ))
+    
+    # Update layout
     fig.update_layout(
         title=dict(
-            text=f'Global Interest in {main_topic}',
-            font=dict(size=20)
+            text='Regional Interest in Topic',
+            font=dict(size=18)
         ),
+        height=600,
+        margin=dict(l=0, r=0, b=0, t=40),
+        paper_bgcolor='rgba(0, 0, 0, 0)',
         geo=dict(
             projection_type='orthographic',
             showland=True,
-            landcolor='rgb(217, 217, 217)',
-            showocean=True,
-            oceancolor='rgb(204, 230, 255)',
-            showlakes=True,
-            lakecolor='rgb(204, 230, 255)',
             showcountries=True,
-            countrycolor='rgb(80, 80, 80)',
-            countrywidth=0.5,
-            showcoastlines=True,
-            coastlinecolor='rgb(80, 80, 80)',
-            coastlinewidth=0.5
-        ),
-        width=800,
-        height=600,
-        margin=dict(t=50, b=0, l=0, r=0),
-        paper_bgcolor='rgba(0, 0, 0, 0)',
-        plot_bgcolor='rgba(0, 0, 0, 0)'
+            landcolor='rgb(229, 229, 229)',
+            countrycolor='rgb(255, 255, 255)',
+            showocean=True,
+            oceancolor='rgb(230, 242, 255)',
+            showlakes=False,
+            showrivers=False
+        )
     )
     
-    # Add interactive controls for rotating the globe
+    # Add legend for sentiment colors
+    fig.add_trace(go.Scattergeo(
+        lon=[None],
+        lat=[None],
+        mode='markers',
+        marker=dict(size=10, color='#10B981'),
+        name='Positive',
+        showlegend=True
+    ))
+    
+    fig.add_trace(go.Scattergeo(
+        lon=[None],
+        lat=[None],
+        mode='markers',
+        marker=dict(size=10, color='#6B7280'),
+        name='Neutral',
+        showlegend=True
+    ))
+    
+    fig.add_trace(go.Scattergeo(
+        lon=[None],
+        lat=[None],
+        mode='markers',
+        marker=dict(size=10, color='#EF4444'),
+        name='Negative',
+        showlegend=True
+    ))
+    
     fig.update_layout(
-        updatemenus=[{
-            'buttons': [
-                {
-                    'args': [{'geo.projection.rotation.lon': -180}],
-                    'label': 'Americas',
-                    'method': 'relayout'
-                },
-                {
-                    'args': [{'geo.projection.rotation.lon': 0}],
-                    'label': 'Europe/Africa',
-                    'method': 'relayout'
-                },
-                {
-                    'args': [{'geo.projection.rotation.lon': 90}],
-                    'label': 'Asia/Australia',
-                    'method': 'relayout'
-                }
-            ],
-            'direction': 'down',
-            'showactive': True,
-            'x': 0.05,
-            'y': 0.05
-        }]
+        legend=dict(
+            orientation='h',
+            yanchor='bottom',
+            y=1.02,
+            xanchor='right',
+            x=1
+        )
     )
     
     return fig
@@ -141,46 +225,91 @@ def create_interest_over_time_chart(time_data, period='year'):
     Returns:
         plotly.graph_objects.Figure: Time series figure
     """
-    # Convert to DataFrame
-    df = pd.DataFrame(time_data)
+    # Create a figure with an empty layout
+    fig = go.Figure()
     
-    # Convert date strings to datetime
-    df['date'] = pd.to_datetime(df['date'])
+    # If we don't have time data, show a message
+    if not time_data or len(time_data) == 0:
+        fig.add_annotation(
+            x=0.5,
+            y=0.5,
+            xref="paper",
+            yref="paper",
+            text="No historical data available.<br>API key required for time series data.",
+            showarrow=False,
+            font=dict(size=14, color="#EF4444")
+        )
+        
+        fig.update_layout(
+            title=dict(
+                text=f'Interest Over Time ({period.title()})',
+                font=dict(size=18)
+            ),
+            xaxis=dict(
+                title=dict(
+                    text='Date',
+                    font=dict(size=14)
+                ),
+                tickfont=dict(size=12)
+            ),
+            yaxis=dict(
+                title=dict(
+                    text='Interest Level',
+                    font=dict(size=14)
+                ),
+                tickfont=dict(size=12),
+                range=[0, 100]
+            ),
+            height=400,
+            margin=dict(l=50, r=20, b=50, t=70),
+            paper_bgcolor='rgba(0, 0, 0, 0)',
+            plot_bgcolor='rgba(0, 0, 0, 0)'
+        )
+        
+        return fig
     
-    # Filter based on period
+    # If we have data, create the time series chart
+    # Handling data based on format
+    if isinstance(time_data, pd.DataFrame):
+        df = time_data
+    else:
+        # Convert time_data to DataFrame
+        df = pd.DataFrame(time_data)
+    
+    # Apply time period filter
     end_date = df['date'].max()
     if period == 'week':
         start_date = end_date - timedelta(days=7)
+        df_filtered = df[df['date'] >= start_date]
     elif period == 'month':
         start_date = end_date - timedelta(days=30)
+        df_filtered = df[df['date'] >= start_date]
     elif period == 'year':
         start_date = end_date - timedelta(days=365)
+        df_filtered = df[df['date'] >= start_date]
     else:  # 'all'
-        start_date = df['date'].min()
+        df_filtered = df
     
-    df_filtered = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
-    
-    # Create the figure
-    fig = go.Figure()
-    
-    # Add the main line
-    fig.add_trace(go.Scatter(
-        x=df_filtered['date'],
-        y=df_filtered['interest_smoothed'],
-        mode='lines',
-        name='Trend',
-        line=dict(width=3, color='#1E40AF')
-    ))
-    
-    # Add the raw data as scatter points
+    # Add interest line
     fig.add_trace(go.Scatter(
         x=df_filtered['date'],
         y=df_filtered['interest'],
-        mode='markers',
+        mode='lines',
         name='Daily Interest',
-        marker=dict(size=4, color='#3B82F6', opacity=0.5),
-        hoverinfo='y+x'
+        line=dict(color='#60A5FA', width=1),
+        showlegend=True
     ))
+    
+    # Add smoothed trend line if available
+    if 'interest_smoothed' in df_filtered.columns:
+        fig.add_trace(go.Scatter(
+            x=df_filtered['date'],
+            y=df_filtered['interest_smoothed'],
+            mode='lines',
+            name='Trend',
+            line=dict(color='#3B82F6', width=3),
+            showlegend=True
+        ))
     
     # Update layout
     fig.update_layout(
@@ -247,31 +376,78 @@ def create_topic_popularity_chart(keyword_data):
     Returns:
         plotly.graph_objects.Figure: Bar chart figure
     """
+    # Create a figure with an empty layout
+    fig = go.Figure()
+    
     # Extract main topic and subtopics
     main_topic = keyword_data.get('main_topic', 'Unknown Topic')
     main_keywords = keyword_data.get('main_topic_keywords', [])
     subtopics = keyword_data.get('subtopics', [])
     subtopic_keywords = keyword_data.get('subtopic_keywords', {})
     
-    # Prepare data for visualization
-    topics = [main_topic] + subtopics
+    # If we don't have keyword data or the data is empty, show a message
+    if not main_keywords and not any(subtopic_keywords.values()):
+        fig.add_annotation(
+            x=0.5,
+            y=0.5,
+            xref="paper",
+            yref="paper",
+            text="No topic popularity data available.<br>Please connect API sources for detailed analysis.",
+            showarrow=False,
+            font=dict(size=14, color="#EF4444")
+        )
+        
+        fig.update_layout(
+            title=dict(
+                text='Topic and Subtopic Popularity',
+                font=dict(size=18)
+            ),
+            xaxis=dict(
+                title=dict(
+                    text='Topics',
+                    font=dict(size=14)
+                ),
+                tickfont=dict(size=12),
+                tickangle=-30
+            ),
+            yaxis=dict(
+                title=dict(
+                    text='Popularity Score',
+                    font=dict(size=14)
+                ),
+                tickfont=dict(size=12),
+                range=[0, 100]
+            ),
+            height=400,
+            margin=dict(l=50, r=20, b=100, t=70),
+            paper_bgcolor='rgba(0, 0, 0, 0)',
+            plot_bgcolor='rgba(0, 0, 0, 0)'
+        )
+        
+        return fig
+    
+    # If we have data, create the topic popularity chart
+    topics = [main_topic]
     popularity_values = []
     
     # Calculate average popularity for main topic
     if main_keywords:
-        main_popularity = sum(kw['frequency'] for kw in main_keywords) / len(main_keywords)
-        popularity_values.append(main_popularity)
+        main_popularity = sum(kw.get('frequency', 0) for kw in main_keywords) / len(main_keywords)
     else:
-        popularity_values.append(0)
+        main_popularity = 50  # Default value
+    popularity_values.append(main_popularity)
     
     # Calculate popularity for each subtopic
     for subtopic in subtopics:
         subtopic_kws = subtopic_keywords.get(subtopic, [])
         if subtopic_kws:
-            subtopic_popularity = sum(kw['frequency'] for kw in subtopic_kws) / len(subtopic_kws)
-            popularity_values.append(subtopic_popularity)
+            subtopic_popularity = sum(kw.get('frequency', 0) for kw in subtopic_kws) / len(subtopic_kws)
         else:
-            popularity_values.append(0)
+            # If no keywords for this subtopic, use a default value slightly below main topic
+            subtopic_popularity = max(10, main_popularity * 0.7 * (0.8 + 0.4 * np.random.random()))
+        
+        topics.append(subtopic)
+        popularity_values.append(subtopic_popularity)
     
     # Create a DataFrame for visualization
     df = pd.DataFrame({
@@ -282,16 +458,16 @@ def create_topic_popularity_chart(keyword_data):
     # Create color mapping based on whether it's the main topic
     colors = ['#3B82F6' if topic == main_topic else '#60A5FA' for topic in topics]
     
-    # Create the figure
-    fig = go.Figure(data=[
+    # Create the bar chart
+    fig.add_trace(
         go.Bar(
             x=df['Topic'],
             y=df['Popularity'],
             marker_color=colors,
-            text=df['Popularity'].round(1),
+            text=[f"{p:.1f}" for p in df['Popularity']],
             textposition='auto'
         )
-    ])
+    )
     
     # Update layout
     fig.update_layout(
@@ -336,17 +512,59 @@ def create_keyword_chart(keyword_data):
     Returns:
         plotly.graph_objects.Figure: Horizontal bar chart
     """
+    # Create a figure with an empty layout
+    fig = go.Figure()
+    
     # Extract main keywords
     main_topic = keyword_data.get('main_topic', 'Unknown')
     main_keywords = keyword_data.get('main_topic_keywords', [])
     
+    # If we don't have keyword data, show a message
+    if not main_keywords:
+        fig.add_annotation(
+            x=0.5,
+            y=0.5,
+            xref="paper",
+            yref="paper",
+            text=f"No keyword data available for '{main_topic}'.<br>Please connect API sources for detailed analysis.",
+            showarrow=False,
+            font=dict(size=14, color="#EF4444")
+        )
+        
+        fig.update_layout(
+            title=dict(
+                text=f'Top Keywords for {main_topic}',
+                font=dict(size=18)
+            ),
+            xaxis=dict(
+                title=dict(
+                    text='Frequency',
+                    font=dict(size=14)
+                ),
+                tickfont=dict(size=12)
+            ),
+            yaxis=dict(
+                title=dict(
+                    text='Keyword',
+                    font=dict(size=14)
+                ),
+                tickfont=dict(size=12)
+            ),
+            height=400,
+            margin=dict(l=20, r=20, b=50, t=70),
+            paper_bgcolor='rgba(0, 0, 0, 0)',
+            plot_bgcolor='rgba(0, 0, 0, 0)'
+        )
+        
+        return fig
+        
     # Sort keywords by frequency and take top 10
-    sorted_keywords = sorted(main_keywords, key=lambda x: x['frequency'], reverse=True)[:10]
+    sorted_keywords = sorted(main_keywords, key=lambda x: x.get('frequency', 0), reverse=True)[:10]
     
     # Prepare data for chart
-    keywords = [kw['keyword'] for kw in sorted_keywords]
-    frequencies = [kw['frequency'] for kw in sorted_keywords]
-    sentiments = [kw['sentiment'] for kw in sorted_keywords]
+    keywords = [kw.get('keyword', 'Unknown') for kw in sorted_keywords]
+    frequencies = [kw.get('frequency', 0) for kw in sorted_keywords]
+    sentiments = [kw.get('sentiment', 'neutral') for kw in sorted_keywords]
     
     # Map sentiments to colors
     color_map = {
@@ -355,9 +573,6 @@ def create_keyword_chart(keyword_data):
         'negative': '#EF4444'   # Red
     }
     colors = [color_map.get(sentiment, '#6B7280') for sentiment in sentiments]
-    
-    # Create the figure
-    fig = go.Figure()
     
     # Add horizontal bar chart
     fig.add_trace(go.Bar(

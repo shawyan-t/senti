@@ -737,40 +737,20 @@ if st.session_state.current_analysis:
             else:
                 st.info("No web content found.")
                 
-        # Add option to connect APIs
-        st.markdown("<h4>Connect Additional Data Sources</h4>", unsafe_allow_html=True)
-        
-        api_expander = st.expander("Add API Keys for More Accurate Data")
-        with api_expander:
+        # Informational message about API status
+        api_info_expander = st.expander("About API Data Sources")
+        with api_info_expander:
             st.markdown("""
-            Add your API keys below to get more accurate real-time data from social media platforms and news sources.
-            These keys are stored securely and used only for fetching data related to your searches.
+            ### API Integration Status
+            
+            This application can provide more accurate results when integrated with the following APIs:
+            
+            - **Twitter/X API**: Used to gather real-time social media sentiment
+            - **NewsAPI**: Used to access current news articles
+            - **Google Trends API**: Used to provide geographic interest data
+            
+            Contact the developer to integrate these APIs for comprehensive sentiment analysis.
             """)
-            
-            twitter_api_key = st.text_input("Twitter/X API Key", 
-                                           type="password", 
-                                           value=os.environ.get("TWITTER_API_KEY", ""))
-            
-            reddit_client_id = st.text_input("Reddit Client ID", 
-                                            type="password", 
-                                            value=os.environ.get("REDDIT_CLIENT_ID", ""))
-            
-            reddit_secret = st.text_input("Reddit Secret", 
-                                         type="password", 
-                                         value=os.environ.get("REDDIT_SECRET", ""))
-            
-            news_api_key = st.text_input("NewsAPI Key", 
-                                        type="password", 
-                                        value=os.environ.get("NEWS_API_KEY", ""))
-            
-            if st.button("Save API Keys", type="primary"):
-                # In a production environment, these would be saved securely
-                # For this demo, we'll just acknowledge the submission
-                st.success("API keys saved successfully! Restart the application to use the new keys.")
-                
-                # Normally you would update environment variables or a secure storage here
-                # This is just a placeholder
-                st.info("In a production environment, keys would be securely stored. This is just a demo.")
     
     st.markdown("</div>", unsafe_allow_html=True)
 
