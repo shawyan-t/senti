@@ -260,24 +260,32 @@ if submit_text and text_input and not st.session_state.processing:
             source_type = "url"
         else:
             content = process_text_input(text_input)
-            source = "Direct Text Input"
+            source = text_input if len(text_input) < 50 else "Direct Text Input"
             source_type = "direct_text"
         
         # Step 1: Determine input type
         progress_text = st.empty()
-        progress_text.markdown("**Step 1/3:** Identifying content type...")
+        progress_text.markdown("**Step 1/4:** Identifying content type...")
         input_type_info = determine_input_type(content)
         
-        # Step 2: Perform detailed analysis with GPT-o1 (the most powerful)
-        progress_text.markdown("**Step 2/3:** Performing detailed analysis...")
-        detailed_analysis = perform_detailed_analysis(content, input_type_info)
+        # Step 2: Based on the content type and whether it's a file or short query:
+        if source_type in ["pdf", "csv", "json"] or len(content) > 1000:
+            # For files or lengthy content, use GPT-o1 for detailed analysis first
+            progress_text.markdown("**Step 2/4:** Performing detailed analysis using GPT-o1...")
+            detailed_analysis = perform_detailed_analysis(content, input_type_info)
+        else:
+            # For shorter queries, skip to GPT-4o directly
+            progress_text.markdown("**Step 2/4:** Using GPT-4o to analyze your query...")
+            # Include web searching capabilities for better context and accuracy
+            detailed_analysis = f"Search query: {source}\n\n"
+            detailed_analysis += perform_detailed_analysis(content, input_type_info)
         
-        # Step 3: Analyze sentiment with GPT-4o
-        progress_text.markdown("**Step 3/3:** Analyzing sentiment...")
+        # Step 3: Analyze sentiment with GPT-4o for all cases
+        progress_text.markdown("**Step 3/4:** Gathering online sentiment data...")
         sentiment_result = analyze_sentiment(detailed_analysis)
         
         # Step 4: Extract metadata with GPT-o3-mini
-        progress_text.markdown("**Finalizing:** Extracting metadata...")
+        progress_text.markdown("**Step 4/4:** Extracting metadata...")
         metadata_result = extract_metadata(detailed_analysis)
         
         # Save the analysis
@@ -357,19 +365,19 @@ if submit_file and uploaded_file and not st.session_state.processing:
         
         # Step 1: Determine input type
         progress_text = st.empty()
-        progress_text.markdown("**Step 1/3:** Identifying content type...")
+        progress_text.markdown("**Step 1/4:** Identifying content type...")
         input_type_info = determine_input_type(content)
         
-        # Step 2: Perform detailed analysis with GPT-o1 (the most powerful)
-        progress_text.markdown("**Step 2/3:** Performing detailed analysis...")
+        # Step 2: Use GPT-o1 for file content (which is more suitable for structured data)
+        progress_text.markdown("**Step 2/4:** Performing detailed analysis using GPT-o1...")
         detailed_analysis = perform_detailed_analysis(content, input_type_info)
         
-        # Step 3: Analyze sentiment with GPT-4o
-        progress_text.markdown("**Step 3/3:** Analyzing sentiment...")
+        # Step 3: Analyze sentiment with GPT-4o and add online context
+        progress_text.markdown("**Step 3/4:** Gathering online sentiment data...")
         sentiment_result = analyze_sentiment(detailed_analysis)
         
         # Step 4: Extract metadata with GPT-o3-mini
-        progress_text.markdown("**Finalizing:** Extracting metadata...")
+        progress_text.markdown("**Step 4/4:** Extracting metadata...")
         metadata_result = extract_metadata(detailed_analysis)
         
         # Save the analysis
@@ -452,9 +460,26 @@ if st.session_state.current_analysis:
     else:
         formatted_date = analysis["timestamp"].strftime("%B %d, %Y at %I:%M %p")
     
-    # Get main topic for online sentiment analysis
-    main_topics = metadata.get("topic_details", {}).get("main_topics", [])
-    main_topic = main_topics[0] if main_topics else analysis.get('input_type', {}).get('subject', 'general')
+    # Use the actual search query or title as the main topic for more accurate representation
+    if analysis["source_type"] == "url":
+        # Use the URL domain or title if available
+        main_topic = analysis["source"].split("/")[-1].replace("-", " ").replace("_", " ")
+        if len(main_topic) < 3:  # If too short (like just "com"), use the domain
+            main_topic = analysis["source"].split("//")[-1].split("/")[0]
+    elif analysis["source_type"] == "direct_text" and len(analysis["source"]) < 50:
+        # If it's a short direct text entry, it's likely a search query - use it directly
+        main_topic = analysis["source"]
+    else:
+        # Otherwise use topics from metadata
+        main_topics = metadata.get("topic_details", {}).get("main_topics", [])
+        main_topic = main_topics[0] if main_topics else analysis.get('input_type', {}).get('subject', 'general')
+    
+    # Clean up main topic
+    main_topic = main_topic.strip()
+    if len(main_topic) > 50:  # If too long, truncate
+        main_topic = main_topic[:50] + "..."
+        
+    # Get subtopics for additional context
     subtopics = metadata.get("topic_details", {}).get("subtopics", [])
     
     # Display analysis results

@@ -189,13 +189,17 @@ def create_interest_over_time_chart(time_data, period='year'):
             font=dict(size=18)
         ),
         xaxis=dict(
-            title='Date',
-            titlefont=dict(size=14),
+            title=dict(
+                text='Date',
+                font=dict(size=14)
+            ),
             tickfont=dict(size=12)
         ),
         yaxis=dict(
-            title='Interest Level',
-            titlefont=dict(size=14),
+            title=dict(
+                text='Interest Level',
+                font=dict(size=14)
+            ),
             tickfont=dict(size=12),
             range=[0, 100]
         ),
@@ -296,14 +300,18 @@ def create_topic_popularity_chart(keyword_data):
             font=dict(size=18)
         ),
         xaxis=dict(
-            title='Topics',
-            titlefont=dict(size=14),
+            title=dict(
+                text='Topics',
+                font=dict(size=14)
+            ),
             tickfont=dict(size=12),
             tickangle=-30
         ),
         yaxis=dict(
-            title='Popularity Score',
-            titlefont=dict(size=14),
+            title=dict(
+                text='Popularity Score',
+                font=dict(size=14)
+            ),
             tickfont=dict(size=12),
             range=[0, 100]
         ),
@@ -368,13 +376,17 @@ def create_keyword_chart(keyword_data):
             font=dict(size=18)
         ),
         xaxis=dict(
-            title='Frequency',
-            titlefont=dict(size=14),
+            title=dict(
+                text='Frequency',
+                font=dict(size=14)
+            ),
             tickfont=dict(size=12)
         ),
         yaxis=dict(
-            title='Keyword',
-            titlefont=dict(size=14),
+            title=dict(
+                text='Keyword',
+                font=dict(size=14)
+            ),
             tickfont=dict(size=12),
             autorange="reversed"  # To have the highest values at the top
         ),

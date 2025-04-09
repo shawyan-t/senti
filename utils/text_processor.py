@@ -1,13 +1,15 @@
+"""
+Module for processing various text inputs (PDF, CSV, HTML, etc.)
+"""
 import PyPDF2
 import io
+import re
 import os
 import tempfile
 import trafilatura
 import requests
-import csv
 import pandas as pd
-import re
-from bs4 import BeautifulSoup
+from .openai_client import determine_input_type
 
 def process_text_input(text):
     """
@@ -19,8 +21,9 @@ def process_text_input(text):
     Returns:
         str: The processed text
     """
-    # Simple processing - remove extra whitespace and normalize
-    processed_text = " ".join(text.split())
+    # Basic cleaning: remove excessive whitespace
+    processed_text = re.sub(r'\s+', ' ', text).strip()
+    
     return processed_text
 
 def detect_file_type(file_content):
@@ -33,26 +36,21 @@ def detect_file_type(file_content):
     Returns:
         str: Detected file type ('csv', 'json', 'text', etc.)
     """
-    # Check if it's CSV
-    try:
-        # Try to decode as UTF-8 and check for comma-separated values
-        text_content = file_content.decode('utf-8')
-        if ',' in text_content and '\n' in text_content:
-            # Check if it has a consistent number of commas per line
-            lines = text_content.split('\n')[:5]  # Check first 5 lines
-            comma_counts = [line.count(',') for line in lines if line.strip()]
-            if len(set(comma_counts)) == 1:  # All lines have same number of commas
-                return 'csv'
-    except:
-        pass
+    # Look for CSV characteristics
+    content_sample = file_content[:1024].decode('utf-8', errors='ignore')
     
-    # Check if it's JSON
-    try:
-        import json
-        json.loads(file_content.decode('utf-8'))
+    if content_sample.count(',') > 5 and '\n' in content_sample:
+        lines = content_sample.split('\n')
+        if len(lines) > 1 and lines[0].count(',') == lines[1].count(','):
+            return 'csv'
+    
+    # Look for JSON characteristics
+    if content_sample.strip().startswith('{') and '}' in content_sample:
         return 'json'
-    except:
-        pass
+    
+    # Look for XML characteristics
+    if content_sample.strip().startswith('<') and '>' in content_sample:
+        return 'xml'
     
     # Default to text
     return 'text'
@@ -68,31 +66,39 @@ def process_csv_data(csv_content):
         str: Processed text describing the CSV data
     """
     try:
-        # Parse CSV into a DataFrame
+        # Parse CSV with pandas
         df = pd.read_csv(io.StringIO(csv_content))
         
-        # Basic information about the dataset
+        # Get basic information about the data
         num_rows, num_cols = df.shape
-        column_names = list(df.columns)
+        columns = df.columns.tolist()
         
-        # Create a summary of the data
-        summary = f"CSV data with {num_rows} rows and {num_cols} columns.\n\n"
-        summary += f"Column names: {', '.join(column_names)}\n\n"
+        # Generate summary statistics for numerical columns
+        numeric_cols = df.select_dtypes(include=['number']).columns
+        stats = df[numeric_cols].describe().to_string() if len(numeric_cols) > 0 else ""
         
-        # Sample data (first 5 rows)
-        summary += "Sample data (first 5 rows):\n"
-        summary += df.head(5).to_string()
-        summary += "\n\n"
+        # Generate a sample of the data (first 5 rows)
+        sample = df.head(5).to_string()
         
-        # Basic statistics for numerical columns
-        summary += "Numerical column statistics:\n"
-        for col in df.select_dtypes(include=['int64', 'float64']).columns:
-            summary += f"{col}: min={df[col].min()}, max={df[col].max()}, mean={df[col].mean():.2f}, median={df[col].median()}\n"
+        # Combine into a readable format
+        text_output = f"""
+        CSV DATA SUMMARY:
         
-        return summary
+        Number of rows: {num_rows}
+        Number of columns: {num_cols}
+        Columns: {', '.join(columns)}
+        
+        Sample data (first 5 rows):
+        {sample}
+        
+        Summary statistics for numerical columns:
+        {stats}
+        """
+        
+        return text_output
+    
     except Exception as e:
-        print(f"Error processing CSV data: {e}")
-        return "Error processing CSV data."
+        return f"Error processing CSV data: {str(e)}\n\nRaw content:\n{csv_content[:1000]}..."
 
 def extract_text_from_pdf(pdf_path):
     """
@@ -107,21 +113,24 @@ def extract_text_from_pdf(pdf_path):
     try:
         text = ""
         with open(pdf_path, 'rb') as file:
-            pdf_reader = PyPDF2.PdfReader(file)
-            for page_num in range(len(pdf_reader.pages)):
-                page = pdf_reader.pages[page_num]
-                text += page.extract_text() + "\n"
+            reader = PyPDF2.PdfReader(file)
+            num_pages = len(reader.pages)
+            
+            for i in range(num_pages):
+                page = reader.pages[i]
+                page_text = page.extract_text()
+                if page_text:
+                    text += f"\n--- Page {i+1} ---\n{page_text}"
         
-        # Clean up the extracted text
-        text = " ".join(text.split())
         return text
+    
     except Exception as e:
-        print(f"Error extracting text from PDF: {e}")
-        return None
+        return f"Error extracting text from PDF: {str(e)}"
 
 def extract_text_from_html(url):
     """
     Extract text content from a website URL.
+    Uses trafilatura for better content extraction.
     
     Args:
         url (str): The URL of the website
@@ -130,45 +139,34 @@ def extract_text_from_html(url):
         str: Extracted text content
     """
     try:
-        # Check if it's actually a URL or just text
-        if not url.startswith(('http://', 'https://')):
-            return process_text_input(url)
-            
-        # Use trafilatura for better text extraction
+        # First, try with trafilatura for better content extraction
         downloaded = trafilatura.fetch_url(url)
-        extracted_text = trafilatura.extract(downloaded)
         
-        if extracted_text:
-            # Add source information
-            return f"Source URL: {url}\n\n{extracted_text}"
+        if downloaded:
+            text = trafilatura.extract(downloaded)
+            
+            if text and len(text) > 200:  # If we got meaningful content
+                return text
         
-        # Fallback to BeautifulSoup if trafilatura doesn't extract text
-        response = requests.get(url)
-        soup = BeautifulSoup(response.content, 'html.parser')
+        # Fallback to basic request if trafilatura fails
+        response = requests.get(url, headers={
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        })
         
-        # Try to get page title
-        title = soup.title.string if soup.title else "Untitled Page"
+        if response.status_code == 200:
+            # Try trafilatura one more time with response content
+            extracted_text = trafilatura.extract(response.text)
+            
+            if extracted_text and len(extracted_text) > 200:
+                return extracted_text
+            
+            # Last resort: return raw HTML (the LLM can still extract some meaning)
+            return f"Raw HTML content from {url}:\n\n{response.text[:10000]}..."
         
-        # Remove script and style elements
-        for script in soup(["script", "style"]):
-            script.extract()
-        
-        # Get text
-        text = soup.get_text()
-        
-        # Break into lines and remove leading and trailing space on each
-        lines = (line.strip() for line in text.splitlines())
-        
-        # Break multi-headlines into a line each
-        chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
-        
-        # Drop blank lines
-        text = '\n'.join(chunk for chunk in chunks if chunk)
-        
-        return f"Source URL: {url}\nTitle: {title}\n\n{text}"
+        return f"Failed to fetch content from {url}. Status code: {response.status_code}"
+    
     except Exception as e:
-        print(f"Error extracting text from URL: {e}")
-        return f"Failed to extract content from URL: {url}. Error: {str(e)}"
+        return f"Error extracting content from URL: {str(e)}"
 
 def extract_csv_from_file(file_path):
     """
@@ -181,9 +179,11 @@ def extract_csv_from_file(file_path):
         str: Formatted text representation of the CSV data
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            csv_content = file.read()
-        return process_csv_data(csv_content)
+        # Read the CSV file
+        df = pd.read_csv(file_path)
+        
+        # Format the data as a readable string
+        return process_csv_data(df.to_csv(index=False))
+    
     except Exception as e:
-        print(f"Error processing CSV file: {e}")
-        return None
+        return f"Error extracting data from CSV file: {str(e)}"
