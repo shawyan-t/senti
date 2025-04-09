@@ -1,13 +1,15 @@
-"""
-Module for handling data storage and retrieval of analysis results.
-"""
-import os
 import json
+import os
 import uuid
-from datetime import datetime
+from datetime import datetime, date
+import pandas as pd
 
-# Define the data directory
-DATA_DIR = "data/analyses"
+# Directory for storing analysis results
+DATA_DIR = "data"
+
+# Ensure data directory exists
+if not os.path.exists(DATA_DIR):
+    os.makedirs(DATA_DIR)
 
 def save_analysis(source, text, summary, sentiment, metadata, timestamp, source_type):
     """
@@ -25,28 +27,23 @@ def save_analysis(source, text, summary, sentiment, metadata, timestamp, source_
     Returns:
         str: The ID of the saved analysis
     """
-    # Create a unique ID for this analysis
     analysis_id = str(uuid.uuid4())
     
-    # Create the data structure
     analysis_data = {
         "id": analysis_id,
         "source": source,
         "source_type": source_type,
-        "text": text[:1000] + "..." if len(text) > 1000 else text,  # Store a truncated version
+        "text": text,
         "summary": summary,
         "sentiment": sentiment,
         "metadata": metadata,
         "timestamp": timestamp.isoformat()
     }
     
-    # Ensure data directory exists
-    os.makedirs(DATA_DIR, exist_ok=True)
-    
-    # Save to a JSON file
     file_path = os.path.join(DATA_DIR, f"{analysis_id}.json")
-    with open(file_path, 'w', encoding='utf-8') as f:
-        json.dump(analysis_data, f, ensure_ascii=False, indent=2)
+    
+    with open(file_path, 'w') as f:
+        json.dump(analysis_data, f, indent=2)
     
     return analysis_id
 
@@ -62,15 +59,11 @@ def load_analysis(analysis_id):
     """
     file_path = os.path.join(DATA_DIR, f"{analysis_id}.json")
     
-    if not os.path.exists(file_path):
-        return None
-    
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as f:
             return json.load(f)
-    except Exception as e:
-        print(f"Error loading analysis {analysis_id}: {e}")
-        return None
+    
+    return None
 
 def load_all_analyses():
     """
@@ -79,22 +72,22 @@ def load_all_analyses():
     Returns:
         dict: A dictionary of all analyses, keyed by ID
     """
-    # Ensure data directory exists
-    os.makedirs(DATA_DIR, exist_ok=True)
-    
     analyses = {}
     
-    # List all JSON files in the directory
+    if not os.path.exists(DATA_DIR):
+        return analyses
+    
     for filename in os.listdir(DATA_DIR):
         if filename.endswith('.json'):
-            analysis_id = filename.replace('.json', '')
-            analysis_data = load_analysis(analysis_id)
-            if analysis_data:
-                analyses[analysis_id] = analysis_data
+            file_path = os.path.join(DATA_DIR, filename)
+            
+            with open(file_path, 'r') as f:
+                analysis = json.load(f)
+                analyses[analysis['id']] = analysis
     
     return analyses
 
-def get_filtered_data(analyses, start_date=None, end_date=None, topics=None, regions=None, commodities=None, sentiments=None):
+def get_filtered_data(analyses, start_date, end_date, topics=None, regions=None, commodities=None, sentiments=None):
     """
     Filter the analyses based on various criteria.
     
@@ -110,70 +103,54 @@ def get_filtered_data(analyses, start_date=None, end_date=None, topics=None, reg
     Returns:
         dict: Filtered analyses
     """
-    # Convert to list for easier filtering
-    analysis_list = list(analyses.values())
-    filtered_list = []
+    if not analyses:
+        return {}
     
-    for analysis in analysis_list:
-        # Convert string timestamp to datetime
-        if isinstance(analysis.get('timestamp'), str):
-            try:
-                analysis_date = datetime.fromisoformat(analysis.get('timestamp'))
-            except:
-                # Skip if we can't parse the date
-                continue
+    # Convert date objects to strings for comparison
+    start_date_str = start_date.isoformat() if isinstance(start_date, date) else start_date
+    end_date_str = end_date.isoformat() if isinstance(end_date, date) else end_date
+    
+    # Helper function to check if metadata contains any of the filter items
+    def contains_any(items, filter_list):
+        if not filter_list:
+            return True
+        return any(item in filter_list for item in items)
+    
+    filtered = {}
+    
+    for analysis_id, analysis in analyses.items():
+        # Extract timestamp date part for comparison
+        timestamp = analysis.get('timestamp', '')
+        if timestamp:
+            timestamp_date = timestamp.split('T')[0]
         else:
-            analysis_date = analysis.get('timestamp')
-        
-        # Filter by date range
-        if start_date and analysis_date.date() < start_date:
-            continue
-        if end_date and analysis_date.date() > end_date:
             continue
         
-        # Filter by topics
-        if topics and not contains_any(analysis.get('metadata', {}).get('topics', []), topics):
+        # Check date range
+        if timestamp_date < start_date_str or timestamp_date > end_date_str:
             continue
         
-        # Filter by regions
-        if regions and not contains_any(analysis.get('metadata', {}).get('regions', []), regions):
+        # Check metadata filters
+        metadata = analysis.get('metadata', {})
+        
+        # Check topics
+        if topics and not contains_any(metadata.get('topics', []), topics):
             continue
         
-        # Filter by commodities
-        if commodities and not contains_any(analysis.get('metadata', {}).get('commodities', []), commodities):
+        # Check regions
+        if regions and not contains_any(metadata.get('regions', []), regions):
             continue
         
-        # Filter by sentiment
-        if sentiments and analysis.get('sentiment', {}).get('sentiment') not in sentiments:
+        # Check commodities
+        if commodities and not contains_any(metadata.get('commodities', []), commodities):
             continue
         
-        # If we get here, the analysis passes all filters
-        filtered_list.append(analysis)
+        # Check sentiment
+        sentiment = analysis.get('sentiment', {}).get('sentiment', '')
+        if sentiments and sentiment not in sentiments:
+            continue
+        
+        # If we got here, the analysis passed all filters
+        filtered[analysis_id] = analysis
     
-    # Convert back to dictionary
-    filtered_dict = {analysis['id']: analysis for analysis in filtered_list}
-    return filtered_dict
-
-def contains_any(items, filter_list):
-    """
-    Check if any items from filter_list are in items.
-    
-    Args:
-        items (list): List of items to check
-        filter_list (list): List of items to check for
-        
-    Returns:
-        bool: True if any items from filter_list are in items
-    """
-    if not filter_list:
-        return True
-    
-    if not items:
-        return False
-    
-    # Convert both to lowercase for case-insensitive comparison
-    items_lower = [str(item).lower() for item in items]
-    filter_lower = [str(f).lower() for f in filter_list]
-    
-    # Check if any of the filter items are in the items list
-    return any(f in items_lower for f in filter_lower)
+    return filtered

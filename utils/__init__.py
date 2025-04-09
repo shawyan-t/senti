@@ -1,3 +1,1 @@
-"""
-Utilities module for the Sentimizer application.
-"""
+# Init file to make the utils directory a package
