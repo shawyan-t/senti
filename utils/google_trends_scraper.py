@@ -13,7 +13,8 @@ import plotly.graph_objects as go
 import traceback
 
 # Create a TrendReq instance with English locale and US tz
-pytrends = TrendReq(hl='en-US', tz=360, timeout=(10, 25), retries=2, backoff_factor=0.1)
+# Updated to fix compatibility issue with newer versions of requests
+pytrends = TrendReq(hl='en-US', tz=360, timeout=(10, 25))
 
 def fetch_interest_by_region(query, resolution='COUNTRY', geo='', timeframe='today 12-m'):
     """

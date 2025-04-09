@@ -83,7 +83,10 @@ class ExternalDataFetcher:
             return []
             
         try:
-            from_date = (datetime.now() - timedelta(days=days_back)).strftime('%Y-%m-%d')
+            # Ensure we don't go back too far (NewsAPI free tier limit)
+            # Set from_date to 30 days ago or today minus days_back, whichever is more recent
+            max_days_back = min(days_back, 30)  # Limit to 30 days in the past
+            from_date = (datetime.now() - timedelta(days=max_days_back)).strftime('%Y-%m-%d')
             
             # Use properly formatted parameters for better URL encoding of the query
             params = {
@@ -344,11 +347,58 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
         'subtopic_keywords': {}
     }
     
-    # 4. Attempt to get country data if Google Trends API is available
+    # 4. Get country data from Google Trends
     global_data = fetcher.get_country_interest_data(topic)
     
-    # 5. Send clear message about unable to get historical data without API
-    historical_data = []
+    # 5. Get historical data from Google Trends
+    historical_data = fetcher.fetch_google_trends_data(topic)
+    
+    # 6. If we have sources data, run them through OpenAI to get sentiment
+    # We'll use the sources to add sentiment data to the global_data if available
+    if sources['news'] or sources['twitter'] or sources['web']:
+        from .openai_client import analyze_sentiment
+        
+        try:
+            # Compile text sources for sentiment analysis
+            all_source_texts = []
+            
+            # Add news article titles and content
+            for article in sources['news']:
+                all_source_texts.append(article.get('title', '') + ': ' + article.get('content', '')[:500])
+            
+            # Add tweet texts
+            for tweet in sources['twitter']:
+                all_source_texts.append(tweet.get('text', ''))
+            
+            # Add web content
+            for content in sources['web']:
+                all_source_texts.append(content.get('title', '') + ': ' + content.get('content', '')[:500])
+            
+            # Join all texts
+            combined_text = '\n\n'.join(all_source_texts)
+            
+            # If we have enough text, perform sentiment analysis
+            if combined_text and len(combined_text) > 100:
+                sentiment_result = analyze_sentiment(combined_text)
+                
+                # Update sentiment in global_data if available
+                if 'countries' in global_data and sentiment_result:
+                    sentiment_score = sentiment_result.get('score', 0)
+                    sentiment_label = sentiment_result.get('sentiment', 'neutral')
+                    
+                    # Map scores to sentiment labels
+                    for country in global_data['countries']:
+                        # Assign sentiment based on the overall sentiment
+                        country['sentiment'] = sentiment_label
+            
+            # Add related queries as keywords
+            if 'keyword_data' in historical_data and historical_data['keyword_data']:
+                keywords = historical_data['keyword_data'].get('main_topic_keywords', [])
+                if keywords:
+                    keyword_data['main_topic_keywords'] = keywords
+        
+        except Exception as e:
+            print(f"Error integrating sentiment with geographic data: {e}")
     
     # Return all the collected data
     return {
