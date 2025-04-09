@@ -878,6 +878,20 @@ wheels = [
 ]
 
 [[package]]
+name = "pytrends"
+version = "4.9.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "lxml" },
+    { name = "pandas" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/e9/65/a242fd8fbe98c11bd51f0b57d4752905396a99c42c91c3213c3f44e741c8/pytrends-4.9.2.tar.gz", hash = "sha256:691c6e36b1aeaa4754f3692bdbad0dff446e528ffb052eee2e7f139aaa2c6989", size = 247162 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/68/ba/7a24a3723c790000faf880505ff1cc46f4d29f46dd353037938a070c4d23/pytrends-4.9.2-py3-none-any.whl", hash = "sha256:d7d0ee956be2f6e3e9fc09376c4615efb9347039d6d1f46e6f4326a5b7a14f67", size = 15352 },
+]
+
+[[package]]
 name = "pytz"
 version = "2025.2"
 source = { registry = "https://pypi.org/simple" }
@@ -964,6 +978,7 @@ dependencies = [
     { name = "plotly" },
     { name = "pycountry" },
     { name = "pypdf2" },
+    { name = "pytrends" },
     { name = "requests" },
     { name = "streamlit" },
     { name = "streamlit-lottie" },
@@ -978,6 +993,7 @@ requires-dist = [
     { name = "plotly", specifier = ">=6.0.1" },
     { name = "pycountry", specifier = ">=24.6.1" },
     { name = "pypdf2", specifier = ">=3.0.1" },
+    { name = "pytrends", specifier = ">=4.9.2" },
     { name = "requests", specifier = ">=2.32.3" },
     { name = "streamlit", specifier = ">=1.44.1" },
     { name = "streamlit-lottie", specifier = ">=0.0.5" },

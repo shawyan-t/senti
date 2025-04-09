@@ -85,8 +85,17 @@ class ExternalDataFetcher:
         try:
             from_date = (datetime.now() - timedelta(days=days_back)).strftime('%Y-%m-%d')
             
-            url = f"https://newsapi.org/v2/everything?q={query}&from={from_date}&sortBy=relevancy&apiKey={NEWS_API_KEY}&language=en&pageSize={limit}"
-            response = requests.get(url)
+            # Use properly formatted parameters for better URL encoding of the query
+            params = {
+                'q': query,
+                'from': from_date,
+                'sortBy': 'relevancy',
+                'apiKey': NEWS_API_KEY,
+                'language': 'en',
+                'pageSize': limit
+            }
+            url = "https://newsapi.org/v2/everything"
+            response = requests.get(url, params=params)
             
             if response.status_code == 200:
                 data = response.json()
@@ -242,7 +251,7 @@ class ExternalDataFetcher:
     
     def fetch_google_trends_data(self, query, geo='', timeframe='today 12-m'):
         """
-        Fetch Google Trends data if the API key is available.
+        Fetch Google Trends data using our scraper.
         
         Args:
             query (str): The search term to get trends for
@@ -252,27 +261,35 @@ class ExternalDataFetcher:
         Returns:
             dict: Google Trends data or empty dict if API not available
         """
-        # Since actual Google Trends API usage requires pytrends which isn't installed,
-        # and official API access is restricted, we'll return empty data for now
-        # but with a clear message
-        print("Google Trends API access is not available in this implementation.")
-        return {}
+        try:
+            # Import the Google Trends scraper
+            from .google_trends_scraper import fetch_google_trends_data
+            
+            # Fetch the data
+            return fetch_google_trends_data(query, timeframe=timeframe)
+        except Exception as e:
+            print(f"Error fetching Google Trends data: {e}")
+            return {}
     
     def get_country_interest_data(self, query):
         """
-        Attempt to get country interest data through web scraping.
-        This is a fallback when no API is available.
+        Get country interest data from Google Trends.
         
         Args:
             query (str): Search query
             
         Returns:
-            dict: Dictionary with country data (empty if no data can be obtained)
+            dict: Dictionary with country data
         """
-        # Real implementation would use actual APIs or services
-        # This version will return an empty dict with a clear message
-        print("Country interest data requires a Google Trends API key.")
-        return {}
+        try:
+            # Import the Google Trends scraper
+            from .google_trends_scraper import fetch_interest_by_region
+            
+            # Fetch the data
+            return fetch_interest_by_region(query)
+        except Exception as e:
+            print(f"Error fetching country interest data: {e}")
+            return {}
 
 def get_online_sentiment(topic, subtopics=None, days_back=30):
     """
