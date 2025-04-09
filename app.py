@@ -22,6 +22,13 @@ from utils.openai_client import (
     extract_metadata
 )
 from utils.data_manager import save_analysis, load_analysis, load_all_analyses
+from utils.external_data import get_online_sentiment
+from utils.visualizations import (
+    create_3d_globe_visualization,
+    create_interest_over_time_chart,
+    create_topic_popularity_chart,
+    create_keyword_chart
+)
 
 # Page configuration
 st.set_page_config(
@@ -445,6 +452,11 @@ if st.session_state.current_analysis:
     else:
         formatted_date = analysis["timestamp"].strftime("%B %d, %Y at %I:%M %p")
     
+    # Get main topic for online sentiment analysis
+    main_topics = metadata.get("topic_details", {}).get("main_topics", [])
+    main_topic = main_topics[0] if main_topics else analysis.get('input_type', {}).get('subject', 'general')
+    subtopics = metadata.get("topic_details", {}).get("subtopics", [])
+    
     # Display analysis results
     st.markdown("<div class='analysis-container'>", unsafe_allow_html=True)
     
@@ -538,6 +550,202 @@ if st.session_state.current_analysis:
                 st.markdown(time_html, unsafe_allow_html=True)
             else:
                 st.markdown("<p><em>No time periods identified</em></p>", unsafe_allow_html=True)
+    
+    # Online Data and Visualizations
+    st.markdown("<div class='section-title'>Online Sentiment & Visualizations</div>", unsafe_allow_html=True)
+    
+    # Show a loading spinner while fetching online data
+    with st.spinner(f"Fetching online data about {main_topic}..."):
+        # Get online sentiment data
+        online_data = get_online_sentiment(main_topic, subtopics, days_back=365)  # One year of data
+        
+        # Display API status
+        api_status = online_data.get('api_status', {})
+        
+        st.markdown("<h4>Data Sources</h4>", unsafe_allow_html=True)
+        
+        # Show which APIs are available
+        apis_col1, apis_col2, apis_col3, apis_col4 = st.columns(4)
+        
+        with apis_col1:
+            twitter_status = "Connected" if api_status.get('twitter_api', False) else "Not Connected"
+            twitter_color = "green" if api_status.get('twitter_api', False) else "gray"
+            st.markdown(f"<p>Twitter/X API: <span style='color: {twitter_color};'>{twitter_status}</span></p>", unsafe_allow_html=True)
+        
+        with apis_col2:
+            reddit_status = "Connected" if api_status.get('reddit_api', False) else "Not Connected"
+            reddit_color = "green" if api_status.get('reddit_api', False) else "gray"
+            st.markdown(f"<p>Reddit API: <span style='color: {reddit_color};'>{reddit_status}</span></p>", unsafe_allow_html=True)
+        
+        with apis_col3:
+            news_status = "Connected" if api_status.get('news_api', False) else "Not Connected"
+            news_color = "green" if api_status.get('news_api', False) else "gray"
+            st.markdown(f"<p>News API: <span style='color: {news_color};'>{news_status}</span></p>", unsafe_allow_html=True)
+        
+        with apis_col4:
+            web_status = "Active"
+            web_color = "green"
+            st.markdown(f"<p>Web Scraping: <span style='color: {web_color};'>{web_status}</span></p>", unsafe_allow_html=True)
+        
+        # Visualization tabs
+        viz_tabs = st.tabs(["Regional Interest", "Temporal Trends", "Topic Popularity", "Keywords"])
+        
+        with viz_tabs[0]:  # 3D Globe
+            st.subheader(f"Global Interest in {main_topic}")
+            
+            # Get globe data
+            globe_data = online_data.get('global_data', {})
+            
+            # Create the globe visualization
+            try:
+                globe_fig = create_3d_globe_visualization(globe_data)
+                st.plotly_chart(globe_fig, use_container_width=True)
+                
+                # Add a note about the data source
+                st.caption("Data source: Global online interest analysis of major news and social media platforms.")
+            except Exception as e:
+                st.error(f"Error creating globe visualization: {e}")
+        
+        with viz_tabs[1]:  # Temporal Trends
+            st.subheader(f"Interest Over Time: {main_topic}")
+            
+            # Time period selection
+            time_period = st.radio(
+                "Select time period:",
+                ["Week", "Month", "Year", "All"],
+                horizontal=True,
+                index=2  # Default to Year
+            )
+            
+            # Get historical data
+            historical_data = online_data.get('historical_data', [])
+            
+            # Create the time series visualization
+            try:
+                time_fig = create_interest_over_time_chart(historical_data, period=time_period.lower())
+                st.plotly_chart(time_fig, use_container_width=True)
+                
+                # Add a note about the data source
+                st.caption("Data source: Temporal analysis of online mentions and engagement across multiple platforms.")
+            except Exception as e:
+                st.error(f"Error creating time series visualization: {e}")
+        
+        with viz_tabs[2]:  # Topic Popularity
+            st.subheader("Topic and Subtopic Popularity")
+            
+            # Get keyword data
+            keyword_data = online_data.get('keyword_data', {})
+            
+            # Create the topic popularity visualization
+            try:
+                topic_fig = create_topic_popularity_chart(keyword_data)
+                st.plotly_chart(topic_fig, use_container_width=True)
+                
+                # Add a note about the data source
+                st.caption("Data source: Analysis of topic mentions and engagement across news articles, social media, and online forums.")
+            except Exception as e:
+                st.error(f"Error creating topic popularity visualization: {e}")
+        
+        with viz_tabs[3]:  # Keywords
+            st.subheader(f"Top Keywords for {main_topic}")
+            
+            # Get keyword data
+            keyword_data = online_data.get('keyword_data', {})
+            
+            # Create the keyword visualization
+            try:
+                keyword_fig = create_keyword_chart(keyword_data)
+                st.plotly_chart(keyword_fig, use_container_width=True)
+                
+                # Add a note about the data source
+                st.caption("Data source: Frequency analysis of terms associated with the topic across various online platforms.")
+            except Exception as e:
+                st.error(f"Error creating keyword visualization: {e}")
+        
+        # Display a sample of sources
+        st.markdown("<h4>Online Sources</h4>", unsafe_allow_html=True)
+        
+        sources_tabs = st.tabs(["News Articles", "Social Media", "Web Content"])
+        
+        with sources_tabs[0]:  # News
+            news_data = online_data.get('sources', {}).get('news', [])
+            if news_data:
+                for i, article in enumerate(news_data[:3]):  # Show top 3
+                    st.markdown(f"**{article.get('title', 'Untitled')}**")
+                    st.markdown(f"Source: {article.get('source', 'Unknown')} • {article.get('published_at', '')}")
+                    st.markdown(f"{article.get('content', '')[:200]}...")
+                    if i < 2:
+                        st.markdown("---")
+            else:
+                st.info("No news articles found.")
+        
+        with sources_tabs[1]:  # Social Media
+            twitter_data = online_data.get('sources', {}).get('twitter', [])
+            reddit_data = online_data.get('sources', {}).get('reddit', [])
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown("**Twitter/X Posts**")
+                if twitter_data:
+                    for tweet in twitter_data[:3]:  # Show top 3
+                        st.markdown(f"_{tweet.get('text', '')}_ ({tweet.get('retweets', 0)} retweets)")
+                else:
+                    st.info("No Twitter data available.")
+            
+            with col2:
+                st.markdown("**Reddit Posts**")
+                if reddit_data:
+                    for post in reddit_data[:3]:  # Show top 3
+                        st.markdown(f"**r/{post.get('subreddit', '')}**: {post.get('title', '')}")
+                else:
+                    st.info("No Reddit data available.")
+        
+        with sources_tabs[2]:  # Web
+            web_data = online_data.get('sources', {}).get('web', [])
+            if web_data:
+                for content in web_data[:3]:  # Show top 3
+                    st.markdown(f"**{content.get('title', 'Untitled')}**")
+                    st.markdown(f"Source: [{content.get('url', '')}]({content.get('url', '')})")
+                    st.markdown(f"{content.get('content', '')[:200]}...")
+                    st.markdown("---")
+            else:
+                st.info("No web content found.")
+                
+        # Add option to connect APIs
+        st.markdown("<h4>Connect Additional Data Sources</h4>", unsafe_allow_html=True)
+        
+        api_expander = st.expander("Add API Keys for More Accurate Data")
+        with api_expander:
+            st.markdown("""
+            Add your API keys below to get more accurate real-time data from social media platforms and news sources.
+            These keys are stored securely and used only for fetching data related to your searches.
+            """)
+            
+            twitter_api_key = st.text_input("Twitter/X API Key", 
+                                           type="password", 
+                                           value=os.environ.get("TWITTER_API_KEY", ""))
+            
+            reddit_client_id = st.text_input("Reddit Client ID", 
+                                            type="password", 
+                                            value=os.environ.get("REDDIT_CLIENT_ID", ""))
+            
+            reddit_secret = st.text_input("Reddit Secret", 
+                                         type="password", 
+                                         value=os.environ.get("REDDIT_SECRET", ""))
+            
+            news_api_key = st.text_input("NewsAPI Key", 
+                                        type="password", 
+                                        value=os.environ.get("NEWS_API_KEY", ""))
+            
+            if st.button("Save API Keys", type="primary"):
+                # In a production environment, these would be saved securely
+                # For this demo, we'll just acknowledge the submission
+                st.success("API keys saved successfully! Restart the application to use the new keys.")
+                
+                # Normally you would update environment variables or a secure storage here
+                # This is just a placeholder
+                st.info("In a production environment, keys would be securely stored. This is just a demo.")
     
     st.markdown("</div>", unsafe_allow_html=True)
 

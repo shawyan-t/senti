@@ -1,435 +1,415 @@
+"""
+Module for creating visualizations for sentiment analysis.
+"""
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 from datetime import datetime, timedelta
-import random
+import json
 import numpy as np
 import pycountry
 
-def create_global_sentiment_map(data):
+# Helper function to convert country name to ISO code
+def country_name_to_code(country_name):
     """
-    Create a global map visualization showing sentiment by region.
+    Convert country name to ISO 3166-1 alpha-3 code for map plotting.
     
     Args:
-        data (dict): The filtered analysis data
+        country_name (str): Name of the country
         
     Returns:
-        plotly.graph_objects.Figure: A Plotly map figure
+        str: ISO 3166-1 alpha-3 code or None if not found
     """
-    # Prepare data for visualization
-    map_data = []
-    
-    for analysis_id, analysis in data.items():
-        sentiment = analysis.get('sentiment', {}).get('sentiment', 'neutral')
-        sentiment_score = analysis.get('sentiment', {}).get('score', 0)
+    try:
+        # Try direct lookup
+        country = pycountry.countries.get(name=country_name)
+        if country:
+            return country.alpha_3
         
-        # Get regions for this analysis
-        regions = analysis.get('metadata', {}).get('regions', [])
+        # Try searching by name
+        countries = pycountry.countries.search_fuzzy(country_name)
+        if countries:
+            return countries[0].alpha_3
+    except:
+        pass
+    return None
+
+def create_3d_globe_visualization(geo_data):
+    """
+    Create a 3D globe visualization showing sentiment across regions.
+    
+    Args:
+        geo_data (dict): Geographic data with sentiment by country
         
-        # Map each region to its sentiment
-        for region in regions:
-            # Try to convert region name to ISO country code for the map
-            try:
-                country = pycountry.countries.search_fuzzy(region)
-                if country:
-                    country_code = country[0].alpha_3
-                    map_data.append({
-                        'country': region,
-                        'iso_code': country_code,
-                        'sentiment': sentiment,
-                        'sentiment_score': sentiment_score
-                    })
-            except:
-                # If we can't find a country code, just use the region name
-                map_data.append({
-                    'country': region,
-                    'iso_code': '',
-                    'sentiment': sentiment,
-                    'sentiment_score': sentiment_score
-                })
+    Returns:
+        plotly.graph_objects.Figure: 3D globe figure
+    """
+    # Extract the data
+    main_topic = geo_data.get('main_topic', '')
+    countries_data = geo_data.get('main_topic_data', [])
     
-    if not map_data:
-        # Return empty figure if no data
-        return go.Figure().update_layout(
-            title="No geographical data available",
-            template="plotly_white"
-        )
+    # Prepare DataFrame
+    df = pd.DataFrame(countries_data)
     
-    # Convert to DataFrame
-    df = pd.DataFrame(map_data)
+    # Create the 3D globe figure
+    fig = go.Figure()
     
-    # Calculate average sentiment score per country
-    country_sentiment = df.groupby('country')['sentiment_score'].mean().reset_index()
+    # Add choropleth map layer
+    fig.add_trace(go.Choropleth(
+        locations=df['country_code'],
+        z=df['interest'],
+        text=df['country'],
+        colorscale='Plasma',
+        autocolorscale=False,
+        marker_line_color='darkgray',
+        marker_line_width=0.5,
+        colorbar=dict(
+            title=dict(
+                text='Interest Level',
+                font=dict(size=14)
+            ),
+            tickfont=dict(size=12)
+        ),
+        name=f'{main_topic} Interest'
+    ))
     
-    # Create map
-    fig = px.choropleth(
-        country_sentiment,
-        locations=df['iso_code'] if 'iso_code' in df.columns else None,
-        locationmode='ISO-3',
-        color='sentiment_score',
-        hover_name='country',
-        color_continuous_scale=px.colors.diverging.RdBu,
-        color_continuous_midpoint=0,
-        title='Global Sentiment Distribution',
-        labels={'sentiment_score': 'Sentiment Score (-1 to 1)'}
+    # Update the layout for 3D globe projection
+    fig.update_layout(
+        title=dict(
+            text=f'Global Interest in {main_topic}',
+            font=dict(size=20)
+        ),
+        geo=dict(
+            projection_type='orthographic',
+            showland=True,
+            landcolor='rgb(217, 217, 217)',
+            showocean=True,
+            oceancolor='rgb(204, 230, 255)',
+            showlakes=True,
+            lakecolor='rgb(204, 230, 255)',
+            showcountries=True,
+            countrycolor='rgb(80, 80, 80)',
+            countrywidth=0.5,
+            showcoastlines=True,
+            coastlinecolor='rgb(80, 80, 80)',
+            coastlinewidth=0.5
+        ),
+        width=800,
+        height=600,
+        margin=dict(t=50, b=0, l=0, r=0),
+        paper_bgcolor='rgba(0, 0, 0, 0)',
+        plot_bgcolor='rgba(0, 0, 0, 0)'
     )
     
+    # Add interactive controls for rotating the globe
     fig.update_layout(
-        geo=dict(
-            showframe=False,
-            showcoastlines=True,
-            projection_type='equirectangular'
-        ),
-        height=600,
-        template="plotly_white"
+        updatemenus=[{
+            'buttons': [
+                {
+                    'args': [{'geo.projection.rotation.lon': -180}],
+                    'label': 'Americas',
+                    'method': 'relayout'
+                },
+                {
+                    'args': [{'geo.projection.rotation.lon': 0}],
+                    'label': 'Europe/Africa',
+                    'method': 'relayout'
+                },
+                {
+                    'args': [{'geo.projection.rotation.lon': 90}],
+                    'label': 'Asia/Australia',
+                    'method': 'relayout'
+                }
+            ],
+            'direction': 'down',
+            'showactive': True,
+            'x': 0.05,
+            'y': 0.05
+        }]
     )
     
     return fig
 
-def create_sentiment_time_chart(data):
+def create_interest_over_time_chart(time_data, period='year'):
     """
-    Create a time series chart showing sentiment trends over time.
+    Create a chart showing interest over time for a topic.
     
     Args:
-        data (dict): The filtered analysis data
+        time_data (list): List of time series data
+        period (str): Time period to display (week, month, year, or all)
         
     Returns:
-        plotly.graph_objects.Figure: A Plotly time series figure
+        plotly.graph_objects.Figure: Time series figure
     """
-    # Prepare data for visualization
-    time_data = []
-    
-    for analysis_id, analysis in data.items():
-        timestamp = analysis.get('timestamp', '')
-        sentiment = analysis.get('sentiment', {}).get('sentiment', 'neutral')
-        sentiment_score = analysis.get('sentiment', {}).get('score', 0)
-        
-        if timestamp:
-            time_data.append({
-                'date': datetime.fromisoformat(timestamp),
-                'sentiment': sentiment,
-                'sentiment_score': sentiment_score
-            })
-    
-    if not time_data:
-        # Return empty figure if no data
-        return go.Figure().update_layout(
-            title="No time series data available",
-            template="plotly_white"
-        )
-    
     # Convert to DataFrame
     df = pd.DataFrame(time_data)
     
-    # Sort by date
-    df = df.sort_values('date')
+    # Convert date strings to datetime
+    df['date'] = pd.to_datetime(df['date'])
     
-    # Create time series chart
-    fig = go.Figure()
+    # Filter based on period
+    end_date = df['date'].max()
+    if period == 'week':
+        start_date = end_date - timedelta(days=7)
+    elif period == 'month':
+        start_date = end_date - timedelta(days=30)
+    elif period == 'year':
+        start_date = end_date - timedelta(days=365)
+    else:  # 'all'
+        start_date = df['date'].min()
     
-    # Add scatter plot for sentiment scores
-    fig.add_trace(go.Scatter(
-        x=df['date'],
-        y=df['sentiment_score'],
-        mode='lines+markers',
-        name='Sentiment Score',
-        line=dict(color='royalblue'),
-        hovertemplate='%{x}<br>Score: %{y:.2f}'
-    ))
-    
-    # Add moving average
-    window_size = min(7, len(df))
-    if window_size > 1:
-        df['ma'] = df['sentiment_score'].rolling(window=window_size).mean()
-        fig.add_trace(go.Scatter(
-            x=df['date'],
-            y=df['ma'],
-            mode='lines',
-            name=f'{window_size}-Day Moving Average',
-            line=dict(color='firebrick', dash='dash'),
-            hovertemplate='%{x}<br>MA: %{y:.2f}'
-        ))
-    
-    # Add reference line for neutral sentiment
-    fig.add_shape(
-        type="line",
-        x0=min(df['date']),
-        y0=0,
-        x1=max(df['date']),
-        y1=0,
-        line=dict(color="gray", width=1, dash="dot"),
-    )
-    
-    fig.update_layout(
-        title='Sentiment Trends Over Time',
-        xaxis_title='Date',
-        yaxis_title='Sentiment Score (-1 to 1)',
-        hovermode='closest',
-        height=500,
-        template="plotly_white"
-    )
-    
-    return fig
-
-def create_topic_distribution_chart(data):
-    """
-    Create a chart showing the distribution of topics.
-    
-    Args:
-        data (dict): The filtered analysis data
-        
-    Returns:
-        plotly.graph_objects.Figure: A Plotly chart figure
-    """
-    # Extract all topics and their sentiment scores
-    topic_data = []
-    
-    for analysis_id, analysis in data.items():
-        sentiment_score = analysis.get('sentiment', {}).get('score', 0)
-        topics = analysis.get('metadata', {}).get('topics', [])
-        
-        for topic in topics:
-            topic_data.append({
-                'topic': topic,
-                'sentiment_score': sentiment_score
-            })
-    
-    if not topic_data:
-        # Return empty figure if no data
-        return go.Figure().update_layout(
-            title="No topic data available",
-            template="plotly_white"
-        )
-    
-    # Convert to DataFrame
-    df = pd.DataFrame(topic_data)
-    
-    # Calculate average sentiment score and count per topic
-    topic_stats = df.groupby('topic').agg(
-        avg_sentiment=('sentiment_score', 'mean'),
-        count=('sentiment_score', 'count')
-    ).reset_index()
-    
-    # Sort by count (descending)
-    topic_stats = topic_stats.sort_values('count', ascending=False)
-    
-    # Take top 10 topics
-    top_topics = topic_stats.head(10)
-    
-    # Create horizontal bar chart
-    fig = go.Figure()
-    
-    # Add bars for topic counts
-    fig.add_trace(go.Bar(
-        y=top_topics['topic'],
-        x=top_topics['count'],
-        orientation='h',
-        name='Frequency',
-        marker_color='lightblue',
-        hovertemplate='%{y}<br>Count: %{x}<extra></extra>'
-    ))
-    
-    # Create a parallel y-axis for sentiment scores
-    fig.update_layout(
-        yaxis2=dict(
-            overlaying='y',
-            side='right',
-            showgrid=False,
-            zeroline=False
-        )
-    )
-    
-    # Add sentiment score markers
-    fig.add_trace(go.Scatter(
-        y=top_topics['topic'],
-        x=top_topics['avg_sentiment'],
-        mode='markers',
-        name='Avg. Sentiment',
-        marker=dict(
-            color=top_topics['avg_sentiment'],
-            size=12,
-            colorscale='RdBu',
-            colorbar=dict(title='Sentiment'),
-            cmin=-1,
-            cmid=0,
-            cmax=1
-        ),
-        yaxis='y2',
-        hovertemplate='%{y}<br>Sentiment: %{x:.2f}<extra></extra>'
-    ))
-    
-    fig.update_layout(
-        title='Top Topics by Frequency and Average Sentiment',
-        xaxis_title='Count',
-        yaxis_title='Topic',
-        height=500,
-        template="plotly_white",
-        hovermode='closest',
-        barmode='overlay'
-    )
-    
-    return fig
-
-def create_commodity_price_chart(data):
-    """
-    Create a chart showing commodity prices and sentiment.
-    
-    Args:
-        data (dict): The filtered analysis data
-        
-    Returns:
-        plotly.graph_objects.Figure: A Plotly chart figure
-    """
-    # Mock commodity price data - in a real application, this would come from a commodity price API
-    # Here we're creating synthetic data that roughly aligns with the date range of our analysis data
-    
-    # Get the date range from the data
-    dates = []
-    for analysis_id, analysis in data.items():
-        timestamp = analysis.get('timestamp', '')
-        if timestamp:
-            dates.append(datetime.fromisoformat(timestamp))
-    
-    if not dates:
-        # Return empty figure if no data
-        return go.Figure().update_layout(
-            title="No commodity data available",
-            template="plotly_white"
-        )
-    
-    start_date = min(dates)
-    end_date = max(dates)
-    
-    # Generate date range
-    date_range = pd.date_range(start=start_date, end=end_date, freq='D')
-    
-    # Extract all commodities mentioned in the data
-    all_commodities = set()
-    for analysis_id, analysis in data.items():
-        commodities = analysis.get('metadata', {}).get('commodities', [])
-        all_commodities.update(commodities)
-    
-    # If no commodities found, use a default
-    if not all_commodities:
-        all_commodities = ['Oil']
-    
-    # For each commodity, generate a synthetic price series
-    commodity_prices = {}
-    for commodity in all_commodities:
-        # Set up a base price and volatility for known commodities
-        if commodity.lower() in ['oil', 'crude oil', 'petroleum']:
-            base_price = 70.0
-            volatility = 3.0
-        elif commodity.lower() in ['gold']:
-            base_price = 1800.0
-            volatility = 50.0
-        elif commodity.lower() in ['gas', 'natural gas']:
-            base_price = 3.5
-            volatility = 0.2
-        else:
-            # For unknown commodities, use a generic price range
-            base_price = 100.0
-            volatility = 5.0
-        
-        # Generate random walk for price
-        np.random.seed(hash(commodity) % 2**32)  # Use commodity name as seed for reproducibility
-        steps = np.random.normal(0, volatility, size=len(date_range))
-        prices = [base_price]
-        for step in steps:
-            next_price = max(prices[-1] + step, 0.1)  # Ensure price doesn't go negative
-            prices.append(next_price)
-        prices = prices[:-1]  # Remove the extra price
-        
-        commodity_prices[commodity] = prices
+    df_filtered = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
     
     # Create the figure
     fig = go.Figure()
     
-    # Choose the most frequently mentioned commodity for display
-    commodity_counts = {}
-    for analysis_id, analysis in data.items():
-        commodities = analysis.get('metadata', {}).get('commodities', [])
-        for commodity in commodities:
-            commodity_counts[commodity] = commodity_counts.get(commodity, 0) + 1
-    
-    if commodity_counts:
-        # Find the commodity with the highest count
-        max_count = 0
-        primary_commodity = None
-        for commodity, count in commodity_counts.items():
-            if count > max_count:
-                max_count = count
-                primary_commodity = commodity
-        
-        # Fallback if no primary commodity was found
-        if primary_commodity is None:
-            primary_commodity = list(all_commodities)[0] if all_commodities else 'Oil'
-    else:
-        primary_commodity = list(all_commodities)[0] if all_commodities else 'Oil'
-    
-    # Add the primary commodity price line
+    # Add the main line
     fig.add_trace(go.Scatter(
-        x=date_range,
-        y=commodity_prices[primary_commodity],
+        x=df_filtered['date'],
+        y=df_filtered['interest_smoothed'],
         mode='lines',
-        name=f'{primary_commodity} Price',
-        line=dict(color='darkorange', width=2),
-        hovertemplate='%{x}<br>Price: $%{y:.2f}'
+        name='Trend',
+        line=dict(width=3, color='#1E40AF')
     ))
     
-    # Add sentiment data points for this commodity
-    sentiment_dates = []
-    sentiment_scores = []
+    # Add the raw data as scatter points
+    fig.add_trace(go.Scatter(
+        x=df_filtered['date'],
+        y=df_filtered['interest'],
+        mode='markers',
+        name='Daily Interest',
+        marker=dict(size=4, color='#3B82F6', opacity=0.5),
+        hoverinfo='y+x'
+    ))
     
-    for analysis_id, analysis in data.items():
-        commodities = analysis.get('metadata', {}).get('commodities', [])
-        
-        if primary_commodity in commodities:
-            timestamp = analysis.get('timestamp', '')
-            sentiment_score = analysis.get('sentiment', {}).get('score', 0)
-            
-            if timestamp:
-                sentiment_dates.append(datetime.fromisoformat(timestamp))
-                sentiment_scores.append(sentiment_score)
-    
-    # Create a secondary y-axis for sentiment scores
+    # Update layout
     fig.update_layout(
-        yaxis2=dict(
-            title='Sentiment Score',
-            tickfont=dict(color='royalblue'),
-            overlaying='y',
-            side='right',
-            range=[-1, 1],
-            titlefont=dict(color='royalblue')  # Title font is set directly as a property
+        title=dict(
+            text=f'Interest Over Time ({period.title()})',
+            font=dict(size=18)
+        ),
+        xaxis=dict(
+            title='Date',
+            titlefont=dict(size=14),
+            tickfont=dict(size=12)
+        ),
+        yaxis=dict(
+            title='Interest Level',
+            titlefont=dict(size=14),
+            tickfont=dict(size=12),
+            range=[0, 100]
+        ),
+        legend=dict(
+            orientation='h',
+            yanchor='bottom',
+            y=1.02,
+            xanchor='right',
+            x=1
+        ),
+        margin=dict(l=50, r=20, b=50, t=70),
+        hovermode='closest',
+        paper_bgcolor='rgba(0, 0, 0, 0)',
+        plot_bgcolor='rgba(0, 0, 0, 0)'
+    )
+    
+    # Add range selector
+    fig.update_xaxes(
+        rangeslider_visible=False,
+        rangeselector=dict(
+            buttons=list([
+                dict(count=1, label="1w", step="week", stepmode="backward"),
+                dict(count=1, label="1m", step="month", stepmode="backward"),
+                dict(count=6, label="6m", step="month", stepmode="backward"),
+                dict(count=1, label="YTD", step="year", stepmode="todate"),
+                dict(count=1, label="1y", step="year", stepmode="backward"),
+                dict(step="all")
+            ])
         )
     )
     
-    # Add sentiment markers for the selected commodity
-    if sentiment_dates and sentiment_scores:
-        fig.add_trace(go.Scatter(
-            x=sentiment_dates,
-            y=sentiment_scores,
-            mode='markers',
-            name=f'{primary_commodity} Sentiment',
-            marker=dict(
-                color=sentiment_scores,
-                colorscale='RdBu',
-                cmin=-1,
-                cmid=0,
-                cmax=1,
-                size=10
-            ),
-            yaxis='y2',
-            hovertemplate='%{x}<br>Sentiment: %{y:.2f}'
-        ))
+    # Add a grid for better readability
+    fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='rgba(211, 211, 211, 0.3)')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(211, 211, 211, 0.3)')
     
+    return fig
+
+def create_topic_popularity_chart(keyword_data):
+    """
+    Create a bar chart showing popularity of topics and subtopics.
+    
+    Args:
+        keyword_data (dict): Keyword and topic data
+        
+    Returns:
+        plotly.graph_objects.Figure: Bar chart figure
+    """
+    # Extract main topic and subtopics
+    main_topic = keyword_data.get('main_topic', 'Unknown Topic')
+    main_keywords = keyword_data.get('main_topic_keywords', [])
+    subtopics = keyword_data.get('subtopics', [])
+    subtopic_keywords = keyword_data.get('subtopic_keywords', {})
+    
+    # Prepare data for visualization
+    topics = [main_topic] + subtopics
+    popularity_values = []
+    
+    # Calculate average popularity for main topic
+    if main_keywords:
+        main_popularity = sum(kw['frequency'] for kw in main_keywords) / len(main_keywords)
+        popularity_values.append(main_popularity)
+    else:
+        popularity_values.append(0)
+    
+    # Calculate popularity for each subtopic
+    for subtopic in subtopics:
+        subtopic_kws = subtopic_keywords.get(subtopic, [])
+        if subtopic_kws:
+            subtopic_popularity = sum(kw['frequency'] for kw in subtopic_kws) / len(subtopic_kws)
+            popularity_values.append(subtopic_popularity)
+        else:
+            popularity_values.append(0)
+    
+    # Create a DataFrame for visualization
+    df = pd.DataFrame({
+        'Topic': topics,
+        'Popularity': popularity_values
+    })
+    
+    # Create color mapping based on whether it's the main topic
+    colors = ['#3B82F6' if topic == main_topic else '#60A5FA' for topic in topics]
+    
+    # Create the figure
+    fig = go.Figure(data=[
+        go.Bar(
+            x=df['Topic'],
+            y=df['Popularity'],
+            marker_color=colors,
+            text=df['Popularity'].round(1),
+            textposition='auto'
+        )
+    ])
+    
+    # Update layout
     fig.update_layout(
-        title=f'{primary_commodity} Price and Sentiment Correlation',
-        xaxis_title='Date',
-        yaxis_title='Price (USD)',
-        height=500,
-        template="plotly_white",
-        hovermode='closest'
+        title=dict(
+            text='Topic and Subtopic Popularity',
+            font=dict(size=18)
+        ),
+        xaxis=dict(
+            title='Topics',
+            titlefont=dict(size=14),
+            tickfont=dict(size=12),
+            tickangle=-30
+        ),
+        yaxis=dict(
+            title='Popularity Score',
+            titlefont=dict(size=14),
+            tickfont=dict(size=12),
+            range=[0, 100]
+        ),
+        margin=dict(l=50, r=20, b=100, t=70),
+        paper_bgcolor='rgba(0, 0, 0, 0)',
+        plot_bgcolor='rgba(0, 0, 0, 0)'
     )
+    
+    # Add a grid for better readability
+    fig.update_xaxes(showgrid=False)
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='rgba(211, 211, 211, 0.3)')
+    
+    return fig
+
+def create_keyword_chart(keyword_data):
+    """
+    Create a horizontal bar chart showing top keywords and their sentiment.
+    
+    Args:
+        keyword_data (dict): Keyword and topic data
+        
+    Returns:
+        plotly.graph_objects.Figure: Horizontal bar chart
+    """
+    # Extract main keywords
+    main_topic = keyword_data.get('main_topic', 'Unknown')
+    main_keywords = keyword_data.get('main_topic_keywords', [])
+    
+    # Sort keywords by frequency and take top 10
+    sorted_keywords = sorted(main_keywords, key=lambda x: x['frequency'], reverse=True)[:10]
+    
+    # Prepare data for chart
+    keywords = [kw['keyword'] for kw in sorted_keywords]
+    frequencies = [kw['frequency'] for kw in sorted_keywords]
+    sentiments = [kw['sentiment'] for kw in sorted_keywords]
+    
+    # Map sentiments to colors
+    color_map = {
+        'positive': '#10B981',  # Green
+        'neutral': '#6B7280',   # Gray
+        'negative': '#EF4444'   # Red
+    }
+    colors = [color_map.get(sentiment, '#6B7280') for sentiment in sentiments]
+    
+    # Create the figure
+    fig = go.Figure()
+    
+    # Add horizontal bar chart
+    fig.add_trace(go.Bar(
+        y=keywords,
+        x=frequencies,
+        orientation='h',
+        marker_color=colors,
+        text=[f"{freq} ({sent.title()})" for freq, sent in zip(frequencies, sentiments)],
+        textposition='auto'
+    ))
+    
+    # Update layout
+    fig.update_layout(
+        title=dict(
+            text=f'Top Keywords for {main_topic}',
+            font=dict(size=18)
+        ),
+        xaxis=dict(
+            title='Frequency',
+            titlefont=dict(size=14),
+            tickfont=dict(size=12)
+        ),
+        yaxis=dict(
+            title='Keyword',
+            titlefont=dict(size=14),
+            tickfont=dict(size=12),
+            autorange="reversed"  # To have the highest values at the top
+        ),
+        margin=dict(l=20, r=20, b=50, t=70),
+        paper_bgcolor='rgba(0, 0, 0, 0)',
+        plot_bgcolor='rgba(0, 0, 0, 0)'
+    )
+    
+    # Add a legend for sentiment colors
+    fig.add_trace(go.Scatter(
+        x=[None],
+        y=[None],
+        mode='markers',
+        marker=dict(size=10, color=color_map['positive']),
+        name='Positive'
+    ))
+    
+    fig.add_trace(go.Scatter(
+        x=[None],
+        y=[None],
+        mode='markers',
+        marker=dict(size=10, color=color_map['neutral']),
+        name='Neutral'
+    ))
+    
+    fig.add_trace(go.Scatter(
+        x=[None],
+        y=[None],
+        mode='markers',
+        marker=dict(size=10, color=color_map['negative']),
+        name='Negative'
+    ))
+    
+    # Add a grid for better readability
+    fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='rgba(211, 211, 211, 0.3)')
+    fig.update_yaxes(showgrid=False)
     
     return fig
