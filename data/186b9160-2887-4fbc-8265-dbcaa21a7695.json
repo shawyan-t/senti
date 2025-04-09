@@ -1,0 +1,36 @@
+{
+  "id": "186b9160-2887-4fbc-8265-dbcaa21a7695",
+  "source": "Direct Text Input",
+  "source_type": "direct_text",
+  "text": "Tariffs",
+  "summary": "Tariffs are taxes imposed by a government on imported goods. They are used to protect domestic industries from foreign competition, increase government revenue, and sometimes influence international trade relations. Tariffs can lead to higher prices for consumers, potential trade wars, and retaliation from other countries, but they can also benefit local businesses by reducing foreign competition. The economic impact of tariffs is widely debated, with proponents arguing they safeguard jobs and industries, while critics claim they can lead to inefficiencies and increased costs.",
+  "sentiment": {
+    "sentiment": "neutral",
+    "score": 0.0,
+    "rationale": "The text provides a balanced overview of tariffs, discussing both their potential benefits and drawbacks without expressing any particular positive or negative sentiment. It presents facts about tariffs and their potential effects on economies and trade relations. The use of neutral language and the lack of emotive or persuasive language contribute to a neutral sentiment classification."
+  },
+  "metadata": {
+    "topics": [],
+    "regions": [],
+    "commodities": [],
+    "topic_details": {
+      "main_topics": [],
+      "subtopics": []
+    },
+    "geographical_details": {
+      "countries": [],
+      "regions": [],
+      "cities": []
+    },
+    "commodity_details": {
+      "resources": [],
+      "products": [],
+      "financial_instruments": []
+    },
+    "temporal_details": {
+      "time_period": [],
+      "key_dates": []
+    }
+  },
+  "timestamp": "2025-04-08T23:35:15.551410"
+}

@@ -1,29 +1,29 @@
 import streamlit as st
-import pandas as pd
-import io
-import tempfile
-import base64
 import os
+import tempfile
 import time
+import pandas as pd
 import random
 from datetime import datetime, timedelta
 import json
-import plotly.express as px
-import plotly.graph_objects as go
-from streamlit_lottie import st_lottie
-import requests
 
-from utils.text_processor import process_text_input, extract_text_from_pdf, extract_text_from_html
-from utils.openai_client import summarize_text, analyze_sentiment, extract_metadata
-from utils.data_manager import save_analysis, load_all_analyses, get_filtered_data
-from utils.visualizations import (
-    create_global_sentiment_map,
-    create_sentiment_time_chart,
-    create_topic_distribution_chart,
-    create_commodity_price_chart
+# Import utility functions
+from utils.text_processor import (
+    process_text_input, 
+    extract_text_from_pdf, 
+    extract_text_from_html,
+    detect_file_type,
+    process_csv_data
 )
+from utils.openai_client import (
+    determine_input_type, 
+    perform_detailed_analysis, 
+    analyze_sentiment, 
+    extract_metadata
+)
+from utils.data_manager import save_analysis, load_analysis, load_all_analyses
 
-# Page configuration with custom theme
+# Page configuration
 st.set_page_config(
     page_title="Sentimizer | Advanced Sentiment Analysis",
     page_icon="🔍",
@@ -31,442 +31,256 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for improved aesthetics
+# Custom CSS
 st.markdown("""
 <style>
-    /* Light/Dark Mode Variables */
-    :root {
-        --background-color: #ffffff;
-        --text-color: #333333;
-        --card-bg-color: #ffffff;
-        --accent-color: #3B82F6;
-        --header-color: #1E3A8A;
-        --neutral-text: #4B5563;
-        --border-color: #E5E7EB;
-        --button-color: #1E3A8A;
-        --button-hover: #2563EB;
-    }
-    
-    /* Dark mode class will be toggled via JavaScript */
-    .dark-mode {
-        --background-color: #1E293B;
-        --text-color: #F3F4F6;
-        --card-bg-color: #2D3748;
-        --accent-color: #60A5FA;
-        --header-color: #93C5FD;
-        --neutral-text: #D1D5DB;
-        --border-color: #4B5563;
-        --button-color: #3B82F6;
-        --button-hover: #60A5FA;
-    }
-    
-    /* Base Styles */
-    .main {
-        background-color: var(--background-color);
-        color: var(--text-color);
-    }
-    
-    .stApp {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    
     /* Typography */
-    h1, h2, h3 {
-        color: var(--header-color);
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+    
+    body {
         font-family: 'Roboto', sans-serif;
     }
     
-    h1 {
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Roboto', sans-serif;
         font-weight: 700;
-        letter-spacing: -0.5px;
     }
     
-    p {
-        color: var(--text-color);
-    }
-    
-    /* Cards */
-    .sentiment-card {
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        background-color: var(--card-bg-color);
-        transition: transform 0.3s ease;
-        color: var(--text-color);
-    }
-    
-    .sentiment-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    /* Sentiment Labels */
-    .positive-label {
-        color: #10B981;
-        font-weight: bold;
-    }
-    
-    .neutral-label {
-        color: #6B7280;
-        font-weight: bold;
-    }
-    
-    .negative-label {
-        color: #EF4444;
-        font-weight: bold;
-    }
-    
-    .mostly-positive-label {
-        color: #34D399;
-        font-weight: bold;
-    }
-    
-    .mostly-negative-label {
-        color: #F87171;
-        font-weight: bold;
-    }
-    
-    /* Metric Cards */
-    .metric-card {
-        background-color: var(--card-bg-color);
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    /* Main title */
+    .main-title {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        font-size: 3rem;
+        background: linear-gradient(45deg, #3B82F6, #10B981);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         text-align: center;
-        color: var(--text-color);
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
     }
     
-    /* Buttons */
-    .stButton>button {
-        background-color: var(--button-color);
-        color: white;
-        border-radius: 5px;
-        padding: 0.5rem 1rem;
-        font-weight: bold;
-    }
-    
-    .stButton>button:hover {
-        background-color: var(--button-hover);
-        border-color: var(--button-hover);
-    }
-    
-    /* Section Dividers */
-    .section-divider {
-        margin-top: 2rem;
+    /* Subtitle */
+    .subtitle {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: 1.1rem;
+        color: #6B7280;
+        text-align: center;
         margin-bottom: 2rem;
-        border-bottom: 1px solid var(--border-color);
     }
     
-    /* Sidebar */
-    .sidebar .sidebar-content {
-        background-color: var(--card-bg-color);
-    }
-    
-    /* Loader Animation */
-    .loader {
-        border: 8px solid var(--border-color);
-        border-top: 8px solid var(--accent-color);
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-        margin: 20px auto;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    /* Source Card */
-    .source-card {
-        border-left: 4px solid var(--accent-color);
-        padding-left: 1rem;
-        margin-bottom: 1rem;
-        background-color: var(--card-bg-color);
-        color: var(--text-color);
-    }
-    
-    /* Tabs */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 1rem;
-    }
-    
-    .stTabs [data-baseweb="tab"] {
-        height: 4rem;
-        white-space: pre-wrap;
-        background-color: var(--card-bg-color);
-        border-radius: 5px 5px 0 0;
+    /* Input container */
+    .input-container {
+        border: 1px solid #E5E7EB;
+        border-radius: 8px;
         padding: 1rem;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        color: var(--text-color);
-    }
-    
-    .stTabs [aria-selected="true"] {
-        background-color: var(--accent-color);
-        color: white;
-        border-bottom: 2px solid var(--accent-color);
-    }
-    
-    /* Theme Toggle Switch */
-    .theme-switch-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        background-color: #F9FAFB;
         margin-bottom: 1rem;
     }
     
-    .theme-switch {
+    /* Analysis container */
+    .analysis-container {
+        border-radius: 8px;
+        padding: 1.5rem;
+        background-color: #F9FAFB;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Sentiment styles */
+    .sentiment-positive {
+        color: #10B981;
+        font-weight: 500;
+    }
+    
+    .sentiment-neutral {
+        color: #6B7280;
+        font-weight: 500;
+    }
+    
+    .sentiment-negative {
+        color: #EF4444;
+        font-weight: 500;
+    }
+    
+    /* Badge styles */
+    .badge {
         display: inline-block;
-        height: 24px;
-        position: relative;
-        width: 48px;
+        padding: 0.2rem 0.5rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     
-    .theme-switch input {
-        display: none;
+    .badge-blue {
+        background-color: #EBF5FF;
+        color: #3B82F6;
     }
     
-    .slider {
-        background-color: #ccc;
-        bottom: 0;
-        cursor: pointer;
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transition: .4s;
-        border-radius: 24px;
+    .badge-green {
+        background-color: #ECFDF5;
+        color: #10B981;
     }
     
-    .slider:before {
-        background-color: white;
-        bottom: 4px;
-        content: "";
-        height: 16px;
-        left: 4px;
-        position: absolute;
-        transition: .4s;
-        width: 16px;
-        border-radius: 50%;
+    .badge-yellow {
+        background-color: #FFFBEB;
+        color: #F59E0B;
     }
     
-    input:checked + .slider {
-        background-color: var(--accent-color);
+    .badge-red {
+        background-color: #FEF2F2;
+        color: #EF4444;
     }
     
-    input:checked + .slider:before {
-        transform: translateX(24px);
+    .badge-gray {
+        background-color: #F3F4F6;
+        color: #6B7280;
     }
     
-    /* Fix the topic text color */
-    .topic-text {
-        color: var(--text-color);
+    /* Processing indicator */
+    .processing-indicator {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 8px;
+        background-color: #F9FAFB;
+        margin-bottom: 1.5rem;
     }
     
-    /* Hide fullscreen button on placeholder images */
-    button[title="View fullscreen"] {
-        display: none;
+    /* Section titles */
+    .section-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1F2937;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #E5E7EB;
+        padding-bottom: 0.5rem;
+    }
+    
+    /* No results placeholder */
+    .no-results {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: #6B7280;
+        background-color: #F9FAFB;
+        border-radius: 8px;
+        border: 1px dashed #E5E7EB;
     }
 </style>
-
-<script>
-// Function to toggle dark mode
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
-}
-
-// Check for saved theme preference
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('darkMode');
-    if (savedTheme === 'true') {
-        document.body.classList.add('dark-mode');
-        document.getElementById('theme-toggle').checked = true;
-    }
-});
-</script>
 """, unsafe_allow_html=True)
 
-# Add theme toggle switch at the top of the app
-st.markdown("""
-<div class="theme-switch-wrapper">
-    <span style="margin-right:10px;">🌞</span>
-    <label class="theme-switch">
-        <input type="checkbox" id="theme-toggle" onclick="toggleDarkMode()">
-        <span class="slider"></span>
-    </label>
-    <span style="margin-left:10px;">🌙</span>
-</div>
-""", unsafe_allow_html=True)
-
-# Initialize session state
-if 'analyses' not in st.session_state:
-    st.session_state.analyses = load_all_analyses()
-if 'selected_sources' not in st.session_state:
-    st.session_state.selected_sources = []
-if 'page' not in st.session_state:
-    st.session_state.page = 'home'
-if 'input_type' not in st.session_state:
-    st.session_state.input_type = None
-if 'input_content' not in st.session_state:
-    st.session_state.input_content = None
-if 'analysis_result' not in st.session_state:
-    st.session_state.analysis_result = None
+# Initialize session state variables
+if 'history' not in st.session_state:
+    st.session_state.history = []
 if 'processing' not in st.session_state:
     st.session_state.processing = False
-if 'progress' not in st.session_state:
-    st.session_state.progress = 0
-if 'show_animation' not in st.session_state:
-    st.session_state.show_animation = True
+if 'current_analysis' not in st.session_state:
+    st.session_state.current_analysis = None
+if 'analyses' not in st.session_state:
+    st.session_state.analyses = load_all_analyses()
 
-# Functions for page navigation
-def go_to_home():
-    st.session_state.page = 'home'
-    st.session_state.show_animation = True
+# Title
+st.markdown("<h1 class='main-title'>SENTIMIZER</h1>", unsafe_allow_html=True)
+st.markdown("<p class='subtitle'>Advanced AI-Powered Sentiment Analysis Platform</p>", unsafe_allow_html=True)
 
-def go_to_input():
-    st.session_state.page = 'input'
+# Main input
+with st.container():
+    st.markdown("<div class='input-container'>", unsafe_allow_html=True)
     
-def go_to_dashboard():
-    st.session_state.page = 'dashboard'
+    # Main tabs for input types
+    input_tabs = st.tabs(["Text/URL Input", "Upload File", "My Analyses"])
+    
+    with input_tabs[0]:
+        text_input = st.text_area(
+            "Enter text, URL, or paste content to analyze:",
+            height=150,
+            placeholder="Enter a URL, article, financial report, or any text you want to analyze..."
+        )
+        
+        col1, col2 = st.columns([4, 1])
+        with col1:
+            st.caption("Type or paste text, enter a URL, or simply ask a question about a topic.")
+        with col2:
+            submit_text = st.button("Analyze", type="primary", use_container_width=True)
+    
+    with input_tabs[1]:
+        uploaded_file = st.file_uploader(
+            "Upload a file to analyze (PDF, CSV, JSON, or text file)",
+            type=["pdf", "csv", "json", "txt"]
+        )
+        
+        if uploaded_file:
+            file_details = {
+                "FileName": uploaded_file.name,
+                "FileType": uploaded_file.type,
+                "FileSize": f"{uploaded_file.size / 1024:.2f} KB"
+            }
+            st.write(f"File: **{file_details['FileName']}** ({file_details['FileSize']})")
+        
+        submit_file = st.button("Analyze File", type="primary", disabled=not uploaded_file)
+    
+    with input_tabs[2]:
+        if st.session_state.analyses:
+            analysis_options = {
+                analysis_id: f"{data.get('source', 'Unknown')} ({data.get('timestamp', '').split('T')[0]})"
+                for analysis_id, data in st.session_state.analyses.items()
+            }
+            
+            selected_analysis = st.selectbox(
+                "Select a previous analysis to view:",
+                options=list(analysis_options.keys()),
+                format_func=lambda x: analysis_options[x]
+            )
+            
+            view_analysis = st.button("View Analysis", type="primary")
+        else:
+            st.info("No previous analyses found. Start by analyzing some content!")
+            view_analysis = False
+            selected_analysis = None
+    
+    st.markdown("</div>", unsafe_allow_html=True)
 
-def go_to_analysis():
-    st.session_state.page = 'analysis'
-    st.session_state.processing = False
-    st.session_state.progress = 0
-
-def load_lottie_url(url: str):
-    """Load a Lottie animation from URL"""
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-# Get trending topics (simulated for demonstration)
-def get_trending_topics():
-    trending_topics = [
-        {"topic": "Global Economy", "sentiment": "mostly_negative", "count": random.randint(150, 300)},
-        {"topic": "Climate Change", "sentiment": "negative", "count": random.randint(150, 300)},
-        {"topic": "Tech Innovation", "sentiment": "positive", "count": random.randint(150, 300)},
-        {"topic": "Healthcare", "sentiment": "neutral", "count": random.randint(150, 300)},
-        {"topic": "Oil Prices", "sentiment": "mostly_negative", "count": random.randint(150, 300)},
-        {"topic": "Renewable Energy", "sentiment": "mostly_positive", "count": random.randint(150, 300)},
-        {"topic": "Education", "sentiment": "neutral", "count": random.randint(150, 300)},
-        {"topic": "Cryptocurrency", "sentiment": "mostly_positive", "count": random.randint(150, 300)}
-    ]
-    return trending_topics
-
-def sentiment_to_emoji(sentiment):
-    """Convert sentiment label to emoji"""
-    sentiment_emojis = {
-        "positive": "😀",
-        "mostly_positive": "🙂",
-        "neutral": "😐",
-        "mostly_negative": "🙁",
-        "negative": "😞"
-    }
-    return sentiment_emojis.get(sentiment, "😐")
-
-def sentiment_to_color(sentiment):
-    """Convert sentiment label to color"""
-    sentiment_colors = {
-        "positive": "#10B981",
-        "mostly_positive": "#34D399",
-        "neutral": "#6B7280",
-        "mostly_negative": "#F87171",
-        "negative": "#EF4444"
-    }
-    return sentiment_colors.get(sentiment, "#6B7280")
-
-def sentiment_to_class(sentiment):
-    """Convert sentiment label to CSS class"""
-    sentiment_classes = {
-        "positive": "positive-label",
-        "mostly_positive": "mostly-positive-label",
-        "neutral": "neutral-label",
-        "mostly_negative": "mostly-negative-label",
-        "negative": "negative-label"
-    }
-    return sentiment_classes.get(sentiment, "neutral-label")
-
-def process_input():
-    """Process the input content and perform sentiment analysis"""
+# Process input when submitted
+if submit_text and text_input and not st.session_state.processing:
     st.session_state.processing = True
     
-    progress_text = "Processing your content. Please wait..."
-    progress_bar = st.progress(0, text=progress_text)
-    
-    # Step 1: Extract text based on input type
-    st.session_state.progress = 10
-    progress_bar.progress(st.session_state.progress, text="Step 1/5: Extracting text...")
-    time.sleep(0.5)
-    
-    try:
-        if st.session_state.input_type == "text":
-            processed_text = process_text_input(st.session_state.input_content)
+    with st.spinner("Processing your input..."):
+        # Determine if it's a URL or direct text
+        if text_input.startswith(('http://', 'https://')):
+            content = extract_text_from_html(text_input)
+            source = text_input
+            source_type = "url"
+        else:
+            content = process_text_input(text_input)
             source = "Direct Text Input"
             source_type = "direct_text"
-        elif st.session_state.input_type == "pdf":
-            # Save PDF temporarily
-            with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_file:
-                tmp_file.write(st.session_state.input_content.getvalue())
-                temp_file_path = tmp_file.name
-            
-            processed_text = extract_text_from_pdf(temp_file_path)
-            source = st.session_state.input_content.name
-            source_type = "pdf"
-            
-            # Clean up temp file
-            if os.path.exists(temp_file_path):
-                os.unlink(temp_file_path)
-                
-        elif st.session_state.input_type == "url":
-            processed_text = extract_text_from_html(st.session_state.input_content)
-            source = st.session_state.input_content
-            source_type = "url"
-            
-        if not processed_text:
-            st.error("Failed to extract text from the provided source.")
-            st.session_state.processing = False
-            return
-            
-        # Step 2: Generate summary
-        st.session_state.progress = 30
-        progress_bar.progress(st.session_state.progress, text="Step 2/5: Generating comprehensive summary...")
-        time.sleep(0.5)
         
-        summary = summarize_text(processed_text)
+        # Step 1: Determine input type
+        progress_text = st.empty()
+        progress_text.markdown("**Step 1/3:** Identifying content type...")
+        input_type_info = determine_input_type(content)
         
-        # Step 3: Analyze sentiment
-        st.session_state.progress = 50
-        progress_bar.progress(st.session_state.progress, text="Step 3/5: Analyzing sentiment patterns...")
-        time.sleep(0.5)
+        # Step 2: Perform detailed analysis with GPT-o1 (the most powerful)
+        progress_text.markdown("**Step 2/3:** Performing detailed analysis...")
+        detailed_analysis = perform_detailed_analysis(content, input_type_info)
         
-        sentiment = analyze_sentiment(summary)
+        # Step 3: Analyze sentiment with GPT-4o
+        progress_text.markdown("**Step 3/3:** Analyzing sentiment...")
+        sentiment_result = analyze_sentiment(detailed_analysis)
         
-        # Step 4: Extract metadata
-        st.session_state.progress = 70
-        progress_bar.progress(st.session_state.progress, text="Step 4/5: Extracting metadata and classifications...")
-        time.sleep(0.5)
+        # Step 4: Extract metadata with GPT-o3-mini
+        progress_text.markdown("**Finalizing:** Extracting metadata...")
+        metadata_result = extract_metadata(detailed_analysis)
         
-        metadata = extract_metadata(summary)
-        
-        # Step 5: Save analysis
-        st.session_state.progress = 90
-        progress_bar.progress(st.session_state.progress, text="Step 5/5: Saving analysis results...")
-        time.sleep(0.5)
-        
-        # Save with timestamp
+        # Save the analysis
         timestamp = datetime.now()
         analysis_id = save_analysis(
             source,
-            processed_text,
-            summary,
-            sentiment,
-            metadata,
+            content,
+            detailed_analysis,
+            sentiment_result,
+            metadata_result,
             timestamp,
             source_type
         )
@@ -474,594 +288,296 @@ def process_input():
         # Update analyses in session state
         st.session_state.analyses = load_all_analyses()
         
-        # Store the current analysis result
-        st.session_state.analysis_result = {
+        # Store the current analysis
+        st.session_state.current_analysis = {
             "id": analysis_id,
             "source": source,
             "source_type": source_type,
-            "summary": summary,
-            "sentiment": sentiment,
-            "metadata": metadata,
-            "timestamp": timestamp.isoformat()
+            "detailed_analysis": detailed_analysis,
+            "sentiment": sentiment_result,
+            "metadata": metadata_result,
+            "timestamp": timestamp.isoformat(),
+            "input_type": input_type_info
         }
         
-        st.session_state.progress = 100
-        progress_bar.progress(st.session_state.progress, text="Analysis complete!")
-        time.sleep(1)
-        
-        # Navigate to analysis results
-        go_to_analysis()
-        
-    except Exception as e:
-        st.error(f"An error occurred during processing: {str(e)}")
-        st.session_state.processing = False
+        # Add to history
+        st.session_state.history.append(st.session_state.current_analysis)
+    
+    st.session_state.processing = False
+    st.rerun()
 
-# HOME PAGE
-if st.session_state.page == 'home':
-    # Header with animation
-    col1, col2 = st.columns([3, 2])
+# Process file when submitted
+if submit_file and uploaded_file and not st.session_state.processing:
+    st.session_state.processing = True
+    
+    with st.spinner("Processing your file..."):
+        # Determine file type and extract content
+        file_extension = uploaded_file.name.split('.')[-1].lower()
+        
+        if file_extension == 'pdf':
+            # Save PDF temporarily
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.pdf') as tmp_file:
+                tmp_file.write(uploaded_file.getvalue())
+                temp_file_path = tmp_file.name
+            
+            content = extract_text_from_pdf(temp_file_path)
+            source = uploaded_file.name
+            source_type = "pdf"
+            
+            # Clean up temp file
+            if os.path.exists(temp_file_path):
+                os.unlink(temp_file_path)
+        
+        elif file_extension == 'csv':
+            content_bytes = uploaded_file.getvalue()
+            csv_text = content_bytes.decode('utf-8')
+            content = process_csv_data(csv_text)
+            source = uploaded_file.name
+            source_type = "csv"
+        
+        elif file_extension == 'json':
+            content_bytes = uploaded_file.getvalue()
+            json_text = content_bytes.decode('utf-8')
+            content = json_text  # We'll let the LLM interpret the JSON
+            source = uploaded_file.name
+            source_type = "json"
+        
+        else:  # Default to text
+            content_bytes = uploaded_file.getvalue()
+            content = content_bytes.decode('utf-8')
+            source = uploaded_file.name
+            source_type = "text"
+        
+        # Step 1: Determine input type
+        progress_text = st.empty()
+        progress_text.markdown("**Step 1/3:** Identifying content type...")
+        input_type_info = determine_input_type(content)
+        
+        # Step 2: Perform detailed analysis with GPT-o1 (the most powerful)
+        progress_text.markdown("**Step 2/3:** Performing detailed analysis...")
+        detailed_analysis = perform_detailed_analysis(content, input_type_info)
+        
+        # Step 3: Analyze sentiment with GPT-4o
+        progress_text.markdown("**Step 3/3:** Analyzing sentiment...")
+        sentiment_result = analyze_sentiment(detailed_analysis)
+        
+        # Step 4: Extract metadata with GPT-o3-mini
+        progress_text.markdown("**Finalizing:** Extracting metadata...")
+        metadata_result = extract_metadata(detailed_analysis)
+        
+        # Save the analysis
+        timestamp = datetime.now()
+        analysis_id = save_analysis(
+            source,
+            content,
+            detailed_analysis,
+            sentiment_result,
+            metadata_result,
+            timestamp,
+            source_type
+        )
+        
+        # Update analyses in session state
+        st.session_state.analyses = load_all_analyses()
+        
+        # Store the current analysis
+        st.session_state.current_analysis = {
+            "id": analysis_id,
+            "source": source,
+            "source_type": source_type,
+            "detailed_analysis": detailed_analysis,
+            "sentiment": sentiment_result,
+            "metadata": metadata_result,
+            "timestamp": timestamp.isoformat(),
+            "input_type": input_type_info
+        }
+        
+        # Add to history
+        st.session_state.history.append(st.session_state.current_analysis)
+    
+    st.session_state.processing = False
+    st.rerun()
+
+# View selected analysis
+if view_analysis and selected_analysis:
+    analysis_data = st.session_state.analyses.get(selected_analysis)
+    if analysis_data:
+        # Convert to the same format as current_analysis
+        st.session_state.current_analysis = {
+            "id": selected_analysis,
+            "source": analysis_data.get("source", "Unknown"),
+            "source_type": analysis_data.get("source_type", "unknown"),
+            "detailed_analysis": analysis_data.get("summary", "No summary available"),
+            "sentiment": analysis_data.get("sentiment", {"sentiment": "neutral", "score": 0, "confidence": 0, "rationale": ""}),
+            "metadata": analysis_data.get("metadata", {"topics": [], "regions": [], "commodities": []}),
+            "timestamp": analysis_data.get("timestamp", datetime.now().isoformat()),
+            "input_type": {"input_type": "unknown", "subject": "general"}
+        }
+        st.rerun()
+
+# Show processing indicator
+if st.session_state.processing:
+    st.markdown("""
+    <div class="processing-indicator">
+        <p>Processing your content...</p>
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Display current analysis
+if st.session_state.current_analysis:
+    analysis = st.session_state.current_analysis
+    sentiment = analysis["sentiment"]
+    metadata = analysis["metadata"]
+    
+    # Determine sentiment class for styling
+    sentiment_class = f"sentiment-{sentiment.get('sentiment', 'neutral')}"
+    
+    # Format timestamp
+    if isinstance(analysis["timestamp"], str):
+        try:
+            timestamp = datetime.fromisoformat(analysis["timestamp"])
+            formatted_date = timestamp.strftime("%B %d, %Y at %I:%M %p")
+        except:
+            formatted_date = analysis["timestamp"]
+    else:
+        formatted_date = analysis["timestamp"].strftime("%B %d, %Y at %I:%M %p")
+    
+    # Display analysis results
+    st.markdown("<div class='analysis-container'>", unsafe_allow_html=True)
+    
+    # Header with source info
+    st.markdown(f"""
+    <h3>{analysis["source"]}</h3>
+    <p style='color: #6B7280; font-size: 0.9rem;'>
+        Analyzed on {formatted_date} • 
+        Type: {analysis.get('input_type', {}).get('input_type', 'unknown').replace('_', ' ').title()} • 
+        Subject: {analysis.get('input_type', {}).get('subject', 'general').title()}
+    </p>
+    """, unsafe_allow_html=True)
+    
+    # Sentiment overview
+    st.markdown("<div class='section-title'>Sentiment Analysis</div>", unsafe_allow_html=True)
+    
+    col1, col2 = st.columns([1, 3])
     
     with col1:
-        st.markdown("<h1 style='font-size:3.5rem; margin-top:4rem;'>Sentimizer</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='font-size:1.5rem; color:#4B5563;'>Unlock the emotional pulse of text through advanced AI sentiment analysis</p>", unsafe_allow_html=True)
+        sentiment_emoji = "😀" if sentiment.get('sentiment') == "positive" else "😐" if sentiment.get('sentiment') == "neutral" else "😞"
+        sentiment_text = sentiment.get('sentiment', 'neutral').capitalize()
+        score = sentiment.get('score', 0)
+        confidence = sentiment.get('confidence', 0)
         
-        st.markdown("<div style='margin-top:2rem;'></div>", unsafe_allow_html=True)
-        
-        col_a, col_b, col_c = st.columns([1, 1, 2])
-        with col_a:
-            if st.button("Start Analyzing", key="start_btn", use_container_width=True):
-                go_to_input()
-        with col_b:
-            if st.button("View Dashboard", key="dashboard_btn", use_container_width=True):
-                go_to_dashboard()
-    
-    with col2:
-        if st.session_state.show_animation:
-            # Load sentiment analysis animation
-            lottie_url = "https://assets6.lottiefiles.com/packages/lf20_mhdn5srb.json"
-            lottie_json = load_lottie_url(lottie_url)
-            if lottie_json:
-                st_lottie(lottie_json, speed=1, height=300, key="sentiment_anim")
-            else:
-                st.image("https://via.placeholder.com/400x300?text=Sentiment+Analysis+Visualization", width=300)
-    
-    # Trending topics section
-    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-    st.markdown("<h2>Trending Topics</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#6B7280;'>Explore the sentiment landscape of current popular topics</p>", unsafe_allow_html=True)
-    
-    # Generate trending topics in a grid
-    trending_topics = get_trending_topics()
-    
-    # Display trending topics in 4 columns
-    cols = st.columns(4)
-    for i, topic in enumerate(trending_topics):
-        with cols[i % 4]:
-            sentiment_class = sentiment_to_class(topic["sentiment"])
-            emoji = sentiment_to_emoji(topic["sentiment"])
-            color = sentiment_to_color(topic["sentiment"])
-            
-            st.markdown(f"""
-            <div class='sentiment-card' style='border-top: 3px solid {color};'>
-                <h3 class="topic-text">{topic["topic"]}</h3>
-                <p class="topic-text">Sentiment: <span class='{sentiment_class}'>{topic["sentiment"].replace('_', ' ').title()} {emoji}</span></p>
-                <p class="topic-text">Mentions: {topic["count"]}</p>
-            </div>
-            """, unsafe_allow_html=True)
-    
-    # Features section
-    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-    st.markdown("<h2>Key Features</h2>", unsafe_allow_html=True)
-    
-    feat_col1, feat_col2, feat_col3 = st.columns(3)
-    
-    with feat_col1:
-        st.markdown("""
-        <div class='sentiment-card'>
-            <h3 class="topic-text">🌍 Global Sentiment Mapping</h3>
-            <p class="topic-text">Visualize sentiment distribution across different geographical regions with interactive heatmaps and 3D globe visualizations.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with feat_col2:
-        st.markdown("""
-        <div class='sentiment-card'>
-            <h3 class="topic-text">📈 Temporal Analysis</h3>
-            <p class="topic-text">Track sentiment changes over time with detailed trend analysis and forecasting capabilities.</p>
-        </div>
-        """, unsafe_allow_html=True)
-    
-    with feat_col3:
-        st.markdown("""
-        <div class='sentiment-card'>
-            <h3 class="topic-text">🧠 Advanced AI Analysis</h3>
-            <p class="topic-text">Leverage state-of-the-art language models to extract nuanced sentiment insights, topics, and metadata.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-# INPUT PAGE
-elif st.session_state.page == 'input':
-    # Header
-    st.markdown("<h1>What would you like to analyze?</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#6B7280; margin-bottom:2rem;'>Choose your input method to begin sentiment analysis</p>", unsafe_allow_html=True)
-    
-    # Input method selection with icons
-    input_col1, input_col2, input_col3 = st.columns(3)
-    
-    with input_col1:
-        st.markdown("""
-        <div class='sentiment-card' style='text-align:center;'>
-            <h3 class="topic-text">📝 Text Input</h3>
-            <p class="topic-text">Analyze sentiment from direct text entry</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        if st.button("Select Text Input", key="text_btn"):
-            st.session_state.input_type = "text"
-    
-    with input_col2:
-        st.markdown("""
-        <div class='sentiment-card' style='text-align:center;'>
-            <h3 class="topic-text">📄 PDF Document</h3>
-            <p class="topic-text">Extract and analyze text from PDF files</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        if st.button("Select PDF Upload", key="pdf_btn"):
-            st.session_state.input_type = "pdf"
-    
-    with input_col3:
-        st.markdown("""
-        <div class='sentiment-card' style='text-align:center;'>
-            <h3 class="topic-text">🌐 Website URL</h3>
-            <p class="topic-text">Analyze content from any web page</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        if st.button("Select Website URL", key="url_btn"):
-            st.session_state.input_type = "url"
-    
-    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-    
-    # Display the appropriate input form based on selection
-    if st.session_state.input_type:
-        if st.session_state.input_type == "text":
-            st.subheader("Enter Text to Analyze")
-            text_input = st.text_area(
-                "Paste your text here:",
-                height=250,
-                placeholder="Enter the text you want to analyze for sentiment..."
-            )
-            
-            if st.button("Analyze Text", key="analyze_text_btn", disabled=not text_input):
-                st.session_state.input_content = text_input
-                process_input()
-        
-        elif st.session_state.input_type == "pdf":
-            st.subheader("Upload PDF Document")
-            uploaded_file = st.file_uploader("Choose a PDF file:", type=["pdf"])
-            
-            if uploaded_file:
-                st.success(f"File uploaded: {uploaded_file.name}")
-                
-                if st.button("Analyze PDF", key="analyze_pdf_btn"):
-                    st.session_state.input_content = uploaded_file
-                    process_input()
-        
-        elif st.session_state.input_type == "url":
-            st.subheader("Enter Website URL")
-            url_input = st.text_input(
-                "Website URL:",
-                placeholder="https://example.com/article"
-            )
-            
-            if st.button("Analyze Website", key="analyze_url_btn", disabled=not url_input):
-                st.session_state.input_content = url_input
-                process_input()
-    
-    # Processing state
-    if st.session_state.processing:
-        st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-        st.subheader("Processing Your Content")
-        
-        # This will be handled by the process_input function
-    
-    # Navigation buttons
-    st.markdown("<div style='margin-top:2rem;'></div>", unsafe_allow_html=True)
-    if st.button("← Back to Home", key="back_to_home_btn"):
-        go_to_home()
-
-# ANALYSIS RESULTS PAGE
-elif st.session_state.page == 'analysis':
-    if st.session_state.analysis_result:
-        result = st.session_state.analysis_result
-        
-        # Header with source info
-        st.markdown(f"<h1>Analysis Results</h1>", unsafe_allow_html=True)
-        
-        source_type_icon = {"pdf": "📄", "url": "🌐", "direct_text": "📝"}.get(result['source_type'], "📝")
-        st.markdown(f"<p style='color:#6B7280; font-size:1.2rem;'>{source_type_icon} Source: {result['source']}</p>", unsafe_allow_html=True)
-        st.markdown(f"<p style='color:#6B7280;'>Analyzed on: {result['timestamp']}</p>", unsafe_allow_html=True)
-        
-        # Sentiment result with visual indicator
-        st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-        
-        sentiment_label = result['sentiment']['sentiment']
-        sentiment_score = result['sentiment']['score']
-        
-        # Convert numerical score to more descriptive sentiment
-        if sentiment_label == "positive" and sentiment_score < 0.7:
-            display_sentiment = "mostly_positive"
-        elif sentiment_label == "negative" and sentiment_score > -0.7:
-            display_sentiment = "mostly_negative"
-        else:
-            display_sentiment = sentiment_label
-            
-        sentiment_emoji = sentiment_to_emoji(display_sentiment)
-        sentiment_class = sentiment_to_class(display_sentiment)
-        
-        col1, col2 = st.columns([1, 3])
-        
-        with col1:
-            st.markdown(f"""
-            <div class='sentiment-card' style='text-align:center;'>
-                <h1 style='font-size:5rem; margin:0;'>{sentiment_emoji}</h1>
-                <h3 class='{sentiment_class}' style='margin:0; text-transform:capitalize;'>{display_sentiment.replace('_', ' ')}</h3>
-                <p class='topic-text'>Score: {sentiment_score:.2f}</p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            # Summary of the analyzed content
-            st.subheader("Summary")
-            st.markdown(f"""<div class='sentiment-card'>
-                <p class='topic-text'>{result['summary']}</p>
-            </div>""", unsafe_allow_html=True)
-        
-        # Metadata section
-        st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-        st.subheader("Content Classification")
-        
-        meta_col1, meta_col2, meta_col3 = st.columns(3)
-        
-        with meta_col1:
-            st.markdown("<h4 class='topic-text'>📊 Topics</h4>", unsafe_allow_html=True)
-            topics = result['metadata']['topics']
-            if topics:
-                for topic in topics:
-                    st.markdown(f"<div class='sentiment-card'><p class='topic-text'>{topic}</p></div>", unsafe_allow_html=True)
-            else:
-                st.info("No topics identified")
-        
-        with meta_col2:
-            st.markdown("<h4 class='topic-text'>🌎 Regions</h4>", unsafe_allow_html=True)
-            regions = result['metadata']['regions']
-            if regions:
-                for region in regions:
-                    st.markdown(f"<div class='sentiment-card'><p class='topic-text'>{region}</p></div>", unsafe_allow_html=True)
-            else:
-                st.info("No regions identified")
-        
-        with meta_col3:
-            st.markdown("<h4 class='topic-text'>💹 Commodities</h4>", unsafe_allow_html=True)
-            commodities = result['metadata']['commodities']
-            if commodities:
-                for commodity in commodities:
-                    st.markdown(f"<div class='sentiment-card'><p class='topic-text'>{commodity}</p></div>", unsafe_allow_html=True)
-            else:
-                st.info("No commodities identified")
-        
-        # Action buttons
-        st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-        col1, col2, col3 = st.columns([1, 1, 2])
-        
-        with col1:
-            if st.button("← New Analysis", key="new_analysis_btn"):
-                go_to_input()
-        
-        with col2:
-            if st.button("View Dashboard →", key="view_dashboard_btn"):
-                go_to_dashboard()
-    
-    else:
-        st.error("No analysis results found. Please submit content for analysis.")
-        if st.button("Go to Input Page", key="no_result_input_btn"):
-            go_to_input()
-
-# DASHBOARD PAGE
-elif st.session_state.page == 'dashboard':
-    # Dashboard header
-    st.markdown("<h1>Sentiment Analysis Dashboard</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='color:#6B7280;'>Explore sentiment trends across time, topics, and regions</p>", unsafe_allow_html=True)
-    
-    # Sidebar for filters
-    with st.sidebar:
-        st.sidebar.title("Filters")
-        
-        # Date range filter
-        st.subheader("Date Range")
-        today = datetime.now()
-        start_date = st.date_input(
-            "Start date",
-            today - timedelta(days=30)
-        )
-        end_date = st.date_input(
-            "End date",
-            today
-        )
-        
-        # Topic filter
-        st.subheader("Topics")
-        if st.session_state.analyses:
-            all_topics = set()
-            for analysis in st.session_state.analyses.values():
-                if 'metadata' in analysis and 'topics' in analysis['metadata']:
-                    all_topics.update(analysis['metadata']['topics'])
-            
-            selected_topics = st.multiselect(
-                "Select topics:",
-                options=sorted(list(all_topics)),
-                default=[]
-            )
-        else:
-            selected_topics = []
-        
-        # Region filter
-        st.subheader("Regions")
-        if st.session_state.analyses:
-            all_regions = set()
-            for analysis in st.session_state.analyses.values():
-                if 'metadata' in analysis and 'regions' in analysis['metadata']:
-                    all_regions.update(analysis['metadata']['regions'])
-            
-            selected_regions = st.multiselect(
-                "Select regions:",
-                options=sorted(list(all_regions)),
-                default=[]
-            )
-        else:
-            selected_regions = []
-        
-        # Commodity filter
-        st.subheader("Commodities")
-        if st.session_state.analyses:
-            all_commodities = set()
-            for analysis in st.session_state.analyses.values():
-                if 'metadata' in analysis and 'commodities' in analysis['metadata']:
-                    all_commodities.update(analysis['metadata']['commodities'])
-            
-            selected_commodities = st.multiselect(
-                "Select commodities:",
-                options=sorted(list(all_commodities)),
-                default=[]
-            )
-        else:
-            selected_commodities = []
-        
-        # Sentiment filter
-        st.subheader("Sentiment")
-        selected_sentiments = st.multiselect(
-            "Select sentiments:",
-            options=["positive", "neutral", "negative"],
-            default=["positive", "neutral", "negative"]
-        )
-        
-        # Apply filters button
-        apply_filters = st.button("Apply Filters", key="apply_filters_btn")
-    
-    # Get filtered data based on selections
-    filtered_data = get_filtered_data(
-        st.session_state.analyses,
-        start_date,
-        end_date,
-        selected_topics,
-        selected_regions,
-        selected_commodities,
-        selected_sentiments
-    )
-    
-    # Display summary metrics in animated cards
-    st.subheader("Summary Metrics")
-    
-    metric_cols = st.columns(4)
-    
-    with metric_cols[0]:
-        total_sources = len(filtered_data)
         st.markdown(f"""
-        <div class='metric-card'>
-            <h3 style='margin:0; color:#6B7280;'>Total Sources</h3>
-            <p style='font-size:2rem; font-weight:bold; margin:5px 0;'>{total_sources}</p>
+        <div style='text-align: center; padding: 1rem; background-color: white; border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);'>
+            <h1 style='font-size: 3rem; margin: 0;'>{sentiment_emoji}</h1>
+            <h3 class='{sentiment_class}' style='margin: 0.5rem 0;'>{sentiment_text}</h3>
+            <p style='margin: 0; font-size: 0.9rem;'>Score: {score:.2f} • Confidence: {confidence:.0%}</p>
         </div>
         """, unsafe_allow_html=True)
     
-    sentiment_counts = {
-        "positive": 0,
-        "neutral": 0,
-        "negative": 0
-    }
-    
-    if filtered_data:
-        for item in filtered_data.values():
-            sentiment = item['sentiment']['sentiment']
-            sentiment_counts[sentiment] = sentiment_counts.get(sentiment, 0) + 1
-    
-    # Display sentiment percentages
-    for i, (sentiment, count) in enumerate(sentiment_counts.items(), start=1):
-        percentage = round((count / total_sources) * 100) if total_sources else 0
-        sentiment_class = sentiment_to_class(sentiment)
-        
-        with metric_cols[i]:
-            st.markdown(f"""
-            <div class='metric-card'>
-                <h3 style='margin:0; color:#6B7280;'>{sentiment.capitalize()} Sentiment</h3>
-                <p style='font-size:2rem; font-weight:bold; margin:5px 0;' class='{sentiment_class}'>{percentage}%</p>
-            </div>
-            """, unsafe_allow_html=True)
-    
-    # Visualization tabs with enhanced styling
-    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-    st.subheader("Interactive Visualizations")
-    
-    tabs = st.tabs(["🌎 Global Map", "📈 Time Series", "🏷️ Topics", "💹 Commodities"])
-    
-    with tabs[0]:
-        st.markdown("<h3>Global Sentiment Distribution</h3>", unsafe_allow_html=True)
-        st.markdown("<p>Geographical distribution of sentiment across different regions</p>", unsafe_allow_html=True)
-        
-        if filtered_data:
-            map_fig = create_global_sentiment_map(filtered_data)
-            st.plotly_chart(map_fig, use_container_width=True, config={'displayModeBar': False})
-        else:
-            st.info("No geographical data available. Add content with regional information for visualization.")
-    
-    with tabs[1]:
-        st.markdown("<h3>Sentiment Trends Over Time</h3>", unsafe_allow_html=True)
-        st.markdown("<p>How sentiment has changed over the selected time period</p>", unsafe_allow_html=True)
-        
-        if filtered_data:
-            time_fig = create_sentiment_time_chart(filtered_data)
-            st.plotly_chart(time_fig, use_container_width=True, config={'displayModeBar': False})
-        else:
-            st.info("No time series data available. Add more content for temporal analysis.")
-    
-    with tabs[2]:
-        st.markdown("<h3>Topic Distribution & Sentiment</h3>", unsafe_allow_html=True)
-        st.markdown("<p>Most common topics and their associated sentiment scores</p>", unsafe_allow_html=True)
-        
-        if filtered_data:
-            topic_fig = create_topic_distribution_chart(filtered_data)
-            st.plotly_chart(topic_fig, use_container_width=True, config={'displayModeBar': False})
-        else:
-            st.info("No topic data available. Add content with topic classifications for visualization.")
-    
-    with tabs[3]:
-        st.markdown("<h3>Commodity Price & Sentiment Correlation</h3>", unsafe_allow_html=True)
-        st.markdown("<p>Relationship between commodity prices and sentiment indicators</p>", unsafe_allow_html=True)
-        
-        if filtered_data:
-            commodity_fig = create_commodity_price_chart(filtered_data)
-            st.plotly_chart(commodity_fig, use_container_width=True, config={'displayModeBar': False})
-        else:
-            st.info("No commodity data available. Add content with commodity mentions for visualization.")
-    
-    # Source Explorer with enhanced styling
-    st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-    st.subheader("Source Explorer")
-    
-    if filtered_data:
-        # Create dataframe for source selection
-        source_df = pd.DataFrame([
-            {
-                "ID": k,
-                "Source": v.get('source', ''),
-                "Type": v.get('source_type', ''),
-                "Date": v.get('timestamp', '').split('T')[0] if 'timestamp' in v else '',
-                "Sentiment": v.get('sentiment', {}).get('sentiment', ''),
-                "Topics": ", ".join(v.get('metadata', {}).get('topics', [])),
-                "Regions": ", ".join(v.get('metadata', {}).get('regions', [])),
-            }
-            for k, v in filtered_data.items()
-        ])
-        
-        # Source selection
-        selected_indices = st.multiselect(
-            "Select sources to view details:",
-            options=source_df['ID'].tolist(),
-            default=[],
-            format_func=lambda x: f"{filtered_data[x]['source']} ({filtered_data[x]['sentiment']['sentiment'].capitalize()}) - {filtered_data[x]['timestamp'].split('T')[0] if 'timestamp' in filtered_data[x] else ''}"
-        )
-        
-        # Display source details
-        if selected_indices:
-            st.session_state.selected_sources = selected_indices
-            
-            for source_id in selected_indices:
-                source = filtered_data[source_id]
-                
-                # Get sentiment class for styling
-                sentiment_class = sentiment_to_class(source['sentiment']['sentiment'])
-                sentiment_emoji = sentiment_to_emoji(source['sentiment']['sentiment'])
-                
-                # Source card with enhanced styling
-                st.markdown(f"""
-                <div class='sentiment-card'>
-                    <h3 class='topic-text'>{source['source']} <span class='{sentiment_class}'>{sentiment_emoji}</span></h3>
-                    <p class='topic-text'>Date: {source['timestamp'].split('T')[0] if 'timestamp' in source else 'N/A'} | Type: {source['source_type']}</p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # Details in columns
-                col1, col2 = st.columns([1, 1])
-                
-                with col1:
-                    # Summary
-                    st.markdown("<h4 class='topic-text'>Summary</h4>", unsafe_allow_html=True)
-                    st.markdown(f"""<div class='sentiment-card'>
-                        <p class='topic-text'>{source['summary']}</p>
-                    </div>""", unsafe_allow_html=True)
-                
-                with col2:
-                    # Metadata and sentiment
-                    st.markdown("<h4 class='topic-text'>Analysis Details</h4>", unsafe_allow_html=True)
-                    
-                    # Wrap in a card
-                    st.markdown("""<div class='sentiment-card'>""", unsafe_allow_html=True)
-                    
-                    # Sentiment score with visual indicator
-                    score = source['sentiment']['score']
-                    sentiment = source['sentiment']['sentiment']
-                    
-                    # Create a simple gauge for sentiment score
-                    gauge_value = (score + 1) / 2  # Normalize from -1,1 to 0,1
-                    
-                    st.markdown(f"""
-                    <p class='topic-text'>Sentiment: <span class='{sentiment_class}'>{sentiment.capitalize()}</span></p>
-                    <p class='topic-text'>Score: {score:.2f}</p>
-                    """, unsafe_allow_html=True)
-                    
-                    # Create mini progress bar as sentiment gauge
-                    st.progress(gauge_value)
-                    
-                    # Topics, regions and commodities
-                    st.markdown("<h5 class='topic-text'>Topics</h5>", unsafe_allow_html=True)
-                    if source['metadata']['topics']:
-                        st.markdown(", ".join([f"<span class='topic-text' style='background-color:#EFF6FF; padding:2px 6px; border-radius:3px; margin-right:5px;'>{topic}</span>" for topic in source['metadata']['topics']]), unsafe_allow_html=True)
-                    else:
-                        st.markdown("<em class='topic-text'>None identified</em>", unsafe_allow_html=True)
-                    
-                    st.markdown("<h5 class='topic-text'>Regions</h5>", unsafe_allow_html=True)
-                    if source['metadata']['regions']:
-                        st.markdown(", ".join([f"<span class='topic-text' style='background-color:#ECFDF5; padding:2px 6px; border-radius:3px; margin-right:5px;'>{region}</span>" for region in source['metadata']['regions']]), unsafe_allow_html=True)
-                    else:
-                        st.markdown("<em class='topic-text'>None identified</em>", unsafe_allow_html=True)
-                    
-                    st.markdown("<h5 class='topic-text'>Commodities</h5>", unsafe_allow_html=True)
-                    if source['metadata']['commodities']:
-                        st.markdown(", ".join([f"<span class='topic-text' style='background-color:#FEF3C7; padding:2px 6px; border-radius:3px; margin-right:5px;'>{commodity}</span>" for commodity in source['metadata']['commodities']]), unsafe_allow_html=True)
-                    else:
-                        st.markdown("<em class='topic-text'>None identified</em>", unsafe_allow_html=True)
-                        
-                    # Close the card div
-                    st.markdown("""</div>""", unsafe_allow_html=True)
-                
-                # Full text expander
-                with st.expander("View Full Text"):
-                    st.text_area("", source['text'], height=200)
-        else:
-            st.info("Select sources from the dropdown to view detailed analysis.")
-    else:
-        st.info("No sources found with the current filter settings. Try adjusting your filters or add new content for analysis.")
-    
-    # Navigation button
-    st.markdown("<div style='margin-top:2rem;'></div>", unsafe_allow_html=True)
-    col1, col2 = st.columns([1, 5])
-    with col1:
-        if st.button("← Back to Home", key="dash_back_btn"):
-            go_to_home()
     with col2:
-        if st.button("Add New Analysis", key="add_new_analysis_btn"):
-            go_to_input()
+        st.markdown("<h4>Key Sentiment Factors</h4>", unsafe_allow_html=True)
+        st.markdown(f"<p>{sentiment.get('rationale', 'No rationale provided.')}</p>", unsafe_allow_html=True)
+    
+    # Content analysis
+    st.markdown("<div class='section-title'>Detailed Analysis</div>", unsafe_allow_html=True)
+    st.markdown(f"<p>{analysis['detailed_analysis']}</p>", unsafe_allow_html=True)
+    
+    # Metadata visualization
+    st.markdown("<div class='section-title'>Content Classification</div>", unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("<h4>Topics</h4>", unsafe_allow_html=True)
+        topics = metadata.get("topics", [])
+        if topics:
+            topic_html = "".join([f"<span class='badge badge-blue'>{topic}</span>" for topic in topics])
+            st.markdown(topic_html, unsafe_allow_html=True)
+        else:
+            st.markdown("<p><em>No topics identified</em></p>", unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("<h4>Regions</h4>", unsafe_allow_html=True)
+        regions = metadata.get("regions", [])
+        if regions:
+            region_html = "".join([f"<span class='badge badge-green'>{region}</span>" for region in regions])
+            st.markdown(region_html, unsafe_allow_html=True)
+        else:
+            st.markdown("<p><em>No regions identified</em></p>", unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("<h4>Commodities/Products</h4>", unsafe_allow_html=True)
+        commodities = metadata.get("commodities", [])
+        if commodities:
+            commodity_html = "".join([f"<span class='badge badge-yellow'>{commodity}</span>" for commodity in commodities])
+            st.markdown(commodity_html, unsafe_allow_html=True)
+        else:
+            st.markdown("<p><em>No commodities identified</em></p>", unsafe_allow_html=True)
+    
+    # Entities and time periods
+    if "entities" in metadata or "time_periods" in metadata.get("temporal_details", {}):
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("<h4>Key Entities</h4>", unsafe_allow_html=True)
+            entities = metadata.get("entities", [])
+            if entities:
+                entity_html = "".join([f"<span class='badge badge-gray'>{entity}</span>" for entity in entities])
+                st.markdown(entity_html, unsafe_allow_html=True)
+            else:
+                st.markdown("<p><em>No entities identified</em></p>", unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("<h4>Time Periods</h4>", unsafe_allow_html=True)
+            time_periods = metadata.get("temporal_details", {}).get("time_period", [])
+            if time_periods:
+                time_html = "".join([f"<span class='badge badge-red'>{period}</span>" for period in time_periods])
+                st.markdown(time_html, unsafe_allow_html=True)
+            else:
+                st.markdown("<p><em>No time periods identified</em></p>", unsafe_allow_html=True)
+    
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# Display history if there's no current analysis
+elif st.session_state.history and not st.session_state.processing:
+    st.markdown("<h3>Previous Analyses</h3>", unsafe_allow_html=True)
+    
+    for idx, analysis in enumerate(reversed(st.session_state.history[-5:])):  # Show last 5 analyses
+        sentiment = analysis["sentiment"]
+        sentiment_class = f"sentiment-{sentiment.get('sentiment', 'neutral')}"
+        
+        st.markdown(f"""
+        <div style='padding: 1rem; margin-bottom: 1rem; border: 1px solid #E5E7EB; border-radius: 8px; cursor: pointer;' 
+             onclick="this.querySelector('button').click()">
+            <h4>{analysis["source"]}</h4>
+            <p><span class='{sentiment_class}'>{sentiment.get('sentiment', 'neutral').capitalize()}</span> • 
+               Score: {sentiment.get('score', 0):.2f} • 
+               {analysis.get('timestamp', '').split('T')[0]}</p>
+            <button id='btn_{idx}' style='display:none'></button>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        if st.button(f"View Analysis", key=f"view_{idx}", use_container_width=True):
+            st.session_state.current_analysis = analysis
+            st.rerun()
+
+# No content placeholder
+if not st.session_state.current_analysis and not st.session_state.history and not st.session_state.processing:
+    st.markdown("""
+    <div class="no-results">
+        <h3>Welcome to Sentimizer!</h3>
+        <p>Enter text, a URL, or upload a file above to begin analyzing sentiment.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Footer
-st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
-st.caption("Sentimizer | Advanced AI-Powered Sentiment Analysis Dashboard")
+st.markdown("""
+<div style='text-align: center; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #E5E7EB;'>
+    <p style='color: #6B7280; font-size: 0.8rem;'>
+        Powered by OpenAI's GPT models • © 2025 Sentimizer
+    </p>
+</div>
+""", unsafe_allow_html=True)
