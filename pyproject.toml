@@ -15,4 +15,6 @@ dependencies = [
     "trafilatura>=2.0.0",
     "requests>=2.32.3",
     "pytrends>=4.9.2",
+    "twilio>=9.5.2",
+    "praw>=7.8.1",
 ]
