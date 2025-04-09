@@ -506,17 +506,31 @@ if st.session_state.current_analysis:
         score = sentiment.get('score', 0)
         confidence = sentiment.get('confidence', 0)
         
+        # Get the new sentiment trend if available
+        sentiment_trend = sentiment.get('sentiment_trend', 'stable')
+        trend_icon = "↗️" if sentiment_trend == "improving" else "↘️" if sentiment_trend == "worsening" else "↔️" if sentiment_trend == "stable" else "↕️"
+        trend_text = sentiment_trend.capitalize()
+        
         st.markdown(f"""
         <div style='text-align: center; padding: 1rem; background-color: white; border-radius: 8px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);'>
             <h1 style='font-size: 3rem; margin: 0;'>{sentiment_emoji}</h1>
             <h3 class='{sentiment_class}' style='margin: 0.5rem 0;'>{sentiment_text}</h3>
             <p style='margin: 0; font-size: 0.9rem;'>Score: {score:.2f} • Confidence: {confidence:.0%}</p>
+            <p style='margin-top: 0.5rem; font-size: 0.9rem;'>Trend: {trend_icon} {trend_text}</p>
         </div>
         """, unsafe_allow_html=True)
     
     with col2:
         st.markdown("<h4>Key Sentiment Factors</h4>", unsafe_allow_html=True)
+        
+        # Display the rationale
         st.markdown(f"<p>{sentiment.get('rationale', 'No rationale provided.')}</p>", unsafe_allow_html=True)
+        
+        # Add the current context if available
+        current_context = sentiment.get('current_context', '')
+        if current_context:
+            st.markdown("<h4>Current Context</h4>", unsafe_allow_html=True)
+            st.markdown(f"<p><em>{current_context}</em></p>", unsafe_allow_html=True)
     
     # Content analysis
     st.markdown("<div class='section-title'>Detailed Analysis</div>", unsafe_allow_html=True)
@@ -555,7 +569,7 @@ if st.session_state.current_analysis:
             st.markdown("<p><em>No commodities identified</em></p>", unsafe_allow_html=True)
     
     # Entities and time periods
-    if "entities" in metadata or "time_periods" in metadata.get("temporal_details", {}):
+    if "entities" in metadata or "temporal_details" in metadata:
         col1, col2 = st.columns(2)
         
         with col1:
@@ -573,8 +587,49 @@ if st.session_state.current_analysis:
             if time_periods:
                 time_html = "".join([f"<span class='badge badge-red'>{period}</span>" for period in time_periods])
                 st.markdown(time_html, unsafe_allow_html=True)
+                
+                # Add specific dates if available
+                specific_dates = metadata.get("temporal_details", {}).get("specific_dates", [])
+                if specific_dates:
+                    st.markdown("<h5>Key Dates</h5>", unsafe_allow_html=True)
+                    dates_html = "".join([f"<span class='badge badge-blue'>{date}</span>" for date in specific_dates])
+                    st.markdown(dates_html, unsafe_allow_html=True)
             else:
                 st.markdown("<p><em>No time periods identified</em></p>", unsafe_allow_html=True)
+    
+    # Add trending topics and current events section
+    event_context = metadata.get("event_context", {})
+    topic_details = metadata.get("topic_details", {})
+    
+    if event_context.get("is_current_event") or topic_details.get("trending_topics"):
+        st.markdown("<h4>Current Events & Trending Topics</h4>", unsafe_allow_html=True)
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("<h5>Trending Topics</h5>", unsafe_allow_html=True)
+            trending_topics = topic_details.get("trending_topics", [])
+            if trending_topics:
+                trending_html = "".join([f"<span class='badge badge-yellow'>{topic}</span>" for topic in trending_topics])
+                st.markdown(trending_html, unsafe_allow_html=True)
+            else:
+                st.markdown("<p><em>No trending topics identified</em></p>", unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("<h5>Key Developments</h5>", unsafe_allow_html=True)
+            key_developments = event_context.get("key_developments", [])
+            if key_developments:
+                for development in key_developments:
+                    st.markdown(f"• {development}", unsafe_allow_html=True)
+            else:
+                st.markdown("<p><em>No key developments identified</em></p>", unsafe_allow_html=True)
+        
+        # If it's a current event with a timeline, show it
+        if event_context.get("is_current_event") and event_context.get("event_timeline"):
+            st.markdown("<h5>Event Timeline</h5>", unsafe_allow_html=True)
+            timeline = event_context.get("event_timeline", [])
+            for event in timeline:
+                st.markdown(f"• {event}", unsafe_allow_html=True)
     
     # Online Data and Visualizations
     st.markdown("<div class='section-title'>Online Sentiment & Visualizations</div>", unsafe_allow_html=True)

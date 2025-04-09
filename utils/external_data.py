@@ -177,80 +177,234 @@ class ExternalDataFetcher:
             print(f"Error fetching Twitter posts: {e}")
             return []
     
-    def web_scrape_for_topic(self, query, num_results=5):
+    def web_scrape_for_topic(self, query, num_results=8):
         """
-        Scrape web content related to a topic.
+        Enhanced web scraping for up-to-date content related to a topic.
+        Prioritizes news sites and recent content.
         
         Args:
             query (str): The topic to search for
-            num_results (int): Number of results to fetch
+            num_results (int): Maximum number of results to fetch (will try more to ensure quality)
             
         Returns:
             list: List of dictionaries with extracted text content
         """
         try:
-            # Simple Google search scraping - in production, use Serper.dev or SerpAPI
-            search_url = f"https://www.google.com/search?q={query}&num={num_results}"
+            # Add "latest news" to the query to prioritize recent content
+            search_query = f"{query} latest news"
+            search_url = f"https://www.google.com/search?q={search_query}&num={num_results*2}&tbm=nws"
             
             headers = {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
             }
             
-            response = requests.get(search_url, headers=headers)
+            # First try news search
+            response = requests.get(search_url, headers=headers, timeout=10)
+            
+            if response.status_code != 200:
+                # If news search fails, fall back to regular search
+                search_url = f"https://www.google.com/search?q={query}&num={num_results*2}"
+                response = requests.get(search_url, headers=headers, timeout=10)
+            
+            search_results = []
             
             if response.status_code == 200:
                 soup = BeautifulSoup(response.text, 'html.parser')
-                search_results = []
-                
-                # Get all search result links
-                result_divs = soup.select('div.yuRUbf')
                 urls = []
-                for div in result_divs:
-                    link = div.find('a')
-                    if link and link.get('href'):
-                        url = link.get('href')
-                        if url.startswith('http'):
-                            urls.append(url)
                 
-                # Limit to requested number
-                urls = urls[:num_results]
+                # First look for news results
+                news_links = soup.select('a.WlydOe')
+                if news_links:
+                    for link in news_links:
+                        href = link.get('href')
+                        if href and href.startswith('http') and '/url?q=' not in href:
+                            urls.append(href)
                 
+                # Then look for regular search results if we don't have enough
+                if len(urls) < num_results:
+                    result_divs = soup.select('div.yuRUbf')
+                    for div in result_divs:
+                        link = div.find('a')
+                        if link and link.get('href'):
+                            url = link.get('href')
+                            if url.startswith('http') and url not in urls:
+                                urls.append(url)
+                
+                # Also search for direct q= parameters
+                all_links = soup.find_all('a')
+                for link in all_links:
+                    href = link.get('href', '')
+                    if href and '/url?q=' in href:
+                        try:
+                            # Extract the actual URL from Google's redirect
+                            start_idx = href.find('/url?q=') + 7
+                            end_idx = href.find('&', start_idx)
+                            if end_idx > start_idx:
+                                actual_url = href[start_idx:end_idx]
+                                if actual_url.startswith('http') and actual_url not in urls:
+                                    urls.append(actual_url)
+                        except Exception as e:
+                            print(f"Error extracting URL from redirect: {e}")
+                
+                # Remove duplicates and limit
+                urls = list(dict.fromkeys(urls))[:num_results*2]  # Try more URLs to get enough valid results
+                
+                # Process URLs with better error handling
                 for url in urls:
                     try:
-                        # Use trafilatura to extract main content
-                        downloaded = trafilatura.fetch_url(url)
-                        if downloaded:
-                            text = trafilatura.extract(downloaded)
+                        # Skip PDF and video files
+                        if url.endswith(('.pdf', '.mp4', '.mov', '.avi', '.wmv')):
+                            continue
                             
-                            if text:
+                        # Skip social media (too noisy and requires login)
+                        if any(domain in url for domain in ['twitter.com', 'facebook.com', 'instagram.com', 'tiktok.com']):
+                            continue
+                            
+                        # Set a shorter timeout for fetching
+                        downloaded = trafilatura.fetch_url(url, timeout=8)
+                        
+                        if downloaded:
+                            # Use trafilatura for better content extraction
+                            text = trafilatura.extract(downloaded, include_comments=False, 
+                                                       include_tables=True, 
+                                                       include_links=True,
+                                                       favor_precision=True)
+                            
+                            if text and len(text.strip()) > 200:  # Ensure substantial content
+                                # Get metadata
                                 title = "Unknown Title"
-                                # Try to extract title using BeautifulSoup
-                                try:
-                                    page_response = requests.get(url, headers=headers, timeout=5)
-                                    page_soup = BeautifulSoup(page_response.text, 'html.parser')
-                                    title_tag = page_soup.find('title')
-                                    if title_tag:
-                                        title = title_tag.text.strip()
-                                except:
-                                    pass
+                                published_date = None
                                 
+                                try:
+                                    # Try extracting metadata with trafilatura
+                                    metadata = trafilatura.extract_metadata(downloaded)
+                                    if metadata:
+                                        if metadata.title:
+                                            title = metadata.title
+                                        if metadata.date:
+                                            published_date = metadata.date
+                                except:
+                                    # Fall back to BeautifulSoup
+                                    try:
+                                        page_response = requests.get(url, headers=headers, timeout=5)
+                                        page_soup = BeautifulSoup(page_response.text, 'html.parser')
+                                        
+                                        # Get title
+                                        title_tag = page_soup.find('title')
+                                        if title_tag:
+                                            title = title_tag.text.strip()
+                                            
+                                        # Try to find publication date
+                                        # Look for common metadata tags
+                                        date_meta = page_soup.find('meta', attrs={'property': 'article:published_time'})
+                                        if date_meta:
+                                            published_date = date_meta.get('content')
+                                        else:
+                                            # Try other common date meta tags
+                                            date_metas = [
+                                                page_soup.find('meta', attrs={'name': 'pubdate'}),
+                                                page_soup.find('meta', attrs={'property': 'og:published_time'}),
+                                                page_soup.find('meta', attrs={'name': 'publish-date'}),
+                                                page_soup.find('meta', attrs={'name': 'date'})
+                                            ]
+                                            for meta in date_metas:
+                                                if meta and meta.get('content'):
+                                                    published_date = meta.get('content')
+                                                    break
+                                    except Exception as e:
+                                        print(f"Error extracting metadata for {url}: {e}")
+                                
+                                # Add to results
                                 search_results.append({
                                     'title': title,
                                     'url': url,
-                                    'content': text[:1000] + "..." if len(text) > 1000 else text,
+                                    'content': text[:2000] + "..." if len(text) > 2000 else text,
+                                    'published_date': published_date,
                                     'retrieved_at': datetime.now().isoformat()
                                 })
+                                
+                                # If we have enough results, stop
+                                if len(search_results) >= num_results:
+                                    break
                     except Exception as e:
                         print(f"Error processing URL {url}: {e}")
                 
-                return search_results
+                # Sort by published date if available, most recent first
+                search_results = sorted(
+                    search_results, 
+                    key=lambda x: x.get('published_date', '0000-00-00'), 
+                    reverse=True
+                )
+                
+                return search_results[:num_results]
             else:
                 print(f"Error searching Google: {response.status_code}")
                 return []
                 
         except Exception as e:
-            print(f"Error web scraping for topic: {e}")
-            return []
+            print(f"Error in enhanced web scraping for topic: {e}")
+            # Fall back to simple search if the enhanced version fails
+            try:
+                # Simple Google search scraping
+                search_url = f"https://www.google.com/search?q={query}&num={num_results}"
+                headers = {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
+                }
+                
+                response = requests.get(search_url, headers=headers, timeout=10)
+                
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    search_results = []
+                    
+                    # Get all search result links
+                    result_divs = soup.select('div.yuRUbf')
+                    urls = []
+                    for div in result_divs:
+                        link = div.find('a')
+                        if link and link.get('href'):
+                            url = link.get('href')
+                            if url.startswith('http'):
+                                urls.append(url)
+                    
+                    # Process top URLs
+                    for url in urls[:num_results]:
+                        try:
+                            downloaded = trafilatura.fetch_url(url, timeout=5)
+                            if downloaded:
+                                text = trafilatura.extract(downloaded)
+                                
+                                if text:
+                                    title = "Unknown Title"
+                                    try:
+                                        metadata = trafilatura.extract_metadata(downloaded)
+                                        if metadata and metadata.title:
+                                            title = metadata.title
+                                        else:
+                                            page_soup = BeautifulSoup(downloaded, 'html.parser')
+                                            title_tag = page_soup.find('title')
+                                            if title_tag:
+                                                title = title_tag.text.strip()
+                                    except:
+                                        pass
+                                    
+                                    search_results.append({
+                                        'title': title,
+                                        'url': url,
+                                        'content': text[:1000] + "..." if len(text) > 1000 else text,
+                                        'retrieved_at': datetime.now().isoformat()
+                                    })
+                        except:
+                            continue
+                    
+                    return search_results
+                return []
+            except:
+                return []
     
     def fetch_google_trends_data(self, query, geo='', timeframe='today 12-m'):
         """
