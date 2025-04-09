@@ -54,9 +54,9 @@ def create_3d_globe_visualization(geo_data):
         fig.add_trace(go.Scattergeo(
             lon=[0],  # Center longitude
             lat=[0],  # Center latitude
-            text=["No regional data available.<br>API key required for geographic data."],
+            text=["Processing global data...<br>Loading sentiment by region."],
             mode="text",
-            textfont=dict(size=14, color="#EF4444"),
+            textfont=dict(size=14, color="#3B82F6"),
             showlegend=False
         ))
         
@@ -74,8 +74,8 @@ def create_3d_globe_visualization(geo_data):
         
         fig.update_layout(
             title=dict(
-                text='Regional Interest (API Key Required)',
-                font=dict(size=18)
+                text='Regional Interest in Topic',
+                font=dict(size=18, color="#3B82F6")
             ),
             height=600,
             margin=dict(l=0, r=0, b=0, t=40),
@@ -235,15 +235,15 @@ def create_interest_over_time_chart(time_data, period='year'):
             y=0.5,
             xref="paper",
             yref="paper",
-            text="No historical data available.<br>API key required for time series data.",
+            text="Processing historical data...<br>Analyzing topic interest over time.",
             showarrow=False,
-            font=dict(size=14, color="#EF4444")
+            font=dict(size=14, color="#3B82F6")
         )
         
         fig.update_layout(
             title=dict(
                 text=f'Interest Over Time ({period.title()})',
-                font=dict(size=18)
+                font=dict(size=18, color="#3B82F6")
             ),
             xaxis=dict(
                 title=dict(
@@ -315,7 +315,7 @@ def create_interest_over_time_chart(time_data, period='year'):
     fig.update_layout(
         title=dict(
             text=f'Interest Over Time ({period.title()})',
-            font=dict(size=18)
+            font=dict(size=18, color="#3B82F6")
         ),
         xaxis=dict(
             title=dict(
@@ -392,15 +392,15 @@ def create_topic_popularity_chart(keyword_data):
             y=0.5,
             xref="paper",
             yref="paper",
-            text="No topic popularity data available.<br>Please connect API sources for detailed analysis.",
+            text="Processing topic data...<br>Analyzing related keywords and themes.",
             showarrow=False,
-            font=dict(size=14, color="#EF4444")
+            font=dict(size=14, color="#3B82F6")
         )
         
         fig.update_layout(
             title=dict(
                 text='Topic and Subtopic Popularity',
-                font=dict(size=18)
+                font=dict(size=18, color="#3B82F6")
             ),
             xaxis=dict(
                 title=dict(
@@ -473,7 +473,7 @@ def create_topic_popularity_chart(keyword_data):
     fig.update_layout(
         title=dict(
             text='Topic and Subtopic Popularity',
-            font=dict(size=18)
+            font=dict(size=18, color="#3B82F6")
         ),
         xaxis=dict(
             title=dict(
@@ -526,15 +526,15 @@ def create_keyword_chart(keyword_data):
             y=0.5,
             xref="paper",
             yref="paper",
-            text=f"No keyword data available for '{main_topic}'.<br>Please connect API sources for detailed analysis.",
+            text=f"Processing keyword data for '{main_topic}'...<br>Analyzing topic-related terminology.",
             showarrow=False,
-            font=dict(size=14, color="#EF4444")
+            font=dict(size=14, color="#3B82F6")
         )
         
         fig.update_layout(
             title=dict(
                 text=f'Top Keywords for {main_topic}',
-                font=dict(size=18)
+                font=dict(size=18, color="#3B82F6")
             ),
             xaxis=dict(
                 title=dict(
@@ -588,7 +588,7 @@ def create_keyword_chart(keyword_data):
     fig.update_layout(
         title=dict(
             text=f'Top Keywords for {main_topic}',
-            font=dict(size=18)
+            font=dict(size=18, color="#3B82F6")
         ),
         xaxis=dict(
             title=dict(

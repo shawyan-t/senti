@@ -12,9 +12,25 @@ import pycountry
 import plotly.graph_objects as go
 import traceback
 
-# Create a TrendReq instance with English locale and US tz
-# Updated to fix compatibility issue with newer versions of requests
-pytrends = TrendReq(hl='en-US', tz=360, timeout=(10, 25))
+# Function to create a new pytrends instance (avoid global usage)
+def get_pytrends_instance():
+    """Create a fresh pytrends instance to avoid stale connections"""
+    try:
+        # For newer versions of the requests library
+        return TrendReq(hl='en-US', tz=360, timeout=(10, 25))
+    except TypeError:
+        # For older versions of the library that expect method_whitelist
+        import requests
+        from requests.adapters import HTTPAdapter
+        from urllib3.util.retry import Retry
+        
+        session = requests.Session()
+        retry = Retry(total=2, backoff_factor=0.1)
+        adapter = HTTPAdapter(max_retries=retry)
+        session.mount('https://', adapter)
+        session.mount('http://', adapter)
+        
+        return TrendReq(hl='en-US', tz=360, timeout=(10, 25), session=session)
 
 def fetch_interest_by_region(query, resolution='COUNTRY', geo='', timeframe='today 12-m'):
     """
@@ -30,6 +46,9 @@ def fetch_interest_by_region(query, resolution='COUNTRY', geo='', timeframe='tod
         dict: Dictionary with country data or empty dict if failed
     """
     try:
+        # Get a fresh pytrends instance
+        pytrends = get_pytrends_instance()
+        
         # Build the payload
         pytrends.build_payload([query], cat=0, timeframe=timeframe, geo=geo)
         
@@ -145,6 +164,9 @@ def fetch_interest_over_time(query, timeframe='today 12-m'):
         pandas.DataFrame: DataFrame with dates and interest values or empty list if failed
     """
     try:
+        # Get a fresh pytrends instance
+        pytrends = get_pytrends_instance()
+        
         # Build the payload
         pytrends.build_payload([query], cat=0, timeframe=timeframe)
         
@@ -195,6 +217,9 @@ def fetch_related_queries(query, timeframe='today 12-m'):
         dict: Dictionary with related queries data
     """
     try:
+        # Get a fresh pytrends instance
+        pytrends = get_pytrends_instance()
+        
         # Build the payload
         pytrends.build_payload([query], cat=0, timeframe=timeframe)
         
