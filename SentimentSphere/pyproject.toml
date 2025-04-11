@@ -15,4 +15,5 @@ dependencies = [
     "trafilatura>=2.0.0",
     "requests>=2.32.3",
     "pytrends>=4.9.2",
+    "diskcache>=5.2.1",
 ]

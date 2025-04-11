@@ -185,6 +185,9 @@ def analyze_sentiment(detailed_analysis):
         dict: A dictionary containing sentiment analysis results
     """
     try:
+        # Check if there's real-time search data included
+        has_realtime_data = "REAL-TIME SEARCH DATA" in detailed_analysis
+        
         # Create the system prompt with strong emphasis on contextual understanding
         system_prompt = """
         You are an expert sentiment analyst with exceptional understanding of context and nuance.
@@ -205,36 +208,77 @@ def analyze_sentiment(detailed_analysis):
         - Distinguish between artistic/professional evaluation and personal controversies
         - Provide nuanced rationale that acknowledges complexity
         
-        Your sentiment assessment should be highly accurate, culturally informed, and contextually appropriate.
+        IMPORTANT: When the text includes REAL-TIME SEARCH DATA:
+        - Prioritize this current information over general knowledge
+        - Base your sentiment analysis heavily on this real-time data
+        - Explicitly reference the source information in your rationale
+        - Be specific about how recent developments affect the sentiment
+        - Acknowledge if real-time data presents a different sentiment than what might be expected
+        
+        Your sentiment assessment should be highly accurate, culturally informed, and contextually appropriate,
+        with strong emphasis on real-time information when available.
         """
         
-        # User prompt
-        user_prompt = f"""
-        Analyze the sentiment of the following text with careful attention to cultural, temporal and domain-specific context:
-        
-        {detailed_analysis}
-        
-        Provide your sentiment analysis in JSON format with the following structure:
-        {{
-            "sentiment": "positive" or "negative" or "neutral" or "mixed",
-            "score": a numeric score from -1.0 (very negative) to 1.0 (very positive),
-            "confidence": a value from 0.0 to 1.0 indicating your confidence in this assessment,
-            "rationale": a detailed explanation of the key factors contributing to this sentiment assessment,
-            "current_context": a specific note about how recent events or cultural context affects this sentiment,
-            "sentiment_trend": "improving", "worsening", "stable", or "fluctuating",
-            "sentiment_factors": [
-                {{
-                    "factor": "name of sentiment factor", 
-                    "impact": "positive" or "negative" or "neutral",
-                    "weight": a value from 0.0 to 1.0 indicating the relative importance
-                }}
-            ]
-        }}
-        
-        Be sure to provide a nuanced assessment that acknowledges complexity when present.
-        For topics related to people, events, or cultural references, consider both general perception
-        and specific recent developments that might influence sentiment.
-        """
+        # User prompt - adjust based on whether real-time data is present
+        if has_realtime_data:
+            user_prompt = f"""
+            Analyze the sentiment of the following text that includes REAL-TIME SEARCH DATA.
+            Pay special attention to the real-time search information and how it impacts the current sentiment.
+            
+            {detailed_analysis}
+            
+            IMPORTANT: Base your analysis primarily on the REAL-TIME SEARCH DATA section, as this contains 
+            the most current information. The rest of the text provides additional context.
+            
+            Provide your sentiment analysis in JSON format with the following structure:
+            {{
+                "sentiment": "positive" or "negative" or "neutral" or "mixed",
+                "score": a numeric score from -1.0 (very negative) to 1.0 (very positive),
+                "confidence": a value from 0.0 to 1.0 indicating your confidence in this assessment,
+                "rationale": a detailed explanation of the key factors contributing to this sentiment assessment,
+                "current_context": a specific note about what the real-time data shows about current sentiment,
+                "sentiment_trend": "improving", "worsening", "stable", or "fluctuating",
+                "real_time_sources": what sources provided the most relevant real-time information,
+                "sentiment_factors": [
+                    {{
+                        "factor": "name of sentiment factor", 
+                        "impact": "positive" or "negative" or "neutral",
+                        "weight": a value from 0.0 to 1.0 indicating the relative importance
+                    }}
+                ]
+            }}
+            
+            Be sure to provide a nuanced assessment that acknowledges complexity when present,
+            and explicitly reference the real-time data in your analysis.
+            """
+        else:
+            # Standard prompt without real-time data emphasis
+            user_prompt = f"""
+            Analyze the sentiment of the following text with careful attention to cultural, temporal and domain-specific context:
+            
+            {detailed_analysis}
+            
+            Provide your sentiment analysis in JSON format with the following structure:
+            {{
+                "sentiment": "positive" or "negative" or "neutral" or "mixed",
+                "score": a numeric score from -1.0 (very negative) to 1.0 (very positive),
+                "confidence": a value from 0.0 to 1.0 indicating your confidence in this assessment,
+                "rationale": a detailed explanation of the key factors contributing to this sentiment assessment,
+                "current_context": a specific note about how recent events or cultural context affects this sentiment,
+                "sentiment_trend": "improving", "worsening", "stable", or "fluctuating",
+                "sentiment_factors": [
+                    {{
+                        "factor": "name of sentiment factor", 
+                        "impact": "positive" or "negative" or "neutral",
+                        "weight": a value from 0.0 to 1.0 indicating the relative importance
+                    }}
+                ]
+            }}
+            
+            Be sure to provide a nuanced assessment that acknowledges complexity when present.
+            For topics related to people, events, or cultural references, consider both general perception
+            and specific recent developments that might influence sentiment.
+            """
         
         # Call the OpenAI API with very high temperature for more nuanced analysis
         response = client.chat.completions.create(
@@ -257,6 +301,8 @@ def analyze_sentiment(detailed_analysis):
             result["sentiment_trend"] = "stable"
         if "sentiment_factors" not in result:
             result["sentiment_factors"] = []
+        if has_realtime_data and "real_time_sources" not in result:
+            result["real_time_sources"] = "Real-time search data"
             
         return result
     
@@ -270,7 +316,8 @@ def analyze_sentiment(detailed_analysis):
             "rationale": f"Unable to determine sentiment due to an error: {str(e)}",
             "current_context": "",
             "sentiment_trend": "stable",
-            "sentiment_factors": []
+            "sentiment_factors": [],
+            "real_time_sources": "Real-time search data" if has_realtime_data else ""
         }
 
 def extract_metadata(detailed_analysis):

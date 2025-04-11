@@ -24,7 +24,8 @@ def load_config():
         'twitter_api_key': os.getenv('TWITTER_API_KEY'),
         'twitter_api_secret': os.getenv('TWITTER_API_SECRET'),
         'news_api_key': os.getenv('NEWSAPI_KEY'),
-        'google_trends_api_key': os.getenv('GOOGLE_TRENDS_API_KEY')
+        'google_search_api_key': os.getenv('GOOGLE_SEARCH_API_KEY'),
+        'google_search_cx': os.getenv('GOOGLE_SEARCH_CX')
     }
     
     # Check for required keys

@@ -20,7 +20,6 @@ from .config import config
 TWITTER_API_KEY = config['twitter_api_key']
 TWITTER_API_SECRET = config['twitter_api_secret']
 NEWS_API_KEY = config['news_api_key']
-GOOGLE_TRENDS_API_KEY = config['google_trends_api_key']
 
 class ExternalDataFetcher:
     """Handles fetching data from external sources like news, social media, etc."""
@@ -28,7 +27,7 @@ class ExternalDataFetcher:
     def __init__(self):
         self.twitter_api_available = bool(TWITTER_API_KEY and TWITTER_API_SECRET)
         self.news_api_available = bool(NEWS_API_KEY)
-        self.google_trends_api_available = bool(GOOGLE_TRENDS_API_KEY)
+        self.google_trends_available = True  # pytrends doesn't require an API key
         self.twitter_bearer_token = None
         
         # Get Twitter bearer token if keys are available
@@ -65,7 +64,7 @@ class ExternalDataFetcher:
         return {
             "twitter_api": self.twitter_api_available and self.twitter_bearer_token is not None,
             "news_api": self.news_api_available,
-            "google_trends_api": self.google_trends_api_available
+            "google_trends": self.google_trends_available
         }
     
     def fetch_news_articles(self, query, days_back=7, limit=10):
@@ -367,8 +366,25 @@ class ExternalDataFetcher:
             # Import the Google Trends scraper
             from .google_trends_scraper import fetch_google_trends_data
             
-            # Fetch the data
-            return fetch_google_trends_data(query, timeframe=timeframe)
+            # Fetch the data with retry logic
+            max_retries = 3
+            retry_delay = 2  # seconds
+            
+            for retry in range(max_retries):
+                try:
+                    return fetch_google_trends_data(query, timeframe=timeframe)
+                except Exception as e:
+                    # Check if it's a rate limit error
+                    if "429" in str(e) and retry < max_retries - 1:
+                        print(f"Google Trends rate limit hit. Retrying in {retry_delay} seconds...")
+                        import time
+                        time.sleep(retry_delay)
+                        # Exponential backoff
+                        retry_delay *= 2
+                    else:
+                        # If it's not a rate limit or we've exhausted retries, re-raise
+                        raise
+                        
         except Exception as e:
             print(f"Error fetching Google Trends data: {e}")
             return {}
@@ -387,8 +403,25 @@ class ExternalDataFetcher:
             # Import the Google Trends scraper
             from .google_trends_scraper import fetch_interest_by_region
             
-            # Fetch the data
-            return fetch_interest_by_region(query)
+            # Fetch the data with retry logic
+            max_retries = 3
+            retry_delay = 2  # seconds
+            
+            for retry in range(max_retries):
+                try:
+                    return fetch_interest_by_region(query)
+                except Exception as e:
+                    # Check if it's a rate limit error
+                    if "429" in str(e) and retry < max_retries - 1:
+                        print(f"Google Trends rate limit hit. Retrying in {retry_delay} seconds...")
+                        import time
+                        time.sleep(retry_delay)
+                        # Exponential backoff
+                        retry_delay *= 2
+                    else:
+                        # If it's not a rate limit or we've exhausted retries, re-raise
+                        raise
+                        
         except Exception as e:
             print(f"Error fetching country interest data: {e}")
             return {}
@@ -407,8 +440,25 @@ class ExternalDataFetcher:
             # Import the Google Trends scraper
             from .google_trends_scraper import fetch_related_queries
             
-            # Fetch the data
-            return fetch_related_queries(query)
+            # Fetch the data with retry logic
+            max_retries = 3
+            retry_delay = 2  # seconds
+            
+            for retry in range(max_retries):
+                try:
+                    return fetch_related_queries(query)
+                except Exception as e:
+                    # Check if it's a rate limit error
+                    if "429" in str(e) and retry < max_retries - 1:
+                        print(f"Google Trends rate limit hit. Retrying in {retry_delay} seconds...")
+                        import time
+                        time.sleep(retry_delay)
+                        # Exponential backoff
+                        retry_delay *= 2
+                    else:
+                        # If it's not a rate limit or we've exhausted retries, re-raise
+                        raise
+                        
         except Exception as e:
             print(f"Error fetching related queries: {e}")
             return {
@@ -646,5 +696,472 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
                             country['sentiment'] = enhanced_data['sentiment_summary']
     except Exception as e:
         print(f"Error enhancing data with OpenAI: {e}")
+    
+    return result
+
+class SearchEngineConnector:
+    """Enhanced connector for real-time search engine data to provide up-to-date information to LLMs."""
+    
+    def __init__(self):
+        """Initialize the search engine connector."""
+        # Load API keys from config
+        self.google_search_api_key = config.get('google_search_api_key')
+        self.google_search_cx = config.get('google_search_cx')
+        
+        # Set up cache directory
+        import os
+        self.cache_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data', 'search_cache')
+        os.makedirs(self.cache_dir, exist_ok=True)
+        
+        # Initialize cache
+        try:
+            from diskcache import Cache
+            self.cache = Cache(self.cache_dir)
+        except ImportError:
+            print("Warning: diskcache not installed. Caching disabled.")
+            self.cache = None
+    
+    def search_engine_query(self, query, num_results=10, recent_only=True):
+        """
+        Query Google Search API for reliable results.
+        
+        Args:
+            query (str): Search query
+            num_results (int): Number of results to return
+            recent_only (bool): Whether to prioritize recent results
+            
+        Returns:
+            list: List of search results with metadata
+        """
+        results = []
+        
+        # Google Search API (using Programmable Search Engine)
+        if self.google_search_api_key and self.google_search_cx:
+            try:
+                # Set up parameters
+                params = {
+                    'key': self.google_search_api_key,
+                    'cx': self.google_search_cx,
+                    'q': query,
+                    'num': min(10, num_results)  # API limit is 10 per request
+                }
+                
+                # Add recent content filtering if requested
+                if recent_only:
+                    # Filter by date range (last month)
+                    from datetime import datetime, timedelta
+                    one_month_ago = (datetime.now() - timedelta(days=30)).strftime('%Y%m%d')
+                    params['sort'] = 'date:r:' + one_month_ago
+                
+                # Make the API request
+                response = requests.get('https://www.googleapis.com/customsearch/v1', params=params)
+                
+                if response.status_code == 200:
+                    data = response.json()
+                    for item in data.get('items', []):
+                        results.append({
+                            'title': item.get('title'),
+                            'link': item.get('link'),
+                            'snippet': item.get('snippet'),
+                            'published_date': item.get('pagemap', {}).get('metatags', [{}])[0].get('article:published_time'),
+                            'source': 'google',
+                            'engine': 'google'
+                        })
+            except Exception as e:
+                print(f"Error with Google Search API: {e}")
+        else:
+            print("Google Search API key or CX not configured")
+        
+        # If no API results available, fall back to web scraping
+        if not results:
+            print("Falling back to web scraping for search results")
+            try:
+                data_fetcher = ExternalDataFetcher()
+                scraped_results = data_fetcher.web_scrape_for_topic(query, num_results=num_results)
+                
+                for item in scraped_results:
+                    results.append({
+                        'title': item.get('title', 'Unknown'),
+                        'link': item.get('url', ''),
+                        'snippet': item.get('content', '')[:200] + '...' if item.get('content') else '',
+                        'published_date': item.get('published_date'),
+                        'source': 'web_scrape',
+                        'engine': 'scrape'
+                    })
+            except Exception as e:
+                print(f"Error with fallback web scraping: {e}")
+        
+        return results
+    
+    def extract_content_from_url(self, url, max_length=4000):
+        """
+        Extract and clean content from a URL for processing by the LLM.
+        
+        Args:
+            url (str): URL to extract content from
+            max_length (int): Maximum content length to return
+            
+        Returns:
+            dict: Dictionary with extracted content and metadata
+        """
+        try:
+            # Use trafilatura for robust content extraction
+            downloaded = trafilatura.fetch_url(url)
+            
+            if not downloaded:
+                return None
+                
+            # Extract main content
+            content = trafilatura.extract(downloaded, 
+                                        include_comments=False,
+                                        include_tables=True,
+                                        include_links=True,
+                                        favor_precision=True)
+            
+            if not content or len(content.strip()) < 100:
+                return None
+                
+            # Extract metadata
+            metadata = trafilatura.extract_metadata(downloaded)
+            
+            # Build result
+            result = {
+                'url': url,
+                'content': content[:max_length] if content else "",
+                'title': metadata.title if metadata and metadata.title else "Unknown Title",
+                'published_date': metadata.date if metadata and metadata.date else None,
+                'author': metadata.author if metadata and metadata.author else None,
+                'extracted_at': datetime.now().isoformat()
+            }
+            
+            return result
+        except Exception as e:
+            print(f"Error extracting content from {url}: {e}")
+            return None
+    
+    def get_cached_or_fresh_data(self, query, max_age_minutes=60):
+        """
+        Get data from cache if fresh enough, otherwise fetch fresh data.
+        
+        Args:
+            query (str): The search query
+            max_age_minutes (int): Maximum age of cached data in minutes
+            
+        Returns:
+            dict: Search results with metadata
+        """
+        if not self.cache:
+            # If cache is not available, just fetch fresh data
+            return self.search_engine_query(query)
+            
+        import hashlib
+        import time
+        
+        # Create a hash of the query for the cache key
+        query_hash = hashlib.md5(query.encode()).hexdigest()
+        cache_key = f"search_results_{query_hash}"
+        
+        # Check if we have cached data
+        cached_data = self.cache.get(cache_key)
+        
+        if cached_data:
+            # Check if the data is fresh enough
+            if time.time() - cached_data['timestamp'] < (max_age_minutes * 60):
+                print(f"Using cached data for query '{query}'")
+                return cached_data['data']
+        
+        # If we don't have cached data or it's too old, fetch fresh data
+        print(f"Fetching fresh data for query '{query}'")
+        fresh_data = self.search_engine_query(query)
+        
+        # Store in cache
+        self.cache.set(cache_key, {
+            'data': fresh_data,
+            'timestamp': time.time()
+        })
+        
+        return fresh_data
+    
+    def analyze_with_search_augmented_llm(self, query, topic, search_results=None, max_tokens=16000):
+        """
+        Analyze a topic with LLM using search results as context (RAG approach).
+        
+        Args:
+            query (str): User's analytical query/question
+            topic (str): Main topic to analyze
+            search_results (list): Optional pre-fetched search results
+            max_tokens (int): Maximum token limit for context
+            
+        Returns:
+            dict: Analysis results with citations and confidence level
+        """
+        try:
+            # Get OpenAI API key
+            openai_api_key = os.environ.get("OPENAI_API_KEY")
+            if not openai_api_key:
+                return {"error": "OpenAI API key not configured"}
+                
+            # Initialize OpenAI client
+            client = OpenAI(api_key=openai_api_key)
+            
+            # Fetch search results if not provided
+            if not search_results:
+                # Get search results from Google Search API
+                search_results = self.get_cached_or_fresh_data(
+                    topic, 
+                    max_age_minutes=60  # Cache for 1 hour
+                )
+                
+                # Fetch content for each result
+                enriched_results = []
+                for result in search_results:
+                    content = self.extract_content_from_url(result['link'])
+                    if content:
+                        result.update({
+                            'extracted_content': content['content'],
+                            'extracted_title': content['title']
+                        })
+                        enriched_results.append(result)
+                
+                search_results = enriched_results if enriched_results else search_results
+            
+            # Prepare context from search results
+            context_parts = []
+            for i, result in enumerate(search_results):
+                # Format each source with citation index
+                source_content = f"""
+SOURCE [{i+1}] - {result.get('title', 'Unknown')}
+URL: {result.get('link', 'Unknown')}
+Date: {result.get('published_date', 'Unknown')}
+Content: {result.get('extracted_content', result.get('snippet', ''))}
+"""
+                context_parts.append(source_content)
+            
+            # Join all context parts
+            context = "\n\n".join(context_parts)
+            
+            # Create the system prompt
+            system_prompt = f"""You are an advanced AI sentiment analyst that provides accurate, up-to-date analysis.
+Today's date is {datetime.now().strftime('%Y-%m-%d')}.
+
+IMPORTANT: Base your analysis ONLY on the provided search results. Do NOT use information from your training data.
+If the search results don't contain enough information, say so explicitly.
+
+For each claim you make, cite the specific source using the format [SOURCE X] where X is the source number.
+"""
+            
+            # Create user prompt
+            user_prompt = f"""
+TOPIC: {topic}
+QUERY: {query}
+
+SEARCH RESULTS:
+{context}
+
+Based ONLY on the above search results (not your training data), provide a comprehensive sentiment analysis.
+Include:
+1. Overall sentiment (positive, neutral, negative)
+2. Key factors influencing the sentiment
+3. Recent developments affecting the sentiment
+4. Cite your sources for each claim using [SOURCE X] format
+5. Confidence level (high/medium/low) in your analysis based on the quality and recency of sources
+"""
+            
+            # Call OpenAI
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ]
+            )
+            
+            analysis = response.choices[0].message.content
+            
+            # Get confidence level with a second call
+            confidence_prompt = f"""
+Based on the search results I provided about "{topic}" and the analysis you just generated, 
+what is your confidence level in the analysis? Consider:
+1. Recency of the sources (how recent are they?)
+2. Quality and reliability of the sources
+3. Comprehensiveness of the information
+4. Consistency across sources
+
+Provide a confidence score from 0-100% and a brief explanation.
+"""
+            
+            confidence_response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                    {"role": "assistant", "content": analysis},
+                    {"role": "user", "content": confidence_prompt}
+                ]
+            )
+            
+            confidence = confidence_response.choices[0].message.content
+            
+            # Return the results with metadata
+            return {
+                "topic": topic,
+                "query": query,
+                "analysis": analysis,
+                "confidence": confidence,
+                "sources": [{"title": r.get('title'), "url": r.get('link'), "date": r.get('published_date')} 
+                        for r in search_results],
+                "timestamp": datetime.now().isoformat()
+            }
+                
+        except Exception as e:
+            print(f"Error in search-augmented LLM analysis: {e}")
+            return {"error": str(e)}
+
+# Update the existing get_online_sentiment function to use the new SearchEngineConnector
+def get_online_sentiment_with_search(topic, subtopics=None, days_back=30, use_search_apis=True):
+    """
+    Enhanced version of get_online_sentiment that uses proper search APIs and RAG approach with LLMs.
+    
+    Args:
+        topic (str): The main topic to analyze
+        subtopics (list): Related subtopics to include in the analysis
+        days_back (int): How many days of historical data to include
+        use_search_apis (bool): Whether to use search APIs for enhanced results
+        
+    Returns:
+        dict: A comprehensive dict with sentiment data from various sources including search engines
+    """
+    # Initialize result dictionary (in case of error)
+    result = {
+        'api_status': {},
+        'query': topic,
+        'timestamp': datetime.now().isoformat(),
+        'global_data': {},
+        'historical_data': [],
+        'keyword_data': {},
+        'sources': {'news': [], 'twitter': [], 'reddit': [], 'web': [], 'search_engines': []}
+    }
+    
+    # Add search engine results if enabled (prioritize this)
+    if use_search_apis:
+        try:
+            # Initialize the search engine connector
+            search_connector = SearchEngineConnector()
+            
+            # Get real-time search results
+            search_results = search_connector.get_cached_or_fresh_data(
+                topic, 
+                max_age_minutes=60  # Cache for 1 hour
+            )
+            
+            # Extract content from top results
+            enriched_results = []
+            for i, result_item in enumerate(search_results[:5]):
+                content = search_connector.extract_content_from_url(result_item['link'])
+                if content:
+                    result_item['content'] = content['content']
+                    result_item['title'] = content['title']
+                    enriched_results.append(result_item)
+                else:
+                    enriched_results.append(result_item)
+                    
+            # Add to sources
+            result['sources']['search_engines'] = enriched_results
+            
+            # Enhance analysis with search-augmented LLM
+            search_analysis = search_connector.analyze_with_search_augmented_llm(
+                f"What is the current sentiment around {topic}?",
+                topic,
+                search_results=enriched_results
+            )
+            
+            # Add the search-augmented analysis
+            result['search_augmented_analysis'] = search_analysis
+            
+            # Manually construct a baseline sentiment based on the real-time data
+            if search_analysis and not search_analysis.get('error'):
+                # Extract sentiment from analysis
+                analysis_text = search_analysis.get('analysis', '')
+                if "positive" in analysis_text.lower():
+                    dominant_sentiment = "positive"
+                elif "negative" in analysis_text.lower():
+                    dominant_sentiment = "negative"
+                else:
+                    dominant_sentiment = "neutral"
+                
+                # Create basic keyword data from search results
+                keyword_data = {
+                    'main_topic': topic,
+                    'main_topic_keywords': []
+                }
+                
+                # Extract potential keywords from search result titles
+                from collections import Counter
+                import re
+                
+                # Combine all titles
+                all_titles = " ".join([r.get('title', '') for r in enriched_results])
+                
+                # Extract words, remove common words
+                words = re.findall(r'\b[A-Za-z][A-Za-z]{2,}\b', all_titles)
+                stopwords = {'the', 'and', 'or', 'but', 'for', 'with', 'about', 'against', 'between'}
+                filtered_words = [w.lower() for w in words if w.lower() not in stopwords]
+                
+                # Count occurrences
+                word_counts = Counter(filtered_words)
+                
+                # Add top keywords
+                for word, count in word_counts.most_common(8):
+                    if word.lower() != topic.lower():  # Avoid the main topic itself
+                        keyword_data['main_topic_keywords'].append({
+                            'keyword': word,
+                            'frequency': count * 10,  # Scale up for visualization
+                            'sentiment': dominant_sentiment
+                        })
+                
+                # Add to result
+                result['keyword_data'] = keyword_data
+            
+        except Exception as e:
+            print(f"Error integrating search APIs: {e}")
+            result['search_api_error'] = str(e)
+    
+    # Get traditional sentiment data as a fallback
+    try:
+        traditional_data = get_online_sentiment(topic, subtopics, days_back)
+        
+        # Only use traditional data for fields that weren't populated by search results
+        if not result.get('global_data', {}).get('countries'):
+            result['global_data'] = traditional_data.get('global_data', {})
+        
+        if not result.get('historical_data'):
+            result['historical_data'] = traditional_data.get('historical_data', [])
+        
+        if not result.get('keyword_data', {}).get('main_topic_keywords'):
+            result['keyword_data'] = traditional_data.get('keyword_data', {})
+        
+        # Add API status
+        result['api_status'] = traditional_data.get('api_status', {})
+        
+        # Add sources that weren't populated
+        for source_type in ['news', 'twitter', 'reddit', 'web']:
+            if not result['sources'].get(source_type):
+                result['sources'][source_type] = traditional_data.get('sources', {}).get(source_type, [])
+        
+        # Add enhanced metadata if available
+        if 'enhanced_metadata' in traditional_data:
+            result['enhanced_metadata'] = traditional_data['enhanced_metadata']
+            
+    except Exception as e:
+        print(f"Error getting traditional sentiment data: {e}")
+        
+        # If everything failed, generate some basic data to avoid breaking the UI
+        from .sentiment_generator import generate_country_sentiment, generate_time_series_data
+        
+        try:
+            result['global_data'] = {'countries': generate_country_sentiment(topic), 'source': 'generated', 'query': topic}
+            result['historical_data'] = generate_time_series_data(topic, days=365)
+        except Exception as e2:
+            print(f"Error generating fallback data: {e2}")
     
     return result

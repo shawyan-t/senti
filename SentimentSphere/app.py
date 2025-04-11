@@ -22,7 +22,7 @@ from utils.openai_client import (
     extract_metadata
 )
 from utils.data_manager import save_analysis, load_analysis, load_all_analyses
-from utils.external_data import get_online_sentiment
+from utils.external_data import get_online_sentiment, get_online_sentiment_with_search
 from utils.visualizations import (
     create_3d_globe_visualization,
     create_interest_over_time_chart,
@@ -265,27 +265,51 @@ if submit_text and text_input and not st.session_state.processing:
         
         # Step 1: Determine input type
         progress_text = st.empty()
-        progress_text.markdown("**Step 1/4:** Identifying content type...")
+        progress_text.markdown("**Step 1/5:** Identifying content type...")
         input_type_info = determine_input_type(content)
         
-        # Step 2: Based on the content type and whether it's a file or short query:
+        # Step 2: Get real-time data from search engines for context enrichment
+        progress_text.markdown("**Step 2/5:** Fetching real-time data from search engines...")
+        from utils.external_data import SearchEngineConnector
+        search_connector = SearchEngineConnector()
+        
+        # Use the input as search query if it's a short text
+        search_query = source if len(content) < 500 else input_type_info.get('subject', source)
+        search_results = search_connector.get_cached_or_fresh_data(search_query)
+        
+        # Extract and prepare search content for enrichment
+        search_context = "REAL-TIME SEARCH DATA:\n\n"
+        for i, result in enumerate(search_results[:3]):  # Use top 3 results
+            extracted_content = search_connector.extract_content_from_url(result.get('link'))
+            if extracted_content:
+                search_context += f"SOURCE {i+1}: {extracted_content.get('title')}\n"
+                search_context += f"URL: {result.get('link')}\n"
+                search_context += f"CONTENT: {extracted_content.get('content')[:500]}...\n\n"
+            else:
+                search_context += f"SOURCE {i+1}: {result.get('title')}\n"
+                search_context += f"URL: {result.get('link')}\n"
+                search_context += f"SNIPPET: {result.get('snippet', '')}\n\n"
+        
+        # Step 3: Based on the content type and whether it's a file or short query:
         if source_type in ["pdf", "csv", "json"] or len(content) > 1000:
             # For files or lengthy content, use GPT-o1 for detailed analysis first
-            progress_text.markdown("**Step 2/4:** Performing detailed analysis using GPT-o1...")
-            detailed_analysis = perform_detailed_analysis(content, input_type_info)
+            progress_text.markdown("**Step 3/5:** Performing detailed analysis using GPT-o1...")
+            # Include search context for better analysis
+            analysis_input = f"{content}\n\n{search_context}"
+            detailed_analysis = perform_detailed_analysis(analysis_input, input_type_info)
         else:
             # For shorter queries, skip to GPT-4o directly
-            progress_text.markdown("**Step 2/4:** Using GPT-4o to analyze your query...")
+            progress_text.markdown("**Step 3/5:** Using GPT-4o to analyze your query with real-time data...")
             # Include web searching capabilities for better context and accuracy
-            detailed_analysis = f"Search query: {source}\n\n"
-            detailed_analysis += perform_detailed_analysis(content, input_type_info)
+            analysis_input = f"Search query: {source}\n\n{search_context}\n\n{content}"
+            detailed_analysis = perform_detailed_analysis(analysis_input, input_type_info)
         
-        # Step 3: Analyze sentiment with GPT-4o for all cases
-        progress_text.markdown("**Step 3/4:** Gathering online sentiment data...")
+        # Step 4: Analyze sentiment with GPT-4o for all cases
+        progress_text.markdown("**Step 4/5:** Analyzing sentiment with real-time context...")
         sentiment_result = analyze_sentiment(detailed_analysis)
         
-        # Step 4: Extract metadata with GPT-o3-mini
-        progress_text.markdown("**Step 4/4:** Extracting metadata...")
+        # Step 5: Extract metadata with GPT-o3-mini
+        progress_text.markdown("**Step 5/5:** Extracting metadata...")
         metadata_result = extract_metadata(detailed_analysis)
         
         # Save the analysis
@@ -365,19 +389,51 @@ if submit_file and uploaded_file and not st.session_state.processing:
         
         # Step 1: Determine input type
         progress_text = st.empty()
-        progress_text.markdown("**Step 1/4:** Identifying content type...")
+        progress_text.markdown("**Step 1/5:** Identifying content type...")
         input_type_info = determine_input_type(content)
         
-        # Step 2: Use GPT-o1 for file content (which is more suitable for structured data)
-        progress_text.markdown("**Step 2/4:** Performing detailed analysis using GPT-o1...")
-        detailed_analysis = perform_detailed_analysis(content, input_type_info)
+        # Step 2: Get real-time data from search engines for context enrichment
+        progress_text.markdown("**Step 2/5:** Fetching real-time data from search engines...")
+        from utils.external_data import SearchEngineConnector
+        search_connector = SearchEngineConnector()
         
-        # Step 3: Analyze sentiment with GPT-4o and add online context
-        progress_text.markdown("**Step 3/4:** Gathering online sentiment data...")
+        # Use the input as search query if it's a short text
+        search_query = source if len(content) < 500 else input_type_info.get('subject', source)
+        search_results = search_connector.get_cached_or_fresh_data(search_query)
+        
+        # Extract and prepare search content for enrichment
+        search_context = "REAL-TIME SEARCH DATA:\n\n"
+        for i, result in enumerate(search_results[:3]):  # Use top 3 results
+            extracted_content = search_connector.extract_content_from_url(result.get('link'))
+            if extracted_content:
+                search_context += f"SOURCE {i+1}: {extracted_content.get('title')}\n"
+                search_context += f"URL: {result.get('link')}\n"
+                search_context += f"CONTENT: {extracted_content.get('content')[:500]}...\n\n"
+            else:
+                search_context += f"SOURCE {i+1}: {result.get('title')}\n"
+                search_context += f"URL: {result.get('link')}\n"
+                search_context += f"SNIPPET: {result.get('snippet', '')}\n\n"
+        
+        # Step 3: Based on the content type and whether it's a file or short query:
+        if source_type in ["pdf", "csv", "json"] or len(content) > 1000:
+            # For files or lengthy content, use GPT-o1 for detailed analysis first
+            progress_text.markdown("**Step 3/5:** Performing detailed analysis using GPT-o1...")
+            # Include search context for better analysis
+            analysis_input = f"{content}\n\n{search_context}"
+            detailed_analysis = perform_detailed_analysis(analysis_input, input_type_info)
+        else:
+            # For shorter queries, skip to GPT-4o directly
+            progress_text.markdown("**Step 3/5:** Using GPT-4o to analyze your query with real-time data...")
+            # Include web searching capabilities for better context and accuracy
+            analysis_input = f"Search query: {source}\n\n{search_context}\n\n{content}"
+            detailed_analysis = perform_detailed_analysis(analysis_input, input_type_info)
+        
+        # Step 4: Analyze sentiment with GPT-4o for all cases
+        progress_text.markdown("**Step 4/5:** Analyzing sentiment with real-time context...")
         sentiment_result = analyze_sentiment(detailed_analysis)
         
-        # Step 4: Extract metadata with GPT-o3-mini
-        progress_text.markdown("**Step 4/4:** Extracting metadata...")
+        # Step 5: Extract metadata with GPT-o3-mini
+        progress_text.markdown("**Step 5/5:** Extracting metadata...")
         metadata_result = extract_metadata(detailed_analysis)
         
         # Save the analysis
@@ -634,10 +690,17 @@ if st.session_state.current_analysis:
     # Online Data and Visualizations
     st.markdown("<div class='section-title'>Online Sentiment & Visualizations</div>", unsafe_allow_html=True)
     
+    # Add option to use real-time search engines
+    use_realtime_search = st.checkbox("Use real-time search engine data (more accurate, up-to-date)", value=True, 
+                                     help="Enables integration with search engines to provide the most current information")
+    
     # Show a loading spinner while fetching online data
     with st.spinner(f"Fetching online data about {main_topic}..."):
         # Get online sentiment data
-        online_data = get_online_sentiment(main_topic, subtopics, days_back=365)  # One year of data
+        if use_realtime_search:
+            online_data = get_online_sentiment_with_search(main_topic, subtopics, days_back=365, use_search_apis=True)  # Enhanced version
+        else:
+            online_data = get_online_sentiment(main_topic, subtopics, days_back=365)  # Standard version
         
         # Display API status
         api_status = online_data.get('api_status', {})
@@ -663,9 +726,9 @@ if st.session_state.current_analysis:
             st.markdown(f"<p>News API: <span style='color: {news_color};'>{news_status}</span></p>", unsafe_allow_html=True)
         
         with apis_col4:
-            web_status = "Active"
-            web_color = "green"
-            st.markdown(f"<p>Web Scraping: <span style='color: {web_color};'>{web_status}</span></p>", unsafe_allow_html=True)
+            search_status = "Active" if use_realtime_search else "Inactive"
+            search_color = "green" if use_realtime_search else "gray"
+            st.markdown(f"<p>Search Engines: <span style='color: {search_color};'>{search_status}</span></p>", unsafe_allow_html=True)
         
         # Visualization tabs
         viz_tabs = st.tabs(["Regional Interest", "Temporal Trends", "Topic Popularity", "Keywords"])
@@ -745,9 +808,46 @@ if st.session_state.current_analysis:
         # Display a sample of sources
         st.markdown("<h4>Online Sources</h4>", unsafe_allow_html=True)
         
-        sources_tabs = st.tabs(["News Articles", "Social Media", "Web Content"])
+        sources_tabs = st.tabs(["Search Engine Results", "News Articles", "Social Media", "Web Content"])
         
-        with sources_tabs[0]:  # News
+        with sources_tabs[0]:  # Search Engines
+            search_data = online_data.get('sources', {}).get('search_engines', [])
+            if search_data:
+                for i, result in enumerate(search_data[:5]):  # Show top 5
+                    title = result.get('title', 'Untitled')
+                    source = result.get('source', 'Unknown Source')
+                    link = result.get('link', '#')
+                    snippet = result.get('snippet', result.get('content', ''))[:300] + "..." if result.get('snippet') or result.get('content') else "No content available"
+                    engine = result.get('engine', 'unknown').upper()
+                    
+                    st.markdown(f"**{title}**")
+                    st.markdown(f"Source: [{source}]({link}) • Engine: {engine}")
+                    st.markdown(f"{snippet}")
+                    if i < 4:  # Don't add divider after the last item
+                        st.markdown("---")
+                
+                # Show search-augmented analysis if available
+                search_analysis = online_data.get('search_augmented_analysis', {})
+                if search_analysis and not search_analysis.get('error'):
+                    with st.expander("Search-Augmented Real-time Analysis", expanded=True):
+                        st.markdown("### Real-time Search Analysis")
+                        st.markdown(search_analysis.get('analysis', 'No analysis available'))
+                        
+                        # Show confidence level
+                        confidence = search_analysis.get('confidence', 'Confidence level unavailable')
+                        st.markdown(f"**Confidence Assessment:** {confidence}")
+                        
+                        # Show sources
+                        st.markdown("**Sources:**")
+                        for i, source in enumerate(search_analysis.get('sources', [])[:3]):
+                            st.markdown(f"- [{source.get('title', 'Unknown')}]({source.get('url', '#')})")
+            else:
+                if use_realtime_search:
+                    st.info("No search engine results available. Please configure search engine API keys for better results.")
+                else:
+                    st.info("Enable real-time search engine data above to see current information.")
+        
+        with sources_tabs[1]:  # News
             news_data = online_data.get('sources', {}).get('news', [])
             if news_data:
                 for i, article in enumerate(news_data[:3]):  # Show top 3
@@ -759,7 +859,7 @@ if st.session_state.current_analysis:
             else:
                 st.info("No news articles found.")
         
-        with sources_tabs[1]:  # Social Media
+        with sources_tabs[2]:  # Social Media
             twitter_data = online_data.get('sources', {}).get('twitter', [])
             reddit_data = online_data.get('sources', {}).get('reddit', [])
             
@@ -781,7 +881,7 @@ if st.session_state.current_analysis:
                 else:
                     st.info("No Reddit data available.")
         
-        with sources_tabs[2]:  # Web
+        with sources_tabs[3]:  # Web
             web_data = online_data.get('sources', {}).get('web', [])
             if web_data:
                 for content in web_data[:3]:  # Show top 3
@@ -802,7 +902,13 @@ if st.session_state.current_analysis:
             
             - **Twitter/X API**: Used to gather real-time social media sentiment
             - **NewsAPI**: Used to access current news articles
-            - **Google Trends API**: Used to provide geographic interest data
+            - **Google Search API**: Used to access the most current information from the web
+            - **PyTrends**: Uses an unofficial wrapper for Google Trends data (no API key required)
+            
+            The application will automatically use web scraping as a fallback when APIs are not available.
+            
+            When search engine APIs are enabled (checkbox above), the application uses RAG (Retrieval-Augmented Generation)
+            to provide the most current, up-to-date information for your analysis, even beyond the LLM's training cutoff date.
             
             Contact the developer to integrate these APIs for comprehensive sentiment analysis.
             """)
