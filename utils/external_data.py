@@ -13,12 +13,14 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import pycountry
 import trafilatura
+from openai import OpenAI
+from .config import config
 
-# API Keys - These will be populated from environment variables
-TWITTER_API_KEY = os.environ.get("TWITTER_API_KEY", "")
-TWITTER_API_SECRET = os.environ.get("TWITTER_API_SECRET", "")
-NEWS_API_KEY = os.environ.get("NEWSAPI_KEY", "")
-GOOGLE_TRENDS_API_KEY = os.environ.get("GOOGLE_TRENDS_API_KEY", "")
+# API Keys from configuration
+TWITTER_API_KEY = config['twitter_api_key']
+TWITTER_API_SECRET = config['twitter_api_secret']
+NEWS_API_KEY = config['news_api_key']
+GOOGLE_TRENDS_API_KEY = config['google_trends_api_key']
 
 class ExternalDataFetcher:
     """Handles fetching data from external sources like news, social media, etc."""
@@ -264,8 +266,8 @@ class ExternalDataFetcher:
                         if any(domain in url for domain in ['twitter.com', 'facebook.com', 'instagram.com', 'tiktok.com']):
                             continue
                             
-                        # Set a shorter timeout for fetching
-                        downloaded = trafilatura.fetch_url(url, timeout=8)
+                        # Use trafilatura to download and extract content
+                        downloaded = trafilatura.fetch_url(url)
                         
                         if downloaded:
                             # Use trafilatura for better content extraction
@@ -347,64 +349,7 @@ class ExternalDataFetcher:
                 
         except Exception as e:
             print(f"Error in enhanced web scraping for topic: {e}")
-            # Fall back to simple search if the enhanced version fails
-            try:
-                # Simple Google search scraping
-                search_url = f"https://www.google.com/search?q={query}&num={num_results}"
-                headers = {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36'
-                }
-                
-                response = requests.get(search_url, headers=headers, timeout=10)
-                
-                if response.status_code == 200:
-                    soup = BeautifulSoup(response.text, 'html.parser')
-                    search_results = []
-                    
-                    # Get all search result links
-                    result_divs = soup.select('div.yuRUbf')
-                    urls = []
-                    for div in result_divs:
-                        link = div.find('a')
-                        if link and link.get('href'):
-                            url = link.get('href')
-                            if url.startswith('http'):
-                                urls.append(url)
-                    
-                    # Process top URLs
-                    for url in urls[:num_results]:
-                        try:
-                            downloaded = trafilatura.fetch_url(url, timeout=5)
-                            if downloaded:
-                                text = trafilatura.extract(downloaded)
-                                
-                                if text:
-                                    title = "Unknown Title"
-                                    try:
-                                        metadata = trafilatura.extract_metadata(downloaded)
-                                        if metadata and metadata.title:
-                                            title = metadata.title
-                                        else:
-                                            page_soup = BeautifulSoup(downloaded, 'html.parser')
-                                            title_tag = page_soup.find('title')
-                                            if title_tag:
-                                                title = title_tag.text.strip()
-                                    except:
-                                        pass
-                                    
-                                    search_results.append({
-                                        'title': title,
-                                        'url': url,
-                                        'content': text[:1000] + "..." if len(text) > 1000 else text,
-                                        'retrieved_at': datetime.now().isoformat()
-                                    })
-                        except:
-                            continue
-                    
-                    return search_results
-                return []
-            except:
-                return []
+            return []
     
     def fetch_google_trends_data(self, query, geo='', timeframe='today 12-m'):
         """
@@ -447,159 +392,259 @@ class ExternalDataFetcher:
         except Exception as e:
             print(f"Error fetching country interest data: {e}")
             return {}
+    
+    def fetch_related_queries(self, query):
+        """
+        Fetch related queries from Google Trends.
+        
+        Args:
+            query (str): The query term to search for
+            
+        Returns:
+            dict: Dictionary with related queries data
+        """
+        try:
+            # Import the Google Trends scraper
+            from .google_trends_scraper import fetch_related_queries
+            
+            # Fetch the data
+            return fetch_related_queries(query)
+        except Exception as e:
+            print(f"Error fetching related queries: {e}")
+            return {
+                'main_topic': query,
+                'main_topic_keywords': [],
+                'subtopics': [],
+                'subtopic_keywords': {}
+            }
 
 def get_online_sentiment(topic, subtopics=None, days_back=30):
     """
-    Fetch sentiment from online sources about a topic.
+    Fetch and generate comprehensive online sentiment data for a topic with enhanced
+    capabilities for pop culture, trending topics, and current events.
     
     Args:
         topic (str): The main topic to analyze
-        subtopics (list): Optional list of subtopics
-        days_back (int): How many days back to search
+        subtopics (list): Related subtopics to include in the analysis
+        days_back (int): How many days of historical data to include
         
     Returns:
-        dict: Sentiment data from various sources
+        dict: A comprehensive dict with sentiment data from various sources
     """
-    if not subtopics:
-        subtopics = []
+    # Initialize data fetcher
+    data_fetcher = ExternalDataFetcher()
     
-    # Initialize the data fetcher
-    fetcher = ExternalDataFetcher()
+    # Check API availability
+    api_status = data_fetcher.check_api_availability()
+    print(f"API status: {api_status}")
     
-    # Get API availability status
-    api_status = fetcher.check_api_availability()
-    
-    # Store source data
-    sources = {
-        'news': [],
-        'twitter': [],
-        'web': []
-    }
-    
-    # 1. Get news articles for main topic and subtopics
-    news_articles = fetcher.fetch_news_articles(topic, days_back)
-    sources['news'].extend(news_articles)
-    
-    for subtopic in subtopics:
-        # Get fewer articles for each subtopic to avoid overwhelming
-        subtopic_articles = fetcher.fetch_news_articles(f"{topic} {subtopic}", days_back, limit=3)
-        sources['news'].extend(subtopic_articles)
-    
-    # 2. Get twitter data
-    twitter_posts = fetcher.fetch_twitter_posts(topic, days_back)
-    sources['twitter'].extend(twitter_posts)
-    
-    # 3. Web scraping
-    web_content = fetcher.web_scrape_for_topic(topic)
-    sources['web'].extend(web_content)
-    
-    # Keywords and topics data
-    keyword_data = {
-        'main_topic': topic,
-        'main_topic_keywords': [],
-        'subtopics': subtopics,
-        'subtopic_keywords': {}
-    }
-    
-    # 4. First try to get real country data from Google Trends
-    global_data = fetcher.get_country_interest_data(topic)
-    
-    # 5. Try to get real historical data from Google Trends
-    historical_data = fetcher.fetch_google_trends_data(topic)
-    
-    # 6. Compile all source texts for sentiment analysis
-    from .openai_client import analyze_sentiment
-    
-    all_source_texts = []
-    
-    # Add news article titles and content
-    for article in sources['news']:
-        all_source_texts.append(article.get('title', '') + ': ' + article.get('content', '')[:500])
-    
-    # Add tweet texts
-    for tweet in sources['twitter']:
-        all_source_texts.append(tweet.get('text', ''))
-    
-    # Add web content
-    for content in sources['web']:
-        all_source_texts.append(content.get('title', '') + ': ' + content.get('content', '')[:500])
-    
-    # Overall sentiment from all sources
-    combined_text = '\n\n'.join(all_source_texts)
-    sentiment_result = None
-    
-    if combined_text and len(combined_text) > 100:
-        try:
-            sentiment_result = analyze_sentiment(combined_text)
-            print(f"Generated sentiment for '{topic}': {sentiment_result.get('sentiment', 'neutral')}")
-        except Exception as e:
-            print(f"Error analyzing sentiment: {e}")
-    
-    # 7. If we don't have real global data, generate it with OpenAI
-    if not global_data or not global_data.get('countries'):
-        from .sentiment_generator import generate_country_sentiment
-        
-        try:
-            print(f"No Google Trends geographic data available, generating sentiment data for '{topic}'")
-            country_data = generate_country_sentiment(topic)
-            
-            # If we have a global sentiment from text sources, apply it
-            if sentiment_result:
-                sentiment_label = sentiment_result.get('sentiment', 'neutral')
-                # Adjust some countries to match overall sentiment to make it realistic
-                for i, country in enumerate(country_data):
-                    if i % 3 == 0:  # Modify every third country to match overall sentiment
-                        country['sentiment'] = sentiment_label
-            
-            global_data = {
-                'countries': country_data,
-                'query': topic,
-                'timestamp': datetime.now().isoformat()
-            }
-            print(f"Generated data for {len(country_data)} countries")
-        except Exception as e:
-            print(f"Error generating country sentiment: {e}")
-            global_data = {'countries': [], 'query': topic}
-    
-    # 8. If we don't have keyword data, generate it with OpenAI
-    if (not historical_data.get('keyword_data') or 
-            not historical_data.get('keyword_data', {}).get('main_topic_keywords')):
-        from .sentiment_generator import generate_topic_keywords
-        
-        try:
-            print(f"No keyword data available from Google Trends, generating keywords for '{topic}'")
-            keyword_data = generate_topic_keywords(topic)
-            
-            # Add keyword data to historical_data
-            if 'keyword_data' not in historical_data:
-                historical_data['keyword_data'] = {}
-            
-            historical_data['keyword_data'] = keyword_data
-            print(f"Generated {len(keyword_data.get('main_topic_keywords', []))} keywords")
-        except Exception as e:
-            print(f"Error generating topic keywords: {e}")
-    
-    # 9. If we don't have time series data, generate it with OpenAI
-    if not historical_data.get('time_data') or len(historical_data.get('time_data', [])) == 0:
-        from .sentiment_generator import generate_time_series_data
-        
-        try:
-            print(f"No time series data available from Google Trends, generating for '{topic}'")
-            time_data = generate_time_series_data(topic)
-            historical_data['time_data'] = time_data
-            print(f"Generated {len(time_data)} time data points")
-        except Exception as e:
-            print(f"Error generating time series data: {e}")
-            
-    # Update the keyword_data with topics from historical_data if available
-    if historical_data.get('keyword_data') and historical_data['keyword_data'].get('main_topic_keywords'):
-        keyword_data = historical_data['keyword_data']
-    
-    # Return all the collected data
-    return {
+    # Initialize result dictionary
+    result = {
         'api_status': api_status,
-        'sources': sources,
-        'keyword_data': keyword_data,
-        'global_data': global_data,
-        'historical_data': historical_data
+        'query': topic,
+        'timestamp': datetime.now().isoformat(),
+        'global_data': {},
+        'historical_data': [],
+        'keyword_data': {},
+        'sources': {'news': [], 'twitter': [], 'reddit': [], 'web': []}
     }
+    
+    # Clean and normalize the topic
+    cleaned_topic = topic.strip()
+    
+    # For short queries, try to determine if this is a person, event, or brand
+    # and expand the query to improve search results
+    expanded_query = cleaned_topic
+    if len(cleaned_topic.split()) <= 3:
+        try:
+            # Use OpenAI to expand the query appropriately based on what it is
+            openai_api_key = os.environ.get("OPENAI_API_KEY")
+            if openai_api_key:
+                client = OpenAI(api_key=openai_api_key)
+                
+                response = client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[
+                        {"role": "system", "content": "You are a search expert who improves search queries."},
+                        {"role": "user", "content": f"""
+                        The query is: "{cleaned_topic}"
+                        
+                        First, identify what this refers to (person, music artist, athlete, event, movie, etc.).
+                        Then, create an expanded search query that would yield better results.
+                        
+                        For example:
+                        - If it's "Swamp Izzo", return "Swamp Izzo Atlanta DJ producer Drake"
+                        - If it's "LeBron", return "LeBron James basketball Lakers NBA"
+                        
+                        Return ONLY the expanded query with no additional text or explanation.
+                        """}
+                    ]
+                )
+                
+                expanded_query = response.choices[0].message.content.strip().strip('"')
+                print(f"Expanded query: {expanded_query}")
+        except Exception as e:
+            print(f"Error expanding query: {e}")
+    
+    # Process subtopics
+    if subtopics and isinstance(subtopics, list):
+        filtered_subtopics = [s for s in subtopics if s and len(s.strip()) > 0]
+    else:
+        filtered_subtopics = []
+    
+    # 1. Fetch news articles
+    try:
+        news_articles = data_fetcher.fetch_news_articles(expanded_query, days_back=min(days_back, 30), limit=8)
+        result['sources']['news'] = news_articles
+        
+        # If we don't have enough news articles and the query was expanded, try with original
+        if len(news_articles) < 3 and expanded_query != cleaned_topic:
+            additional_articles = data_fetcher.fetch_news_articles(cleaned_topic, days_back=min(days_back, 30), limit=5)
+            result['sources']['news'].extend(additional_articles)
+    except Exception as e:
+        print(f"Error fetching news articles: {e}")
+    
+    # 2. Fetch Twitter/X posts
+    try:
+        twitter_posts = data_fetcher.fetch_twitter_posts(expanded_query, days_back=min(days_back, 7), limit=8)
+        result['sources']['twitter'] = twitter_posts
+    except Exception as e:
+        print(f"Error fetching Twitter posts: {e}")
+    
+    # 3. Web scrape for additional content
+    try:
+        web_content = data_fetcher.web_scrape_for_topic(expanded_query, num_results=8)
+        result['sources']['web'] = web_content
+        
+        # Also try scraping specifically for recent content
+        recent_content = data_fetcher.web_scrape_for_topic(f"{expanded_query} recent news 2024", num_results=4)
+        # Add if not already included
+        existing_urls = [item.get('url', '') for item in result['sources']['web']]
+        for item in recent_content:
+            if item.get('url', '') not in existing_urls:
+                result['sources']['web'].append(item)
+    except Exception as e:
+        print(f"Error web scraping: {e}")
+    
+    # 4. Try to get Google Trends data
+    try:
+        # Geographic data
+        country_data = data_fetcher.get_country_interest_data(cleaned_topic)
+        if not country_data or len(country_data.get('countries', [])) < 5:
+            # If we don't get enough real data, generate it
+            from .sentiment_generator import generate_country_sentiment
+            generated_countries = generate_country_sentiment(topic)
+            result['global_data'] = {'countries': generated_countries, 'source': 'generated', 'query': topic}
+        else:
+            result['global_data'] = country_data
+        
+        # Historical data
+        trends_data = data_fetcher.fetch_google_trends_data(cleaned_topic, timeframe='today 12-m')
+        if trends_data and 'time_data' in trends_data and trends_data['time_data'] is not None:
+            # Smooth and enhance the time series data
+            time_data = trends_data['time_data']
+            
+            # Ensure it's sorted
+            if 'date' in time_data.columns:
+                time_data = time_data.sort_values('date')
+            
+            # Convert to the format used by visualizations
+            result['historical_data'] = time_data.to_dict('records')
+        else:
+            # Generate synthetic data
+            from .sentiment_generator import generate_time_series_data
+            result['historical_data'] = generate_time_series_data(topic, days=365)
+            
+        # Keyword data
+        keyword_data = data_fetcher.fetch_related_queries(cleaned_topic)
+        if not keyword_data or len(keyword_data.get('main_topic_keywords', [])) < 5:
+            # Generate keyword data if we don't have enough
+            from .sentiment_generator import generate_topic_keywords
+            result['keyword_data'] = generate_topic_keywords(topic)
+        else:
+            result['keyword_data'] = keyword_data
+            
+    except Exception as e:
+        print(f"Error getting Google Trends data: {e}")
+        
+        # Generate synthetic data for visualizations if real data failed
+        # This ensures the UI always has something to display
+        from .sentiment_generator import generate_country_sentiment, generate_time_series_data, generate_topic_keywords
+        
+        try:
+            result['global_data'] = {'countries': generate_country_sentiment(topic), 'source': 'generated', 'query': topic}
+            result['historical_data'] = generate_time_series_data(topic, days=365)
+            result['keyword_data'] = generate_topic_keywords(topic)
+        except Exception as e2:
+            print(f"Error generating fallback data: {e2}")
+    
+    # Enhance data with OpenAI analysis for more context awareness
+    try:
+        # If we have real data to analyze from sources
+        if (len(result['sources']['news']) > 0 or len(result['sources']['web']) > 0 or 
+            len(result['sources']['twitter']) > 0):
+            
+            # Collect all source text for analysis
+            source_texts = []
+            
+            # Add news headlines and snippets
+            for article in result['sources']['news'][:3]:
+                source_texts.append(f"News: {article.get('title', '')} - {article.get('content', '')[:100]}")
+            
+            # Add web content snippets
+            for content in result['sources']['web'][:3]:
+                source_texts.append(f"Web: {content.get('title', '')} - {content.get('content', '')[:100]}")
+            
+            # Add Twitter posts
+            for post in result['sources']['twitter'][:3]:
+                source_texts.append(f"Social: {post.get('text', '')}")
+            
+            # Use OpenAI to analyze and enhance the data
+            openai_api_key = os.environ.get("OPENAI_API_KEY")
+            if openai_api_key and source_texts:
+                client = OpenAI(api_key=openai_api_key)
+                
+                # Create a prompt for analysis
+                prompt = f"""
+                Analyze these online sources about "{topic}":
+                
+                {source_texts[:10]}
+                
+                Provide enhanced metadata in JSON format:
+                {{
+                    "topic_type": "specify if this is a person, event, brand, concept, etc.",
+                    "category": "music, sports, politics, technology, etc.",
+                    "sentiment_summary": "overall sentiment from sources (positive/neutral/negative)",
+                    "trending_status": "is this currently trending? (yes/no)",
+                    "key_entities": ["list 2-3 related entities"],
+                    "related_topics": ["list 2-3 related topics"],
+                    "temporal_context": "is this about something recent, historical, or ongoing"
+                }}
+                """
+                
+                # Call OpenAI
+                response = client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[
+                        {"role": "system", "content": "You analyze online data sources to provide metadata enrichment."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+                
+                # Parse the response
+                enhanced_data = json.loads(response.choices[0].message.content)
+                
+                # Add to result
+                result['enhanced_metadata'] = enhanced_data
+                
+                # Use this to improve sentiment data
+                if 'sentiment_summary' in enhanced_data:
+                    # Apply the sentiment to countries without sentiment
+                    for country in result['global_data'].get('countries', []):
+                        if 'sentiment' not in country or country['sentiment'] == 'neutral':
+                            country['sentiment'] = enhanced_data['sentiment_summary']
+    except Exception as e:
+        print(f"Error enhancing data with OpenAI: {e}")
+    
+    return result

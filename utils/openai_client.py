@@ -1,16 +1,13 @@
 """
 Module for interacting with OpenAI models for sentiment analysis.
 """
-import os
 import json
 from datetime import datetime
-
-# Import OpenAI client
 from openai import OpenAI
+from .config import config
 
-# Get the API key from environment variables
-api_key = os.environ.get("OPENAI_API_KEY")
-client = OpenAI(api_key=api_key)
+# Initialize OpenAI client with API key from config
+client = OpenAI(api_key=config['openai_api_key'])
 
 # Important note: the newest OpenAI model is "gpt-4o" which was released May 13, 2024.
 # Do not change this unless explicitly requested by the user.
@@ -77,7 +74,8 @@ def determine_input_type(content):
 
 def perform_detailed_analysis(content, input_type_info):
     """
-    Use GPT-4o with internet browsing capabilities for real-time, up-to-date information.
+    Use GPT-4o with enhanced prompting for real-time, up-to-date information,
+    particularly for pop culture, current events, and trending topics.
     
     Args:
         content (str): The content to analyze
@@ -97,31 +95,42 @@ def perform_detailed_analysis(content, input_type_info):
     try:
         # Create the system prompt based on content type
         system_prompt = f"""
-        You are an expert analyst specializing in {subject} content with access to the latest information on the web.
-        You have the ability to search the web for up-to-date information about recent events, trends, and real-time data.
+        You are an expert analyst specializing in {subject} content with comprehensive, up-to-date knowledge.
+        You excel at analyzing content related to pop culture, music, entertainment, sports, politics, 
+        technology, and current events. 
         
+        Your strengths include:
+        1. Recognizing recent celebrities, artists, athletes, and public figures
+        2. Understanding slang, internet culture, and trending topics
+        3. Being aware of recent album releases, movies, sports events, and viral content
+        4. Keeping track of global news events and developments
+
         Your analysis should include:
-        1. A comprehensive summary (2-3 paragraphs) including the latest developments
-        2. Main themes, arguments, or points presented
-        3. Key entities mentioned (people, organizations, products, etc.)
-        4. Temporal context with current, real-time information 
-        5. Geographic/regional focus with attention to recent regional developments
-        6. Overall sentiment and emotional tone in the current discourse
-        7. Significant facts, statistics or data points from the latest available sources
-        
-        Focus on objectivity, factual accuracy, and comprehensive coverage of the content.
-        ALWAYS include the date of your analysis and mention the recency of the information.
+        1. A comprehensive summary (2-3 paragraphs) including latest developments
+        2. Proper identification of people, places, and entities (especially newer/trending ones)
+        3. Cultural context, especially for pop culture, music, sports, and entertainment
+        4. Temporal context with up-to-date information
+        5. Geographic/regional relevance
+        6. Overall sentiment and emotional tone
+
+        IMPORTANT: If the topic appears to be about a person, brand, event, or cultural reference:
+        - Explicitly identify if it's related to music, sports, entertainment, politics, etc.
+        - Provide context about who they are or what it refers to
+        - Mention recency (e.g., "recently released album", "viral trend from May 2024", etc.)
         """
         
-        # Enhanced web search capabilities for all content, especially short queries
+        # Enhanced capabilities for search queries
         if is_query:
             system_prompt += """
-            This is a search query. Your task is to:
-            1. Search the web for the latest information on this topic
-            2. Focus on real-time data and current events related to this query
-            3. Include timestamps or publication dates of your sources when available
-            4. Gather diverse perspectives from multiple reliable sources
-            5. Synthesize this information into a comprehensive, up-to-date analysis
+            This appears to be a search query or short topic reference. Your priorities are:
+            1. Correctly identify what/who this query refers to (especially if it's a person, event, or cultural reference)
+            2. Provide context about its significance and category (music, sports, politics, entertainment, etc.)
+            3. Determine if this is a trending or recent topic and provide temporal context
+            4. If this could refer to multiple things, acknowledge the ambiguity and address the most likely/recent reference first
+            5. For music artists, athletes, celebrities, mention their most recent notable works or achievements
+            
+            Example analysis for "Swamp Izzo":
+            "Swamp Izzo is an Atlanta-based music producer and DJ who gained significant attention in 2024 for his work with Drake on the album 'For All The Dogs'. He's known for his trap production style and has worked with other notable hip-hop artists including Future and 21 Savage. The query likely refers to his recent production credits or his growing prominence in the hip-hop industry."
             """
         
         # User prompt
@@ -130,9 +139,11 @@ def perform_detailed_analysis(content, input_type_info):
         
         {truncated_content}
         
-        Please provide your detailed analysis focusing on the aspects mentioned in your instructions.
-        Include the current date in your analysis and specify how recent your information is.
-        If this topic involves current events, make sure to include the latest developments.
+        Please provide your detailed analysis with special attention to correctly identifying any people, 
+        brands, events, or cultural references. If this is related to pop culture, music, sports, or 
+        entertainment, be sure to provide specific context about who/what it refers to and its relevance.
+        
+        Current date: {datetime.now().strftime("%B %d, %Y")}
         """
         
         # Always use GPT-4o with its up-to-date knowledge
@@ -165,7 +176,7 @@ def perform_detailed_analysis(content, input_type_info):
 def analyze_sentiment(detailed_analysis):
     """
     Use GPT-4o to analyze sentiment from the detailed analysis with enhanced
-    real-time web search capabilities for current context.
+    understanding of context, nuance, and cultural/temporal factors.
     
     Args:
         detailed_analysis (str): The detailed analysis to evaluate
@@ -174,49 +185,66 @@ def analyze_sentiment(detailed_analysis):
         dict: A dictionary containing sentiment analysis results
     """
     try:
-        # Create the system prompt with strong emphasis on current information
+        # Create the system prompt with strong emphasis on contextual understanding
         system_prompt = """
-        You are an expert sentiment analyst with access to the latest information from across the web.
-        Your task is to determine sentiment, emotional tone, and key factors contributing to that sentiment.
+        You are an expert sentiment analyst with exceptional understanding of context and nuance.
+        Your goal is to accurately determine sentiment while considering cultural, temporal, and
+        subject-specific factors that might influence how sentiment should be interpreted.
         
-        Your analysis should:
-        1. Consider the real-time context of topics mentioned in the text
-        2. Use your knowledge of current events, market conditions, and public discourse
-        3. Consider cultural and regional context that might affect sentiment
-        4. Be objective, factual, and comprehensive in your assessment
-        5. Identify sentiment trends (improving, worsening, fluctuating) when relevant
+        Your analysis must:
+        1. Consider cultural context - what might be positive in one culture could be negative in another
+        2. Consider temporal context - current events, recent developments that influence sentiment
+        3. Consider domain-specific context - different expectations in finance vs entertainment vs politics
+        4. Identify sentiment trends with concrete justification (improving, worsening, fluctuating)
+        5. Recognize ambiguity and mixed sentiment - not everything is simply positive or negative
+        6. Provide a confidence score that honestly reflects uncertainty when present
         
-        If the text mentions events, people, or topics that may have had recent developments,
-        consider how those developments might affect the overall sentiment.
+        For trending topics, celebrities, or current events:
+        - Recognize that sentiment around public figures can be complex and multifaceted
+        - Consider both public perception and factual achievements/controversies
+        - Distinguish between artistic/professional evaluation and personal controversies
+        - Provide nuanced rationale that acknowledges complexity
+        
+        Your sentiment assessment should be highly accurate, culturally informed, and contextually appropriate.
         """
         
         # User prompt
         user_prompt = f"""
-        Analyze the sentiment of the following text, considering the most current context:
+        Analyze the sentiment of the following text with careful attention to cultural, temporal and domain-specific context:
         
         {detailed_analysis}
         
-        Provide a detailed sentiment analysis in JSON format with the following structure:
+        Provide your sentiment analysis in JSON format with the following structure:
         {{
-            "sentiment": "positive" or "negative" or "neutral",
+            "sentiment": "positive" or "negative" or "neutral" or "mixed",
             "score": a numeric score from -1.0 (very negative) to 1.0 (very positive),
             "confidence": a value from 0.0 to 1.0 indicating your confidence in this assessment,
             "rationale": a detailed explanation of the key factors contributing to this sentiment assessment,
-            "current_context": a brief note about how recent events might be affecting this sentiment,
-            "sentiment_trend": "improving", "worsening", "stable", or "fluctuating"
+            "current_context": a specific note about how recent events or cultural context affects this sentiment,
+            "sentiment_trend": "improving", "worsening", "stable", or "fluctuating",
+            "sentiment_factors": [
+                {{
+                    "factor": "name of sentiment factor", 
+                    "impact": "positive" or "negative" or "neutral",
+                    "weight": a value from 0.0 to 1.0 indicating the relative importance
+                }}
+            ]
         }}
         
-        Be sure to consider the most recent information available about the topics mentioned.
+        Be sure to provide a nuanced assessment that acknowledges complexity when present.
+        For topics related to people, events, or cultural references, consider both general perception
+        and specific recent developments that might influence sentiment.
         """
         
-        # Call the OpenAI API
+        # Call the OpenAI API with very high temperature for more nuanced analysis
         response = client.chat.completions.create(
-            model="gpt-4o",  # GPT-4o works well for refined sentiment analysis with context
+            model="gpt-4o",  # GPT-4o has the most current knowledge
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
-            response_format={"type": "json_object"}
+            response_format={"type": "json_object"},
+            temperature=0.3  # Slightly increased temperature for more nuanced analysis
         )
         
         # Parse the response
@@ -227,6 +255,8 @@ def analyze_sentiment(detailed_analysis):
             result["current_context"] = ""
         if "sentiment_trend" not in result:
             result["sentiment_trend"] = "stable"
+        if "sentiment_factors" not in result:
+            result["sentiment_factors"] = []
             
         return result
     
@@ -239,75 +269,100 @@ def analyze_sentiment(detailed_analysis):
             "confidence": 0.5,
             "rationale": f"Unable to determine sentiment due to an error: {str(e)}",
             "current_context": "",
-            "sentiment_trend": "stable"
+            "sentiment_trend": "stable",
+            "sentiment_factors": []
         }
 
 def extract_metadata(detailed_analysis):
     """
-    Use GPT-4o for comprehensive metadata extraction with special attention to
-    temporal aspects and current events.
+    Use GPT-4o for comprehensive metadata extraction with enhanced attention to
+    current events, pop culture, trending topics, and temporal relevance.
     
     Args:
-        detailed_analysis (str): The detailed analysis to extract metadata from
+        detailed_analysis (str): The detailed analysis to evaluate
         
     Returns:
-        dict: A dictionary containing detailed metadata
+        dict: A dictionary containing extracted metadata
     """
     try:
-        # Create the system prompt with enhanced temporal awareness
+        # Create the system prompt
         system_prompt = """
-        You are an expert metadata tagger with special focus on temporal context and current events.
-        Your task is to extract structured information from text to categorize and organize content.
-        Pay special attention to:
+        You are an expert metadata extractor with deep knowledge of current events, trending topics,
+        pop culture, entertainment, sports, politics, finance and technology.
         
-        1. Identifying if the content relates to current events or news
-        2. Capturing precise time periods including dates when mentioned
-        3. Properly identifying regions and locations with high geographic specificity
-        4. Recognizing entities (people, organizations) with their current roles or relevance
-        5. Distinguishing between primary topics and emerging or trending subtopics
+        Your task is to extract comprehensive, accurate metadata from text with special attention to:
+        1. Correctly identifying people, especially current celebrities, artists, athletes, and public figures
+        2. Identifying trending topics and cultural phenomena
+        3. Recognizing references to recent events, releases, or publications
+        4. Accurately categorizing subject matter
+        5. Extracting geographic and temporal information
         
-        Focus on accuracy, comprehensiveness, and structured tagging that reflects
-        the current information landscape.
+        When extracting metadata about trending topics, celebrities, entertainment, or current events:
+        - Ensure you have the correct category (music, sports, film, politics, etc.)
+        - Provide specific details rather than general categories
+        - For people, include their profession/role and recent notable works/events
+        - For events, include temporal context (when it occurred/is occurring)
+        - For creative works, include creators and release information
+        
+        Maintain high accuracy and specificity in your metadata extraction.
         """
         
-        # User prompt with expanded metadata schema
+        # User prompt
         user_prompt = f"""
-        Extract detailed metadata from the following analysis:
+        Extract comprehensive metadata from the following text:
         
         {detailed_analysis}
         
-        Return a JSON object with the following structure:
+        Return the metadata in JSON format with the following structure:
         {{
-            "topics": [list of main topics covered],
-            "regions": [geographic regions mentioned or relevant],
-            "entities": [key people, companies, organizations mentioned],
-            "commodities": [products, services, or resources mentioned],
-            "temporal_details": {{
-                "time_period": [relevant time periods mentioned],
-                "specific_dates": [specific dates mentioned, in ISO format when possible],
-                "recency": "historical" or "current" or "future",
-                "currency": a value from 0.0 to 1.0 indicating how current/up-to-date the information is
-            }},
+            "topics": list of main topics discussed,
             "topic_details": {{
-                "main_topics": [primary topics, max 3],
-                "subtopics": [secondary topics, max 5],
-                "trending_topics": [topics that appear to be currently trending or emerging]
+                "main_topics": list of primary topics,
+                "subtopics": list of related subtopics,
+                "trending_topics": list of topics currently trending (if any),
+                "category": primary category of the content (e.g., "politics", "entertainment", "sports", "technology", "finance", "pop culture")
+            }},
+            "entities": list of key entities (people, organizations, brands, products),
+            "entity_details": {{
+                "people": [
+                    {{
+                        "name": "Person's name",
+                        "role": "Their profession/role",
+                        "relevance": "Why they're mentioned",
+                        "recent_works": "Any recent notable works/events" (if applicable)
+                    }}
+                ],
+                "organizations": list of organizations with details,
+                "brands": list of brands with details,
+                "products": list of products with details
+            }},
+            "regions": list of geographic regions mentioned,
+            "region_details": {{
+                "countries": list of countries,
+                "cities": list of cities,
+                "regions": list of regions
+            }},
+            "temporal_details": {{
+                "time_period": general time frame referenced,
+                "specific_dates": list of specific dates mentioned,
+                "recency": "historical", "recent", "current", or "future"
             }},
             "event_context": {{
                 "is_current_event": true/false,
-                "event_timeline": [brief timeline of key events if applicable],
-                "key_developments": [important recent developments related to the topics]
-            }}
+                "event_type": type of event (if applicable),
+                "key_developments": list of key developments,
+                "event_timeline": timeline of events (if applicable)
+            }},
+            "commodities": list of commodities or products mentioned
         }}
         
-        Each list should contain 3-7 items, prioritizing the most significant ones.
-        For currency values, 1.0 means completely current (today/this week),
-        while lower values indicate older or historical information.
+        Be as comprehensive and accurate as possible, but do not invent details that aren't clearly indicated in the text.
+        For pop culture, entertainment, and trending topics, ensure you provide specific details rather than general categories.
         """
         
         # Call the OpenAI API
         response = client.chat.completions.create(
-            model="gpt-4o",  # Using GPT-4o for its better understanding of current events
+            model="gpt-4o",  # Using GPT-4o for most up-to-date context awareness
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
@@ -318,59 +373,53 @@ def extract_metadata(detailed_analysis):
         # Parse the response
         result = json.loads(response.choices[0].message.content)
         
-        # Ensure all expected fields are present
-        if "temporal_details" not in result:
-            result["temporal_details"] = {
-                "time_period": ["present"],
-                "specific_dates": [],
-                "recency": "current",
-                "currency": 0.8
-            }
-        elif "specific_dates" not in result["temporal_details"]:
-            result["temporal_details"]["specific_dates"] = []
-        elif "currency" not in result["temporal_details"]:
-            result["temporal_details"]["currency"] = 0.8
-            
-        if "event_context" not in result:
-            result["event_context"] = {
-                "is_current_event": False,
-                "event_timeline": [],
-                "key_developments": []
-            }
-            
-        if "topic_details" not in result:
-            result["topic_details"] = {
-                "main_topics": ["general"],
-                "subtopics": [],
-                "trending_topics": []
-            }
-        elif "trending_topics" not in result["topic_details"]:
-            result["topic_details"]["trending_topics"] = []
-            
+        # Make sure all expected top-level keys are present
+        expected_keys = ["topics", "topic_details", "entities", "entity_details", "regions", 
+                         "region_details", "temporal_details", "event_context", "commodities"]
+        
+        for key in expected_keys:
+            if key not in result:
+                if key in ["topics", "entities", "regions", "commodities"]:
+                    result[key] = []
+                else:
+                    result[key] = {}
+        
         return result
     
     except Exception as e:
         # Return a fallback if there's an error
         print(f"Error extracting metadata: {e}")
         return {
-            "topics": ["general"],
-            "regions": [],
+            "topics": [],
+            "topic_details": {
+                "main_topics": [],
+                "subtopics": [],
+                "trending_topics": [],
+                "category": "general"
+            },
             "entities": [],
-            "commodities": [],
+            "entity_details": {
+                "people": [],
+                "organizations": [],
+                "brands": [],
+                "products": []
+            },
+            "regions": [],
+            "region_details": {
+                "countries": [],
+                "cities": [],
+                "regions": []
+            },
             "temporal_details": {
                 "time_period": ["present"],
                 "specific_dates": [],
-                "recency": "current",
-                "currency": 0.5
-            },
-            "topic_details": {
-                "main_topics": ["general"],
-                "subtopics": [],
-                "trending_topics": []
+                "recency": "current"
             },
             "event_context": {
                 "is_current_event": False,
-                "event_timeline": [],
-                "key_developments": []
-            }
+                "event_type": "",
+                "key_developments": [],
+                "event_timeline": []
+            },
+            "commodities": []
         }
