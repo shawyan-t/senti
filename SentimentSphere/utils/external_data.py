@@ -70,302 +70,61 @@ class ExternalDataFetcher:
     
     def fetch_news_articles(self, query, days_back=7, limit=10):
         """
-        Fetch news articles with enhanced fact-checking and real-time verification.
+        Fetch news articles related to a query using NewsAPI.
+        
+        Args:
+            query (str): Search query
+            days_back (int): How many days back to search
+            limit (int): Maximum number of articles to return
+            
+        Returns:
+            list: List of dictionaries with article data or empty list if API not available
         """
         if not self.news_api_available:
             print("NewsAPI key not available. Cannot fetch news articles.")
             return []
-        
+            
         try:
-            # Get current date and date from days_back
-            end_date = datetime.now()
-            start_date = end_date - timedelta(days=days_back)
+            # Ensure we don't go back too far (NewsAPI free tier limit)
+            # Set from_date to 30 days ago or today minus days_back, whichever is more recent
+            max_days_back = min(days_back, 30)  # Limit to 30 days in the past
+            from_date = (datetime.now() - timedelta(days=max_days_back)).strftime('%Y-%m-%d')
             
-            # Format dates for NewsAPI
-            from_date = start_date.strftime('%Y-%m-%d')
-            to_date = end_date.strftime('%Y-%m-%d')
-            
-            # Fetch articles
-            url = 'https://newsapi.org/v2/everything'
+            # Use properly formatted parameters for better URL encoding of the query
             params = {
                 'q': query,
                 'from': from_date,
-                'to': to_date,
-                'sortBy': 'publishedAt',
+                'sortBy': 'relevancy',
+                'apiKey': NEWS_API_KEY,
                 'language': 'en',
-                'pageSize': limit,
-                'apiKey': NEWS_API_KEY
+                'pageSize': limit
             }
-            
+            url = "https://newsapi.org/v2/everything"
             response = requests.get(url, params=params)
-            data = response.json()
             
-            if response.status_code != 200:
-                print(f"Error fetching news: {data.get('message', 'Unknown error')}")
-                return []
-            
-            articles = data.get('articles', [])
-            
-            # Enhance articles with fact-checking
-            enhanced_articles = []
-            for article in articles:
-                # Add fact-checking metadata
-                article['fact_checked'] = self._fact_check_article(article)
-                article['current_relevance'] = self._assess_current_relevance(article)
-                article['verification_status'] = self._verify_article_sources(article)
+            if response.status_code == 200:
+                data = response.json()
+                articles = data.get('articles', [])
                 
-                enhanced_articles.append(article)
-            
-            return enhanced_articles
-            
-        except Exception as e:
-            print(f"Error fetching news articles: {str(e)}")
-            return []
-    
-    def _fact_check_article(self, article):
-        """
-        Perform fact-checking on an article's claims.
-        """
-        try:
-            # Extract key claims from the article
-            claims = self._extract_claims(article['content'])
-            
-            # Verify each claim
-            verified_claims = []
-            for claim in claims:
-                verification = self._verify_claim(claim, article['url'])
-                if verification['confidence'] < 0.7:  # Only include low-confidence claims
-                    verified_claims.append(verification)
-            
-            return {
-                'timestamp': datetime.now().isoformat(),
-                'claims_checked': len(claims),
-                'low_confidence_claims': verified_claims,
-                'overall_confidence': 1 - (len(verified_claims) / max(1, len(claims)))
-            }
-        except Exception as e:
-            print(f"Error in fact-checking: {str(e)}")
-            return {
-                'timestamp': datetime.now().isoformat(),
-                'error': str(e)
-            }
-    
-    def _assess_current_relevance(self, article):
-        """
-        Assess how current and relevant the article's information is.
-        """
-        try:
-            # Calculate time difference
-            published_date = datetime.fromisoformat(article['publishedAt'].replace('Z', '+00:00'))
-            time_diff = datetime.now() - published_date
-            
-            # Check if the article mentions recent events
-            recent_events = self._check_recent_events(article['content'])
-            
-            return {
-                'age_hours': time_diff.total_seconds() / 3600,
-                'recent_events_mentioned': recent_events,
-                'current_relevance_score': self._calculate_relevance_score(time_diff, recent_events)
-            }
-        except Exception as e:
-            print(f"Error assessing relevance: {str(e)}")
-            return {
-                'error': str(e)
-            }
-    
-    def _verify_article_sources(self, article):
-        """
-        Verify the credibility of the article's sources.
-        """
-        try:
-            # Check source credibility
-            source_credibility = self._check_source_credibility(article['source']['name'])
-            
-            # Verify external links
-            external_links = self._extract_external_links(article['content'])
-            verified_links = [self._verify_link(link) for link in external_links]
-            
-            return {
-                'source_credibility': source_credibility,
-                'external_links': verified_links,
-                'overall_verification_score': self._calculate_verification_score(source_credibility, verified_links)
-            }
-        except Exception as e:
-            print(f"Error verifying sources: {str(e)}")
-            return {
-                'error': str(e)
-            }
-    
-    def _extract_claims(self, content):
-        """
-        Extract key claims from article content.
-        """
-        # Use regex to identify potential claims
-        claim_patterns = [
-            r'[A-Z][^.!?]*\b(is|are|was|were|has|have|had)\b[^.!?]*[.!?]',
-            r'[A-Z][^.!?]*\b(announced|reported|confirmed|stated)\b[^.!?]*[.!?]',
-            r'[A-Z][^.!?]*\b(according to|based on|as reported by)\b[^.!?]*[.!?]'
-        ]
-        
-        claims = []
-        for pattern in claim_patterns:
-            matches = re.findall(pattern, content)
-            claims.extend(matches)
-        
-        return list(set(claims))  # Remove duplicates
-    
-    def _verify_claim(self, claim, source_url):
-        """
-        Verify a specific claim against known facts and current events.
-        """
-        try:
-            # Use OpenAI to fact-check the claim
-            client = OpenAI(api_key=config['openai_api_key'])
-            
-            prompt = f"""
-            Fact-check the following claim from {source_url}:
-            "{claim}"
-            
-            Consider:
-            1. Current events and recent developments
-            2. Known facts and established information
-            3. The credibility of the source
-            4. Any recent changes or updates to the situation
-            
-            Return a JSON object with:
-            {{
-                "claim": "the original claim",
-                "is_accurate": boolean,
-                "confidence": float between 0 and 1,
-                "correction": "corrected statement if inaccurate",
-                "evidence": ["list of sources or evidence"],
-                "timestamp": "verification timestamp"
-            }}
-            """
-            
-            response = client.chat.completions.create(
-                model="gpt-4-turbo-preview",
-                messages=[
-                    {"role": "system", "content": "You are a fact-checking assistant. Verify claims against current events and known facts."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.1,
-                max_tokens=1000
-            )
-            
-            return json.loads(response.choices[0].message.content)
-        except Exception as e:
-            print(f"Error verifying claim: {str(e)}")
-            return {
-                "claim": claim,
-                "is_accurate": False,
-                "confidence": 0.0,
-                "correction": None,
-                "evidence": [],
-                "timestamp": datetime.now().isoformat()
-            }
-    
-    def _check_recent_events(self, content):
-        """
-        Check if the content mentions recent events or developments.
-        """
-        try:
-            # Define time-related keywords
-            recent_keywords = [
-                'recently', 'latest', 'new', 'updated', 'current',
-                'as of', 'today', 'this week', 'this month'
-            ]
-            
-            # Check for recent event mentions
-            mentions = []
-            for keyword in recent_keywords:
-                if keyword.lower() in content.lower():
-                    # Extract context around the keyword
-                    start = max(0, content.lower().find(keyword.lower()) - 100)
-                    end = min(len(content), content.lower().find(keyword.lower()) + 100)
-                    context = content[start:end]
-                    mentions.append({
-                        'keyword': keyword,
-                        'context': context.strip()
+                processed_articles = []
+                for article in articles:
+                    processed_articles.append({
+                        'title': article.get('title', ''),
+                        'source': article.get('source', {}).get('name', 'Unknown'),
+                        'url': article.get('url', ''),
+                        'published_at': article.get('publishedAt', ''),
+                        'content': article.get('content', article.get('description', '')),
                     })
-            
-            return mentions
+                
+                return processed_articles
+            else:
+                print(f"Error fetching news articles: {response.status_code}")
+                print(response.text)
+                return []
+                
         except Exception as e:
-            print(f"Error checking recent events: {str(e)}")
+            print(f"Error fetching news articles: {e}")
             return []
-    
-    def _check_source_credibility(self, source_name):
-        """
-        Check the credibility of a news source.
-        """
-        # This is a simplified version - in production, you'd want to use a more
-        # comprehensive source credibility database
-        credible_sources = {
-            'reuters': 0.9,
-            'associated press': 0.9,
-            'bbc': 0.9,
-            'the new york times': 0.85,
-            'the washington post': 0.85,
-            'the guardian': 0.85,
-            'cnn': 0.8,
-            'npr': 0.8
-        }
-        
-        return credible_sources.get(source_name.lower(), 0.5)
-    
-    def _extract_external_links(self, content):
-        """
-        Extract external links from content.
-        """
-        # Simple regex to find URLs
-        url_pattern = r'https?://[^\s<>"]+|www\.[^\s<>"]+'
-        return re.findall(url_pattern, content)
-    
-    def _verify_link(self, link):
-        """
-        Verify if a link is active and relevant.
-        """
-        try:
-            response = requests.head(link, timeout=5)
-            return {
-                'url': link,
-                'status': response.status_code,
-                'is_active': response.status_code == 200,
-                'checked_at': datetime.now().isoformat()
-            }
-        except Exception as e:
-            return {
-                'url': link,
-                'status': 'error',
-                'is_active': False,
-                'error': str(e),
-                'checked_at': datetime.now().isoformat()
-            }
-    
-    def _calculate_relevance_score(self, time_diff, recent_events):
-        """
-        Calculate a relevance score based on article age and recent event mentions.
-        """
-        # Base score on time difference (exponential decay)
-        time_score = max(0, 1 - (time_diff.total_seconds() / (7 * 24 * 3600)))  # 7 days
-        
-        # Bonus for mentioning recent events
-        event_bonus = min(0.3, len(recent_events) * 0.1)
-        
-        return min(1.0, time_score + event_bonus)
-    
-    def _calculate_verification_score(self, source_credibility, verified_links):
-        """
-        Calculate an overall verification score.
-        """
-        # Base score on source credibility
-        base_score = source_credibility
-        
-        # Adjust based on external links
-        active_links = sum(1 for link in verified_links if link['is_active'])
-        link_score = min(0.3, active_links * 0.1)
-        
-        return min(1.0, base_score + link_score)
     
     def fetch_twitter_posts(self, query, days_back=7, limit=10):
         """
