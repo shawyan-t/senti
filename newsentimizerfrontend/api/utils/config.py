@@ -31,16 +31,9 @@ def load_config():
         load_dotenv(env_path)
         env_loaded = True
     
-    # Hardcode the OpenAI API key from the known .env file if not loaded from environment
-    openai_api_key = os.getenv('OPENAI_API_KEY')
-    if not openai_api_key:
-        openai_api_key = "enter api key here"
-        os.environ['OPENAI_API_KEY'] = openai_api_key
-        print("Using hardcoded OpenAI API key")
-    
     # Configuration dictionary
     config = {
-        'openai_api_key': openai_api_key,
+        'openai_api_key': os.getenv('OPENAI_API_KEY'),
         'twitter_api_key': os.getenv('TWITTER_API_KEY'),
         'twitter_api_secret': os.getenv('TWITTER_API_SECRET'),
         'news_api_key': os.getenv('NEWSAPI_KEY'),

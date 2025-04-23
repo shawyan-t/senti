@@ -178,7 +178,7 @@ class ExternalDataFetcher:
             print(f"Error fetching Twitter posts: {e}")
             return []
     
-    def web_scrape_for_topic(self, query, num_results=8):
+    def web_scrape_for_topic(self, query, num_results=10):
         """
         Enhanced web scraping for up-to-date content related to a topic.
         Prioritizes news sites and recent content.
@@ -544,7 +544,7 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
     
     # 1. Fetch news articles
     try:
-        news_articles = data_fetcher.fetch_news_articles(expanded_query, days_back=min(days_back, 30), limit=8)
+        news_articles = data_fetcher.fetch_news_articles(expanded_query, days_back=min(days_back, 30), limit=10)
         result['sources']['news'] = news_articles
         
         # If we don't have enough news articles and the query was expanded, try with original
@@ -556,14 +556,14 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
     
     # 2. Fetch Twitter/X posts
     try:
-        twitter_posts = data_fetcher.fetch_twitter_posts(expanded_query, days_back=min(days_back, 7), limit=8)
+        twitter_posts = data_fetcher.fetch_twitter_posts(expanded_query, days_back=min(days_back, 7), limit=10)
         result['sources']['twitter'] = twitter_posts
     except Exception as e:
         print(f"Error fetching Twitter posts: {e}")
     
     # 3. Web scrape for additional content
     try:
-        web_content = data_fetcher.web_scrape_for_topic(expanded_query, num_results=8)
+        web_content = data_fetcher.web_scrape_for_topic(expanded_query, num_results=10)
         result['sources']['web'] = web_content
         
         # Also try scraping specifically for recent content
@@ -1111,7 +1111,7 @@ def get_online_sentiment_with_search(topic, subtopics=None, days_back=30, use_se
                 word_counts = Counter(filtered_words)
                 
                 # Add top keywords
-                for word, count in word_counts.most_common(8):
+                for word, count in word_counts.most_common(10):
                     if word.lower() != topic.lower():  # Avoid the main topic itself
                         keyword_data['main_topic_keywords'].append({
                             'keyword': word,
