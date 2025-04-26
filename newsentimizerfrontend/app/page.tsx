@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import SentimizerTitle from "@/components/sentimizer-title"
 import { analyzeText, analyzeFile, getAnalyses, getAnalysis, Analysis } from "@/lib/api"
+import { VisualizationDashboard } from "@/components/visualization-dashboard"
 
 type AnalysisData = Record<string, any>
 
@@ -400,7 +401,7 @@ export default function Home() {
                   
                   {/* Metadata/Topics */}
                   {analysisResult.metadata && (
-                    <div>
+                    <div className="mb-8">
                       <h3 className="text-xl font-semibold text-emerald-300 mb-2">Topics & Metadata</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -454,6 +455,22 @@ export default function Home() {
                       </div>
                     </div>
                   )}
+
+                  {/* Visualization Dashboard */}
+                  <VisualizationDashboard 
+                    analysisData={{
+                      sentiment: analysisResult.sentiment,
+                      metadata: analysisResult.metadata,
+                      // The backend doesn't provide these yet, so they'll use mock data
+                      timeSeriesData: [],
+                      emotions: [],
+                      keywords: analysisResult.metadata?.topics?.map((topic, i) => ({
+                        keyword: topic,
+                        frequency: 100 - (i * 10),
+                        sentiment: analysisResult.sentiment?.sentiment as any || 'neutral'
+                      })) || []
+                    }}
+                  />
                 </motion.div>
               )}
 

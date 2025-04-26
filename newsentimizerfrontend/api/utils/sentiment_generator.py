@@ -319,3 +319,98 @@ def generate_time_series_data(topic, days=180):
     except Exception as e:
         print(f"Error generating time series data: {e}")
         return []
+
+def generate_emotion_analysis(text):
+    """
+    Generate an 8-dimensional emotion analysis for a given text.
+    Uses Plutchik's wheel of emotions: joy, trust, fear, surprise, sadness, disgust, anger, anticipation.
+    
+    Args:
+        text (str): The text to analyze
+        
+    Returns:
+        list: List of dictionaries with emotion data
+    """
+    try:
+        # Build prompt for OpenAI
+        prompt = f"""
+        Analyze the following text and provide an 8-dimensional emotion analysis based on Plutchik's wheel of emotions.
+        For each of the 8 core emotions (joy, trust, fear, surprise, sadness, disgust, anger, anticipation),
+        provide a score between 0.0 and 1.0 indicating the presence of that emotion in the text.
+        
+        The sum of all emotion scores should equal 1.0, representing the total emotional content of the text.
+        
+        Text to analyze:
+        "{text[:1000]}..." 
+        
+        Return your response in this JSON format:
+        {{
+            "emotions": [
+                {{
+                    "emotion": "Joy",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Trust",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Fear",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Surprise",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Sadness",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Disgust",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Anger",
+                    "score": 0.0-1.0
+                }},
+                {{
+                    "emotion": "Anticipation",
+                    "score": 0.0-1.0
+                }}
+            ],
+            "rationale": "Brief explanation of the emotional profile"
+        }}
+        """
+        
+        # Call OpenAI API
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": "You are an expert in psychological emotion analysis."},
+                {"role": "user", "content": prompt}
+            ],
+            response_format={"type": "json_object"}
+        )
+        
+        # Parse response
+        emotion_data = json.loads(response.choices[0].message.content)
+        
+        return emotion_data.get("emotions", [])
+    
+    except Exception as e:
+        print(f"Error generating emotion analysis: {e}")
+        
+        # Fallback: generate basic emotion data based on simple rules
+        fallback_emotions = [
+            {"emotion": "Joy", "score": 0.1},
+            {"emotion": "Trust", "score": 0.1},
+            {"emotion": "Fear", "score": 0.1},
+            {"emotion": "Surprise", "score": 0.1},
+            {"emotion": "Sadness", "score": 0.1},
+            {"emotion": "Disgust", "score": 0.1},
+            {"emotion": "Anger", "score": 0.1},
+            {"emotion": "Anticipation", "score": 0.3},
+        ]
+        
+        return fallback_emotions
