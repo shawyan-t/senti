@@ -1,0 +1,185 @@
+{
+  "id": "8d764351-18c6-4ff8-8ad2-1705685bbcb1",
+  "source": "Georgia Tech OMSCS program",
+  "source_type": "direct_text",
+  "text": "Georgia Tech OMSCS program",
+  "summary": "The Georgia Tech Online Master of Science in Computer Science (OMSCS) program is an innovative and highly sought-after graduate degree offered by the Georgia Institute of Technology. It provides students around the globe an opportunity to earn a master's degree in computer science through a flexible, low-cost online format. The program's importance has grown in the realm of computer science education due to its affordability and accessibility, attracting a diverse cohort of students, many of whom balance full-time jobs and personal responsibilities while pursuing advanced education.\n\nRecent updates about the OMSCS program reflect its vibrant community and ongoing activities. According to content extracted from r/OMSCS on Reddit, students are actively preparing for specialized tracks, such as machine learning, indicating the program's wide range of advanced topics that align with current trends in technology. Moreover, the upcoming 2025 OMSCS Conference scheduled for late April suggests an enriching platform for collaboration and networking among students and professionals, featuring social events like a baseball game between Georgia Tech and the University of Virginia, highlighting the program's integration of social and professional development opportunities. Both prospective and current students can leverage these events to build meaningful connections and enhance their learning experience.\n\nOn LinkedIn, the program has emphasized the significance of graduation, showcasing the dedication and perseverance of its students who manage multiple commitments. This narrative highlights the program's role in enhancing professional growth by making advanced education accessible to a broader population. With the overwhelming support and recognition by graduates on platforms like LinkedIn, the OMSCS program remains a trailblazer in online education, contributing significantly to the field of computer science and the advancement of professionals globally. The overall sentiment surrounding the OMSCS program is largely positive, underscoring its impact and relevance in today's digital and interconnected world.\n\nAnalysis date: May 11, 2025",
+  "sentiment": {
+    "sentiment": "positive",
+    "score": 0.9,
+    "confidence": 0.95,
+    "rationale": "The sentiment surrounding the Georgia Tech OMSCS program is predominantly positive due to its innovative approach to online education, affordability, and accessibility. The program's ability to attract a diverse cohort and support students balancing multiple commitments is highly valued. Recent updates from Reddit and LinkedIn emphasize the program's active community, specialized tracks, and professional development opportunities, which are aligned with current technological trends and enhance its reputation. The upcoming 2025 OMSCS Conference further supports this positive sentiment by offering networking and social events, which are crucial for professional growth. The overwhelming support from graduates on LinkedIn reinforces the program's impact and relevance in the global education landscape.",
+    "current_context": "The recent emphasis on specialized tracks like machine learning and the upcoming OMSCS Conference highlight the program's alignment with current technological trends and its role in professional development. This context contributes to the positive sentiment by showcasing the program's adaptability and relevance in today's digital world.",
+    "sentiment_trend": "improving",
+    "sentiment_factors": [
+      {
+        "factor": "Affordability and Accessibility",
+        "impact": "positive",
+        "weight": 0.3
+      },
+      {
+        "factor": "Specialized Tracks and Current Trends",
+        "impact": "positive",
+        "weight": 0.25
+      },
+      {
+        "factor": "Community and Networking Opportunities",
+        "impact": "positive",
+        "weight": 0.2
+      },
+      {
+        "factor": "Graduate Support and Recognition",
+        "impact": "positive",
+        "weight": 0.15
+      },
+      {
+        "factor": "Cultural and Temporal Context",
+        "impact": "positive",
+        "weight": 0.1
+      }
+    ]
+  },
+  "metadata": {
+    "topics": [
+      "Georgia Tech Online Master of Science in Computer Science (OMSCS) program",
+      "Online education",
+      "Computer science education",
+      "Professional growth in computer science"
+    ],
+    "topic_details": {
+      "main_topics": [
+        "Georgia Tech Online Master of Science in Computer Science (OMSCS) program",
+        "Online education"
+      ],
+      "subtopics": [
+        "Affordability and accessibility of education",
+        "Machine learning specialization",
+        "Networking and collaboration among students",
+        "Work-life balance for students",
+        "Graduation and professional growth"
+      ],
+      "trending_topics": [
+        "Machine learning"
+      ],
+      "category": "technology"
+    },
+    "entities": [
+      "Georgia Institute of Technology",
+      "OMSCS program",
+      "r/OMSCS",
+      "Reddit",
+      "LinkedIn",
+      "University of Virginia"
+    ],
+    "entity_details": {
+      "people": [],
+      "organizations": [
+        {
+          "name": "Georgia Institute of Technology",
+          "detail": "Educational institution offering the OMSCS program"
+        },
+        {
+          "name": "University of Virginia",
+          "detail": "Participating university in a baseball game event"
+        }
+      ],
+      "brands": [
+        {
+          "name": "OMSCS program",
+          "detail": "Online master's program in computer science"
+        },
+        {
+          "name": "r/OMSCS",
+          "detail": "Subreddit for the OMSCS community"
+        },
+        {
+          "name": "Reddit",
+          "detail": "Platform hosting the r/OMSCS subreddit"
+        },
+        {
+          "name": "LinkedIn",
+          "detail": "Social network emphasizing professional growth and graduation recognition"
+        }
+      ],
+      "products": [
+        {
+          "name": "OMSCS program",
+          "detail": "Online Master of Science in Computer Science"
+        }
+      ]
+    },
+    "regions": [
+      "Georgia"
+    ],
+    "region_details": {
+      "countries": [
+        "United States"
+      ],
+      "cities": [
+        "Atlanta"
+      ],
+      "regions": [
+        "Georgia"
+      ]
+    },
+    "temporal_details": {
+      "time_period": "Current and future",
+      "specific_dates": [
+        "late April 2025"
+      ],
+      "recency": "future"
+    },
+    "event_context": {
+      "is_current_event": true,
+      "event_type": "Educational and networking conference",
+      "key_developments": [
+        "Upcoming OMSCS Conference in April 2025",
+        "Baseball game event between Georgia Tech and the University of Virginia"
+      ],
+      "event_timeline": "April 2025 OMSCS Conference"
+    },
+    "commodities": []
+  },
+  "emotions": [
+    {
+      "emotion": "Joy",
+      "score": 0.06149462833164799
+    },
+    {
+      "emotion": "Trust",
+      "score": 0.0
+    },
+    {
+      "emotion": "Fear",
+      "score": 0.05906487993813059
+    },
+    {
+      "emotion": "Surprise",
+      "score": 0.4892251691003188
+    },
+    {
+      "emotion": "Sadness",
+      "score": 0.273104328859913
+    },
+    {
+      "emotion": "Disgust",
+      "score": 0.06427150177627969
+    },
+    {
+      "emotion": "Anger",
+      "score": 0.05283949199370993
+    },
+    {
+      "emotion": "Anticipation",
+      "score": 0.0
+    }
+  ],
+  "timestamp": "2025-05-11T23:33:06.267664",
+  "input_type": {
+    "input_type": "academic reference",
+    "subject": "education",
+    "language": "English",
+    "length": 5,
+    "confidence": 0.8
+  }
+}

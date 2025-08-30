@@ -1,0 +1,172 @@
+{
+  "id": "6b1036d7-d7db-4c90-8d2a-c86e191682ea",
+  "source": "Doechii",
+  "source_type": "direct_text",
+  "text": "Doechii",
+  "summary": "Doechii is the professional name of Jaylah Ji'mya Hickmon, an American artist primarily recognized as a rapper, singer, and songwriter. Born on August 14, 1998, she first gained significant popularity for her unique style and sound that integrates elements of rap and contemporary R&B. Her rise to fame was notably bolstered by her presence on TikTok, a platform known for propelling many modern music careers. This exposure led to her signing with Top Dawg Entertainment, a prominent label in the hip-hop scene, known for hosting influential artists such as Kendrick Lamar and SZA. Doechii's work is characterized by its eclectic nature, often weaving in personal themes and vibrant visuals — a reflection of her artistic persona, also known as Swamp Princess, which she embraces on social media.\n\nAs of May 2025, Doechii has maintained an impressive social media following with over six million followers on Instagram, which reflects her strong influence and popularity, particularly among the younger demographic. She continues to be an active voice in the music industry, with recent works like the official video for her song \"Anxiety,\" released on April 18, 2025. This release has generated buzz, partially due to a short musical reference to the hit song \"Somebody That I Used To Know\" by Gotye, cleverly integrated into the video. This ability to blend cultural references and nods to past hits reflects Doechii's skill in resonating with broad audiences through both nostalgia and innovation.\n\nGeographically, Doechii's influence is rooted in the United States, but like many contemporary artists, her reach is undoubtedly international, given the global nature of music consumption facilitated by digital platforms like YouTube and Spotify. The sentiment around Doechii's work is generally positive, with her fans appreciating her bold artistic choices and emotive lyrical content. Her contributions to the music scene continue to shape her image as a forward-thinking and dynamic artist in the 2020s.\n\nAnalysis date: May 10, 2025",
+  "sentiment": {
+    "sentiment": "positive",
+    "score": 0.8,
+    "confidence": 0.9,
+    "rationale": "Doechii's sentiment is predominantly positive due to her successful integration of unique musical styles and cultural references, which resonate well with a broad audience. Her recent release, 'Anxiety,' has been well-received, particularly for its clever nod to Gotye's hit song, showcasing her ability to blend nostalgia with innovation. Her strong social media presence and continued influence in the music industry further bolster this positive sentiment. The lack of recent controversies or negative press contributes to a stable positive perception.",
+    "current_context": "As of May 2025, Doechii's recent work and social media engagement have maintained her popularity, particularly among younger audiences. The release of 'Anxiety' has reinforced her positive image, leveraging both nostalgia and contemporary appeal.",
+    "sentiment_trend": "stable",
+    "sentiment_factors": [
+      {
+        "factor": "recent music release",
+        "impact": "positive",
+        "weight": 0.4
+      },
+      {
+        "factor": "social media influence",
+        "impact": "positive",
+        "weight": 0.3
+      },
+      {
+        "factor": "cultural references",
+        "impact": "positive",
+        "weight": 0.2
+      },
+      {
+        "factor": "absence of controversies",
+        "impact": "positive",
+        "weight": 0.1
+      }
+    ]
+  },
+  "metadata": {
+    "topics": [
+      "Doechii's music career",
+      "Social media influence",
+      "Recent music release"
+    ],
+    "topic_details": {
+      "main_topics": [
+        "Doechii's music career",
+        "Social media influence of musicians",
+        "Recent music video release"
+      ],
+      "subtopics": [
+        "TikTok's impact on music careers",
+        "Doechii's signing with Top Dawg Entertainment",
+        "Song 'Anxiety' and its cultural impact"
+      ],
+      "trending_topics": [
+        "Doechii's song 'Anxiety'",
+        "TikTok's influence in music",
+        "Recent music references to 'Somebody That I Used To Know'"
+      ],
+      "category": "entertainment"
+    },
+    "entities": [
+      "Doechii",
+      "Jaylah Ji'mya Hickmon",
+      "Top Dawg Entertainment",
+      "Kendrick Lamar",
+      "SZA",
+      "TikTok",
+      "Instagram",
+      "Gotye"
+    ],
+    "entity_details": {
+      "people": [
+        {
+          "name": "Doechii",
+          "role": "Rapper, Singer, Songwriter",
+          "relevance": "Main subject of the text, rising music artist",
+          "recent_works": "Release of music video for 'Anxiety'"
+        },
+        {
+          "name": "Jaylah Ji'mya Hickmon",
+          "role": "Rapper, Singer, Songwriter",
+          "relevance": "Real name of Doechii",
+          "recent_works": "Same as Doechii"
+        },
+        {
+          "name": "Kendrick Lamar",
+          "role": "Rapper",
+          "relevance": "Associated with Top Dawg Entertainment",
+          "recent_works": "Not specified"
+        },
+        {
+          "name": "SZA",
+          "role": "Singer",
+          "relevance": "Associated with Top Dawg Entertainment",
+          "recent_works": "Not specified"
+        },
+        {
+          "name": "Gotye",
+          "role": "Singer-Songwriter",
+          "relevance": "Reference to his song 'Somebody That I Used To Know'",
+          "recent_works": "Song referenced in Doechii's video"
+        }
+      ],
+      "organizations": [
+        {
+          "name": "Top Dawg Entertainment",
+          "relevance": "Doechii's record label"
+        }
+      ],
+      "brands": [
+        {
+          "name": "TikTok",
+          "relevance": "Platform that boosted Doechii's career"
+        },
+        {
+          "name": "Instagram",
+          "relevance": "Platform where Doechii has a large following"
+        }
+      ],
+      "products": [
+        {
+          "name": "Anxiety",
+          "relevance": "Doechii's recently released song"
+        },
+        {
+          "name": "Somebody That I Used To Know",
+          "relevance": "Cultural reference in Doechii's music video"
+        }
+      ]
+    },
+    "regions": [
+      "United States"
+    ],
+    "region_details": {
+      "countries": [
+        "United States"
+      ],
+      "cities": [],
+      "regions": []
+    },
+    "temporal_details": {
+      "time_period": "2020s",
+      "specific_dates": [
+        "May 10, 2025",
+        "April 18, 2025",
+        "August 14, 1998"
+      ],
+      "recency": "future"
+    },
+    "event_context": {
+      "is_current_event": true,
+      "event_type": "Music release",
+      "key_developments": [
+        "Release of Doechii's song 'Anxiety'",
+        "Reference to 'Somebody That I Used To Know' in the new release"
+      ],
+      "event_timeline": [
+        "Doechii's signing with Top Dawg Entertainment",
+        "Release of 'Anxiety' on April 18, 2025"
+      ]
+    },
+    "commodities": []
+  },
+  "timestamp": "2025-05-10T13:33:28.897762",
+  "input_type": {
+    "input_type": "unknown",
+    "subject": "unknown",
+    "language": "undetermined",
+    "length": 1,
+    "confidence": 0.2
+  }
+}

@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils"
 import SentimizerTitle from "@/components/sentimizer-title"
 import { analyzeText, analyzeFile, getAnalyses, getAnalysis, Analysis } from "@/lib/api"
 import { VisualizationDashboard } from "@/components/visualization-dashboard"
+import dynamic from 'next/dynamic';
+const UMAP3DScatter = dynamic(() => import('@/components/charts/umap-3d-scatter').then(mod => mod.UMAP3DScatter), { ssr: false });
 
 type AnalysisData = Record<string, any>
 
@@ -410,7 +412,7 @@ export default function Home() {
                           <h4 className="font-medium text-emerald-200 mb-2">Topics</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.metadata.topics?.length > 0 ? (
-                              analysisResult.metadata.topics.map((topic, i) => (
+                              analysisResult.metadata.topics.map((topic: string, i: number) => (
                                 <span key={i} className="px-2 py-1 bg-emerald-900/50 text-emerald-300 rounded-full text-sm">
                                   {topic}
                                 </span>
@@ -426,7 +428,7 @@ export default function Home() {
                           <h4 className="font-medium text-emerald-200 mb-2">Regions</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.metadata.regions?.length > 0 ? (
-                              analysisResult.metadata.regions.map((region, i) => (
+                              analysisResult.metadata.regions.map((region: string, i: number) => (
                                 <span key={i} className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm">
                                   {region}
                                 </span>
@@ -442,7 +444,7 @@ export default function Home() {
                           <h4 className="font-medium text-emerald-200 mb-2">Entities/Keywords</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.metadata.entities?.length > 0 ? (
-                              analysisResult.metadata.entities.map((entity, i) => (
+                              analysisResult.metadata.entities.map((entity: string, i: number) => (
                                 <span key={i} className="px-2 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">
                                   {entity}
                                 </span>
@@ -461,16 +463,31 @@ export default function Home() {
                     analysisData={{
                       sentiment: analysisResult.sentiment,
                       metadata: analysisResult.metadata,
-                      // The backend doesn't provide these yet, so they'll use mock data
+                      emotions: (analysisResult as any).emotions ?? [],
                       timeSeriesData: [],
-                      emotions: [],
-                      keywords: analysisResult.metadata?.topics?.map((topic, i) => ({
+                      keywords: analysisResult.metadata?.topics?.map((topic: string, i: number) => ({
                         keyword: topic,
                         frequency: 100 - (i * 10),
                         sentiment: analysisResult.sentiment?.sentiment as any || 'neutral'
                       })) || []
                     }}
                   />
+
+                  {/* 3D UMAP Visualization */}
+                  <div className="mt-12">
+                    <h3 className="text-xl font-semibold text-emerald-300 mb-4">3D UMAP Topic/Sentiment Landscape</h3>
+                    {Array.isArray((analysisResult as any).embeddings) && (analysisResult as any).embeddings.length > 0 ? (
+                      <UMAP3DScatter
+                        embeddings={(analysisResult as any).embeddings}
+                        labels={(analysisResult as any).embedding_labels}
+                        colors={(analysisResult as any).embedding_colors}
+                      />
+                    ) : (
+                      <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">
+                        <p className="text-gray-400">No embedding data available for UMAP visualization.</p>
+                      </div>
+                    )}
+                  </div>
                 </motion.div>
               )}
 

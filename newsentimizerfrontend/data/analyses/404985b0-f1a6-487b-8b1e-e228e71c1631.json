@@ -1,0 +1,151 @@
+{
+  "id": "404985b0-f1a6-487b-8b1e-e228e71c1631",
+  "source": "Shannon Sharpe",
+  "source_type": "direct_text",
+  "text": "Shannon Sharpe",
+  "summary": "Shannon Sharpe is a prominent figure in the sports and entertainment industry, known primarily for his achievements in professional football and his subsequent media career. A former NFL tight end, Sharpe had an illustrious career, mainly with the Denver Broncos and the Baltimore Ravens, where he won three Super Bowl titles. His accolades in football earned him a spot in the Pro Football Hall of Fame, underscoring his significant impact on the sport.\n\nRecently, Shannon Sharpe has been active as a television personality and sports commentator. Notably, he co-hosted the popular sports debate show \"Undisputed\" on Fox Sports. As of 2025, he continues to maintain a strong presence in sports media, which is reflected in his social media activity and public appearances. For instance, his involvement in live events such as the Nightcap LIVE from the 2025 NFL Draft held at Green Bay, Wisconsin, alongside Chad \"Ochocinco\" Johnson, highlights his ongoing role in engaging with football fans and providing expert analysis on current NFL events. Furthermore, his active presence on platforms like Instagram through his account (@shannonsharpe84), where he frequently shares insights into his career and personal life, continues to reinforce his influence and relatability in the sports community.\n\nGeographically, Sharpe's influence spans across the United States, moving from his roots in Georgia and Illinois to broader national recognition through his NFL and media endeavors. The tone surrounding Shannon Sharpe is predominantly positive, reflecting a career that has successfully transitioned from professional sports to media, and continues to impact both fields. His engagement with fans and ongoing contributions to sports commentary keep him relevant and respected in the entertainment and sports arenas.\n\nAnalysis date: April 27, 2025",
+  "sentiment": {
+    "sentiment": "positive",
+    "score": 0.8,
+    "confidence": 0.9,
+    "rationale": "Shannon Sharpe is widely recognized for his successful transition from a celebrated NFL career to a prominent media presence. His continued involvement in sports commentary, particularly through high-profile events like the 2025 NFL Draft, reinforces his relevance and positive influence in the sports community. His active engagement with fans via social media further enhances his relatability and impact. The sentiment is predominantly positive due to his ongoing contributions and the respect he commands in both sports and media.",
+    "current_context": "As of April 2025, Sharpe's participation in live events and his active social media presence underscore his continued relevance and positive public perception. There are no recent controversies or negative developments affecting his image.",
+    "sentiment_trend": "stable",
+    "sentiment_factors": [
+      {
+        "factor": "Career achievements in NFL",
+        "impact": "positive",
+        "weight": 0.3
+      },
+      {
+        "factor": "Media presence and influence",
+        "impact": "positive",
+        "weight": 0.3
+      },
+      {
+        "factor": "Social media engagement",
+        "impact": "positive",
+        "weight": 0.2
+      },
+      {
+        "factor": "Public appearances and events",
+        "impact": "positive",
+        "weight": 0.2
+      }
+    ]
+  },
+  "metadata": {
+    "topics": [
+      "Shannon Sharpe's career",
+      "NFL",
+      "sports media",
+      "public appearances",
+      "social media"
+    ],
+    "topic_details": {
+      "main_topics": [
+        "Shannon Sharpe's career in sports and media",
+        "NFL achievements",
+        "media career"
+      ],
+      "subtopics": [
+        "Super Bowl titles",
+        "Pro Football Hall of Fame",
+        "television host"
+      ],
+      "trending_topics": [
+        "2025 NFL Draft",
+        "Nightcap LIVE event"
+      ],
+      "category": "sports"
+    },
+    "entities": [
+      "Shannon Sharpe",
+      "Denver Broncos",
+      "Baltimore Ravens",
+      "Fox Sports",
+      "Chad 'Ochocinco' Johnson",
+      "Instagram"
+    ],
+    "entity_details": {
+      "people": [
+        {
+          "name": "Shannon Sharpe",
+          "role": "former NFL tight end and sports commentator",
+          "relevance": "His achievements in football and media career",
+          "recent_works": "Co-hosted 'Undisputed', participated in 2025 NFL Draft Nightcap LIVE event"
+        },
+        {
+          "name": "Chad 'Ochocinco' Johnson",
+          "role": "former NFL wide receiver",
+          "relevance": "Co-participant in the 2025 NFL Draft Nightcap LIVE event",
+          "recent_works": "Involved in live events with Shannon Sharpe"
+        }
+      ],
+      "organizations": [
+        {
+          "name": "Denver Broncos",
+          "relevance": "Shannon Sharpe's NFL team during his playing career"
+        },
+        {
+          "name": "Baltimore Ravens",
+          "relevance": "Shannon Sharpe's NFL team during his playing career"
+        },
+        {
+          "name": "Fox Sports",
+          "relevance": "Shannon Sharpe was a co-host on the sports debate show 'Undisputed'"
+        }
+      ],
+      "brands": [
+        {
+          "name": "Instagram",
+          "relevance": "Platform where Shannon Sharpe shares insights"
+        }
+      ],
+      "products": []
+    },
+    "regions": [
+      "United States",
+      "Georgia",
+      "Illinois",
+      "Green Bay, Wisconsin"
+    ],
+    "region_details": {
+      "countries": [
+        "United States"
+      ],
+      "cities": [
+        "Green Bay"
+      ],
+      "regions": [
+        "Georgia",
+        "Illinois"
+      ]
+    },
+    "temporal_details": {
+      "time_period": "2025",
+      "specific_dates": [
+        "April 27, 2025"
+      ],
+      "recency": "future"
+    },
+    "event_context": {
+      "is_current_event": true,
+      "event_type": "sports event and media appearance",
+      "key_developments": [
+        "Shannon Sharpe's participation in the 2025 NFL Draft",
+        "His role in Nightcap LIVE event"
+      ],
+      "event_timeline": "Shannon Sharpe maintains media prominence in 2025 through live events like the NFL Draft"
+    },
+    "commodities": []
+  },
+  "timestamp": "2025-04-27T13:47:51.073170",
+  "input_type": {
+    "input_type": "social media post",
+    "subject": "entertainment",
+    "language": "English",
+    "length": 2,
+    "confidence": 0.5
+  }
+}

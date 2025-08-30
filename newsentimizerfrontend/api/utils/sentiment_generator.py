@@ -8,6 +8,10 @@ import random
 import pycountry
 from datetime import datetime
 from openai import OpenAI
+from transformers import pipeline
+import numpy as np
+from sentence_transformers import SentenceTransformer
+from umap import UMAP
 
 # Initialize OpenAI client with API key
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -15,6 +19,29 @@ client = OpenAI(api_key=openai_api_key)
 
 # Important note: the newest OpenAI model is "gpt-4o" which was released May 13, 2024.
 # do not change this unless explicitly requested by the user
+
+# Load the HuggingFace emotion pipeline once
+_emotion_classifier = None
+
+def get_emotion_classifier():
+    global _emotion_classifier
+    if _emotion_classifier is None:
+        _emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
+    return _emotion_classifier
+
+# Map model emotions to Plutchik's 8 emotions
+PLUTCHIK_MAP = {
+    'joy': 'Joy',
+    'trust': 'Trust',
+    'fear': 'Fear',
+    'surprise': 'Surprise',
+    'sadness': 'Sadness',
+    'disgust': 'Disgust',
+    'anger': 'Anger',
+    'anticipation': 'Anticipation',
+}
+# The model may not output all 8, so we need to map or fill in zeros
+PLUTCHIK_EMOTIONS = ['Joy', 'Trust', 'Fear', 'Surprise', 'Sadness', 'Disgust', 'Anger', 'Anticipation']
 
 def generate_country_sentiment(topic, countries=None):
     """
@@ -322,95 +349,58 @@ def generate_time_series_data(topic, days=180):
 
 def generate_emotion_analysis(text):
     """
-    Generate an 8-dimensional emotion analysis for a given text.
-    Uses Plutchik's wheel of emotions: joy, trust, fear, surprise, sadness, disgust, anger, anticipation.
-    
-    Args:
-        text (str): The text to analyze
-        
-    Returns:
-        list: List of dictionaries with emotion data
+    Generate an 8-dimensional emotion analysis for a given text using HuggingFace.
+    Returns a list of dicts: [{emotion: 'Joy', score: ...}, ...] with scores summing to 1.0
     """
-    try:
-        # Build prompt for OpenAI
-        prompt = f"""
-        Analyze the following text and provide an 8-dimensional emotion analysis based on Plutchik's wheel of emotions.
-        For each of the 8 core emotions (joy, trust, fear, surprise, sadness, disgust, anger, anticipation),
-        provide a score between 0.0 and 1.0 indicating the presence of that emotion in the text.
-        
-        The sum of all emotion scores should equal 1.0, representing the total emotional content of the text.
-        
-        Text to analyze:
-        "{text[:1000]}..." 
-        
-        Return your response in this JSON format:
-        {{
-            "emotions": [
-                {{
-                    "emotion": "Joy",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Trust",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Fear",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Surprise",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Sadness",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Disgust",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Anger",
-                    "score": 0.0-1.0
-                }},
-                {{
-                    "emotion": "Anticipation",
-                    "score": 0.0-1.0
-                }}
-            ],
-            "rationale": "Brief explanation of the emotional profile"
-        }}
-        """
-        
-        # Call OpenAI API
-        response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {"role": "system", "content": "You are an expert in psychological emotion analysis."},
-                {"role": "user", "content": prompt}
-            ],
-            response_format={"type": "json_object"}
-        )
-        
-        # Parse response
-        emotion_data = json.loads(response.choices[0].message.content)
-        
-        return emotion_data.get("emotions", [])
+    classifier = get_emotion_classifier()
+    # Run the classifier
+    results = classifier(text)
+    # results: list of dicts with 'label' and 'score'
+    # Map to Plutchik
+    emotion_scores = {e: 0.0 for e in PLUTCHIK_EMOTIONS}
+    for r in results[0]:
+        label = r['label'].lower()
+        # Map model label to Plutchik if possible
+        if label in PLUTCHIK_MAP:
+            plutchik = PLUTCHIK_MAP[label]
+            emotion_scores[plutchik] = r['score']
+        # Optionally, map similar emotions (e.g., 'optimism' to 'anticipation')
+        elif label == 'optimism':
+            emotion_scores['Anticipation'] = r['score']
+        elif label == 'love':
+            emotion_scores['Trust'] += r['score'] * 0.5
+            emotion_scores['Joy'] += r['score'] * 0.5
+        # Add more mappings as needed
+    # Normalize
+    total = sum(emotion_scores.values())
+    if total > 0:
+        for k in emotion_scores:
+            emotion_scores[k] /= total
+    # Return as list of dicts
+    return [{"emotion": k, "score": emotion_scores[k]} for k in PLUTCHIK_EMOTIONS]
+
+_embedding_model = None
+
+def get_embedding_model():
+    global _embedding_model
+    if _embedding_model is None:
+        _embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
+    return _embedding_model
+
+def generate_embeddings(texts):
+    """
+    Generate embeddings for a list of texts or a single string using sentence-transformers,
+    and process them through UMAP to get 3D coordinates.
+    Returns a list of 3D embedding vectors (list of floats).
+    """
+    model = get_embedding_model()
+    if isinstance(texts, str):
+        texts = [texts]
+    # Generate high-dimensional embeddings
+    embeddings = model.encode(texts, show_progress_bar=False, convert_to_numpy=True)
     
-    except Exception as e:
-        print(f"Error generating emotion analysis: {e}")
-        
-        # Fallback: generate basic emotion data based on simple rules
-        fallback_emotions = [
-            {"emotion": "Joy", "score": 0.1},
-            {"emotion": "Trust", "score": 0.1},
-            {"emotion": "Fear", "score": 0.1},
-            {"emotion": "Surprise", "score": 0.1},
-            {"emotion": "Sadness", "score": 0.1},
-            {"emotion": "Disgust", "score": 0.1},
-            {"emotion": "Anger", "score": 0.1},
-            {"emotion": "Anticipation", "score": 0.3},
-        ]
-        
-        return fallback_emotions
+    # Process through UMAP to get 3D coordinates
+    umap = UMAP(n_components=3, n_neighbors=15, min_dist=0.1, random_state=42)
+    embeddings_3d = umap.fit_transform(embeddings)
+    
+    return embeddings_3d.tolist()

@@ -1,0 +1,284 @@
+{
+  "id": "22cda110-d2d8-4cd3-b10c-f9bf3f4dc396",
+  "source": "Shannon Sharpe",
+  "source_type": "direct_text",
+  "text": "Shannon Sharpe",
+  "summary": "Shannon Sharpe is a prominent figure in the world of sports, particularly known for his impressive career in the National Football League (NFL) and his subsequent influence in sports media. Born in Glennville, Georgia, Sharpe played college football at Savannah State University before being drafted into the NFL by the Denver Broncos in 1990. Over the course of his illustrious playing career, Sharpe established himself as one of the premier tight ends in the league. He won three Super Bowl titles—two with the Denver Broncos and one with the Baltimore Ravens—before retiring as a Pro Football Hall of Famer.\n\nPost-retirement, Shannon Sharpe transitioned to a successful career in sports broadcasting. He became a well-respected and popular sports analyst, known for his work on shows like \"Undisputed\" with Skip Bayless, where his sharp insights and charismatic personality resonated with a broad audience. As of 2025, Sharpe continues to be involved in broadcasting and has expanded his influence in the digital space. Recent social media activity highlights his engagement with the NFL community, such as hosting live events like the 2025 NFL Draft in Green Bay alongside other sports personalities like Chad \"Ochocinco\" Johnson. This indicates Sharpe's enduring relevance and appeal within sports entertainment, leveraging his vast experience and engaging persona to connect with fans and athletes alike across platforms like Instagram and X (formerly known as Twitter).\n\nCurrently, Shannon Sharpe's presence remains strong within sports circles. His contributions to media and sports culture extend beyond traditional broadcasting, utilizing digital and social media to reach broader audiences. Sharpe’s affiliation with brands such as \"ShayShay Media\" and \"Eighty Four Club,\" as seen on his Instagram, reflects his ongoing entrepreneurial ventures. With the NFL maintaining its huge popularity, figures like Sharpe remain influential, blending sports expertise with cultural commentary, particularly appealing to younger audiences who value diverse content consumption through social media platforms.\n\nAnalysis date: April 27, 2025",
+  "sentiment": {
+    "sentiment": "positive",
+    "score": 0.85,
+    "confidence": 0.9,
+    "rationale": "Shannon Sharpe's sentiment is predominantly positive due to his successful transition from a celebrated NFL career to a respected sports media figure. His continued engagement with the NFL community, particularly through hosting events like the 2025 NFL Draft, highlights his enduring relevance and appeal. Sharpe's ability to leverage social media platforms to connect with a younger audience further enhances his positive image. His entrepreneurial ventures, such as 'ShayShay Media' and 'Eighty Four Club,' demonstrate his adaptability and influence beyond traditional sports broadcasting. The lack of recent controversies and his active role in sports culture contribute to a strong positive sentiment.",
+    "current_context": "As of 2025, Shannon Sharpe remains a prominent and respected figure in sports media. His involvement in the 2025 NFL Draft and active presence on social media platforms like Instagram and X (formerly Twitter) reinforce his ongoing influence and connection with both fans and the sports community.",
+    "sentiment_trend": "improving",
+    "sentiment_factors": [
+      {
+        "factor": "Career Transition",
+        "impact": "positive",
+        "weight": 0.3
+      },
+      {
+        "factor": "Social Media Engagement",
+        "impact": "positive",
+        "weight": 0.25
+      },
+      {
+        "factor": "Entrepreneurial Ventures",
+        "impact": "positive",
+        "weight": 0.2
+      },
+      {
+        "factor": "Cultural Relevance",
+        "impact": "positive",
+        "weight": 0.15
+      },
+      {
+        "factor": "Absence of Controversy",
+        "impact": "positive",
+        "weight": 0.1
+      }
+    ]
+  },
+  "metadata": {
+    "topics": [
+      "Shannon Sharpe's career",
+      "NFL broadcasting",
+      "Social media presence of sports figures",
+      "Entrepreneurial ventures in sports media"
+    ],
+    "topic_details": {
+      "main_topics": [
+        "Shannon Sharpe's transition from NFL player to sports media personality",
+        "Influence of sports analysts in media and digital platforms"
+      ],
+      "subtopics": [
+        "Shannon Sharpe's NFL career",
+        "His role in shows like 'Undisputed'",
+        "Engagement with NFL community through live events",
+        "Influence in digital and social media via brands and platforms"
+      ],
+      "trending_topics": [
+        "2025 NFL Draft",
+        "Use of social media platforms like Instagram and X",
+        "Sports figures hosting live events"
+      ],
+      "category": "sports"
+    },
+    "entities": [
+      "Shannon Sharpe",
+      "Skip Bayless",
+      "Chad 'Ochocinco' Johnson",
+      "NFL",
+      "Denver Broncos",
+      "Baltimore Ravens",
+      "Pro Football Hall of Famer",
+      "Savannah State University",
+      "ShayShay Media",
+      "Eighty Four Club"
+    ],
+    "entity_details": {
+      "people": [
+        {
+          "name": "Shannon Sharpe",
+          "role": "Sports analyst and former NFL player",
+          "relevance": "Prominent sports media figure known for his NFL career and broadcasting",
+          "recent_works": "Hosting the 2025 NFL Draft, active sports broadcasting and digital media presence"
+        },
+        {
+          "name": "Skip Bayless",
+          "role": "Sports commentator",
+          "relevance": "Co-host with Shannon Sharpe on 'Undisputed'",
+          "recent_works": "Collaborating on 'Undisputed'"
+        },
+        {
+          "name": "Chad 'Ochocinco' Johnson",
+          "role": "Former NFL player and media personality",
+          "relevance": "Co-host for live events such as the 2025 NFL Draft",
+          "recent_works": "Engagement in NFL community activities alongside Sharpe"
+        }
+      ],
+      "organizations": [
+        {
+          "name": "Denver Broncos",
+          "role": "NFL team Shannon Sharpe played for",
+          "relevance": "Won two Super Bowl titles with them"
+        },
+        {
+          "name": "Baltimore Ravens",
+          "role": "NFL team Shannon Sharpe played for",
+          "relevance": "Won one Super Bowl title with them"
+        },
+        {
+          "name": "NFL",
+          "role": "Professional football league",
+          "relevance": "Shannon Sharpe's career and current analysis focus"
+        },
+        {
+          "name": "Pro Football Hall of Famer",
+          "role": "Honor given to prominent NFL players",
+          "relevance": "Recognition of Shannon Sharpe's standout career"
+        },
+        {
+          "name": "Savannah State University",
+          "role": "Sharpe's college",
+          "relevance": "Where Sharpe played college football"
+        }
+      ],
+      "brands": [
+        {
+          "name": "ShayShay Media",
+          "role": "Media brand associated with Shannon Sharpe",
+          "relevance": "Part of Sharpe's entrepreneurial ventures"
+        },
+        {
+          "name": "Eighty Four Club",
+          "role": "Brand associated with Shannon Sharpe",
+          "relevance": "Part of Sharpe's entrepreneurial ventures"
+        }
+      ],
+      "products": []
+    },
+    "regions": [
+      "United States",
+      "Glennville, Georgia",
+      "Savannah"
+    ],
+    "region_details": {
+      "countries": [
+        "United States"
+      ],
+      "cities": [
+        "Glennville",
+        "Savannah"
+      ],
+      "regions": [
+        "Georgia"
+      ]
+    },
+    "temporal_details": {
+      "time_period": "2025",
+      "specific_dates": [],
+      "recency": "current"
+    },
+    "event_context": {
+      "is_current_event": true,
+      "event_type": "sports event",
+      "key_developments": [
+        "Hosting the 2025 NFL Draft",
+        "Expanding influence in digital media"
+      ],
+      "event_timeline": "Ongoing engagement with sports media and digital platforms"
+    },
+    "commodities": []
+  },
+  "timestamp": "2025-04-27T13:44:29.035198",
+  "input_type": {
+    "input_type": "other",
+    "subject": "sports",
+    "language": "English",
+    "length": 1,
+    "confidence": 0.3
+  },
+  "online_data": {
+    "sources": {
+      "twitter": [],
+      "instagram": [],
+      "search_engines": [
+        {
+          "title": "Shannon Sharpe - Wikipedia",
+          "link": "https://en.wikipedia.org/wiki/Shannon_Sharpe",
+          "snippet": "Shannon Sharpe ... Shannon Sharpe (born June 26, 1968) is an American former professional football tight end who played 14 seasons in the National Football League ...",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "shannon sharpe (@ShannonSharpe) / X",
+          "link": "https://x.com/shannonsharpe?lang=en",
+          "snippet": "Nightcap LIVE from 2025 NFL Draft in Green Bay! Join Shannon Sharpe and Chad \"Ochocinco\" Johnson LIVE from Lambeau Field in Green Bay, Wisconsin to react to the ...",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Shannon Sharpe (@shannonsharpe84) • Instagram photos and videos",
+          "link": "https://www.instagram.com/shannonsharpe84/?hl=en",
+          "snippet": "SSU Alumni, 3X Super Bowl Champ, Pro Football HOF @shayshaymedia_ · @eightyfourclo. Contact: 84inquiries@gmail.com ... Photo shared by NFL on ESPN on February 06, ...",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Instagram video by Shannon Sharpe • Apr 22, 2025 at 9:27 AM",
+          "link": "https://www.instagram.com/reel/DIwWuEvPE_B/",
+          "snippet": "5 days ago ... Coordinated by Gabby also known as Carly on OnlyFans. Gabby and Tony Busby want $50 million dollars. What they're getting is sued for defamation ...",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Shannon Sharpe to step away from ESPN duties amid ongoing ...",
+          "link": "https://edition.cnn.com/2025/04/24/sport/shannon-sharpe-steps-away-from-espn-amid-lawsuit-spt/index.html",
+          "snippet": "3 days ago ... Shannon Sharpe has said he will temporarily take time away from his role on ESPN after being sued for assault, sexual assault, battery and ...",
+          "published_date": "2025-04-24T20:03:22.024Z",
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Shannon Sharpe is stepping away temporarily from ESPN amid ...",
+          "link": "https://apnews.com/article/shannon-sharpe-lawsuit-espn-28c9ee3dfa9dfe708764d85c7e793530",
+          "snippet": "3 days ago ... Sharpe was a four-time All-Pro tight end who played on two Super Bowl-winning teams with Denver and one with Baltimore over 14 seasons from 1990 ...",
+          "published_date": "2025-04-24T21:19:02",
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Shannon Sharpe, podcaster and NFL champion, sued for sexual ...",
+          "link": "https://www.bbc.com/news/articles/c99pj3xj38do",
+          "snippet": "4 days ago ... NFL champion Shannon Sharpe sued for sexual assault ... Shannon Sharpe, a Superbowl champion and host of a popular podcast, has been accused of ...",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Shannon Sharpe (@shannon84sharpe) | TikTok",
+          "link": "https://www.tiktok.com/@shannon84sharpe?lang=en",
+          "snippet": "Shannon Sharpe (@shannon84sharpe) on TikTok | 15.9M Likes. 1.1M Followers. Savannah State Alumni, 3X Super Bowl Champ, Pro Football Hall of Fame.",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Pro Football Hall of Famer and podcast star Shannon Sharpe sued ...",
+          "link": "https://www.cnn.com/2025/04/21/sport/shannon-sharpe-sued-sexual-assault-battery-spt/index.html",
+          "snippet": "5 days ago ... Former NFL star tight end Shannon Sharpe has been accused of multiple instances of assault, sexual assault, battery and sexual battery in a ...",
+          "published_date": "2025-04-21T22:07:33.662Z",
+          "source": "google",
+          "engine": "google"
+        },
+        {
+          "title": "Shannon Sharpe, NFL Hall of Famer accused of rape in $50 million ...",
+          "link": "https://www.cbsnews.com/news/shannon-sharpe-accused-rape-50-million-civil-lawsuit/",
+          "snippet": "2 days ago ... Sharpe was a four-time All-Pro tight end who played on two Super Bowl champions with Denver and another with Baltimore over 14 seasons from 1990 ...",
+          "published_date": null,
+          "source": "google",
+          "engine": "google"
+        }
+      ]
+    },
+    "social_media_summary": {
+      "twitter": {
+        "count": 0,
+        "total_likes": 0,
+        "total_retweets": 0,
+        "has_comment_data": false
+      },
+      "instagram": {
+        "count": 0,
+        "total_likes": 0,
+        "total_comments": 0,
+        "has_comment_data": false
+      }
+    }
+  }
+}

@@ -11,6 +11,7 @@ import pandas as pd
 import random
 import uuid
 from datetime import datetime, timedelta
+import re
 
 # Import utility functions
 from utils.text_processor import (
@@ -34,6 +35,7 @@ from utils.visualizations import (
     create_topic_popularity_chart,
     create_keyword_chart
 )
+from utils.sentiment_generator import generate_emotion_analysis, generate_embeddings
 
 app = FastAPI(title="Sentimizer API")
 
@@ -145,7 +147,23 @@ async def analyze_text(input_data: TextInput):
         # Step 5: Extract metadata with GPT-o3-mini
         print("Step 5/5: Extracting metadata...")
         metadata_result = extract_metadata(detailed_analysis)
-        
+
+        # Step 6: Generate real emotion analysis using HuggingFace
+        print("Step 6/6: Generating emotion analysis...")
+        emotions = generate_emotion_analysis(content)
+
+        # Generate embeddings for the main content (split into sentences if long)
+        if len(content) > 500:
+            # Split into sentences for richer embedding landscape
+            sentences = re.split(r'(?<=[.!?]) +', content)
+            # Filter out very short sentences
+            sentences = [s for s in sentences if len(s.strip()) > 10]
+            embeddings = generate_embeddings(sentences)
+            embedding_labels = sentences
+        else:
+            embeddings = generate_embeddings(content)
+            embedding_labels = [content]
+
         # Save the analysis
         timestamp = datetime.now()
         
@@ -158,6 +176,9 @@ async def analyze_text(input_data: TextInput):
             "summary": detailed_analysis,
             "sentiment": sentiment_result,
             "metadata": metadata_result,
+            "emotions": emotions,
+            "embeddings": embeddings,
+            "embedding_labels": embedding_labels,
             "timestamp": timestamp.isoformat(),
             "input_type": input_type_info
         }
@@ -266,12 +287,28 @@ async def analyze_text(input_data: TextInput):
             # Add online data to response
             analysis_data["online_data"] = online_data
         
+        # Generate embedding colors based on sentiment
+        def get_color(sentiment):
+            if sentiment == 'positive':
+                return '#10B981'  # green
+            elif sentiment == 'negative':
+                return '#EF4444'  # red
+            elif sentiment == 'neutral':
+                return '#FBBF24'  # yellow
+            else:
+                return '#6B7280'  # gray
+        embedding_colors = [get_color(sentiment_result.get('sentiment', 'neutral')) for _ in embeddings]
+        
         # Return comprehensive response with all needed data
         return {
             "analysis_id": analysis_id,
             "analysis": detailed_analysis,
             "sentiment": sentiment_result,
             "metadata": metadata_result,
+            "emotions": emotions,
+            "embeddings": embeddings,
+            "embedding_labels": embedding_labels,
+            "embedding_colors": embedding_colors,
             "online_data": analysis_data.get("online_data", None)
         }
     except Exception as e:
@@ -373,7 +410,23 @@ async def analyze_file(
         # Step 5: Extract metadata with GPT-o3-mini
         print("Step 5/5: Extracting metadata...")
         metadata_result = extract_metadata(detailed_analysis)
-        
+
+        # Step 6: Generate real emotion analysis using HuggingFace
+        print("Step 6/6: Generating emotion analysis...")
+        emotions = generate_emotion_analysis(content)
+
+        # Generate embeddings for the main content (split into sentences if long)
+        if len(content) > 500:
+            # Split into sentences for richer embedding landscape
+            sentences = re.split(r'(?<=[.!?]) +', content)
+            # Filter out very short sentences
+            sentences = [s for s in sentences if len(s.strip()) > 10]
+            embeddings = generate_embeddings(sentences)
+            embedding_labels = sentences
+        else:
+            embeddings = generate_embeddings(content)
+            embedding_labels = [content]
+
         # Save the analysis
         timestamp = datetime.now()
         
@@ -386,6 +439,9 @@ async def analyze_file(
             "summary": detailed_analysis,
             "sentiment": sentiment_result,
             "metadata": metadata_result,
+            "emotions": emotions,
+            "embeddings": embeddings,
+            "embedding_labels": embedding_labels,
             "timestamp": timestamp.isoformat(),
             "input_type": input_type_info
         }
@@ -494,12 +550,28 @@ async def analyze_file(
             # Add online data to response
             analysis_data["online_data"] = online_data
         
+        # Generate embedding colors based on sentiment
+        def get_color(sentiment):
+            if sentiment == 'positive':
+                return '#10B981'  # green
+            elif sentiment == 'negative':
+                return '#EF4444'  # red
+            elif sentiment == 'neutral':
+                return '#FBBF24'  # yellow
+            else:
+                return '#6B7280'  # gray
+        embedding_colors = [get_color(sentiment_result.get('sentiment', 'neutral')) for _ in embeddings]
+        
         # Return comprehensive response with all needed data
         return {
             "analysis_id": analysis_id,
             "analysis": detailed_analysis,
             "sentiment": sentiment_result,
             "metadata": metadata_result,
+            "emotions": emotions,
+            "embeddings": embeddings,
+            "embedding_labels": embedding_labels,
+            "embedding_colors": embedding_colors,
             "online_data": analysis_data.get("online_data", None)
         }
     except Exception as e:

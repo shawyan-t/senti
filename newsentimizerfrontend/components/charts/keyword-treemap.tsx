@@ -47,11 +47,13 @@ export function KeywordTreemap({
   const labels = sortedKeywords.map(k => k.keyword)
   const values = sortedKeywords.map(k => k.frequency)
   
-  // Generate colors based on sentiment
-  const colors = sortedKeywords.map(k => {
-    if (k.sentiment === 'positive') return 'rgba(16, 185, 129, 0.8)' // Emerald
-    if (k.sentiment === 'negative') return 'rgba(239, 68, 68, 0.8)' // Red
-    return 'rgba(107, 114, 128, 0.8)' // Gray (neutral)
+  // Color grading by frequency percentile
+  const n = sortedKeywords.length;
+  const colors = sortedKeywords.map((k, i) => {
+    const percentile = i / n;
+    if (percentile < 1/3) return 'rgba(16, 185, 129, 0.8)'; // Green
+    if (percentile < 2/3) return 'rgba(245, 158, 11, 0.8)'; // Yellow
+    return 'rgba(239, 68, 68, 0.8)'; // Red
   })
 
   const data = [{
