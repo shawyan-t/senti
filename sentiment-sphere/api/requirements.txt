@@ -15,4 +15,21 @@ sentence-transformers>=2.2.0
 umap-learn>=0.5.0
 pycountry>=22.0.0
 trafilatura>=1.6.0
-pytrends>=4.9.0 
+pytrends>=4.9.0
+
+# Mathematical Analysis Dependencies
+scipy>=1.11.0
+scikit-learn>=1.3.0
+statsmodels>=0.14.0
+vaderSentiment>=3.3.2
+textblob>=0.17.1
+afinn>=0.1
+nltk>=3.8.1
+
+# Performance Dependencies
+numba>=0.58.0
+cython>=3.0.0
+
+# Advanced Analysis
+networkx>=3.1
+sympy>=1.12 

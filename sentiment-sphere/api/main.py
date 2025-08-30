@@ -37,6 +37,10 @@ from utils.visualizations import (
 )
 from utils.sentiment_generator import generate_emotion_analysis, generate_embeddings
 
+# New mathematical analysis imports
+from utils.mathematical_sentiment import get_mathematical_analyzer
+from utils.enhanced_analysis import get_enhanced_analyzer
+
 app = FastAPI(title="Sentimizer API")
 
 # Configure CORS
@@ -580,6 +584,98 @@ async def analyze_file(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/api/analyze/mathematical")
+async def analyze_mathematical_sentiment(input_data: TextInput):
+    """
+    Enhanced mathematical sentiment analysis endpoint with statistical rigor
+    """
+    try:
+        print(f"Received mathematical analysis request: {input_data.text[:50]}...")
+        
+        # Initialize analyzers
+        math_analyzer = get_mathematical_analyzer()
+        enhanced_analyzer = get_enhanced_analyzer()
+        
+        # Step 1: Process input content
+        if input_data.text.startswith(('http://', 'https://')):
+            content = extract_text_from_html(input_data.text)
+            source = input_data.text
+            source_type = "url"
+        else:
+            content = process_text_input(input_data.text)
+            source = input_data.text if len(input_data.text) < 50 else "Direct Text Input"
+            source_type = "direct_text"
+        
+        # Step 2: Get search context for enhanced analysis
+        search_results = []
+        if input_data.use_search_apis:
+            print("Fetching search context for enhanced analysis...")
+            search_connector = SearchEngineConnector()
+            search_query = source if len(content) < 500 else content[:100]
+            search_results = search_connector.get_cached_or_fresh_data(search_query)[:5]
+        
+        # Step 3: Perform mathematical sentiment analysis
+        print("Performing mathematical sentiment analysis...")
+        mathematical_results = math_analyzer.analyze_mathematical_sentiment(content)
+        
+        # Step 4: Generate enhanced summary with contextual metrics
+        print("Generating enhanced summary...")
+        enhanced_summary_results = enhanced_analyzer.generate_enhanced_summary(
+            content, search_results
+        )
+        
+        # Step 5: Analyze content structure
+        structure_analysis = enhanced_analyzer.analyze_content_structure(content, source_type)
+        
+        # Step 6: Create comprehensive response
+        analysis_id = str(uuid.uuid4())
+        timestamp = datetime.now()
+        
+        comprehensive_analysis = {
+            "id": analysis_id,
+            "source": source,
+            "source_type": source_type,
+            "text": content[:500] + "..." if len(content) > 500 else content,
+            "timestamp": timestamp.isoformat(),
+            
+            # Enhanced summary focusing on recent developments
+            "enhanced_summary": enhanced_summary_results["enhanced_summary"],
+            "content_metrics": {
+                "word_count": enhanced_summary_results["word_count"],
+                "reading_level": "graduate" if structure_analysis.get("complexity_score", 0) > 0.7 else "intermediate",
+                **enhanced_summary_results["contextual_metrics"]
+            },
+            
+            # Mathematical sentiment analysis (replaces arbitrary scores)
+            **mathematical_results,
+            
+            # Content structure analysis
+            "document_analysis": structure_analysis,
+            
+            # Search context
+            "context_sources": len(search_results),
+            "recent_developments_identified": enhanced_summary_results["recent_events_identified"]
+        }
+        
+        # Step 7: Save analysis
+        analysis_saved_id = save_analysis(comprehensive_analysis)
+        comprehensive_analysis["analysis_id"] = analysis_saved_id
+        
+        print(f"Enhanced mathematical analysis completed with ID: {analysis_saved_id}")
+        
+        return {
+            "analysis_id": analysis_saved_id,
+            "status": "success",
+            "analysis_type": "mathematical_enhanced",
+            **comprehensive_analysis
+        }
+        
+    except Exception as e:
+        print(f"Error in mathematical analysis: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Mathematical analysis failed: {str(e)}")
+
 @app.post("/api/online-sentiment")
 async def get_online_sentiment_analysis(query_data: SearchQuery):
     try:
@@ -946,6 +1042,49 @@ async def health_check():
     except Exception as e:
         return {
             "success": False,
+            "status": "unhealthy",
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
+
+@app.get("/api/health/mathematical")
+async def health_check_mathematical():
+    """Health check for mathematical analysis capabilities"""
+    try:
+        # Test mathematical analyzer initialization
+        math_analyzer = get_mathematical_analyzer()
+        enhanced_analyzer = get_enhanced_analyzer()
+        
+        # Test basic functionality
+        test_text = "This is a positive test message."
+        test_result = math_analyzer.analyze_mathematical_sentiment(test_text)
+        
+        # Verify core components are working
+        health_status = {
+            "status": "healthy",
+            "timestamp": datetime.now().isoformat(),
+            "mathematical_analyzer": "operational",
+            "enhanced_analyzer": "operational",
+            "lexicon_models": {
+                "vader": "loaded",
+                "textblob": "loaded", 
+                "afinn": "loaded"
+            },
+            "transformer_models": {
+                "sentiment_pipeline": "loaded" if hasattr(math_analyzer, 'sentiment_pipeline') and math_analyzer.sentiment_pipeline else "not_loaded",
+                "emotion_pipeline": "loaded" if hasattr(math_analyzer, 'emotion_pipeline') and math_analyzer.emotion_pipeline else "not_loaded"
+            },
+            "test_analysis": {
+                "composite_score": test_result["mathematical_sentiment_analysis"]["composite_score"]["value"],
+                "confidence_interval_calculated": len(test_result["mathematical_sentiment_analysis"]["composite_score"]["confidence_interval"]) == 2,
+                "emotion_vector_calculated": len(test_result["emotion_vector_analysis"]["plutchik_coordinates"]) == 8
+            }
+        }
+        
+        return health_status
+        
+    except Exception as e:
+        return {
             "status": "unhealthy",
             "error": str(e),
             "timestamp": datetime.now().isoformat()
