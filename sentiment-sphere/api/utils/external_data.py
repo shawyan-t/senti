@@ -707,6 +707,16 @@ class SearchEngineConnector:
         # Load API keys from config
         self.google_search_api_key = config.get('google_search_api_key')
         self.google_search_cx = config.get('google_search_cx')
+        self.news_api_key = config.get('news_api_key')
+        
+        # Set API availability flags
+        self.news_api_available = bool(self.news_api_key)
+        
+        # Debug: Print API key status (first 8 chars only for security)
+        print(f"🔑 API Keys Status:")
+        print(f"   NewsAPI: {'✓ Available' if self.news_api_available else '✗ Not available'} ({self.news_api_key[:8] + '...' if self.news_api_key else 'None'})")
+        print(f"   Google Search API: {'✓ Available' if self.google_search_api_key else '✗ Not available'} ({self.google_search_api_key[:8] + '...' if self.google_search_api_key else 'None'})")
+        print(f"   Google Search CX: {'✓ Available' if self.google_search_cx else '✗ Not available'} ({self.google_search_cx[:8] + '...' if self.google_search_cx else 'None'})")
         
         # Set up cache directory
         import os
@@ -720,6 +730,67 @@ class SearchEngineConnector:
         except ImportError:
             print("Warning: diskcache not installed. Caching disabled.")
             self.cache = None
+    
+    def fetch_news_articles(self, query, days_back=7, limit=10):
+        """
+        Fetch news articles related to a query using NewsAPI.
+        
+        Args:
+            query (str): Search query
+            days_back (int): How many days back to search
+            limit (int): Maximum number of articles to return
+            
+        Returns:
+            list: List of dictionaries with article data or empty list if API not available
+        """
+        if not self.news_api_available:
+            print("NewsAPI key not available. Cannot fetch news articles.")
+            return []
+            
+        try:
+            # Ensure we don't go back too far (NewsAPI free tier limit)
+            # Set from_date to 30 days ago or today minus days_back, whichever is more recent
+            max_days_back = min(days_back, 30)  # Limit to 30 days in the past
+            from datetime import datetime, timedelta
+            from_date = (datetime.now() - timedelta(days=max_days_back)).strftime('%Y-%m-%d')
+            
+            # Use properly formatted parameters for better URL encoding of the query
+            params = {
+                'q': query,
+                'from': from_date,
+                'sortBy': 'relevancy',
+                'apiKey': self.news_api_key,  # Use instance variable instead of global
+                'language': 'en',
+                'pageSize': limit
+            }
+            url = "https://newsapi.org/v2/everything"
+            response = requests.get(url, params=params)
+            
+            if response.status_code == 200:
+                data = response.json()
+                articles = data.get('articles', [])
+                
+                processed_articles = []
+                for article in articles:
+                    processed_articles.append({
+                        'title': article.get('title', ''),
+                        'source': article.get('source', {}).get('name', 'Unknown'),
+                        'url': article.get('url', ''),
+                        'published_at': article.get('publishedAt', ''),
+                        'publishedAt': article.get('publishedAt', ''),  # Both formats for compatibility
+                        'description': article.get('description', ''),
+                        'content': article.get('content', article.get('description', '')),
+                    })
+                
+                return processed_articles
+            else:
+                print(f"Error fetching news articles: {response.status_code}")
+                print(response.text)
+                return []
+                
+        except Exception as e:
+            print(f"Error fetching news articles: {e}")
+            return []
     
     def search_engine_query(self, query, num_results=10, recent_only=True):
         """
@@ -739,11 +810,17 @@ class SearchEngineConnector:
         search_queries = self._generate_enhanced_search_queries(query)
         print(f"Enhanced search queries: {search_queries}")
         
-        # 1. Try NewsAPI first for financial news (most reliable for finance)
+        # Smart fallback strategy: Try both APIs, then single APIs, then error
+        newsapi_results = []
+        google_results = []
+        newsapi_success = False
+        google_success = False
+        
+        # 1. Try NewsAPI for financial content (parallel attempt)
         if self.news_api_available and any(word in query.lower() for word in ['$', 'stock', 'financial', 'earnings', 'market']):
-            print("Using NewsAPI for financial news...")
+            print("Attempting NewsAPI for financial news...")
             try:
-                news_articles = self.fetch_news_articles(query, days_back=30, limit=15)
+                news_articles = self.fetch_news_articles(query, days_back=30, limit=10)
                 for article in news_articles:
                     result = {
                         'title': article.get('title'),
@@ -755,27 +832,29 @@ class SearchEngineConnector:
                         'engine': 'newsapi',
                         'search_query': query
                     }
-                    all_results.append(result)
-                print(f"Got {len(news_articles)} articles from NewsAPI")
+                    newsapi_results.append(result)
+                newsapi_success = True
+                print(f"✓ NewsAPI successful: {len(newsapi_results)} articles")
             except Exception as e:
-                print(f"Error fetching from NewsAPI: {e}")
+                print(f"✗ NewsAPI failed: {e}")
 
-        # 2. Try Google Search API if we need more results
-        if len(all_results) < num_results:
-            # Try multiple search approaches with delays to avoid rate limiting
-            import time
-            for i, search_query in enumerate(search_queries):
-                if i > 0:  # Add delay between searches (except first)
-                    time.sleep(1)  # 1 second delay between API calls
-                # Google Search API (using Programmable Search Engine)
-                if self.google_search_api_key and self.google_search_cx:
+        # 2. Try Google Search API (parallel attempt)
+        print("Attempting Google Search API...")
+        if self.google_search_api_key and self.google_search_cx:
+            try:
+                import time
+                for i, search_query in enumerate(search_queries):
+                    if i > 0:  # Add delay between searches (except first)
+                        time.sleep(1)  # 1 second delay between API calls
+                    
+                    # Google Search API (using Programmable Search Engine)
                     try:
                         # Set up parameters  
                         params = {
                             'key': self.google_search_api_key,
                             'cx': self.google_search_cx,
                             'q': search_query,
-                            'num': min(10, num_results),
+                            'num': min(6, num_results // len(search_queries) + 2),  # Distribute across queries
                             'safe': 'medium',
                             'filter': '1'  # Deduplicate results
                         }
@@ -787,7 +866,7 @@ class SearchEngineConnector:
                             params['dateRestrict'] = 'm1'  # Last month
                         
                         # Make the API request with retry logic for rate limits
-                        max_retries = 3
+                        max_retries = 2  # Reduce retries to save quota
                         retry_delay = 2
                         
                         for retry in range(max_retries):
@@ -810,12 +889,12 @@ class SearchEngineConnector:
                                             'engine': 'google',
                                             'search_query': search_query
                                         }
-                                        all_results.append(result)
+                                        google_results.append(result)
+                                    google_success = True
                                     break  # Success, exit retry loop
                                 
                                 elif response.status_code == 429 and retry < max_retries - 1:
                                     print(f"Google Search API rate limited. Retrying in {retry_delay} seconds...")
-                                    import time
                                     time.sleep(retry_delay)
                                     retry_delay *= 2  # Exponential backoff
                                     continue
@@ -826,7 +905,6 @@ class SearchEngineConnector:
                             except Exception as e:
                                 if retry < max_retries - 1:
                                     print(f"Google Search API error, retrying in {retry_delay} seconds: {e}")
-                                    import time
                                     time.sleep(retry_delay)
                                     retry_delay *= 2
                                     continue
@@ -835,20 +913,60 @@ class SearchEngineConnector:
                                     break
                     except Exception as e:
                         print(f"Error with Google Search API: {e}")
-                else:
-                    print("Google Search API key or CX not configured - using alternative search methods")
+                        
+                    # Exit early if we got rate limited to preserve quota
+                    if not google_success and len(google_results) == 0:
+                        break
+                        
+                google_success = len(google_results) > 0
+                if google_success:
+                    print(f"✓ Google Search successful: {len(google_results)} results")
+            except Exception as e:
+                print(f"✗ Google Search failed: {e}")
+        else:
+            print("Google Search API key or CX not configured")
         
-        # 2. If no results from Google API, try alternative search methods
-        if not all_results:
-            print("No Google API results - trying alternative search methods")
-            all_results = self._alternative_search_methods(query, num_results)
+        # 3. Smart Fallback Decision Logic
+        print(f"\n=== API Results Summary ===")
+        print(f"NewsAPI: {'✓' if newsapi_success else '✗'} ({len(newsapi_results)} results)")
+        print(f"Google Search: {'✓' if google_success else '✗'} ({len(google_results)} results)")
         
-        # 3. Filter and rank results using LLM for relevance
+        # Combine results based on what succeeded
+        if newsapi_success and google_success:
+            # BEST CASE: Both APIs worked - combine results
+            all_results = newsapi_results + google_results
+            print(f"🎯 Using both NewsAPI + Google Search: {len(all_results)} total results")
+        elif newsapi_success and not google_success:
+            # FALLBACK 1: Only NewsAPI worked
+            all_results = newsapi_results
+            print(f"📰 Fallback to NewsAPI only: {len(all_results)} results (Google Search failed)")
+        elif google_success and not newsapi_success:
+            # FALLBACK 2: Only Google Search worked
+            all_results = google_results
+            print(f"🔍 Fallback to Google Search only: {len(all_results)} results (NewsAPI failed)")
+        else:
+            # FINAL FALLBACK: Try alternative methods before giving up
+            print(f"⚠️ Both APIs failed - trying alternative search methods...")
+            try:
+                all_results = self._alternative_search_methods(query, num_results)
+                if all_results:
+                    print(f"💡 Alternative methods succeeded: {len(all_results)} results")
+            except Exception as e:
+                print(f"Alternative methods also failed: {e}")
+                all_results = []
+        
+        # 4. Filter and rank results using LLM for relevance (if we have any)
         if all_results:
-            filtered_results = self._filter_results_with_llm(query, all_results, target_count=num_results)
-            print(f"Filtered {len(all_results)} results down to {len(filtered_results)} high-quality matches")
-            return filtered_results
+            try:
+                filtered_results = self._filter_results_with_llm(query, all_results, target_count=num_results)
+                print(f"📊 Filtered {len(all_results)} results down to {len(filtered_results)} high-quality matches")
+                return filtered_results
+            except Exception as e:
+                print(f"LLM filtering failed, returning raw results: {e}")
+                return all_results[:num_results]  # Return first N results as fallback
         
+        # If we get here, all methods failed
+        print(f"❌ All search methods failed - no results available")
         return []
     
     def _generate_enhanced_search_queries(self, query):

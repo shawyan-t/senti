@@ -25,6 +25,7 @@ export default function Home() {
   const [selectedAnalysisId, setSelectedAnalysisId] = useState("")
   const [uploadedFile, setUploadedFile] = useState<File | null>(null)
   const [fileName, setFileName] = useState("")
+  const [error, setError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -82,11 +83,14 @@ export default function Home() {
     if (!text.trim()) return
     
     setIsAnalyzing(true)
+    setError(null) // Clear previous errors
     try {
       const result = await analyzeText(text)
       setAnalysisResult(result)
     } catch (error) {
       console.error("Error analyzing text:", error)
+      const errorMessage = error instanceof Error ? error.message : 'Analysis failed'
+      setError(errorMessage)
     } finally {
       setIsAnalyzing(false)
     }
@@ -117,11 +121,14 @@ export default function Home() {
     if (!uploadedFile) return
     
     setIsAnalyzing(true)
+    setError(null) // Clear previous errors
     try {
       const result = await analyzeFile(uploadedFile)
       setAnalysisResult(result)
     } catch (error) {
       console.error("Error analyzing file:", error)
+      const errorMessage = error instanceof Error ? error.message : 'File analysis failed'
+      setError(errorMessage)
     } finally {
       setIsAnalyzing(false)
     }
@@ -131,11 +138,14 @@ export default function Home() {
     if (!selectedAnalysisId) return
     
     setIsAnalyzing(true)
+    setError(null) // Clear previous errors
     try {
       const result = await getAnalysis(selectedAnalysisId)
       setAnalysisResult(result)
     } catch (error) {
       console.error("Error loading analysis:", error)
+      const errorMessage = error instanceof Error ? error.message : 'Failed to load analysis'
+      setError(errorMessage)
     } finally {
       setIsAnalyzing(false)
     }
@@ -335,6 +345,91 @@ export default function Home() {
                   </div>
                 )}
               </div>
+
+              {/* Error Display */}
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="mb-4"
+                >
+                  <div className="bg-red-900/20 border border-red-700/50 rounded-lg p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="text-red-400 mt-0.5">⚠️</div>
+                      <div>
+                        <h3 className="text-red-300 font-medium mb-1">
+                          {error.includes("503") ? "Service Temporarily Unavailable" : 
+                           error.includes("rate limit") ? "Rate Limit Reached" : 
+                           "Analysis Failed"}
+                        </h3>
+                        <p className="text-red-200 text-sm leading-relaxed">
+                          {error.includes("Both NewsAPI and Google Search API are currently unavailable") ? (
+                            <>
+                              <strong>All Data Sources Unavailable:</strong> Both our primary data sources (NewsAPI and Google Search API) 
+                              are currently unavailable. This is rare and usually indicates API rate limiting on both services.
+                              <br /><br />
+                              <strong>What's happening:</strong> Our system tries multiple fallbacks:
+                              <ol className="list-decimal list-inside mt-2 space-y-1">
+                                <li>First: Use both NewsAPI + Google Search together</li>
+                                <li>Fallback: Use whichever API is available</li>
+                                <li>Final: Show this error only when both fail</li>
+                              </ol>
+                              <br />
+                              <strong>Solutions:</strong>
+                              <ul className="list-disc list-inside mt-2 space-y-1">
+                                <li>Wait 3-5 minutes for API limits to reset</li>
+                                <li>Try a different, more popular ticker (AAPL, MSFT, GOOGL)</li>
+                                <li>Check back later - limits reset daily</li>
+                              </ul>
+                            </>
+                          ) : error.includes("Google Search API is rate limited") ? (
+                            <>
+                              <strong>Partial Service:</strong> NewsAPI is working, but Google Search API is rate limited. 
+                              You should still get some results from news sources.
+                              <br /><br />
+                              <strong>What's happening:</strong> We use both NewsAPI and Google Search API for comprehensive coverage. 
+                              When one fails, we fall back to the other automatically.
+                              <br /><br />
+                              <strong>Solutions:</strong>
+                              <ul className="list-disc list-inside mt-2 space-y-1">
+                                <li>Try the analysis anyway - NewsAPI may provide sufficient data</li>
+                                <li>Wait 2-3 minutes for Google Search limits to reset</li>
+                                <li>Popular tickers get better NewsAPI coverage</li>
+                              </ul>
+                            </>
+                          ) : error.includes("503") ? (
+                            <>
+                              <strong>Service Unavailable:</strong> The financial data services are currently unavailable. 
+                              This may be due to API rate limiting or temporary service issues.
+                              <br /><br />
+                              <strong>What to do:</strong> Please wait a few minutes and try again. 
+                              If the problem persists, the service may be experiencing high demand.
+                            </>
+                          ) : (
+                            <>
+                              <strong>Error:</strong> {error}
+                              <br /><br />
+                              <strong>What to try:</strong>
+                              <ul className="list-disc list-inside mt-2 space-y-1">
+                                <li>Check that you entered a valid NASDAQ/NYSE ticker (e.g., AAPL, NVDA, META)</li>
+                                <li>Wait a moment and try again</li>
+                                <li>Try a different ticker symbol</li>
+                              </ul>
+                            </>
+                          )}
+                        </p>
+                        <button 
+                          onClick={() => setError(null)}
+                          className="mt-3 text-red-300 hover:text-red-200 text-sm underline"
+                        >
+                          Dismiss
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
 
               {/* Analysis Result Display */}
               {analysisResult && (

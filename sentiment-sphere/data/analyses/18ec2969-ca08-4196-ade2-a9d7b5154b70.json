@@ -1,0 +1,316 @@
+{
+  "id": "18ec2969-ca08-4196-ade2-a9d7b5154b70",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "AMD",
+  "timestamp": "2025-08-31T17:18:31.254490",
+  "enhanced_summary": "Comprehensive analysis of 15 content units with 87.6% confidence. Sentiment: 0.008 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9978487617361178,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 15,
+    "average_recency_weight": 0.6071586340638545
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.007768669913480558,
+      "confidence_interval": [
+        -0.09223133008651944,
+        0.10776866991348057
+      ],
+      "statistical_significance": 0.8756388200535933
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": 0.007768669913480558
+      },
+      "transformer_based": {
+        "consensus": 0.007768669913480558
+      },
+      "all_models_consensus": 0.007768669913480558
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 0.2878892600797689,
+      "polarization_index": 0.000524962671792344,
+      "model_agreement": 0.9994750373282076
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.12055266195463452,
+      "sadness": 0.13463589909829196,
+      "anger": 0.12055266195463452,
+      "fear": 0.12055266195463452,
+      "disgust": 0.12055266195463452,
+      "surprise": 0.12055266195463452,
+      "trust": 0.12055266195463452,
+      "anticipation": 0.14204812917390114
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "sadness",
+      "joy"
+    ],
+    "emotion_entropy": 2.0774858701710555,
+    "emotional_coherence": 0.9994750373282076,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.35426284331538505,
+      "emotional_distance_from_neutral": 0.007768669913480558,
+      "primary_emotion_vector": [
+        0.12055266195463452,
+        0.13463589909829196,
+        0.12055266195463452
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.000524962671792344,
+    "polarity_breakdown": {
+      "positive": 0.08377311114055751,
+      "negative": 0.0,
+      "neutral": 0.9162268888594425,
+      "wilson_ci": {
+        "positive": [
+          0.011866895493268553,
+          0.2981652987378003
+        ],
+        "negative": [
+          0.0,
+          0.20388330103584862
+        ],
+        "neutral": [
+          0.7018347012621998,
+          0.9881331045067315
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0021512382638821667,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.6071586340638545,
+    "novelty_score": 0.9633982998208255,
+    "total_evidence_weight": 0.7658260428618544
+  },
+  "vad_analysis": {
+    "valence": 0.5034616988074611,
+    "arousal": 0.5,
+    "dominance": 0.5003363096607574
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 15,
+  "recent_developments_identified": 15,
+  "source_citations": [
+    {
+      "source": "www.theverge.com",
+      "url": "https://www.theverge.com/news/757428/donald-trump-nvidia-amd-ai-chip-sales-china",
+      "text_sample": "The Trump administration has ordered Nvidia and AMD to pay the federal government a 15 percent cut of their AI chip sales revenue to China, according to reports from The New York Times and The Financi...",
+      "contribution_weight": "100.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "www.theverge.com",
+      "url": "https://www.theverge.com/report/768083/framework-actually-did-it-i-upgraded-a-laptops-entire-gpu-in-just-three-minutes",
+      "text_sample": "On Tuesday, I told you how the modular computer company Framework was finally fulfilling its promise of the \"holy grail for gamers\" - a laptop with modular, swappable discrete graphics cards so easy t...",
+      "contribution_weight": "90.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/mark-cuban-lauds-trump-handle-china-nvidia-2025-8",
+      "text_sample": "Nvidia and AMD are expected to pay the US government 15% of their China chip sales revenues.",
+      "contribution_weight": "80.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/nvidia-amd-sell-chips-china-tax-trump-tariff-why-2025-8",
+      "text_sample": "Donald Trump is letting Nvidia and AMD sell some chips to China — but only if they pay a 15% tax. That's the opposite of Trump's tariff push.",
+      "contribution_weight": "70.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.theverge.com",
+      "url": "https://www.theverge.com/news/765542/framework-240w-usb-c-pd-charger-first-framework-16",
+      "text_sample": "Four and a quarter years ago, I told you how a USB-C cable could someday power all but the beefiest gaming laptops. Now, Framework is finally fulfilling the promise of 240 watts through a USB plug. To...",
+      "contribution_weight": "60.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "www.marketwatch.com",
+      "url": "https://www.marketwatch.com/story/amds-stock-has-more-than-doubled-off-its-lows-does-that-bring-earnings-risk-31716cb2",
+      "text_sample": "AMD’s stock rally looks overdone to analysts at Jefferies, who are expecting some pullback after the company reports earnings on Tuesday afternoon.",
+      "contribution_weight": "50.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/727e73ec2d5e8790",
+      "text_sample": "Advanced Micro Devices, Inc. (NASDAQ:AMD) will release earnings results for the second quarter, after the closing bell on Tuesday, Aug. 5.\nAnalysts expect the Santa Clara, California-based company to ...",
+      "contribution_weight": "40.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/advanced-micro-devices-inc-amd-193315578.html",
+      "text_sample": "We recently published 10 Stocks Jim Cramer Discussed As He Blasted China’s Hostility Towards The US. Advanced Micro Devices, Inc. (NASDAQ:AMD) is one of the ...",
+      "contribution_weight": "30.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/truist-upgrades-advanced-micro-devices-141531391.html",
+      "text_sample": "Advanced Micro Devices, Inc. (NASDAQ:AMD) is one of the AI Stocks Hit with New Analyst Ratings. On August 26, Truist Securities analyst William Stein...",
+      "contribution_weight": "20.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/advanced-micro-devices-inc-amd-100408819.html",
+      "text_sample": "We came across a bullish thesis on Advanced Micro Devices, Inc. on Arya’s Substack’s by Arya. In this article, we will summarize the bulls’ thesis on AMD...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "gizmodo.com",
+      "url": "https://gizmodo.com/teenage-engineering-has-a-new-pc-case-as-usual-you-wont-believe-the-price-2000643602",
+      "text_sample": "Transparent gadgets are SO back.",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/video/intel-stock-jumps-report-trump-200947477.html",
+      "text_sample": "Shares of Intel (INTC) jumped 7% following a Bloomberg report that the Trump administration is considering taking a stake in the chip giant. The report...",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/ai-bubble-sam-altman-business-leaders-weigh-in-2025-8",
+      "text_sample": "OpenAI CEO Sam Altman isn't alone in thinking that investors are overhyping AI.",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "phandroid.com",
+      "url": "https://phandroid.com/2025/08/18/trump-300-chip-tariff-shakes-tech-industry-intel-may-find-relief/",
+      "text_sample": "Trump’s proposed 300% chip tariff could reshape the tech industry, with exemptions possible for firms like TSMC, Nvidia, and AMD.\nThe post Trump 300% chip tariff shakes tech industry, Intel may find r...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/intel-ceo-responds-after-trump-calls-for-resignation-122344026.html",
+      "text_sample": "President Trump on Thursday called for Intel CEO Lip-Bu Tan to resign.",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "AMD",
+    "query_type": "general",
+    "entities_detected": [
+      "Amd"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 15 related sources",
+        "relevance": "high",
+        "source_count": 15
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "87.6%",
+      "source_diversity": "7 different source types",
+      "temporal_coverage": "Analysis spans 29 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.22999806505930587,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "AMD’s stock rally looks overdone to analysts at Jefferies, who are expecting some pullback after the company reports earnings on Tuesday afternoon....",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5999999912491734,
+      "avg_quality": 0.7284090909090909,
+      "sources": [
+        "www.theverge.com",
+        "www.marketwatch.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_6",
+      "weight": 0.09553399116764291,
+      "sentiment": 0.06227573731009181,
+      "unit_count": 2,
+      "representative_text": "Trump’s proposed 300% chip tariff could reshape the tech industry, with exemptions possible for firms like TSMC, Nvidia, and AMD.\nThe post Trump 300% ...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5096592402124982,
+      "avg_quality": 0.6953222453222454,
+      "sources": [
+        "phandroid.com",
+        "www.businessinsider.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_4",
+      "weight": 0.09299924355703834,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Advanced Micro Devices, Inc. (NASDAQ:AMD) is one of the AI Stocks Hit with New Analyst Ratings. On August 26, Truist Securities analyst William Stein....",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5379059420842567,
+      "avg_quality": 0.7030092592592593,
+      "sources": [
+        "finance.yahoo.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.010660631304522744,
+      "max": 0.1922233762137991,
+      "mean": 0.05105506952412363,
+      "std": 0.041763650844061175
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 15,
+      "high_source_units": 0,
+      "low_toxicity_units": 15
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2510013572997201,
+      "gini_coefficient": 0.3030945871816575
+    }
+  }
+}

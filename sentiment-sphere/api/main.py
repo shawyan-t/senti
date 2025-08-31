@@ -683,10 +683,10 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         
         # If no search results were found, return proper error
         if not units:
-            print("No search results found - API rate limited")
+            print("No search results found - all sources failed")
             raise HTTPException(
                 status_code=503, 
-                detail="Unable to retrieve financial data at this time. Google Search API is rate limited. Please try again in a few minutes."
+                detail="Unable to retrieve financial data at this time. Both NewsAPI and Google Search API are currently unavailable. This may be due to rate limiting or service issues. Please try again in a few minutes."
             )
         
         # Step 4: Run comprehensive analysis pipeline
