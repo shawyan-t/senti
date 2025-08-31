@@ -38,8 +38,16 @@ export function SentimentTimeline({
     setMounted(true)
   }, [])
 
+  // Don't show fake data - return a message instead if no real timeline data
   if (data.length === 0) {
-    data = generateMockTimelineData()
+    return (
+      <div className={`w-full flex items-center justify-center text-gray-400 ${className}`} style={{height}}>
+        <div className="text-center">
+          <div className="text-lg mb-2">No Timeline Data Available</div>
+          <div className="text-sm">Timeline analysis requires multiple data points over time</div>
+        </div>
+      </div>
+    )
   }
 
   // Sort data by date
@@ -154,30 +162,4 @@ export function SentimentTimeline({
   )
 }
 
-// Generate mock timeline data if none is provided
-function generateMockTimelineData(): TimelineDataPoint[] {
-  const data: TimelineDataPoint[] = []
-  const today = new Date()
-  
-  for (let i = 30; i >= 0; i--) {
-    const date = new Date(today)
-    date.setDate(today.getDate() - i)
-    
-    // Generate a random walk sentiment between -1 and 1
-    const randomChange = (Math.random() - 0.5) * 0.2
-    const prevSentiment = data.length > 0 ? data[data.length - 1].sentiment : 0
-    let sentiment = prevSentiment + randomChange
-    sentiment = Math.max(-1, Math.min(1, sentiment)) // Clamp between -1 and 1
-    
-    // Random volume between 10 and 100
-    const volume = Math.floor(Math.random() * 90) + 10
-    
-    data.push({
-      date: date.toISOString().split('T')[0],
-      sentiment,
-      volume
-    })
-  }
-  
-  return data
-} 
+// Mock timeline data function removed - no longer generating fake data

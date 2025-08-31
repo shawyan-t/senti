@@ -15,7 +15,7 @@ const UMAP3DScatter = dynamic(() => import('@/components/charts/umap-3d-scatter'
 type AnalysisData = Record<string, any>
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("text")
+  const [activeTab, setActiveTab] = useState("ticker")
   const [text, setText] = useState("")
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
@@ -52,6 +52,29 @@ export default function Home() {
       }
     } catch (error) {
       console.error("Failed to load analyses:", error)
+    }
+  }
+
+  // Helper function to transform mathematical analysis data to UI format
+  const transformMathematicalAnalysis = (result: Analysis) => {
+    const compositeScore = result.mathematical_sentiment_analysis?.composite_score?.value || 0
+    const sentiment = compositeScore > 0.1 ? 'positive' : compositeScore < -0.1 ? 'negative' : 'neutral'
+    const confidenceInterval = result.mathematical_sentiment_analysis?.composite_score?.confidence_interval
+    const dominantEmotions = result.emotion_vector_analysis?.dominant_emotions || []
+    
+    return {
+      sentiment: {
+        sentiment,
+        score: compositeScore,
+        rationale: `Mathematical analysis (${(result.mathematical_sentiment_analysis?.composite_score?.statistical_significance * 100 || 0).toFixed(1)}% confidence) with dominant emotions: ${dominantEmotions.join(', ')}`
+      },
+      analysis: result.enhanced_summary || 'No enhanced summary available.',
+      metadata: {
+        topics: dominantEmotions,
+        confidence_interval: confidenceInterval,
+        model_consensus: result.mathematical_sentiment_analysis?.multi_model_validation,
+        emotion_entropy: result.emotion_vector_analysis?.emotion_entropy
+      }
     }
   }
 
@@ -149,7 +172,7 @@ export default function Home() {
         >
           <SentimizerTitle onAnimationComplete={() => setTitleAnimationComplete(true)} />
           <p className="absolute mt-32 text-center text-emerald-300 font-light tracking-wide">
-            Advanced AI-Powered Sentiment Analysis Platform
+            🏦 Stock Market Sentiment Analysis • NASDAQ & NYSE Only
           </p>
         </motion.div>
 
@@ -160,8 +183,8 @@ export default function Home() {
               <div className="bg-white/5 backdrop-blur-sm h-16 rounded-lg mb-8 shadow-lg shadow-purple-900/20"></div>
 
               <div className="w-full">
-                <div className="grid grid-cols-3 mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
-                  {["text", "upload", "analyses"].map((tab) => (
+                <div className="grid grid-cols-2 mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
+                  {["ticker", "analyses"].map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
@@ -172,39 +195,69 @@ export default function Home() {
                           : "text-gray-400 hover:text-gray-200",
                       )}
                     >
-                      {tab === "text" && "Text/URL Input"}
-                      {tab === "upload" && "Upload File"}
-                      {tab === "analyses" && "My Analyses"}
+                      {tab === "ticker" && "📈 Stock Ticker Analysis"}
+                      {tab === "analyses" && "📊 Saved Analyses"}
                     </button>
                   ))}
                 </div>
 
-                {activeTab === "text" && (
+                {activeTab === "ticker" && (
                   <div className="space-y-4">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="bg-slate-800/50 border border-amber-500/30 rounded-lg p-4 mb-4"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
+                        <h3 className="text-amber-300 font-semibold">Stock Market Sentiment Analysis</h3>
+                      </div>
+                      <p className="text-sm text-gray-300">
+                        This system analyzes <strong>NASDAQ and NYSE stock tickers only</strong>. 
+                        Enter a valid ticker symbol (e.g., AAPL, NVDA, META, VOO) to get comprehensive sentiment analysis 
+                        from financial news sources, analyst reports, and market discussions.
+                      </p>
+                    </motion.div>
+                    
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5 }}
                       className="text-emerald-300 font-medium"
                     >
-                      Enter text, URL, or paste content to analyze:
+                      Enter a NASDAQ or NYSE Stock Ticker:
                     </motion.p>
-                    <Textarea
-                      placeholder="Enter a URL, article, financial report, or any text you want to analyze..."
-                      className="min-h-[200px] bg-slate-800/70 backdrop-blur-sm border-slate-700 focus:border-emerald-500 transition-all duration-300 rounded-lg resize-none"
-                      value={text}
-                      onChange={(e) => setText(e.target.value)}
-                    />
+                    <div className="relative">
+                      <input
+                        type="text"
+                        placeholder="Enter ticker symbol (e.g., AAPL, NVDA, META, VOO)..."
+                        className="w-full h-14 bg-slate-800/70 backdrop-blur-sm border border-slate-700 focus:border-emerald-500 transition-all duration-300 rounded-lg px-4 text-lg font-mono uppercase placeholder:normal-case placeholder:font-sans"
+                        value={text}
+                        onChange={(e) => setText(e.target.value.toUpperCase())}
+                        maxLength={5}
+                      />
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <span className="text-xs text-gray-500 bg-slate-700 px-2 py-1 rounded">
+                          {text.length}/5
+                        </span>
+                      </div>
+                    </div>
                     <div className="flex justify-between items-center">
-                      <p className="text-sm text-emerald-200/70">
-                        Type or paste text, enter a URL, or simply ask a question about a topic.
-                      </p>
+                      <div className="space-y-1">
+                        <p className="text-sm text-emerald-200/70">
+                          Examples: AAPL (Apple), NVDA (NVIDIA), META (Meta), VOO (Vanguard S&P 500 ETF)
+                        </p>
+                        <p className="text-xs text-gray-400">
+                          Only NASDAQ and NYSE tickers are supported
+                        </p>
+                      </div>
                       <Button
                         onClick={handleAnalyze}
                         disabled={!text.trim() || isAnalyzing}
                         className={cn(
                           "bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400",
-                          "text-white font-medium px-6 py-2 rounded-lg shadow-lg shadow-emerald-900/30",
+                          "text-white font-medium px-8 py-3 rounded-lg shadow-lg shadow-emerald-900/30",
                           "transition-all duration-300 transform hover:scale-105 active:scale-95",
                           "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none",
                         )}
@@ -212,98 +265,18 @@ export default function Home() {
                         {isAnalyzing ? (
                           <>
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Analyzing...
+                            Analyzing {text}...
                           </>
                         ) : (
-                          "Analyze"
+                          <>
+                            📈 Analyze {text || "Ticker"}
+                          </>
                         )}
                       </Button>
                     </div>
                   </div>
                 )}
 
-                {activeTab === "upload" && (
-                  <div className="space-y-4">
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-emerald-300 font-medium"
-                    >
-                      Upload a file to analyze (PDF, CSV, JSON, or text file)
-                    </motion.p>
-                    <motion.div
-                      whileHover={{ scale: 1.01 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                      className="border-2 border-dashed border-slate-700 hover:border-emerald-500 rounded-lg p-8 text-center transition-colors duration-300 bg-slate-800/50 backdrop-blur-sm"
-                      onDragOver={handleDragOver}
-                      onDrop={handleDrop}
-                    >
-                      <div className="flex flex-col items-center justify-center gap-4">
-                        <div className="relative">
-                          <Cloud className="h-16 w-16 text-slate-600" />
-                          <motion.div
-                            className="absolute inset-0 flex items-center justify-center"
-                            animate={{
-                              opacity: [0.5, 1, 0.5],
-                              scale: [0.95, 1.05, 0.95],
-                            }}
-                            transition={{
-                              repeat: Number.POSITIVE_INFINITY,
-                              duration: 3,
-                              ease: "easeInOut",
-                            }}
-                          >
-                            <Cloud className="h-16 w-16 text-emerald-500/30" />
-                          </motion.div>
-                        </div>
-                        <div className="space-y-2">
-                          {fileName ? (
-                            <p className="text-xl font-light">{fileName}</p>
-                          ) : (
-                            <p className="text-xl font-light">Drag and drop file here</p>
-                          )}
-                          <p className="text-sm text-emerald-200/50">Limit 200MB per file • PDF, CSV, JSON, TXT</p>
-                        </div>
-                        <input
-                          type="file"
-                          ref={fileInputRef}
-                          onChange={handleFileUpload}
-                          className="hidden"
-                          accept=".pdf,.csv,.json,.txt"
-                        />
-                        <Button
-                          variant="outline"
-                          className="mt-2 border-slate-600 text-emerald-300 hover:bg-emerald-900/20 hover:text-emerald-200 transition-all duration-300"
-                          onClick={() => fileInputRef.current?.click()}
-                        >
-                          Browse files
-                        </Button>
-                      </div>
-                    </motion.div>
-                    <div>
-                      <Button
-                        className={cn(
-                          "bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400",
-                          "text-white font-medium px-6 py-2 rounded-lg shadow-lg shadow-emerald-900/30",
-                          "transition-all duration-300 transform hover:scale-105 active:scale-95",
-                          "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none",
-                        )}
-                        disabled={!uploadedFile || isAnalyzing}
-                        onClick={handleAnalyzeFile}
-                      >
-                        {isAnalyzing ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Analyzing...
-                          </>
-                        ) : (
-                          "Analyze File"
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                )}
 
                 {activeTab === "analyses" && (
                   <div className="space-y-4">
@@ -373,33 +346,207 @@ export default function Home() {
                 >
                   <h2 className="text-2xl font-bold text-emerald-400 mb-4">Analysis Results</h2>
                   
-                  {/* Sentiment Overview */}
+                  {/* Comprehensive Sentiment Analysis Results */}
                   <div className="mb-6">
-                    <h3 className="text-xl font-semibold text-emerald-300 mb-2">Sentiment</h3>
-                    <div className="flex items-center space-x-4">
-                      <div className={`text-xl font-bold ${
-                        analysisResult.sentiment?.sentiment === "positive" ? "text-green-500" : 
-                        analysisResult.sentiment?.sentiment === "negative" ? "text-red-500" : 
-                        "text-yellow-500"
-                      }`}>
-                        {analysisResult.sentiment?.sentiment?.toUpperCase() || "NEUTRAL"}
+                    <h3 className="text-xl font-semibold text-emerald-300 mb-2">Comprehensive Sentiment Analysis</h3>
+                    
+                    {/* Core Sentiment */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Sentiment Score</div>
+                        <div className={`text-lg font-bold ${
+                          (analysisResult.comprehensive_metrics?.sentiment?.score || 0) > 0.1 ? "text-green-500" : 
+                          (analysisResult.comprehensive_metrics?.sentiment?.score || 0) < -0.1 ? "text-red-500" : 
+                          "text-yellow-500"
+                        }`}>
+                          {(analysisResult.comprehensive_metrics?.sentiment?.score || analysisResult.mathematical_sentiment_analysis?.composite_score?.value || 0).toFixed(3)}
+                        </div>
+                        <div className="text-xs text-gray-400">Range: [-1, +1]</div>
                       </div>
-                      <div className="text-gray-300">
-                        Score: {(analysisResult.sentiment?.score || 0).toFixed(2)}
+                      
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Confidence</div>
+                        <div className="text-lg font-bold text-blue-400">
+                          {((analysisResult.comprehensive_metrics?.sentiment?.confidence || analysisResult.mathematical_sentiment_analysis?.composite_score?.statistical_significance || 0) * 100).toFixed(1)}%
+                        </div>
+                        <div className="text-xs text-gray-400">Statistical significance</div>
+                      </div>
+                      
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Disagreement</div>
+                        <div className="text-lg font-bold text-purple-400">
+                          {((analysisResult.comprehensive_metrics?.disagreement_index || analysisResult.mathematical_sentiment_analysis?.uncertainty_metrics?.polarization_index || 0) * 100).toFixed(1)}%
+                        </div>
+                        <div className="text-xs text-gray-400">Polarization measure</div>
                       </div>
                     </div>
-                    <p className="mt-2 text-gray-300">
-                      {analysisResult.sentiment?.rationale || "No rationale provided."}
-                    </p>
+
+                    {/* Polarity Breakdown with Wilson CIs */}
+                    {analysisResult.comprehensive_metrics?.polarity_breakdown && (
+                      <div className="mb-4">
+                        <div className="text-sm font-medium text-emerald-200 mb-2">Polarity Distribution (Wilson 95% CI)</div>
+                        <div className="grid grid-cols-3 gap-2 text-sm">
+                          <div className="bg-green-900/30 p-2 rounded">
+                            <div className="text-green-300">Positive: {(analysisResult.comprehensive_metrics.polarity_breakdown.positive * 100).toFixed(1)}%</div>
+                            {analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci?.positive && (
+                              <div className="text-xs text-gray-400">
+                                CI: [{(analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci.positive[0] * 100).toFixed(1)}%, {(analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci.positive[1] * 100).toFixed(1)}%]
+                              </div>
+                            )}
+                          </div>
+                          <div className="bg-red-900/30 p-2 rounded">
+                            <div className="text-red-300">Negative: {(analysisResult.comprehensive_metrics.polarity_breakdown.negative * 100).toFixed(1)}%</div>
+                            {analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci?.negative && (
+                              <div className="text-xs text-gray-400">
+                                CI: [{(analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci.negative[0] * 100).toFixed(1)}%, {(analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci.negative[1] * 100).toFixed(1)}%]
+                              </div>
+                            )}
+                          </div>
+                          <div className="bg-yellow-900/30 p-2 rounded">
+                            <div className="text-yellow-300">Neutral: {(analysisResult.comprehensive_metrics.polarity_breakdown.neutral * 100).toFixed(1)}%</div>
+                            {analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci?.neutral && (
+                              <div className="text-xs text-gray-400">
+                                CI: [{(analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci.neutral[0] * 100).toFixed(1)}%, {(analysisResult.comprehensive_metrics.polarity_breakdown.wilson_ci.neutral[1] * 100).toFixed(1)}%]
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Tone & Style Analysis */}
+                  {analysisResult.comprehensive_metrics?.tone && (
+                    <div className="mb-6">
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-2">Tone & Style Analysis</h3>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Subjectivity</div>
+                          <div className="text-lg font-bold text-indigo-400">
+                            {(analysisResult.comprehensive_metrics.tone.subjectivity * 100).toFixed(0)}%
+                          </div>
+                        </div>
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Politeness</div>
+                          <div className="text-lg font-bold text-pink-400">
+                            {(analysisResult.comprehensive_metrics.tone.politeness * 100).toFixed(0)}%
+                          </div>
+                        </div>
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Formality</div>
+                          <div className="text-lg font-bold text-cyan-400">
+                            {(analysisResult.comprehensive_metrics.tone.formality * 100).toFixed(0)}%
+                          </div>
+                        </div>
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Assertiveness</div>
+                          <div className="text-lg font-bold text-orange-400">
+                            {(analysisResult.comprehensive_metrics.tone.assertiveness * 100).toFixed(0)}%
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Special Metrics */}
+                  <div className="mb-6">
+                    <h3 className="text-xl font-semibold text-emerald-300 mb-2">Risk & Quality Metrics</h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Sarcasm Rate</div>
+                        <div className="text-lg font-bold text-yellow-400">
+                          {((analysisResult.comprehensive_metrics?.sarcasm_rate || 0) * 100).toFixed(1)}%
+                        </div>
+                      </div>
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Toxicity Rate</div>
+                        <div className="text-lg font-bold text-red-400">
+                          {((analysisResult.comprehensive_metrics?.toxicity_rate || 0) * 100).toFixed(1)}%
+                        </div>
+                      </div>
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Freshness Score</div>
+                        <div className="text-lg font-bold text-green-400">
+                          {((analysisResult.comprehensive_metrics?.freshness_score || 0) * 100).toFixed(0)}%
+                        </div>
+                      </div>
+                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="text-sm text-gray-400">Evidence Weight</div>
+                        <div className="text-lg font-bold text-blue-400">
+                          {(analysisResult.comprehensive_metrics?.total_evidence_weight || 0).toFixed(2)}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   
-                  {/* Detailed Analysis */}
+                  {/* Enhanced Summary */}
                   <div className="mb-6">
-                    <h3 className="text-xl font-semibold text-emerald-300 mb-2">Detailed Analysis</h3>
+                    <h3 className="text-xl font-semibold text-emerald-300 mb-2">Enhanced Analysis Summary</h3>
                     <p className="text-gray-300">
-                      {analysisResult.analysis || "No detailed analysis available."}
+                      {analysisResult.enhanced_summary || "No enhanced summary available."}
                     </p>
                   </div>
+
+                  {/* Evidence & Source Breakdown */}
+                  {analysisResult.explanatory_clusters && analysisResult.explanatory_clusters.length > 0 && (
+                    <div className="mb-6">
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-2">Evidence Sources & Quality</h3>
+                      {analysisResult.explanatory_clusters.map((cluster: any, i: number) => (
+                        <div key={i} className="bg-slate-700/50 p-3 rounded-lg mb-3">
+                          <div className="flex justify-between items-start mb-2">
+                            <div className="text-sm font-medium text-emerald-200">
+                              Cluster {i + 1} (Weight: {cluster.weight?.toFixed(3)})
+                            </div>
+                            <div className="text-xs text-gray-400">
+                              {cluster.unit_count} units
+                            </div>
+                          </div>
+                          <div className="text-sm text-gray-300 mb-2">
+                            {cluster.representative_text}
+                          </div>
+                          {cluster.why_important && cluster.why_important.length > 0 && (
+                            <div className="flex flex-wrap gap-1">
+                              {cluster.why_important.map((reason: string, j: number) => (
+                                <span key={j} className="text-xs bg-green-900/50 text-green-300 px-2 py-1 rounded">
+                                  {reason}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* VAD Analysis */}
+                  {analysisResult.vad_analysis && (
+                    <div className="mb-6">
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-2">VAD Emotional Dimensions</h3>
+                      <div className="grid grid-cols-3 gap-3">
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Valence</div>
+                          <div className="text-lg font-bold text-purple-400">
+                            {(analysisResult.vad_analysis.valence * 100).toFixed(0)}%
+                          </div>
+                          <div className="text-xs text-gray-400">Pleasure/Displeasure</div>
+                        </div>
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Arousal</div>
+                          <div className="text-lg font-bold text-red-400">
+                            {(analysisResult.vad_analysis.arousal * 100).toFixed(0)}%
+                          </div>
+                          <div className="text-xs text-gray-400">Activation/Calm</div>
+                        </div>
+                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                          <div className="text-sm text-gray-400">Dominance</div>
+                          <div className="text-lg font-bold text-yellow-400">
+                            {(analysisResult.vad_analysis.dominance * 100).toFixed(0)}%
+                          </div>
+                          <div className="text-xs text-gray-400">Control/Submission</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   
                   {/* Metadata/Topics */}
                   {analysisResult.metadata && (
@@ -458,19 +605,170 @@ export default function Home() {
                     </div>
                   )}
 
+                  {/* Query Summary and Recent Events */}
+                  {analysisResult.query_summary && (
+                    <div className="mb-8">
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-4">Query Analysis & Recent Context</h3>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-emerald-200 mb-2">Query Type</h4>
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                            analysisResult.query_summary.query_type === 'financial' 
+                              ? 'bg-amber-900/50 text-amber-300' 
+                              : 'bg-blue-900/50 text-blue-300'
+                          }`}>
+                            {analysisResult.query_summary.query_type === 'financial' ? '💰 Financial/Market' : '📝 General'}
+                          </span>
+                          <p className="text-sm text-gray-300 mt-2">"{analysisResult.query_summary.query}"</p>
+                        </div>
+                        
+                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-emerald-200 mb-2">Entities Detected</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {analysisResult.query_summary.entities_detected?.length > 0 ? (
+                              analysisResult.query_summary.entities_detected.map((entity: string, i: number) => (
+                                <span key={i} className="px-2 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm">
+                                  {entity}
+                                </span>
+                              ))
+                            ) : (
+                              <span className="text-gray-400">No specific entities detected</span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <h4 className="font-medium text-emerald-200 mb-3">Recent Events Context</h4>
+                        {analysisResult.query_summary.recent_events?.map((event: any, i: number) => (
+                          <div key={i} className="flex items-center justify-between py-2 border-b border-slate-600 last:border-b-0">
+                            <div className="flex items-center">
+                              <span className={`w-2 h-2 rounded-full mr-3 ${
+                                event.relevance === 'high' ? 'bg-green-400' : 
+                                event.relevance === 'low' ? 'bg-yellow-400' : 'bg-gray-400'
+                              }`}></span>
+                              <span className="text-sm text-gray-300">{event.event}</span>
+                            </div>
+                            <span className="text-xs text-gray-400">
+                              {event.source_count} sources
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Source Citations and Evidence */}
+                  {analysisResult.source_citations && (
+                    <div className="mb-8">
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-4">Source Citations & Evidence</h3>
+                      
+                      <div className="space-y-3">
+                        {analysisResult.source_citations.map((citation: any, i: number) => (
+                          <div key={i} className="bg-slate-700/50 p-4 rounded-lg border-l-4 border-emerald-500">
+                            <div className="flex justify-between items-start mb-2">
+                              <div className="flex items-center gap-2">
+                                <span className="font-medium text-emerald-200">
+                                  {citation.source === 'user_input' ? '👤 User Input' : `🌐 ${citation.source}`}
+                                </span>
+                                <span className="px-2 py-1 bg-emerald-900/50 text-emerald-300 rounded text-xs">
+                                  Weight: {citation.contribution_weight}
+                                </span>
+                              </div>
+                              <span className="text-xs text-gray-400">{citation.recency}</span>
+                            </div>
+                            <p className="text-sm text-gray-300 mb-2">"{citation.text_sample}"</p>
+                            {citation.url && (
+                              <a href={citation.url} target="_blank" rel="noopener noreferrer" 
+                                 className="text-xs text-blue-400 hover:text-blue-300 underline">
+                                View Source →
+                              </a>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Calculation Methodology and Accuracy */}
+                  {analysisResult.calculation_methodology && (
+                    <div className="mb-8">
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-4">How Scores Are Calculated</h3>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-emerald-200 mb-2">🧮 Sentiment Calculation</h4>
+                          <p className="text-sm text-gray-300">{analysisResult.calculation_methodology.sentiment_calculation}</p>
+                        </div>
+                        
+                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                          <h4 className="font-medium text-emerald-200 mb-2">🎯 Confidence Basis</h4>
+                          <p className="text-sm text-gray-300">{analysisResult.calculation_methodology.confidence_basis}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-slate-700/50 p-4 rounded-lg mb-4">
+                        <h4 className="font-medium text-emerald-200 mb-2">⚖️ Source Weighting</h4>
+                        <p className="text-sm text-gray-300">{analysisResult.calculation_methodology.source_weighting}</p>
+                      </div>
+                      
+                      <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <h4 className="font-medium text-emerald-200 mb-3">📊 Accuracy Indicators</h4>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-emerald-300">
+                              {analysisResult.calculation_methodology.accuracy_indicators.model_agreement}
+                            </div>
+                            <div className="text-xs text-gray-400">Model Agreement</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-emerald-300">
+                              {analysisResult.calculation_methodology.accuracy_indicators.source_diversity}
+                            </div>
+                            <div className="text-xs text-gray-400">Source Diversity</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-lg font-bold text-emerald-300">
+                              {analysisResult.calculation_methodology.accuracy_indicators.temporal_coverage}
+                            </div>
+                            <div className="text-xs text-gray-400">Temporal Coverage</div>
+                          </div>
+                          <div className="text-center">
+                            <div className={`text-lg font-bold ${
+                              analysisResult.calculation_methodology.accuracy_indicators.data_quality === 'high' ? 'text-green-300' :
+                              analysisResult.calculation_methodology.accuracy_indicators.data_quality === 'medium' ? 'text-yellow-300' :
+                              'text-red-300'
+                            }`}>
+                              {analysisResult.calculation_methodology.accuracy_indicators.data_quality.toUpperCase()}
+                            </div>
+                            <div className="text-xs text-gray-400">Data Quality</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Visualization Dashboard */}
                   <VisualizationDashboard 
-                    analysisData={{
-                      sentiment: analysisResult.sentiment,
-                      metadata: analysisResult.metadata,
-                      emotions: (analysisResult as any).emotions ?? [],
-                      timeSeriesData: [],
-                      keywords: analysisResult.metadata?.topics?.map((topic: string, i: number) => ({
-                        keyword: topic,
-                        frequency: 100 - (i * 10),
-                        sentiment: analysisResult.sentiment?.sentiment as any || 'neutral'
-                      })) || []
-                    }}
+                    analysisData={(() => {
+                      const transformedData = transformMathematicalAnalysis(analysisResult)
+                      const plutchikEmotions = analysisResult.emotion_vector_analysis?.plutchik_coordinates || {}
+                      return {
+                        sentiment: transformedData.sentiment,
+                        metadata: transformedData.metadata,
+                        emotions: Object.entries(plutchikEmotions).map(([emotion, score]) => ({
+                          emotion,
+                          score: score as number
+                        })),
+                        timeSeriesData: [], // Will be fixed in next step
+                        keywords: (analysisResult.emotion_vector_analysis?.dominant_emotions || []).map((emotion: string) => ({
+                          keyword: emotion,
+                          frequency: (plutchikEmotions[emotion] as number || 0) * 100,
+                          sentiment: transformedData.sentiment.sentiment as any
+                        }))
+                      }
+                    })()}
                   />
 
                   {/* 3D UMAP Visualization */}

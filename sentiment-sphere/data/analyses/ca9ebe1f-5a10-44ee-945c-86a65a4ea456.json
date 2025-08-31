@@ -1,0 +1,360 @@
+{
+  "id": "ca9ebe1f-5a10-44ee-945c-86a65a4ea456",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "META",
+  "timestamp": "2025-08-31T12:36:29.163747",
+  "enhanced_summary": "Comprehensive analysis of 21 content units with 87.4% confidence. Sentiment: 0.007 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 20,
+    "average_recency_weight": 0.48819445720780386
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.006989170601138333,
+      "confidence_interval": [
+        -0.09301082939886167,
+        0.10698917060113834
+      ],
+      "statistical_significance": 0.8743213184459612
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": 0.006989170601138333
+      },
+      "transformer_based": {
+        "consensus": 0.006989170601138333
+      },
+      "all_models_consensus": 0.006989170601138333
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 0.22200127792867824,
+      "polarization_index": 0.0009414328673183415,
+      "model_agreement": 0.9990585671326817
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.14177233619843876,
+      "sadness": 0.1195590118031511,
+      "anger": 0.1195590118031511,
+      "fear": 0.1195590118031511,
+      "disgust": 0.1195590118031511,
+      "surprise": 0.1195590118031511,
+      "trust": 0.1195590118031511,
+      "anticipation": 0.14087359298265467
+    },
+    "dominant_emotions": [
+      "joy",
+      "anticipation",
+      "sadness"
+    ],
+    "emotion_entropy": 2.0766747141571655,
+    "emotional_coherence": 0.9990585671326817,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.35455734138652656,
+      "emotional_distance_from_neutral": 0.006989170601138333,
+      "primary_emotion_vector": [
+        0.14177233619843876,
+        0.1195590118031511,
+        0.1195590118031511
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0009414328673183415,
+    "polarity_breakdown": {
+      "positive": 0.05820557342659058,
+      "negative": 0.0,
+      "neutral": 0.9417944265734094,
+      "wilson_ci": {
+        "positive": [
+          0.026518767438074548,
+          0.28914139073918255
+        ],
+        "negative": [
+          0.0,
+          0.154639018924847
+        ],
+        "neutral": [
+          0.7108586092608176,
+          0.9734812325619255
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.48819445720780386,
+    "novelty_score": 0.8775191365145236,
+    "total_evidence_weight": 0.8204919570948932
+  },
+  "vad_analysis": {
+    "valence": 0.5037403227953642,
+    "arousal": 0.5,
+    "dominance": 0.5019231118063844
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 20,
+  "recent_developments_identified": 20,
+  "source_citations": [
+    {
+      "source": "financial_market",
+      "url": "user_input_20250831_123629",
+      "text_sample": "META",
+      "contribution_weight": "100.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "ca.finance.yahoo.com",
+      "url": "https://ca.finance.yahoo.com/quote/META/",
+      "text_sample": "Aug 12, 2025 ... Compare To: META. Compare. Select to analyze similar companies using key performance metrics; select up to 4 stocks. META. Meta Platforms, Inc. 738.70. -1.65 ...",
+      "contribution_weight": "100.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.cnn.com",
+      "url": "https://www.cnn.com/markets/stocks/META",
+      "text_sample": "2 days ago ... ... META. Meta Platforms Inc Class A. Quote. About. News. Financials. Forecasts. Competitors ... stock will perform against the market. META Stock Analysis. Latest ...",
+      "contribution_weight": "90.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "www.tradingview.com",
+      "url": "https://www.tradingview.com/symbols/NASDAQ-META/",
+      "text_sample": "Aug 14, 2025 ... chart to track its stock's price action. Find market predictions, META financials and market news ... META Stock Chart Fibonacci Analysis 082625Trading Idea 1) ...",
+      "contribution_weight": "80.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "seekingalpha.com",
+      "url": "https://seekingalpha.com/symbol/META",
+      "text_sample": "3 days ago ... In the past 6 months, META has trended up by 10.55%, and in the past year, META has trended up by 42.55%. View META's growth information.",
+      "contribution_weight": "70.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.tipranks.com",
+      "url": "https://www.tipranks.com/stocks/meta/forecast",
+      "text_sample": "5 days ago ... AI Stock Analysis · Dividends · Earnings · Ownership · Financials · Statistics · Technical Analysis · Historical Prices · News · Chart · Similar Stocks · Stock ...",
+      "contribution_weight": "60.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/live/earnings-live-microsoft-meta-stocks-surge-robinhood-beats-ford-warns-on-tariff-exposure-203613919.html",
+      "text_sample": "5 days ago ... ... Meta (META) ... earnings whispers and expectations, and company earnings news, click here · Read the latest financial and business news from Yahoo Finance.",
+      "contribution_weight": "50.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-slide-to-solid-month-on-sour-note-as-trumps-tariff-deadline-jobs-report-loom-200350814.html",
+      "text_sample": "Aug 1, 2025 ... ... Finance following Meta's and Microsoft's earnings. “Meta is gaining ... Mortgages Credit Cards Sectors Crypto Heatmap Financial News. ABOUT. Data ...",
+      "contribution_weight": "40.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.facebook.com",
+      "url": "https://www.facebook.com/business/news",
+      "text_sample": "Aug 14, 2025 ... Insights from Meta's Q2 Earnings: Harnessing the Power of Video to Drive Performance. Video engagement surges with AI, becoming essential for advertisers to ...",
+      "contribution_weight": "30.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/stocks/meta/",
+      "text_sample": "2 days ago ... About META. Meta Platforms, Inc. engages in the development of products that ... latest price. Price Target. $816.16. (10.49% upside). Analyst Consensus ...",
+      "contribution_weight": "20.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/market-outlook/Is-Meta-Platforms-Inc.-stock-showing-strong-momentum",
+      "text_sample": "Aug 15, 2025 ... Is Meta Platforms Inc. stock showing strong momentum - Portfolio Growth Summary & Accurate Intraday Trade Tips ✌️【Stock Analysis Group】✌️Invest $100 and enjoy ...",
+      "contribution_weight": "10.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/equities/facebook-inc",
+      "text_sample": "2 days ago ... Meta Platforms Inc News & Analysis. Summarize META's latest news. Recent; Analysis; Earnings; Transcripts; Company; Analyst Ratings; Insider Trading; SEC ...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/equities/facebook-inc-earnings",
+      "text_sample": "Aug 13, 2025 ... Financial Summary · Income Statement · Balance Sheet · Cash Flow · Ratios · Dividends; Earnings; Forecast ... Meta Platforms Inc Earnings Call Summary for Q2/2025.",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.enbridge.com",
+      "url": "https://www.enbridge.com/investment-center/dashboard",
+      "text_sample": "Aug 18, 2025 ... ... financial results, reaffirmed its 2025 financial guidance and provided a quarterly business update. ... Meta Platforms, Inc., has signed a long-term contract for ...",
+      "contribution_weight": "10.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.theglobeandmail.com",
+      "url": "https://www.theglobeandmail.com/investing/markets/stocks/META/pressreleases/33827925/meta-platforms-inc-earnings-call-highlights-ai-growth/",
+      "text_sample": "Aug 1, 2025 ... In conclusion, Meta Platforms, Inc. has demonstrated strong financial performance and user engagement growth, driven by its strategic focus on AI advancements.",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.morningstar.com",
+      "url": "https://www.morningstar.com/stocks/after-earnings-is-meta-stock-buy-sell-or-fairly-valued-8",
+      "text_sample": "Aug 7, 2025 ... ... Meta Platforms Inc Class A. (META). Meta Platforms META released its second-quarter earnings report on July 30. ... Financial Strength. We view Meta's ...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "sewamitra.up.gov.in",
+      "url": "https://sewamitra.up.gov.in/sensitivity-analysis/Bullish-Pattern-Emerging-on-Jay-Jalaram-Technologies-Limited-(KORE)",
+      "text_sample": "6 days ago ... Bullish Pattern Emerging on Jay Jalaram Technologies Limited (KORE) ✌️【Market Sentiment】 ... Meta sold only 27 million Quests, which was only 18% of the 146 ...",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "www.investors.com",
+      "url": "https://www.investors.com/news/technology/oracle-stock-ai-cloud-orcl-msft-meta/",
+      "text_sample": "Aug 5, 2025 ... Microsoft And Meta Driving 'Positive AI Infrastructure Sentiment' ... Oracle (ORCL) stock edged higher Tuesday with the database technology giant's share hovering ...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.markets.com",
+      "url": "https://www.markets.com/education-centre/trending-stock-cf-ds-meta-stock-cfd-tsla-stock-cfd-djt-stock-cfd",
+      "text_sample": "Aug 10, 2025 ... Each stock is influenced by various factors, from market sentiment to technological advancements and regulatory developments. By staying informed and ...",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.meta.com",
+      "url": "https://www.meta.com/blog/oakley-meta-ai-glasses-sports-wearables-hstn/",
+      "text_sample": "5 days ago ... Since 1975, Oakley has pioneered sport and culture through breakthrough technology and future-forward design. ... We're proud to lead the market with Ray ...",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "www.cnbc.com",
+      "url": "https://www.cnbc.com/2025/08/29/meta-ai-chatbot-teen-senate-probe.html",
+      "text_sample": "2 days ago ... Sen. Josh Hawley, R-Mo., said he was launching an investigation into Meta following a damning Reuters report about the company's AI policies.",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "META",
+    "query_type": "general",
+    "entities_detected": [
+      "Meta"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 21 related sources",
+        "relevance": "high",
+        "source_count": 21
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "87.4%",
+      "source_diversity": "19 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_7",
+      "weight": 0.13382971867765558,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "6 days ago ... Bullish Pattern Emerging on Jay Jalaram Technologies Limited (KORE) ✌️【Market Sentiment】 ... Meta sold only 27 million Quests, which wa...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.683939711024306,
+      "avg_quality": 0.6196551724137931,
+      "sources": [
+        "sewamitra.up.gov.in",
+        "www.morningstar.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.10763346463858865,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "5 days ago ... AI Stock Analysis · Dividends · Earnings · Ownership · Financials · Statistics · Technical Analysis · Historical Prices · News · Chart ...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.47573864153897705,
+      "avg_quality": 0.5626959247648904,
+      "sources": [
+        "www.tipranks.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_8",
+      "weight": 0.09985475443990217,
+      "sentiment": 0.023864085108138262,
+      "unit_count": 2,
+      "representative_text": "Aug 10, 2025 ... Each stock is influenced by various factors, from market sentiment to technological advancements and regulatory developments. By stay...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.47573864123393794,
+      "avg_quality": 0.6790370370370371,
+      "sources": [
+        "www.markets.com",
+        "www.investors.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.012113476846497804,
+      "max": 0.10183620473369139,
+      "mean": 0.0390710455759473,
+      "std": 0.02233668105280803
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 20,
+      "high_source_units": 0,
+      "low_toxicity_units": 21
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.21997711735314826,
+      "gini_coefficient": 0.411066810396151
+    }
+  }
+}

@@ -112,7 +112,6 @@ class MathematicalSentimentAnalyzer:
             self.sentiment_pipeline = None
             self.emotion_pipeline = None
 
-    @jit(nopython=False)
     def _calculate_confidence_interval(self, scores: np.ndarray, confidence: float = 0.95) -> Tuple[float, float]:
         """Calculate confidence interval using bootstrap sampling"""
         if len(scores) < 2:
@@ -147,9 +146,16 @@ class MathematicalSentimentAnalyzer:
         blob = TextBlob(text)
         results['textblob'] = blob.sentiment.polarity
         
-        # AFINN Analysis
-        results['afinn'] = self.afinn.score(text.split()) / max(len(text.split()), 1)  # Normalize
-        results['afinn'] = max(-1, min(1, results['afinn']))  # Clamp to [-1, 1]
+        # AFINN Analysis - fix the input type
+        try:
+            afinn_score = self.afinn.score(text)  # AFINN expects string, not list
+            # Normalize AFINN score to [-1, 1] range
+            word_count = max(len(text.split()), 1)
+            normalized_afinn = afinn_score / word_count if word_count > 0 else 0
+            results['afinn'] = max(-1, min(1, normalized_afinn))  # Clamp to [-1, 1]
+        except Exception as e:
+            logger.warning(f"AFINN analysis failed: {e}")
+            results['afinn'] = 0.0
         
         return results
 

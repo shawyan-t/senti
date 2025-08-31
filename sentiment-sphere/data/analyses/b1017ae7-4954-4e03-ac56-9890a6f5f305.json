@@ -1,0 +1,119 @@
+{
+  "id": "b1017ae7-4954-4e03-ac56-9890a6f5f305",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "direct_text",
+  "source_type": "direct_text",
+  "text": "michael porter jr",
+  "timestamp": "2025-08-31T11:35:51.700232",
+  "enhanced_summary": "Comprehensive analysis of 4 content units with 88.1% confidence. Sentiment: 0.000 (neutral)",
+  "content_metrics": {
+    "word_count": 3,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 3,
+    "average_recency_weight": 0.6612717015214872
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.0,
+      "confidence_interval": [
+        -0.1,
+        0.1
+      ],
+      "statistical_significance": 0.8807970779778823
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": 0.0
+      },
+      "transformer_based": {
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.0
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": -1.000000082690371e-10,
+      "polarization_index": 0.0,
+      "model_agreement": 1.0
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.16666666666666666,
+      "sadness": 0.16666666666666666,
+      "anger": 0.16666666666666666,
+      "fear": 0.16666666666666666,
+      "disgust": 0.16666666666666666,
+      "surprise": 0.16666666666666666
+    },
+    "dominant_emotions": [
+      "joy",
+      "sadness",
+      "anger"
+    ],
+    "emotion_entropy": 1.7917594686280547,
+    "emotional_coherence": 1.0,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.408248290463863,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0,
+    "polarity_breakdown": {
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 1.0
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.6612717015214872,
+    "novelty_score": 0.9481286019239947,
+    "total_evidence_weight": 0.19061574849357235
+  },
+  "vad_analysis": {
+    "valence": 0.5,
+    "arousal": 0.5,
+    "dominance": 0.5
+  },
+  "document_analysis": {
+    "total_length": 17,
+    "word_count": 3,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "direct_text"
+  },
+  "context_sources": 3,
+  "recent_developments_identified": 3,
+  "explanatory_clusters": [
+    {
+      "cluster_id": "main_content",
+      "weight": 0.10990706358788212,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "michael porter jr"
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.05070058564232692,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 2, 2025 ... ... direct text, calls, and emails of a water issue at your address at cityofcape.org/pwalerts. Log in · 󰟙. City of Cape Girardeau, Mo ..."
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.030008099263363317,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "Aug 16, 2025 ... Direct text http://www.wasap.my/6737124365 · Athiyyah's Health & Beauty care profile picture. Athiyyah's Health & Beauty care. 1d󰞋󱟠. 3 items 1 ..."
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "id": "b34ea49e-06d1-4ccf-8c8e-c5d8e5a17d5f",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "NVDA",
+  "timestamp": "2025-08-31T12:33:51.720404",
+  "enhanced_summary": "Comprehensive analysis of 20 content units with 88.1% confidence. Sentiment: 0.000 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9970179839856139,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 19,
+    "average_recency_weight": 0.5514257954509372
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.0,
+      "confidence_interval": [
+        -0.1,
+        0.1
+      ],
+      "statistical_significance": 0.8807970779778823
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": 0.0
+      },
+      "transformer_based": {
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.0
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": -1.000000082690371e-10,
+      "polarization_index": 0.0,
+      "model_agreement": 1.0
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "sadness": 0.125,
+      "anger": 0.125,
+      "fear": 0.125,
+      "disgust": 0.125,
+      "surprise": 0.125,
+      "trust": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "joy",
+      "sadness",
+      "anger"
+    ],
+    "emotion_entropy": 2.0794415408798357,
+    "emotional_coherence": 1.0,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0,
+    "polarity_breakdown": {
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 1.0,
+      "wilson_ci": {
+        "positive": [
+          0.0,
+          0.16112515805281938
+        ],
+        "negative": [
+          0.0,
+          0.16112515805281938
+        ],
+        "neutral": [
+          0.8388748419471806,
+          1.0
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0029820160143861018,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5514257954509372,
+    "novelty_score": 0.8813787591084846,
+    "total_evidence_weight": 0.9136482777909838
+  },
+  "vad_analysis": {
+    "valence": 0.5,
+    "arousal": 0.5,
+    "dominance": 0.5011435322068756
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 19,
+  "recent_developments_identified": 19,
+  "source_citations": [
+    {
+      "source": "financial_market",
+      "url": "user_input_20250831_123351",
+      "text_sample": "NVDA",
+      "contribution_weight": "100.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/stocks/nvda/",
+      "text_sample": "2 days ago ... According to 44 analysts, the average rating for NVDA stock is \"Strong Buy.\" The 12-month stock price target is $203.88, which is an increase of 17.05% from the ...",
+      "contribution_weight": "100.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/NVDA/",
+      "text_sample": "2 days ago ... NVDA. 1,229.16%. S&P 500 (^GSPC). 84.16%. Compare To: NVDA. Compare. Select to analyze similar companies using key performance metrics; select up to 4 stocks.",
+      "contribution_weight": "90.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.cnn.com",
+      "url": "https://www.cnn.com/markets/stocks/NVDA",
+      "text_sample": "2 days ago ... ... NVDA. NVIDIA Corporation. Quote. About. News. Financials. Forecasts. Competitors ... stock will perform against the market. NVDA Stock Analysis. Latest NVDA news.",
+      "contribution_weight": "80.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.tradingview.com",
+      "url": "https://www.tradingview.com/symbols/NASDAQ-NVDA/",
+      "text_sample": "5 days ago ... View live NVIDIA Corporation chart to track its stock's price action. Find market predictions, NVDA financials and market news.",
+      "contribution_weight": "70.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.cnbc.com",
+      "url": "https://www.cnbc.com/2025/08/07/nvidia-gets-price-target-hike-from-goldman-sachs-ahead-of-earnings.html",
+      "text_sample": "Aug 7, 2025 ... Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data and Analysis. Market Data ...",
+      "contribution_weight": "60.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "nvidianews.nvidia.com",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2026",
+      "text_sample": "4 days ago ... NVIDIA (NASDAQ: NVDA) today reported revenue for the second quarter ended July 27, 2025, of $46.7 billion, up 6% from the previous quarter and up 56% from a ...",
+      "contribution_weight": "50.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "investor.nvidia.com",
+      "url": "https://investor.nvidia.com/financial-info/financial-reports/",
+      "text_sample": "4 days ago ... NVIDIA Announces Financial Results for Second Quarter Fiscal 2026 · Revenue of $46.7 billion, up 6% from Q1 and up 56% from a year ago · Data Center revenue of ...",
+      "contribution_weight": "40.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.cnbc.com",
+      "url": "https://www.cnbc.com/2025/08/27/nvidia-nvda-earnings-report-q2-2026.html",
+      "text_sample": "4 days ago ... Earnings per share: $1.05 adjusted vs. $1.01 estimated; Revenue: $46.74 billion vs. $46.06 billion estimated. Nvidia said it expects revenue this quarter to be ...",
+      "contribution_weight": "30.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "sg.finance.yahoo.com",
+      "url": "https://sg.finance.yahoo.com/news/earnings-live-palantir-stock-pops-pfizer-beats-caterpillar-warns-of-tariff-impact-122419599.html",
+      "text_sample": "6 days ago ... Intuit forecasts first-quarter revenue growth below estimates. Shares of Intuit (INTU), the company behind tax-preparation and finance software TurboTax, Credit ...",
+      "contribution_weight": "20.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/stocks/nvda/forecast/",
+      "text_sample": "4 days ago ... Stock Analysis Pro · Watchlist. Collapse. Light Dark. Sign Up Log In. NVIDIA Corporation (NVDA). NASDAQ: NVDA · Real-Time Price · USD. Watchlist Compare. 174.18.",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/NVDA/earnings/NVDA-Q2-2026-earnings_call-351238.html/",
+      "text_sample": "4 days ago ... Read NVIDIA Corporation (NVDA) Q2 FY2026 earnings call transcript on Yahoo Finance to keep your investing strategy up to date with all of the latest ...",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.tipranks.com",
+      "url": "https://www.tipranks.com/stocks/nvda/earnings",
+      "text_sample": "4 days ago ... During NVIDIA Corporation's Second Quarter Fiscal 2026 Financial Results Conference Call, Colette Kress, the executive vice president and CFO, reported a ...",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.tipranks.com",
+      "url": "https://www.tipranks.com/stocks/nvda/stock-investors",
+      "text_sample": "3 days ago ... Nvidia (NVDA) stock investors activity – investors allocate an average of 12.38% to NVDA, ​based on 815638 active investor portfolios.",
+      "contribution_weight": "10.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "sewamitra.up.gov.in",
+      "url": "https://sewamitra.up.gov.in/key-takeaways/Will-Q4-Earnings-Be-a-Catalyst-for-Prabhhans-Industries-Limited",
+      "text_sample": "6 days ago ... ✌️【Market Sentiment】✌️ Our real-time investment engine analyzes global stocks ... Nvidia's Drive Thor technology.✌️【Market Sentiment】✌️ Invest ...",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.primatevets.org",
+      "url": "https://www.primatevets.org/bullish-on/Is-Aligos-Therapeutics-Inc.-affected-by-consumer-sentiment",
+      "text_sample": "2 days ago ... affected by consumer sentiment ... Category:Why LZ Technology Holdings Limited stock attracts strong analyst attention; Tags:What makes NVDA stock price move ...",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/market-outlook/Is-SIGA-Technologies-Inc.-a-speculative-investment",
+      "text_sample": "Aug 13, 2025 ... a speculative investment - Market Sentiment Review & Capital Protection Trade Alerts ... How NVDA stock performs during market volatility. $700. Company. What We ...",
+      "contribution_weight": "10.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.marketwatch.com",
+      "url": "https://www.marketwatch.com/investing/stock/nvda",
+      "text_sample": "1 day ago ... NVDA | Complete NVIDIA Corp. stock news by MarketWatch. View real-time stock prices and stock quotes for a full financial overview.",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.bloomberg.com",
+      "url": "https://www.bloomberg.com/quote/NVDA:US",
+      "text_sample": "2 days ago ... Stock analysis for NVIDIA Corp (NVDA:NASDAQ GS) including stock price, stock chart, company news, key statistics, fundamentals and company profile.",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/nvda-stock-price-prediction-where-070852948.html",
+      "text_sample": "2 days ago ... As of July 2025, Nvidia is trading above the $160 level, up more than 25% year-to-date. The company holds a market capitalization of more than $4 trillion, with ...",
+      "contribution_weight": "10.0%",
+      "recency": "17 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "NVDA",
+    "query_type": "general",
+    "entities_detected": [
+      "Nvda"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 20 related sources",
+        "relevance": "high",
+        "source_count": 20
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "88.1%",
+      "source_diversity": "15 different source types",
+      "temporal_coverage": "Analysis spans 28 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.1601668800690666,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 7, 2025 ... Data is a real-time snapshot *Data is delayed at least 15 minutes. Global Business and Financial News, Stock Quotes, and Market Data a...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5334389403649473,
+      "avg_quality": 0.6352394916911046,
+      "sources": [
+        "www.cnbc.com",
+        "nvidianews.nvidia.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_7",
+      "weight": 0.1439506213077714,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 13, 2025 ... a speculative investment - Market Sentiment Review & Capital Protection Trade Alerts ... How NVDA stock performs during market volati...",
+      "why_important": [
+        "above average weight ✓",
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.7157979947365968,
+      "avg_quality": 0.6291777188328913,
+      "sources": [
+        "bradfordtaxinstitute.com",
+        "www.primatevets.org"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.14023038284422515,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "4 days ago ... NVIDIA Announces Financial Results for Second Quarter Fiscal 2026 · Revenue of $46.7 billion, up 6% from Q1 and up 56% from a year ago ...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5334389403133474,
+      "avg_quality": 0.6338423645320197,
+      "sources": [
+        "investor.nvidia.com",
+        "www.cnbc.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.01936816871049113,
+      "max": 0.12930660691808643,
+      "mean": 0.0456824138895492,
+      "std": 0.030801955235413972
+    },
+    "factor_analysis": {
+      "high_freshness_units": 4,
+      "high_novelty_units": 20,
+      "high_source_units": 0,
+      "low_toxicity_units": 20
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2666339874343408,
+      "gini_coefficient": 0.32684774025366403
+    }
+  }
+}

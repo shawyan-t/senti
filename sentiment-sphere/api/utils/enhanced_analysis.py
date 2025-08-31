@@ -9,6 +9,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
 import re
+import json
 import logging
 from openai import OpenAI
 from .config import config
@@ -188,28 +189,122 @@ class EnhancedAnalysisEngine:
             if recent_events:
                 recency_weights = self._calculate_recency_weights(recent_events)
         
-        # Generate focused summary using GPT-4o with mathematical context
-        summary_prompt = self._create_enhanced_summary_prompt(
+        # Generate structured analysis using GPT-4o with mathematical context and structured outputs
+        structured_prompt = self._create_structured_analysis_prompt(
             content, recent_events, factual_density, complexity_score
         )
         
         try:
-            summary_response = client.chat.completions.create(
-                model="gpt-4o",
+            # Use OpenAI structured outputs for predictable, mathematical analysis
+            structured_response = client.chat.completions.create(
+                model="gpt-4o-2024-08-06",  # Required for structured outputs
                 messages=[
-                    {"role": "system", "content": self._get_summary_system_prompt()},
-                    {"role": "user", "content": summary_prompt}
+                    {"role": "system", "content": self._get_structured_analysis_system_prompt()},
+                    {"role": "user", "content": structured_prompt}
                 ],
-                max_tokens=400,  # Enforce conciseness
-                temperature=0.3  # Lower temperature for more factual summaries
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "mathematical_analysis",
+                        "strict": True,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "enhanced_summary": {
+                                    "type": "string",
+                                    "description": "Concise 2-3 sentence summary focusing on recent developments and quantifiable insights"
+                                },
+                                "mathematical_insights": {
+                                    "type": "object",
+                                    "properties": {
+                                        "quantifiable_metrics": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "metric": {"type": "string"},
+                                                    "value": {"type": "string"},
+                                                    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+                                                },
+                                                "required": ["metric", "value", "confidence"],
+                                                "additionalProperties": False
+                                            }
+                                        },
+                                        "trends_identified": {
+                                            "type": "array",
+                                            "items": {"type": "string"}
+                                        },
+                                        "statistical_relevance": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1,
+                                            "description": "How statistically relevant the analysis is (0-1)"
+                                        }
+                                    },
+                                    "required": ["quantifiable_metrics", "trends_identified", "statistical_relevance"],
+                                    "additionalProperties": False
+                                },
+                                "emotional_analysis": {
+                                    "type": "object",
+                                    "properties": {
+                                        "dominant_emotional_theme": {"type": "string"},
+                                        "emotional_intensity": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        },
+                                        "emotional_stability": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        },
+                                        "primary_emotions": {
+                                            "type": "array",
+                                            "items": {"type": "string"}
+                                        }
+                                    },
+                                    "required": ["dominant_emotional_theme", "emotional_intensity", "emotional_stability", "primary_emotions"],
+                                    "additionalProperties": False
+                                },
+                                "recent_development_focus": {
+                                    "type": "object",
+                                    "properties": {
+                                        "temporal_relevance": {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 1
+                                        },
+                                        "key_developments": {
+                                            "type": "array",
+                                            "items": {"type": "string"}
+                                        },
+                                        "impact_assessment": {"type": "string"}
+                                    },
+                                    "required": ["temporal_relevance", "key_developments", "impact_assessment"],
+                                    "additionalProperties": False
+                                }
+                            },
+                            "required": ["enhanced_summary", "mathematical_insights", "emotional_analysis", "recent_development_focus"],
+                            "additionalProperties": False
+                        }
+                    }
+                },
+                max_tokens=800,
+                temperature=0.2  # Lower temperature for more consistent structured outputs
             )
             
-            enhanced_summary = summary_response.choices[0].message.content
+            # Parse the structured JSON response safely
+            structured_data = json.loads(structured_response.choices[0].message.content)
+            enhanced_summary = structured_data.get("enhanced_summary", content[:300] + "...")
+            
+            # Store additional structured insights for potential future use
+            self._latest_structured_insights = structured_data
             
         except Exception as e:
-            logger.error(f"Summary generation failed: {e}")
-            # Fallback to truncated content
+            logger.error(f"Structured analysis failed: {e}")
+            # Fallback to simple summary
             enhanced_summary = content[:300] + "..." if len(content) > 300 else content
+            self._latest_structured_insights = None
         
         # Calculate final metrics
         contextual_metrics = {
@@ -283,6 +378,63 @@ class EnhancedAnalysisEngine:
         5. Use precise, analytical language
         
         Always structure summaries to highlight the most recent and quantifiable information first.
+        """
+    
+    def _create_structured_analysis_prompt(
+        self, 
+        content: str, 
+        recent_events: List[Dict],
+        factual_density: float,
+        complexity_score: float
+    ) -> str:
+        """Create prompt for structured analysis generation"""
+        
+        recent_events_context = ""
+        if recent_events:
+            recent_events_context = "\n\nRECENT RELEVANT EVENTS:\n"
+            for i, event in enumerate(recent_events[:3], 1):
+                recent_events_context += f"{i}. {event['title']}: {event['snippet']}\n"
+        
+        return f"""
+        Analyze the following content with mathematical rigor and provide structured insights focusing on quantifiable metrics, emotional analysis, and recent developments.
+        
+        MATHEMATICAL CONTEXT:
+        - Factual Density: {factual_density:.3f} (0=opinion-heavy, 1=fact-heavy)
+        - Complexity Score: {complexity_score:.3f} (0=simple, 1=complex)
+        
+        ANALYSIS REQUIREMENTS:
+        1. Extract all quantifiable metrics (percentages, dates, numbers, measurements)
+        2. Identify emotional patterns using mathematical frameworks
+        3. Focus on recent developments and temporal relevance
+        4. Assess statistical relevance of findings
+        5. Provide mathematical confidence scores (0-1) for insights
+        
+        {recent_events_context}
+        
+        CONTENT TO ANALYZE:
+        {content[:2000]}
+        
+        Provide a structured analysis following the exact JSON schema format with mathematical backing:
+        """
+    
+    def _get_structured_analysis_system_prompt(self) -> str:
+        """System prompt for structured analysis generation"""
+        return """
+        You are a mathematical analysis expert specializing in structured data extraction and emotional intelligence metrics.
+        
+        Your analysis methodology:
+        1. QUANTIFIABLE METRICS: Extract concrete numbers, percentages, dates, and measurements
+        2. EMOTIONAL ANALYSIS: Apply mathematical frameworks to assess emotional content
+        3. STATISTICAL RELEVANCE: Provide confidence scores based on data sufficiency
+        4. TEMPORAL FOCUS: Prioritize recent developments and time-sensitive information
+        5. MATHEMATICAL RIGOR: All insights must be backed by quantifiable evidence
+        
+        Response format: Strict JSON following the provided schema
+        Confidence scoring: Use 0.0-1.0 scale based on evidence strength
+        Emotional metrics: Apply psychological research frameworks quantitatively
+        Statistical relevance: Assess based on sample size and data quality
+        
+        Always provide mathematically-backed insights with measurable confidence intervals.
         """
     
     def analyze_content_structure(self, content: str, file_type: str = "text") -> Dict[str, Any]:

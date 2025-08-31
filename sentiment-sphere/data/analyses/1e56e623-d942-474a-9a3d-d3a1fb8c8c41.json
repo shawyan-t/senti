@@ -1,0 +1,241 @@
+{
+  "id": "1e56e623-d942-474a-9a3d-d3a1fb8c8c41",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "direct_text",
+  "source_type": "direct_text",
+  "text": "Michael porter junior",
+  "timestamp": "2025-08-31T12:10:31.713049",
+  "enhanced_summary": "Comprehensive analysis of 4 content units with 85.8% confidence. Sentiment: -0.020 (neutral)",
+  "content_metrics": {
+    "word_count": 3,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 3,
+    "average_recency_weight": 0.8077910282999653
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": -0.020400077733391236,
+      "confidence_interval": [
+        -0.12040007773339124,
+        0.07959992226660877
+      ],
+      "statistical_significance": 0.8580987585064245
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": -0.020400077733391236
+      },
+      "transformer_based": {
+        "consensus": -0.020400077733391236
+      },
+      "all_models_consensus": -0.020400077733391236
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 0.30882216662649015,
+      "polarization_index": 0.0029489030416259337,
+      "model_agreement": 0.997051096958374
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "sadness": 0.125,
+      "anger": 0.125,
+      "fear": 0.125,
+      "disgust": 0.125,
+      "surprise": 0.125,
+      "trust": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "joy",
+      "sadness",
+      "anger"
+    ],
+    "emotion_entropy": 2.0794415408798357,
+    "emotional_coherence": 0.997051096958374,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.020400077733391236,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0029489030416259337,
+    "polarity_breakdown": {
+      "positive": 0.0,
+      "negative": 0.09273579294966307,
+      "neutral": 0.907264207050337,
+      "wilson_ci": {
+        "positive": [
+          0.0,
+          0.4898908364545973
+        ],
+        "negative": [
+          0.04558726080970055,
+          0.6993581574175981
+        ],
+        "neutral": [
+          0.30064184258240184,
+          0.9544127391902995
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.8077910282999653,
+    "novelty_score": 0.901580856977146,
+    "total_evidence_weight": 0.3037949976175016
+  },
+  "vad_analysis": {
+    "valence": 0.4913331034626483,
+    "arousal": 0.5,
+    "dominance": 0.5
+  },
+  "document_analysis": {
+    "total_length": 21,
+    "word_count": 3,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "direct_text"
+  },
+  "context_sources": 3,
+  "recent_developments_identified": 3,
+  "source_citations": [
+    {
+      "source": "user_input",
+      "url": "user_input_20250831_121031",
+      "text_sample": "Michael porter junior",
+      "contribution_weight": "100.0%",
+      "recency": "User Input"
+    },
+    {
+      "source": "www.facebook.com",
+      "url": "https://www.facebook.com/cityofcape/posts/the-morning-water-main-break-on-whitelaw-has-been-repaired-without-a-boil-water-/1188746223285583/",
+      "text_sample": "Aug 2, 2025 ... ... direct text, calls, and emails of a water issue at your address at cityofcape.org/pwalerts. Log in · 󰟙. City of Cape Girardeau, Mo ...",
+      "contribution_weight": "100.0%",
+      "recency": "17 days ago"
+    },
+    {
+      "source": "www.facebook.com",
+      "url": "https://www.facebook.com/groups/668622369850266/posts/24297176503234854/",
+      "text_sample": "Aug 17, 2025 ... Direct text http://www.wasap.my/6737124365.",
+      "contribution_weight": "90.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "www.facebook.com",
+      "url": "https://www.facebook.com/groups/668622369850266/posts/direct-text-httpwwwwasapmy6737124365/24292702560348915/",
+      "text_sample": "Aug 16, 2025 ... Direct text http://www.wasap.my/6737124365 · Athiyyah's Health & Beauty care profile picture. Athiyyah's Health & Beauty care. 1d󰞋󱟠. 3 items 1 ...",
+      "contribution_weight": "80.0%",
+      "recency": "1 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "Michael porter junior",
+    "query_type": "general",
+    "entities_detected": [
+      "Porter",
+      "Junior",
+      "Michael"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 3 related sources",
+        "relevance": "high",
+        "source_count": 3
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "85.8%",
+      "source_diversity": "2 different source types",
+      "temporal_coverage": "Analysis spans 16 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.13006678901575672,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "Aug 16, 2025 ... Direct text http://www.wasap.my/6737124365 · Athiyyah's Health & Beauty care profile picture. Athiyyah's Health & Beauty care. 1d󰞋󱟠. ...",
+      "why_important": [
+        "above average weight ✓",
+        "very recent ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.8668778910269361,
+      "avg_quality": 0.5760000000000001,
+      "sources": [
+        "www.facebook.com"
+      ]
+    },
+    {
+      "cluster_id": "main_content",
+      "weight": 0.12215487066151755,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "Michael porter junior...",
+      "why_important": [
+        "above average weight ✓",
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.9999999902397487,
+      "avg_quality": 0.7,
+      "sources": [
+        "user_input"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.05157333794022736,
+      "sentiment": -0.12016754807678282,
+      "unit_count": 2,
+      "representative_text": "Aug 2, 2025 ... ... direct text, calls, and emails of a water issue at your address at cityofcape.org/pwalerts. Log in · 󰟙. City of Cape Girardeau, Mo...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.203874092533403,
+      "avg_quality": 0.6576354679802956,
+      "sources": [
+        "www.facebook.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.023400667942027345,
+      "max": 0.13006678901575672,
+      "mean": 0.0759487494043754,
+      "std": 0.05026833616156274
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 4,
+      "high_source_units": 0,
+      "low_toxicity_units": 4
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.42813999583863976,
+      "gini_coefficient": 0.3186514473063593
+    }
+  }
+}

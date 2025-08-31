@@ -36,8 +36,16 @@ export function KeywordTreemap({
     setMounted(true)
   }, [])
 
+  // Don't show fake data - return a message instead if no real keyword data
   if (keywords.length === 0) {
-    keywords = generateMockKeywordData()
+    return (
+      <div className={`w-full flex items-center justify-center text-gray-400 ${className}`} style={{height}}>
+        <div className="text-center">
+          <div className="text-lg mb-2">No Keyword Data Available</div>
+          <div className="text-sm">Keyword analysis requires extractable topics or entities</div>
+        </div>
+      </div>
+    )
   }
 
   // Sort keywords by frequency descending
@@ -49,7 +57,7 @@ export function KeywordTreemap({
   
   // Color grading by frequency percentile
   const n = sortedKeywords.length;
-  const colors = sortedKeywords.map((k, i) => {
+  const colors = sortedKeywords.map((_, i) => {
     const percentile = i / n;
     if (percentile < 1/3) return 'rgba(16, 185, 129, 0.8)'; // Green
     if (percentile < 2/3) return 'rgba(245, 158, 11, 0.8)'; // Yellow
@@ -106,20 +114,4 @@ export function KeywordTreemap({
   )
 }
 
-// Generate mock keyword data if none is provided
-function generateMockKeywordData(): KeywordData[] {
-  const mockKeywords = [
-    { keyword: 'Technology', frequency: 85, sentiment: 'positive' as const },
-    { keyword: 'Economy', frequency: 65, sentiment: 'neutral' as const },
-    { keyword: 'Politics', frequency: 60, sentiment: 'negative' as const },
-    { keyword: 'Environment', frequency: 45, sentiment: 'positive' as const },
-    { keyword: 'Health', frequency: 40, sentiment: 'positive' as const },
-    { keyword: 'Education', frequency: 35, sentiment: 'neutral' as const },
-    { keyword: 'Sports', frequency: 30, sentiment: 'positive' as const },
-    { keyword: 'Entertainment', frequency: 25, sentiment: 'neutral' as const },
-    { keyword: 'Business', frequency: 20, sentiment: 'positive' as const },
-    { keyword: 'Science', frequency: 15, sentiment: 'positive' as const },
-  ]
-  
-  return mockKeywords
-} 
+// Mock keyword data function removed - no longer generating fake data
