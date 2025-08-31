@@ -135,7 +135,7 @@ class MathematicalSentimentAnalyzer:
         return (ci_lower, ci_upper)
 
     def _lexicon_analysis(self, text: str) -> Dict[str, float]:
-        """Perform lexicon-based sentiment analysis"""
+        """Perform lexicon-based sentiment analysis with financial context enhancement"""
         results = {}
         
         # VADER Analysis
@@ -157,7 +157,73 @@ class MathematicalSentimentAnalyzer:
             logger.warning(f"AFINN analysis failed: {e}")
             results['afinn'] = 0.0
         
+        # Financial sentiment analysis - interpret financial language
+        financial_sentiment = self._analyze_financial_sentiment(text)
+        results['financial_context'] = financial_sentiment
+        
         return results
+
+    def _analyze_financial_sentiment(self, text: str) -> float:
+        """Analyze financial sentiment using context-aware keyword patterns"""
+        text_lower = text.lower()
+        financial_score = 0.0
+        
+        # Positive financial indicators (bullish)
+        positive_patterns = {
+            'growth': ['increased', 'boosted', 'gained', 'surged', 'jumped', 'soared', 'climbed', 'rose', 'rally'],
+            'performance': ['outperformed', 'beat expectations', 'exceeded', 'strong', 'robust', 'solid'],
+            'financial_health': ['profitable', 'revenue growth', 'earnings beat', 'upgraded', 'buy rating'],
+            'market_action': ['acquisition', 'merger', 'expansion', 'investment', 'partnership'],
+            'percentages': []  # Will be calculated dynamically
+        }
+        
+        # Negative financial indicators (bearish)  
+        negative_patterns = {
+            'decline': ['decreased', 'fell', 'dropped', 'plunged', 'tumbled', 'declined', 'slumped', 'cut'],
+            'performance': ['underperformed', 'missed expectations', 'weak', 'disappointing', 'poor'],
+            'financial_trouble': ['loss', 'debt', 'bankruptcy', 'layoffs', 'downgraded', 'sell rating'],
+            'market_concern': ['investigation', 'lawsuit', 'scandal', 'regulatory', 'fine'],
+            'percentages': []  # Will be calculated dynamically
+        }
+        
+        # Count positive and negative indicators
+        positive_count = 0
+        negative_count = 0
+        
+        for category, patterns in positive_patterns.items():
+            for pattern in patterns:
+                if pattern in text_lower:
+                    positive_count += 1
+        
+        for category, patterns in negative_patterns.items():
+            for pattern in patterns:
+                if pattern in text_lower:
+                    negative_count += 1
+        
+        # Look for percentage changes (very important for financial sentiment)
+        import re
+        percentage_matches = re.findall(r'(\w+).*?(\d+(?:\.\d+)?)\s*%', text_lower)
+        for action, percentage in percentage_matches:
+            pct = float(percentage)
+            if any(pos_word in action for pos_word in ['up', 'gain', 'boost', 'increas', 'rise']):
+                # Positive percentage change
+                positive_count += min(3, pct / 10)  # Scale: 10% = 1 point, 30%+ = 3 points
+            elif any(neg_word in action for neg_word in ['down', 'loss', 'declin', 'drop', 'fall']):
+                # Negative percentage change  
+                negative_count += min(3, pct / 10)
+        
+        # Calculate financial sentiment score
+        if positive_count > 0 or negative_count > 0:
+            net_sentiment = positive_count - negative_count
+            # Normalize to [-1, 1] with more sensitivity for financial content
+            max_possible = max(positive_count + negative_count, 1)
+            financial_score = max(-1, min(1, net_sentiment / max_possible))
+            
+            # Amplify financial sentiment (financial news should have stronger signals)
+            financial_score *= 1.5  # Make financial sentiment more pronounced
+            financial_score = max(-1, min(1, financial_score))  # Keep in bounds
+        
+        return financial_score
 
     def _transformer_analysis(self, text: str) -> Dict[str, float]:
         """Perform transformer-based sentiment analysis"""

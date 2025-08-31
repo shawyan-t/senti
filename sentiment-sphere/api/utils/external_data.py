@@ -67,7 +67,7 @@ class ExternalDataFetcher:
             "google_trends": self.google_trends_available
         }
     
-    def fetch_news_articles(self, query, days_back=7, limit=10):
+    def fetch_news_articles(self, query, days_back=7, limit=25):
         """
         Fetch news articles related to a query using NewsAPI.
         
@@ -731,7 +731,7 @@ class SearchEngineConnector:
             print("Warning: diskcache not installed. Caching disabled.")
             self.cache = None
     
-    def fetch_news_articles(self, query, days_back=7, limit=10):
+    def fetch_news_articles(self, query, days_back=7, limit=25):
         """
         Fetch news articles related to a query using NewsAPI.
         
@@ -792,7 +792,7 @@ class SearchEngineConnector:
             print(f"Error fetching news articles: {e}")
             return []
     
-    def search_engine_query(self, query, num_results=10, recent_only=True):
+    def search_engine_query(self, query, num_results=10, recent_only=True, company_context=None):
         """
         Query multiple search engines for reliable, relevant results with LLM-based filtering.
         
@@ -800,6 +800,7 @@ class SearchEngineConnector:
             query (str): Search query
             num_results (int): Number of results to return
             recent_only (bool): Whether to prioritize recent results
+            company_context (dict): Company information for better result filtering
             
         Returns:
             list: List of search results with metadata, filtered for quality and relevance
@@ -820,7 +821,7 @@ class SearchEngineConnector:
         if self.news_api_available and any(word in query.lower() for word in ['$', 'stock', 'financial', 'earnings', 'market']):
             print("Attempting NewsAPI for financial news...")
             try:
-                news_articles = self.fetch_news_articles(query, days_back=30, limit=10)
+                news_articles = self.fetch_news_articles(query, days_back=30, limit=25)
                 for article in news_articles:
                     result = {
                         'title': article.get('title'),
@@ -955,14 +956,20 @@ class SearchEngineConnector:
                 print(f"Alternative methods also failed: {e}")
                 all_results = []
         
-        # 4. Filter and rank results using LLM for relevance (if we have any)
+        # 4. Pre-filter results using company context before LLM
+        if all_results and company_context:
+            pre_filtered_results = self._pre_filter_by_company_context(all_results, company_context)
+            print(f"🔍 Pre-filtered {len(all_results)} results down to {len(pre_filtered_results)} company-relevant results")
+            all_results = pre_filtered_results
+        
+        # 5. Filter and rank results using LLM for relevance (if we have any)
         if all_results:
             try:
-                filtered_results = self._filter_results_with_llm(query, all_results, target_count=num_results)
-                print(f"📊 Filtered {len(all_results)} results down to {len(filtered_results)} high-quality matches")
+                filtered_results = self._filter_results_with_llm(query, all_results, target_count=num_results, company_context=company_context)
+                print(f"📊 LLM filtered {len(all_results)} results down to {len(filtered_results)} high-quality matches")
                 return filtered_results
             except Exception as e:
-                print(f"LLM filtering failed, returning raw results: {e}")
+                print(f"LLM filtering failed, returning pre-filtered results: {e}")
                 return all_results[:num_results]  # Return first N results as fallback
         
         # If we get here, all methods failed
@@ -1050,7 +1057,7 @@ class SearchEngineConnector:
         
         return results
     
-    def _filter_results_with_llm(self, original_query, search_results, target_count=10):
+    def _filter_results_with_llm(self, original_query, search_results, target_count=10, company_context=None):
         """Use LLM to filter and rank search results for relevance and quality"""
         if not search_results or len(search_results) <= target_count:
             return search_results
@@ -1068,26 +1075,45 @@ class SearchEngineConnector:
                     'source': result.get('source', ''),
                 })
             
-            # Create LLM prompt for filtering
+            # Create LLM prompt for filtering with company context
+            context_section = ""
+            if company_context:
+                context_section = f"""
+COMPANY CONTEXT:
+- Company Name: {company_context.get('name', 'N/A')}
+- Sector: {company_context.get('sector', 'N/A')}
+- Industry: {company_context.get('industry', 'N/A')}
+- Business Summary: {company_context.get('business_summary', 'N/A')[:200]}...
+- Quote Type: {company_context.get('quote_type', 'EQUITY')}
+
+CRITICAL COMPANY RELEVANCE REQUIREMENT:
+- Results MUST be about the specific company mentioned above
+- REJECT any results about unrelated topics that happen to share keywords
+- Example: For ticker SKIN (The Beauty Health Company), REJECT video game skins, fashion, etc.
+- Example: For ticker RACE (Ferrari), REJECT general car racing, other races, etc.
+"""
+
             filter_prompt = f"""
-You are tasked with filtering search results for relevance and quality.
+You are tasked with filtering search results for FINANCIAL SENTIMENT ANALYSIS relevance and quality.
 
 ORIGINAL QUERY: "{original_query}"
-
+{context_section}
 SEARCH RESULTS TO EVALUATE:
 {json.dumps(results_summary, indent=2)}
 
 Please select the TOP {target_count} most relevant and high-quality results based on:
-1. RELEVANCE: How well does the content match the original query?
-2. QUALITY: Is this from a reputable source? (news sites, official sites, etc.)
-3. RECENCY: Is the information current and up-to-date?
-4. CONTENT DEPTH: Does it provide substantial information?
+1. COMPANY RELEVANCE: Does this content relate to the SPECIFIC COMPANY mentioned in context?
+2. FINANCIAL RELEVANCE: Is this about business performance, stock analysis, earnings, etc.?
+3. QUALITY: Is this from a reputable financial or news source?
+4. RECENCY: Is the information current and up-to-date?
+5. CONTENT DEPTH: Does it provide substantial financial information?
 
-AVOID:
-- Social media posts without substantial content
-- Spam or low-quality sites
-- Completely irrelevant results
-- Duplicate or similar content
+STRICT FILTERING CRITERIA:
+- MUST be about the specific company from the context above
+- MUST contain financial, business, or market-related information
+- REJECT unrelated content that shares keywords but isn't about the company
+- REJECT general industry news unless it specifically mentions the company
+- PRIORITIZE financial outlets (Bloomberg, Reuters, Yahoo Finance, etc.)
 
 Return ONLY a JSON array of the indices of the selected results, ordered by relevance (best first).
 Example: [0, 3, 7, 1, 9]
@@ -1127,6 +1153,88 @@ Example: [0, 3, 7, 1, 9]
         except Exception as e:
             print(f"Error in LLM filtering: {e}")
             return search_results[:target_count]
+    
+    def _pre_filter_by_company_context(self, search_results, company_context):
+        """Pre-filter search results to ensure they're about the specific company"""
+        if not company_context:
+            return search_results
+        
+        company_name = company_context.get('name', '')
+        business_summary = company_context.get('business_summary', '')
+        sector = company_context.get('sector', '')
+        
+        # Extract key company identifiers
+        company_keywords = set()
+        if company_name:
+            # Add company name words (but filter out common words)
+            name_words = company_name.lower().replace(',', '').replace('.', '').split()
+            company_keywords.update([w for w in name_words if len(w) > 2 and w not in ['inc', 'corp', 'company', 'ltd', 'llc']])
+        
+        # Add sector keywords
+        if sector and sector != 'Unknown':
+            company_keywords.add(sector.lower())
+        
+        # Add business summary keywords (key terms only)
+        if business_summary:
+            # Extract key business terms from summary
+            business_words = business_summary.lower().split()[:20]  # First 20 words usually contain key info
+            company_keywords.update([w for w in business_words if len(w) > 4])
+        
+        print(f"🔍 Company keywords for filtering: {list(company_keywords)[:10]}")
+        
+        filtered_results = []
+        for result in search_results:
+            # Check if article content contains company-specific terms
+            content = (result.get('title', '') + ' ' + result.get('snippet', '') + ' ' + 
+                      result.get('full_content', '')[:500]).lower()
+            
+            # More flexible matching criteria
+            has_company_name = company_name.lower() in content
+            keyword_matches = sum(1 for keyword in company_keywords if keyword in content)
+            
+            # Check for partial company name matches (e.g., "Beauty Health" for "The Beauty Health Company")
+            company_parts = [part for part in company_name.lower().split() if len(part) > 3 and part not in ['the', 'inc', 'corp', 'company', 'ltd']]
+            partial_name_matches = sum(1 for part in company_parts if part in content)
+            
+            # Check if it's from a high-quality source (financial + reputable news)
+            high_quality_sources = [
+                # Financial sources
+                'bloomberg', 'reuters', 'marketwatch', 'cnbc', 'barrons', 'yahoo.com', 'wsj', 'seekingalpha',
+                'fool.com', 'zacks.com', 'benzinga.com', 'morningstar.com', 'investopedia.com',
+                # Reputable general news (for broader company coverage)
+                'cnn.com', 'bbc.com', 'forbes.com', 'nytimes.com', 'washingtonpost.com', 'npr.org',
+                'ap.org', 'abcnews.com', 'nbcnews.com', 'cbsnews.com'
+            ]
+            is_quality_source = any(source in result.get('link', '').lower() for source in high_quality_sources)
+            
+            # More permissive threshold: Keep if ANY of these criteria are met:
+            # 1. Mentions full company name
+            # 2. Mentions company parts + any keyword  
+            # 3. From quality source + any keyword match
+            # 4. High keyword density (2+ matches regardless of source)
+            keep_result = (
+                has_company_name or 
+                (partial_name_matches >= 1 and keyword_matches >= 1) or
+                (is_quality_source and keyword_matches >= 1) or
+                keyword_matches >= 2
+            )
+            
+            if keep_result:
+                relevance_score = (
+                    (3 if has_company_name else 0) + 
+                    partial_name_matches + 
+                    keyword_matches + 
+                    (1 if is_quality_source else 0)
+                )
+                result['relevance_score'] = relevance_score
+                filtered_results.append(result)
+            else:
+                print(f"❌ Filtered out: {result.get('title', '')[:60]} (name:{has_company_name}, parts:{partial_name_matches}, keywords:{keyword_matches})")
+        
+        # Sort by relevance score (highest first)
+        filtered_results.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
+        
+        return filtered_results
     
     def _simple_filter_results(self, query, results, target_count):
         """Hierarchical filtering: Financial -> News -> Discussion -> Social -> General"""
@@ -1274,20 +1382,21 @@ Example: [0, 3, 7, 1, 9]
             print(f"Error extracting content from {url}: {e}")
             return None
     
-    def get_cached_or_fresh_data(self, query, max_age_minutes=60):
+    def get_cached_or_fresh_data(self, query, max_age_minutes=60, company_context=None):
         """
         Get data from cache if fresh enough, otherwise fetch fresh data.
         
         Args:
             query (str): The search query
             max_age_minutes (int): Maximum age of cached data in minutes
+            company_context (dict): Company information for better result filtering
             
         Returns:
             dict: Search results with metadata
         """
         if not self.cache:
             # If cache is not available, just fetch fresh data
-            return self.search_engine_query(query)
+            return self.search_engine_query(query, company_context=company_context)
             
         import hashlib
         import time
@@ -1307,7 +1416,7 @@ Example: [0, 3, 7, 1, 9]
         
         # If we don't have cached data or it's too old, fetch fresh data
         print(f"Fetching fresh data for query '{query}'")
-        fresh_data = self.search_engine_query(query)
+        fresh_data = self.search_engine_query(query, company_context=company_context)
         
         # Store in cache
         self.cache.set(cache_key, {

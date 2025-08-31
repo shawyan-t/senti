@@ -1,0 +1,297 @@
+{
+  "id": "b1e0bbdb-609c-462c-af94-c865a022a2ad",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "XOM",
+  "timestamp": "2025-08-31T17:28:30.126095",
+  "enhanced_summary": "Comprehensive analysis of 12 content units with 88.1% confidence. Sentiment: 0.000 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 12,
+    "average_recency_weight": 0.4189637019381972
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.0,
+      "confidence_interval": [
+        -0.1,
+        0.1
+      ],
+      "statistical_significance": 0.8807970779778823
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": 0.0
+      },
+      "transformer_based": {
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.0
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": -1.000000082690371e-10,
+      "polarization_index": 0.0,
+      "model_agreement": 1.0
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.19759455959801422,
+      "sadness": 0.14794079029322493,
+      "anger": 0.10907744168479348,
+      "fear": 0.10907744168479348,
+      "disgust": 0.10907744168479348,
+      "surprise": 0.10907744168479348,
+      "trust": 0.10907744168479348,
+      "anticipation": 0.10907744168479348
+    },
+    "dominant_emotions": [
+      "joy",
+      "sadness",
+      "anger"
+    ],
+    "emotion_entropy": 2.053209007633293,
+    "emotional_coherence": 1.0,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3637546111354663,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.19759455959801422,
+        0.14794079029322493,
+        0.10907744168479348
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0,
+    "polarity_breakdown": {
+      "positive": 0.0,
+      "negative": 0.0,
+      "neutral": 1.0,
+      "wilson_ci": {
+        "positive": [
+          2.7755575615628914e-17,
+          0.24249400665524085
+        ],
+        "negative": [
+          2.7755575615628914e-17,
+          0.24249400665524085
+        ],
+        "neutral": [
+          0.7575059933447592,
+          1.0
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.4189637019381972,
+    "novelty_score": 0.9054875336910423,
+    "total_evidence_weight": 0.4791967586851861
+  },
+  "vad_analysis": {
+    "valence": 0.5,
+    "arousal": 0.5,
+    "dominance": 0.5
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 12,
+  "recent_developments_identified": 12,
+  "source_citations": [
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/1fe8318d788f7535",
+      "text_sample": "NVIDIA (NASDAQ: NVDA) has the largest market cap in the world, at $4.25 trillion. Microsoft (NASDAQ: MSFT) is second, with a market capitalization of $3.77 trillion. That is a difference of $480 billi...",
+      "contribution_weight": "100.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34487630/how-is-exxon-mobil-s-stock-performance-compared-to-other-oil-gas-integrated-stocks",
+      "text_sample": "While Exxon Mobil has underperformed its industry peers over the past year, Wall Street analysts maintain a moderately optimistic outlook on the stock’s...",
+      "contribution_weight": "90.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34416701/how-to-buy-xom-for-a-3-discount-or-achieve-a-15-annual-return",
+      "text_sample": "Yesterday, with Exxon Mobil (XOM) trading at $111.49, the October put option with a strike price of $110 was trading around $2.34. Traders selling this put...",
+      "contribution_weight": "80.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/exxon-mobil-hits-record-production-142251699.html",
+      "text_sample": "Exxon Mobil Corporation (NYSE:XOM) announced on Friday its second-quarter 2025 earnings of $7.1 billion, or $1.64 per share, exceeding analyst estimates of $...",
+      "contribution_weight": "70.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/exxon-mobil-corporation-xom-releases-001114101.html",
+      "text_sample": "Drawing significant hedge fund interest, Exxon Mobil Corporation (NYSE:XOM) secures a spot on our list of the 13 Best Oil Refinery Stocks to Buy Right Now...",
+      "contribution_weight": "60.0%",
+      "recency": "17 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/exxon-mobil-corporation-xom-bull-100539487.html",
+      "text_sample": "We came across a bullish thesis on Exxon Mobil Corporation on Stock Analysis Compilation’s Substack. In this article, we will summarize the bulls’ thesis on ...",
+      "contribution_weight": "50.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-raises-exxon-mobil-033940539.html",
+      "text_sample": "Exxon Mobil Corporation (NYSE:XOM) is one of the 12 Best American Energy Stocks to Buy Right Now. On August 4, Morgan Stanley increased its price target for ...",
+      "contribution_weight": "40.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33807636/stock-index-futures-plunge-on-trumps-tariffs-u-s-jobs-report-in-focus",
+      "text_sample": "September S&P 500 E-Mini futures (ESU25) are down -0.93%, and September Nasdaq 100 E-Mini futures (NQU25) are down -1.03% this morning as U.S. President...",
+      "contribution_weight": "30.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "www.thestreet.com",
+      "url": "https://www.thestreet.com/investing/stock-market-today-was-that-the-market-top",
+      "text_sample": "Lots of news out of the White House and on jobs push stocks lower.",
+      "contribution_weight": "20.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/short-interest-in-yieldmax-xom-option-income-strategy-etf-nysearcaxomo-increases-by-1166-7/",
+      "text_sample": "YieldMax XOM Option Income Strategy ETF (NYSEARCA:XOMO – Get Free Report) was the recipient of a large growth in short interest in July. As of July 15th, there was short interest totaling 3,800 shares...",
+      "contribution_weight": "10.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/morgan-stanley-forecasts-strong-price-appreciation-for-exxon-mobil-nysexom-stock/",
+      "text_sample": "Exxon Mobil (NYSE:XOM – Free Report) had its target price lifted by Morgan Stanley from $134.00 to $135.00 in a research note issued to investors on Monday,Benzinga reports. The firm currently has an ...",
+      "contribution_weight": "10.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/24/exxon-mobil-nysexom-upgraded-to-hold-at-wall-street-zen/",
+      "text_sample": "Exxon Mobil (NYSE:XOM – Get Free Report) was upgraded by equities researchers at Wall Street Zen from a “sell” rating to a “hold” rating in a research note issued to investors on Sunday. Several other...",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "XOM",
+    "query_type": "general",
+    "entities_detected": [
+      "Xom"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 12 related sources",
+        "relevance": "high",
+        "source_count": 12
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "88.1%",
+      "source_diversity": "5 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.14534386672535393,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "We came across a bullish thesis on Exxon Mobil Corporation on Stock Analysis Compilation’s Substack. In this article, we will summarize the bulls’ the...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5999999956886575,
+      "avg_quality": 0.7057692307692308,
+      "sources": [
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.09302063389031029,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "While Exxon Mobil has underperformed its industry peers over the past year, Wall Street analysts maintain a moderately optimistic outlook on the stock...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.21982551723541813,
+      "avg_quality": 0.6641039236479321,
+      "sources": [
+        "biztoc.com",
+        "www.barchart.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.08876290119730992,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Yesterday, with Exxon Mobil (XOM) trading at $111.49, the October put option with a strike price of $110 was trading around $2.34. Traders selling thi...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.7127926421404682,
+      "sources": [
+        "www.barchart.com",
+        "finance.yahoo.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.013613726542164303,
+      "max": 0.11540213283465661,
+      "mean": 0.039933063223765504,
+      "std": 0.027563538369793132
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 12,
+      "high_source_units": 0,
+      "low_toxicity_units": 12
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.24082410981095845,
+      "gini_coefficient": 0.3063541067727401
+    }
+  }
+}

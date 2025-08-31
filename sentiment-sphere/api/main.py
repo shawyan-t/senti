@@ -43,6 +43,69 @@ from utils.mathematical_sentiment import get_mathematical_analyzer
 from utils.enhanced_analysis import get_enhanced_analyzer
 from utils.comprehensive_sentiment_engine import get_comprehensive_engine, CanonicalUnit
 
+def calculate_polarity_from_mathematical_score(sentiment_score):
+    """Convert mathematical sentiment score to polarity distribution"""
+    # Mathematical scores range from -1 to 1
+    # Convert to positive/negative/neutral percentages
+    
+    if sentiment_score > 0.1:  # Positive threshold
+        positive = min(0.9, 0.5 + sentiment_score * 0.4)  # Scale positive
+        negative = max(0.05, 0.15 - sentiment_score * 0.1)  # Reduce negative
+        neutral = 1.0 - positive - negative
+    elif sentiment_score < -0.1:  # Negative threshold
+        negative = min(0.9, 0.5 + abs(sentiment_score) * 0.4)  # Scale negative
+        positive = max(0.05, 0.15 - abs(sentiment_score) * 0.1)  # Reduce positive
+        neutral = 1.0 - positive - negative
+    else:  # Neutral range (-0.1 to 0.1)
+        # Still allow some variation in neutral range
+        neutral = 0.7 + (0.1 - abs(sentiment_score)) * 0.2  # 70-90% neutral
+        if sentiment_score >= 0:
+            positive = (1.0 - neutral) * 0.6  # Slight positive lean
+            negative = 1.0 - neutral - positive
+        else:
+            negative = (1.0 - neutral) * 0.6  # Slight negative lean  
+            positive = 1.0 - neutral - negative
+    
+    return {
+        "positive": round(positive, 3),
+        "negative": round(negative, 3), 
+        "neutral": round(neutral, 3),
+        "wilson_ci": {
+            "positive": [max(0, positive - 0.1), min(1, positive + 0.1)],
+            "negative": [max(0, negative - 0.1), min(1, negative + 0.1)],
+            "neutral": [max(0, neutral - 0.1), min(1, neutral + 0.1)]
+        }
+    }
+
+def calculate_vad_from_mathematical_score(sentiment_score, emotion_analysis=None):
+    """Calculate VAD (Valence, Arousal, Dominance) from mathematical sentiment and emotions"""
+    # Valence: How positive/negative (directly from sentiment score)
+    valence = (sentiment_score + 1) / 2  # Convert [-1,1] to [0,1]
+    
+    # Arousal: How intense/activated (from emotion magnitude and sentiment strength)
+    if emotion_analysis and 'emotion_mathematics' in emotion_analysis:
+        # Use emotion vector magnitude for arousal
+        base_arousal = emotion_analysis['emotion_mathematics'].get('vector_magnitude', 0.5)
+        sentiment_intensity = abs(sentiment_score)
+        arousal = min(1.0, base_arousal + sentiment_intensity * 0.3)
+    else:
+        # Calculate arousal from sentiment intensity
+        arousal = 0.3 + abs(sentiment_score) * 0.4  # More intense = higher arousal
+    
+    # Dominance: How in-control/confident (from sentiment confidence and coherence)
+    if emotion_analysis and 'emotional_coherence' in emotion_analysis:
+        coherence = emotion_analysis['emotional_coherence']
+        dominance = 0.4 + coherence * 0.4 + (sentiment_score > 0) * 0.2  # Positive sentiment = more dominant
+    else:
+        # Base dominance on sentiment strength and direction
+        dominance = 0.5 + sentiment_score * 0.3
+    
+    return {
+        "valence": round(max(0, min(1, valence)), 3),
+        "arousal": round(max(0, min(1, arousal)), 3), 
+        "dominance": round(max(0, min(1, dominance)), 3)
+    }
+
 app = FastAPI(title="Sentimizer API")
 
 # Configure CORS
@@ -635,7 +698,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             # Use multiple financial search queries for comprehensive coverage
             for search_query in search_queries:
                 try:
-                    results = search_connector.get_cached_or_fresh_data(search_query)
+                    results = search_connector.get_cached_or_fresh_data(search_query, company_context=company_info)
                     search_results.extend(results[:5])  # Top 5 from each query
                     print(f"Got {len(results)} results for query: {search_query}")
                 except Exception as e:
@@ -704,54 +767,85 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             traceback.print_exc()
             raise HTTPException(status_code=500, detail=f"Comprehensive engine failed: {str(e)}")
         
+        # Step 4.5: Apply mathematical sentiment analysis to the actual news content
+        print("Applying mathematical sentiment analysis to news content...")
+        from utils.mathematical_sentiment import get_mathematical_analyzer
+        math_analyzer = get_mathematical_analyzer()
+        
+        # Combine all news content for mathematical analysis
+        combined_news_content = ""
+        for unit in units:
+            if unit.source_domain != "user_input":  # Only analyze news content
+                combined_news_content += unit.text + " "
+        
+        if combined_news_content.strip():
+            print(f"Analyzing {len(combined_news_content)} characters of news content...")
+            mathematical_results = math_analyzer.analyze_mathematical_sentiment(combined_news_content.strip())
+            print(f"Mathematical sentiment score: {mathematical_results['mathematical_sentiment_analysis']['composite_score']['value']}")
+        else:
+            print("No news content found for mathematical analysis")
+            mathematical_results = None
+        
         # Step 5: Create response following the specification
         analysis_id = str(uuid.uuid4())
         timestamp = datetime.now()
         
-        # Map comprehensive results to expected format
-        mathematical_sentiment_analysis = {
-            "composite_score": {
-                "value": comprehensive_results["sentiment"]["score"],
-                "confidence_interval": [
-                    comprehensive_results["sentiment"]["score"] - 0.1,  # Approximate CI
-                    comprehensive_results["sentiment"]["score"] + 0.1
-                ],
-                "statistical_significance": comprehensive_results["sentiment"]["confidence"]
-            },
-            "multi_model_validation": {
-                "lexicon_based": {
-                    "consensus": comprehensive_results["sentiment"]["score"]  # Simplified
+        # Use actual mathematical sentiment analysis results
+        if mathematical_results:
+            mathematical_sentiment_analysis = mathematical_results["mathematical_sentiment_analysis"]
+            # Also include emotion analysis
+            emotion_analysis = mathematical_results["emotion_vector_analysis"]
+        else:
+            # Fallback to comprehensive results if no mathematical analysis
+            mathematical_sentiment_analysis = {
+                "composite_score": {
+                    "value": comprehensive_results["sentiment"]["score"],
+                    "confidence_interval": [
+                        comprehensive_results["sentiment"]["score"] - 0.1,
+                        comprehensive_results["sentiment"]["score"] + 0.1
+                    ],
+                    "statistical_significance": comprehensive_results["sentiment"]["confidence"]
                 },
-                "transformer_based": {
-                    "consensus": comprehensive_results["sentiment"]["score"]
+                "multi_model_validation": {
+                    "lexicon_based": {
+                        "consensus": comprehensive_results["sentiment"]["score"]
+                    },
+                    "transformer_based": {
+                        "consensus": comprehensive_results["sentiment"]["score"]
+                    },
+                    "all_models_consensus": comprehensive_results["sentiment"]["score"]
                 },
-                "all_models_consensus": comprehensive_results["sentiment"]["score"]
-            },
-            "uncertainty_metrics": {
-                "sentiment_entropy": -sum(p * np.log(p + 1e-10) for p in [
-                    comprehensive_results["sentiment"]["polarity"]["positive"],
-                    comprehensive_results["sentiment"]["polarity"]["neutral"],
-                    comprehensive_results["sentiment"]["polarity"]["negative"]
-                ]),
-                "polarization_index": comprehensive_results["sentiment"]["disagreement"],
-                "model_agreement": 1 - comprehensive_results["sentiment"]["disagreement"]
+                "uncertainty_metrics": {
+                    "sentiment_entropy": 0.0,
+                    "polarization_index": comprehensive_results["sentiment"]["disagreement"],
+                    "model_agreement": 1 - comprehensive_results["sentiment"]["disagreement"]
+                }
             }
-        }
+            emotion_analysis = {
+                "plutchik_coordinates": {emotion: 0.125 for emotion in ['joy', 'trust', 'fear', 'surprise', 'sadness', 'disgust', 'anger', 'anticipation']},
+                "dominant_emotions": [],
+                "emotion_entropy": 0.0,
+                "emotional_coherence": 1.0
+            }
         
-        # Map emotion analysis
-        emotion_vector_analysis = {
-            "plutchik_coordinates": comprehensive_results["emotion"],
+        # Use mathematical emotion analysis if available
+        if mathematical_results:
+            emotion_vector_analysis = emotion_analysis
+        else:
+            # Fallback to comprehensive results
+            emotion_vector_analysis = {
+                "plutchik_coordinates": comprehensive_results["emotion"],
             "dominant_emotions": sorted(comprehensive_results["emotion"].keys(), 
                                       key=lambda k: comprehensive_results["emotion"].get(k, 0), 
                                       reverse=True)[:3],
             "emotion_entropy": -sum(p * np.log(p + 1e-10) for p in comprehensive_results["emotion"].values()) if comprehensive_results["emotion"] else 0,
             "emotional_coherence": 1 - comprehensive_results["sentiment"]["disagreement"],
-            "emotion_mathematics": {
-                "vector_magnitude": np.sqrt(sum(p**2 for p in comprehensive_results["emotion"].values())) if comprehensive_results["emotion"] else 0,
-                "emotional_distance_from_neutral": abs(comprehensive_results["sentiment"]["score"]),
-                "primary_emotion_vector": list(comprehensive_results["emotion"].values())[:3] if comprehensive_results["emotion"] else [0,0,0]
+                "emotion_mathematics": {
+                    "vector_magnitude": np.sqrt(sum(p**2 for p in comprehensive_results["emotion"].values())) if comprehensive_results["emotion"] else 0,
+                    "emotional_distance_from_neutral": abs(comprehensive_results["sentiment"]["score"]),
+                    "primary_emotion_vector": list(comprehensive_results["emotion"].values())[:3] if comprehensive_results["emotion"] else [0,0,0]
+                }
             }
-        }
         
         comprehensive_analysis = {
             "id": analysis_id,
@@ -782,10 +876,12 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             # Emotion vector analysis (comprehensive)
             "emotion_vector_analysis": emotion_vector_analysis,
             
-            # Comprehensive metrics from specification
+            # Use mathematical analysis for polarity if available
             "comprehensive_metrics": {
-                "disagreement_index": comprehensive_results["sentiment"]["disagreement"],
-                "polarity_breakdown": comprehensive_results["sentiment"]["polarity"],
+                "disagreement_index": mathematical_results["mathematical_sentiment_analysis"]["uncertainty_metrics"]["polarization_index"] if mathematical_results else comprehensive_results["sentiment"]["disagreement"],
+                "polarity_breakdown": calculate_polarity_from_mathematical_score(
+                    mathematical_results["mathematical_sentiment_analysis"]["composite_score"]["value"] if mathematical_results else comprehensive_results["sentiment"]["score"]
+                ),
                 "sarcasm_rate": comprehensive_results["sarcasm_rate"],
                 "toxicity_rate": comprehensive_results["toxicity_rate"],
                 "freshness_score": comprehensive_results["freshness_score"],
@@ -793,8 +889,11 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 "total_evidence_weight": comprehensive_results["coverage"]["total_weight"]
             },
             
-            # VAD analysis
-            "vad_analysis": comprehensive_results["vad"],
+            # VAD analysis - use mathematical results to calculate more accurate VAD
+            "vad_analysis": calculate_vad_from_mathematical_score(
+                mathematical_results["mathematical_sentiment_analysis"]["composite_score"]["value"] if mathematical_results else comprehensive_results["sentiment"]["score"],
+                mathematical_results["emotion_vector_analysis"] if mathematical_results else None
+            ),
             
             # Document analysis
             "document_analysis": {

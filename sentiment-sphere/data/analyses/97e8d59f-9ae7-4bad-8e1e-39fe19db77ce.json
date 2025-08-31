@@ -1,0 +1,305 @@
+{
+  "id": "97e8d59f-9ae7-4bad-8e1e-39fe19db77ce",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "SKIN",
+  "timestamp": "2025-08-31T17:31:27.754599",
+  "enhanced_summary": "Comprehensive analysis of 13 content units with 86.4% confidence. Sentiment: 0.009 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 13,
+    "average_recency_weight": 0.5689252814603395
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.008970112851369052,
+      "confidence_interval": [
+        -0.09102988714863096,
+        0.10897011285136905
+      ],
+      "statistical_significance": 0.8640075168511266
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "consensus": 0.008970112851369052
+      },
+      "transformer_based": {
+        "consensus": 0.008970112851369052
+      },
+      "all_models_consensus": 0.008970112851369052
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 0.2019893608974275,
+      "polarization_index": 0.0022023723929753963,
+      "model_agreement": 0.9977976276070246
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.07053400056352832,
+      "sadness": 0.24144276952176003,
+      "anger": 0.07053400056352832,
+      "fear": 0.07053400056352832,
+      "disgust": 0.07053400056352832,
+      "surprise": 0.07053400056352832,
+      "trust": 0.09260286655240663,
+      "anticipation": 0.3132843611081917
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "sadness",
+      "trust"
+    ],
+    "emotion_entropy": 1.8622350428445105,
+    "emotional_coherence": 0.9977976276070246,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.4357662434614543,
+      "emotional_distance_from_neutral": 0.008970112851369052,
+      "primary_emotion_vector": [
+        0.07053400056352832,
+        0.24144276952176003,
+        0.07053400056352832
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0022023723929753963,
+    "polarity_breakdown": {
+      "positive": 0.051184873122448925,
+      "negative": 0.0,
+      "neutral": 0.9488151268775511,
+      "wilson_ci": {
+        "positive": [
+          0.043258178358081184,
+          0.4223463101948254
+        ],
+        "negative": [
+          0.0,
+          0.22809537235419838
+        ],
+        "neutral": [
+          0.5776536898051745,
+          0.9567418216419186
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5689252814603395,
+    "novelty_score": 0.9268510675424793,
+    "total_evidence_weight": 0.8337456045743666
+  },
+  "vad_analysis": {
+    "valence": 0.5052582115445643,
+    "arousal": 0.4997249434341036,
+    "dominance": 0.5
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 13,
+  "recent_developments_identified": 13,
+  "source_citations": [
+    {
+      "source": "www.theverge.com",
+      "url": "https://www.theverge.com/features/761076/gaza-images-starvation-tiktok-ban",
+      "text_sample": "In the last month, the war in Gaza has become an inescapable facet of the public consciousness as a new surge of images of Palestinian children - their faces impossibly sunken, their limbs reduced to ...",
+      "contribution_weight": "100.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.cnet.com",
+      "url": "https://www.cnet.com/tech/gaming/get-a-free-thing-skin-thor-skin-and-more-in-marvel-rivals-season-3-5/",
+      "text_sample": "The battle heats up in Season 3.5 as a Phoenix Force-infused Blade enters the fray. Kit out your heroes in these free skins to prepare for the fight.",
+      "contribution_weight": "90.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/skin-tightening-treatments-ultherapy-red-light-sofwave-facelift-alternatives-2025-8",
+      "text_sample": "Facelifts are expensive, and invasive. Gen Zers are showing interest in skin tightening, which boosts collagen production to slow down skin aging.",
+      "contribution_weight": "80.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.bbc.com",
+      "url": "https://www.bbc.com/news/articles/cvgn69w9k0eo",
+      "text_sample": "Tan lines are seemingly back in fashion, but experts warn the trend's rise could fuel dangerous sunburn habits.",
+      "contribution_weight": "70.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "gizmodo.com",
+      "url": "https://gizmodo.com/people-are-now-seeing-zombie-squirrels-in-their-backyards-2000644281",
+      "text_sample": "Scary as squirrel fibroma virus looks, the animals usually recover and the infection isn't dangerous to people.",
+      "contribution_weight": "60.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/08/sotera-health-nasdaqshc-versus-beauty-health-nasdaqskin-head-to-head-review/",
+      "text_sample": "Sotera Health (NASDAQ:SHC – Get Free Report) and Beauty Health (NASDAQ:SKIN – Get Free Report) are both medical companies, but which is the superior stock? We will contrast the two businesses based on...",
+      "contribution_weight": "50.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/beauty-health-nasdaqskin-price-target-raised-to-4-00/",
+      "text_sample": "Beauty Health (NASDAQ:SKIN – Free Report) had its target price increased by Stifel Nicolaus from $3.00 to $4.00 in a research note issued to investors on Friday morning,Benzinga reports. They currentl...",
+      "contribution_weight": "40.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/09/beauty-health-nasdaqskin-upgraded-by-wall-street-zen-to-buy-rating/",
+      "text_sample": "Beauty Health (NASDAQ:SKIN – Get Free Report) was upgraded by Wall Street Zen from a “hold” rating to a “buy” rating in a research note issued on Saturday. A number of other equities research analysts...",
+      "contribution_weight": "30.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "gizmodo.com",
+      "url": "https://gizmodo.com/cmf-phone-2-pro-review-a-budget-phone-with-more-camera-than-you-bargained-for-2000639773",
+      "text_sample": "For $280, the CMF Phone 2 Pro has some standout features that offer more value than you'd expect.",
+      "contribution_weight": "20.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "people.com",
+      "url": "https://people.com/nitazene-deadly-drug-43-times-stronger-than-fentanyl-11788621",
+      "text_sample": "Experts are warning about nitazenes — synthetic opioids with different, deadly strains — that can be hidden in other drugs",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.androidpolice.com",
+      "url": "https://www.androidpolice.com/samsung-one-ui-home-guide/",
+      "text_sample": "One UI home is Samsung&#039;s launcher for its Android phones and tablets. It offers exclusive features and customization options.",
+      "contribution_weight": "10.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/america-obessesion-morning-routines-habits-productivity-masculinity-2025-8",
+      "text_sample": "A survey of America's 250-year, unhinged quest for the perfect the morning routine, from Benjamin Franklin to Bryan Johnson.",
+      "contribution_weight": "10.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.biopharmadive.com",
+      "url": "https://www.biopharmadive.com/news/IO-biotech-melanoma-cancer-vaccine-study-results-cylembio/757294/",
+      "text_sample": "A regimen involving the company’s shot failed a Phase 3 trial “by a hair,” an executive said, leading the company to believe it still could win U.S. approval...",
+      "contribution_weight": "10.0%",
+      "recency": "30 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "SKIN",
+    "query_type": "general",
+    "entities_detected": [
+      "Skin"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 13 related sources",
+        "relevance": "high",
+        "source_count": 13
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "86.4%",
+      "source_diversity": "9 different source types",
+      "temporal_coverage": "Analysis spans 28 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.2663163974929156,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "The battle heats up in Season 3.5 as a Phoenix Force-infused Blade enters the fray. Kit out your heroes in these free skins to prepare for the fight....",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5532644639607895,
+      "avg_quality": 0.695496894409938,
+      "sources": [
+        "www.cnet.com",
+        "www.theverge.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.2625836937671555,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Facelifts are expensive, and invasive. Gen Zers are showing interest in skin tightening, which boosts collagen production to slow down skin aging....",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5596783628614849,
+      "avg_quality": 0.7227272727272727,
+      "sources": [
+        "www.bbc.com",
+        "www.businessinsider.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.1449145931672249,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Scary as squirrel fibroma virus looks, the animals usually recover and the infection isn't dangerous to people....",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4257195262510032,
+      "avg_quality": 0.7035150645624103,
+      "sources": [
+        "www.etfdailynews.com",
+        "gizmodo.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.018086024053316538,
+      "max": 0.21306938591486854,
+      "mean": 0.06413427727495127,
+      "std": 0.06168037437220007
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 13,
+      "high_source_units": 0,
+      "low_toxicity_units": 13
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2555568326187963,
+      "gini_coefficient": 0.05189328198237064
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "id": "e48f7f99-fd02-44f3-bc58-8f19d2f00af1",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "AAPL",
+  "timestamp": "2025-08-31T18:18:20.455521",
+  "enhanced_summary": "Comprehensive analysis of 5 content units with 88.1% confidence. Sentiment: 0.000 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 5,
+    "average_recency_weight": 0.6521664648179623
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.5177895670739685,
+      "confidence_interval": [
+        0.18073206487647173,
+        0.8557149669987381
+      ],
+      "statistical_significance": 0.9475619353666727
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9825,
+        "textblob_score": 0.08645833333333333,
+        "afinn_score": 0.09090909090909091,
+        "consensus": 0.38662247474747474
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.884494423866272,
+        "consensus": 0.884494423866272
+      },
+      "all_models_consensus": 0.5177895670739685
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.27613676555092,
+      "polarization_index": 0.3793204082912445,
+      "model_agreement": 0.6206795917087555
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3793204082912445,
+    "polarity_breakdown": {
+      "positive": 0.707,
+      "negative": 0.098,
+      "neutral": 0.195,
+      "wilson_ci": {
+        "positive": [
+          0.6071158268295874,
+          0.8071158268295874
+        ],
+        "negative": [
+          0,
+          0.19822104329260315
+        ],
+        "neutral": [
+          0.09466312987780945,
+          0.29466312987780946
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.6521664648179623,
+    "novelty_score": 0.9566095742373453,
+    "total_evidence_weight": 0.38204742145014414
+  },
+  "vad_analysis": {
+    "valence": 0.759,
+    "arousal": 0.509,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 5,
+  "recent_developments_identified": 5,
+  "source_citations": [
+    {
+      "source": "siliconangle.com",
+      "url": "https://siliconangle.com/2025/07/31/apples-revenue-growth-hits-four-year-high-iphone-sales-soar/",
+      "text_sample": "Shares of iPhone maker Apple Inc. inched up slightly after-hours on the back of another solid set of financial results, with the company reported earnings and revenue that shot past Wall Street’s esti...",
+      "contribution_weight": "100.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/warren-buffett-trims-4-billion-084604271.html",
+      "text_sample": "Warren Buffett is dialing back his favorite investment, selling a chunk of Apple Inc. (NASDAQ:AAPL) stock while praising CEO Tim Cook and amassing the...",
+      "contribution_weight": "90.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/14/meridian-financial-llc-sells-118-shares-of-apple-inc-nasdaqaapl/",
+      "text_sample": "Meridian Financial LLC decreased its holdings in Apple Inc. (NASDAQ:AAPL – Free Report) by 1.4% during the 1st quarter, Holdings Channel.com reports. The institutional investor owned 8,552 shares of t...",
+      "contribution_weight": "80.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/27/trek-financial-llc-boosts-stock-position-in-apple-inc-aapl/",
+      "text_sample": "Trek Financial LLC grew its holdings in Apple Inc. (NASDAQ:AAPL – Free Report) by 0.5% in the first quarter, Holdings Channel reports. The institutional investor owned 87,768 shares of the iPhone make...",
+      "contribution_weight": "70.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/19/strategic-financial-concepts-llc-trims-position-in-apple-inc-aapl/",
+      "text_sample": "Strategic Financial Concepts LLC reduced its stake in shares of Apple Inc. (NASDAQ:AAPL – Free Report) by 1.1% during the first quarter, Holdings Channel reports. The institutional investor owned 52,3...",
+      "contribution_weight": "60.0%",
+      "recency": "20 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "AAPL",
+    "query_type": "general",
+    "entities_detected": [
+      "Aapl"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 5 related sources",
+        "relevance": "high",
+        "source_count": 5
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "88.1%",
+      "source_diversity": "3 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.2827112105612841,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Warren Buffett is dialing back his favorite investment, selling a chunk of Apple Inc. (NASDAQ:AAPL) stock while praising CEO Tim Cook and amassing the...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.6594532724401824,
+      "avg_quality": 0.7203972868217055,
+      "sources": [
+        "siliconangle.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.06089347313189798,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Meridian Financial LLC decreased its holdings in Apple Inc. (NASDAQ:AAPL – Free Report) by 1.4% during the 1st quarter, Holdings Channel.com reports. ...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.689993746091307,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.038442737756962074,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "Strategic Financial Concepts LLC reduced its stake in shares of Apple Inc. (NASDAQ:AAPL – Free Report) by 1.1% during the first quarter, Holdings Chan...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.7025000000000001,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.029365356388718105,
+      "max": 0.20427860354585042,
+      "mean": 0.07640948429002883,
+      "std": 0.0663680128525752
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 5,
+      "high_source_units": 0,
+      "low_toxicity_units": 5
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.5346943653498994,
+      "gini_coefficient": 0.16925289937958032
+    }
+  }
+}

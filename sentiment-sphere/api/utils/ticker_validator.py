@@ -57,9 +57,9 @@ class TickerValidator:
         # Clean and normalize input
         ticker = ticker_input.strip().upper()
         
-        # Basic format validation
-        if not re.match(r'^[A-Z]{1,5}$', ticker):
-            return False, None, f"'{ticker_input}' is not a valid ticker format. Please enter a 1-5 letter stock symbol (e.g., AAPL, NVDA, META)."
+        # Basic format validation - allow letters, dots, and hyphens
+        if not re.match(r'^[A-Z]{1,8}([.-][A-Z]{1,2})?$', ticker):
+            return False, None, f"'{ticker_input}' is not a valid ticker format. Please enter a valid stock symbol (e.g., AAPL, BRK.A, BRK-B)."
         
         # Check known tickers first (fast lookup)
         if ticker in self.known_tickers:
@@ -74,17 +74,25 @@ class TickerValidator:
             if not info or 'symbol' not in info:
                 return False, None, f"'{ticker}' is not a recognized stock ticker. Please enter a valid NASDAQ or NYSE ticker."
             
-            # Check if it's from NASDAQ or NYSE
+            # Check if it's from NASDAQ or NYSE (including all NASDAQ market tiers)
             exchange = info.get('exchange', '').upper()
-            if exchange not in ['NASDAQ', 'NMS', 'NYSE', 'NYQ']:
-                return False, None, f"'{ticker}' is not traded on NASDAQ or NYSE. This system only analyzes NASDAQ and NYSE stocks."
+            nasdaq_exchanges = ['NASDAQ', 'NMS', 'NCM', 'NGM', 'NSM']  # All NASDAQ market tiers
+            nyse_exchanges = ['NYSE', 'NYQ', 'NYA']  # All NYSE market tiers
+            valid_exchanges = nasdaq_exchanges + nyse_exchanges
             
-            # Extract company information
+            if exchange not in valid_exchanges:
+                return False, None, f"'{ticker}' is not traded on NASDAQ or NYSE. Found exchange: {exchange}. This system only analyzes NASDAQ and NYSE stocks."
+            
+            # Extract comprehensive company information for better search filtering
             company_info = {
                 'name': info.get('longName', info.get('shortName', ticker)),
-                'exchange': 'NASDAQ' if exchange in ['NASDAQ', 'NMS'] else 'NYSE',
+                'short_name': info.get('shortName', ticker),
+                'exchange': 'NASDAQ' if exchange in nasdaq_exchanges else 'NYSE',
                 'sector': info.get('sector', 'Unknown'),
                 'industry': info.get('industry', 'Unknown'),
+                'business_summary': info.get('longBusinessSummary', ''),
+                'quote_type': info.get('quoteType', 'EQUITY'),
+                'website': info.get('website', ''),
                 'market_cap': info.get('marketCap'),
                 'currency': info.get('currency', 'USD')
             }
@@ -167,33 +175,28 @@ class TickerValidator:
         """
         company_name = company_info['name']
         
+        # Get sector for additional context
+        sector = company_info.get('sector', '')
+        quote_type = company_info.get('quote_type', 'EQUITY')
+        
+        # Create context-aware financial queries
+        if quote_type == 'ETF':
+            asset_type = 'ETF'
+            financial_terms = 'expense ratio OR NAV OR holdings OR performance'
+        else:
+            asset_type = 'stock'
+            financial_terms = 'earnings OR revenue OR price target OR dividend'
+        
+        # Use ONLY company name for NewsAPI queries to avoid ticker confusion
+        # For tickers like SKIN, search for "The Beauty Health Company" not "SKIN"
         queries = [
-            # TIER 1: Premium Financial Sources (Highest Priority)
-            f"${ticker} site:bloomberg.com OR site:reuters.com OR site:marketwatch.com OR site:wsj.com OR site:ft.com",
-            f'"{company_name}" earnings site:barrons.com OR site:cnbc.com OR site:finance.yahoo.com',
-            
-            # TIER 2: Reputable News Sources
-            f"${ticker} stock news site:cnn.com OR site:bbc.com OR site:forbes.com OR site:reuters.com",
-            f'"{company_name}" financial news site:nytimes.com OR site:washingtonpost.com OR site:ap.org',
-            
-            # TIER 3: Financial Analysis & Discussion Boards
-            f"${ticker} analysis site:seekingalpha.com OR site:fool.com OR site:zacks.com OR site:investopedia.com",
-            f'"{company_name}" discussion site:stocktwits.com OR site:investorshub.com',
-            
-            # TIER 4: Reddit & Social Discussion (Filtered for quality)
-            f"${ticker} reddit site:reddit.com/r/investing OR site:reddit.com/r/stocks OR site:reddit.com/r/SecurityAnalysis",
-            f"${ticker} sentiment site:reddit.com/r/wallstreetbets",
-            
-            # TIER 5: Broader Financial Community & News
-            f"${ticker} stock opinion OR earnings OR forecast",
-            f'"{company_name}" latest news OR analyst rating OR price target',
-            
-            # TIER 6: Recent Breaking News (Any reputable source)
-            f"${ticker} breaking news OR latest update OR just released",
-            f'"{company_name}" today OR this week OR recent'
+            # TIER 1: Company name only with financial context
+            f'"{company_name}" stock earnings financial',
+            f'"{company_name}" business performance revenue',
+            f'"{company_name}" {sector} industry analysis'
         ]
         
-        return queries[:3]  # Reduced to 3 to avoid Google API rate limits
+        return queries  # Return all queries for better coverage
     
     def is_market_hours(self) -> bool:
         """Check if markets are currently open (rough estimate)."""

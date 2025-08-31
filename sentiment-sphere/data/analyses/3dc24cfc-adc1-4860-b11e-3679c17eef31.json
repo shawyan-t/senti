@@ -1,0 +1,250 @@
+{
+  "id": "3dc24cfc-adc1-4860-b11e-3679c17eef31",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "TSLA",
+  "timestamp": "2025-08-31T18:17:12.996594",
+  "enhanced_summary": "Comprehensive analysis of 5 content units with 88.1% confidence. Sentiment: 0.000 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 5,
+    "average_recency_weight": 0.2603364570418802
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.21738257309941522,
+      "confidence_interval": [
+        0.009473684210526316,
+        0.585948888888889
+      ],
+      "statistical_significance": 0.699932182965276
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9451,
+        "textblob_score": 0.09444444444444446,
+        "afinn_score": 0.04736842105263158,
+        "consensus": 0.36230428849902535
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.21738257309941522
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2640892256752383,
+      "polarization_index": 0.36554113720970616,
+      "model_agreement": 0.6344588627902938
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.36554113720970616,
+    "polarity_breakdown": {
+      "positive": 0.587,
+      "negative": 0.128,
+      "neutral": 0.285,
+      "wilson_ci": {
+        "positive": [
+          0.48695302923976613,
+          0.6869530292397661
+        ],
+        "negative": [
+          0.02826174269005846,
+          0.22826174269005847
+        ],
+        "neutral": [
+          0.18478522807017542,
+          0.38478522807017546
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.2603364570418802,
+    "novelty_score": 0.893126779947288,
+    "total_evidence_weight": 0.21002295119502876
+  },
+  "vad_analysis": {
+    "valence": 0.609,
+    "arousal": 0.419,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 5,
+  "recent_developments_identified": 5,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/tesla-inc-tsla-bull-case-091425933.html",
+      "text_sample": "We came across a bullish thesis on Tesla, Inc. on Investment Ideas by Antonio’s Substack by Antonio Linares. In this article, we will summarize the bulls...",
+      "contribution_weight": "100.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/11/what-is-zacks-researchs-estimate-for-tesla-q3-earnings/",
+      "text_sample": "Tesla, Inc. (NASDAQ:TSLA – Free Report) – Equities research analysts at Zacks Research lowered their Q3 2025 earnings per share estimates for Tesla in a research note issued to investors on Wednesday,...",
+      "contribution_weight": "90.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/29/analysts-set-tesla-inc-nasdaqtsla-price-target-at-303-31/",
+      "text_sample": "Shares of Tesla, Inc. (NASDAQ:TSLA – Get Free Report) have been given an average rating of “Hold” by the forty-two ratings firms that are currently covering the company, Marketbeat reports. Nine inves...",
+      "contribution_weight": "80.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/brokerages-set-tesla-inc-nasdaqtsla-price-target-at-303-31/",
+      "text_sample": "Shares of Tesla, Inc. (NASDAQ:TSLA – Get Free Report) have earned a consensus rating of “Hold” from the forty-two analysts that are presently covering the firm, Marketbeat.com reports. Nine research a...",
+      "contribution_weight": "70.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/25/tesla-nasdaqtsla-stock-acquired-rep-lisa-c-mcclain/",
+      "text_sample": "Representative Lisa C. McClain (R-Michigan) recently bought shares of Tesla, Inc. (NASDAQ:TSLA). In a filing disclosed on August 13th, the Representative disclosed that they had bought between $1,001 ...",
+      "contribution_weight": "60.0%",
+      "recency": "15 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "TSLA",
+    "query_type": "general",
+    "entities_detected": [
+      "Tsla"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 5 related sources",
+        "relevance": "high",
+        "source_count": 5
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "88.1%",
+      "source_diversity": "2 different source types",
+      "temporal_coverage": "Analysis spans 19 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.08769670232592212,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Shares of Tesla, Inc. (NASDAQ:TSLA – Get Free Report) have earned a consensus rating of “Hold” from the forty-two analysts that are presently covering...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.31218641765345,
+      "avg_quality": 0.6865563298490127,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.08559888550913347,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Tesla, Inc. (NASDAQ:TSLA – Free Report) – Equities research analysts at Zacks Research lowered their Q3 2025 earnings per share estimates for Tesla in...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6897279549718573,
+      "sources": [
+        "www.etfdailynews.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.03672736335997314,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "Representative Lisa C. McClain (R-Michigan) recently bought shares of Tesla, Inc. (NASDAQ:TSLA). In a filing disclosed on August 13th, the Representat...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6799999999999999,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.031219095510218443,
+      "max": 0.05647760681570368,
+      "mean": 0.04200459023900575,
+      "std": 0.008671710897695832
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 5,
+      "high_source_units": 0,
+      "low_toxicity_units": 5
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.268911595110661,
+      "gini_coefficient": 0.7720781416442357
+    }
+  }
+}
