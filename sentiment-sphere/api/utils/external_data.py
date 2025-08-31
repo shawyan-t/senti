@@ -739,53 +739,104 @@ class SearchEngineConnector:
         search_queries = self._generate_enhanced_search_queries(query)
         print(f"Enhanced search queries: {search_queries}")
         
-        # Try multiple search approaches
-        for search_query in search_queries:
-            # 1. Google Search API (using Programmable Search Engine)
-            if self.google_search_api_key and self.google_search_cx:
-                try:
-                    # Set up parameters  
-                    params = {
-                        'key': self.google_search_api_key,
-                        'cx': self.google_search_cx,
-                        'q': search_query,
-                        'num': min(10, num_results),
-                        'safe': 'medium',
-                        'filter': '1'  # Deduplicate results
+        # 1. Try NewsAPI first for financial news (most reliable for finance)
+        if self.news_api_available and any(word in query.lower() for word in ['$', 'stock', 'financial', 'earnings', 'market']):
+            print("Using NewsAPI for financial news...")
+            try:
+                news_articles = self.fetch_news_articles(query, days_back=30, limit=15)
+                for article in news_articles:
+                    result = {
+                        'title': article.get('title'),
+                        'link': article.get('url'),
+                        'snippet': article.get('description', ''),
+                        'full_content': article.get('content', article.get('description', ''))[:1000],
+                        'published_date': article.get('publishedAt'),
+                        'source': 'newsapi',
+                        'engine': 'newsapi',
+                        'search_query': query
                     }
-                    
-                    # Add recent content filtering if requested
-                    if recent_only:
-                        from datetime import datetime, timedelta
-                        one_month_ago = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
-                        params['dateRestrict'] = 'm1'  # Last month
-                    
-                    # Make the API request
-                    response = requests.get('https://www.googleapis.com/customsearch/v1', params=params, timeout=10)
-                    
-                    if response.status_code == 200:
-                        data = response.json()
-                        for item in data.get('items', []):
-                            # Extract content from the URL to get more context
-                            full_content = self._extract_content_safely(item.get('link', ''))
-                            
-                            result = {
-                                'title': item.get('title'),
-                                'link': item.get('link'),
-                                'snippet': item.get('snippet'),
-                                'full_content': full_content[:1000] if full_content else item.get('snippet', ''),
-                                'published_date': self._extract_date_from_metadata(item.get('pagemap', {})),
-                                'source': 'google_search',
-                                'engine': 'google',
-                                'search_query': search_query
-                            }
-                            all_results.append(result)
-                    else:
-                        print(f"Google Search API returned status {response.status_code}")
-                except Exception as e:
-                    print(f"Error with Google Search API: {e}")
-            else:
-                print("Google Search API key or CX not configured - using alternative search methods")
+                    all_results.append(result)
+                print(f"Got {len(news_articles)} articles from NewsAPI")
+            except Exception as e:
+                print(f"Error fetching from NewsAPI: {e}")
+
+        # 2. Try Google Search API if we need more results
+        if len(all_results) < num_results:
+            # Try multiple search approaches with delays to avoid rate limiting
+            import time
+            for i, search_query in enumerate(search_queries):
+                if i > 0:  # Add delay between searches (except first)
+                    time.sleep(1)  # 1 second delay between API calls
+                # Google Search API (using Programmable Search Engine)
+                if self.google_search_api_key and self.google_search_cx:
+                    try:
+                        # Set up parameters  
+                        params = {
+                            'key': self.google_search_api_key,
+                            'cx': self.google_search_cx,
+                            'q': search_query,
+                            'num': min(10, num_results),
+                            'safe': 'medium',
+                            'filter': '1'  # Deduplicate results
+                        }
+                        
+                        # Add recent content filtering if requested
+                        if recent_only:
+                            from datetime import datetime, timedelta
+                            one_month_ago = (datetime.now() - timedelta(days=30)).strftime('%Y-%m-%d')
+                            params['dateRestrict'] = 'm1'  # Last month
+                        
+                        # Make the API request with retry logic for rate limits
+                        max_retries = 3
+                        retry_delay = 2
+                        
+                        for retry in range(max_retries):
+                            try:
+                                response = requests.get('https://www.googleapis.com/customsearch/v1', params=params, timeout=10)
+                                
+                                if response.status_code == 200:
+                                    data = response.json()
+                                    for item in data.get('items', []):
+                                        # Extract content from the URL to get more context
+                                        full_content = self._extract_content_safely(item.get('link', ''))
+                                        
+                                        result = {
+                                            'title': item.get('title'),
+                                            'link': item.get('link'),
+                                            'snippet': item.get('snippet'),
+                                            'full_content': full_content[:1000] if full_content else item.get('snippet', ''),
+                                            'published_date': self._extract_date_from_metadata(item.get('pagemap', {})),
+                                            'source': 'google_search',
+                                            'engine': 'google',
+                                            'search_query': search_query
+                                        }
+                                        all_results.append(result)
+                                    break  # Success, exit retry loop
+                                
+                                elif response.status_code == 429 and retry < max_retries - 1:
+                                    print(f"Google Search API rate limited. Retrying in {retry_delay} seconds...")
+                                    import time
+                                    time.sleep(retry_delay)
+                                    retry_delay *= 2  # Exponential backoff
+                                    continue
+                                else:
+                                    print(f"Google Search API returned status {response.status_code}")
+                                    break
+                                
+                            except Exception as e:
+                                if retry < max_retries - 1:
+                                    print(f"Google Search API error, retrying in {retry_delay} seconds: {e}")
+                                    import time
+                                    time.sleep(retry_delay)
+                                    retry_delay *= 2
+                                    continue
+                                else:
+                                    print(f"Error with Google Search API after {max_retries} retries: {e}")
+                                    break
+                    except Exception as e:
+                        print(f"Error with Google Search API: {e}")
+                else:
+                    print("Google Search API key or CX not configured - using alternative search methods")
         
         # 2. If no results from Google API, try alternative search methods
         if not all_results:
@@ -960,53 +1011,104 @@ Example: [0, 3, 7, 1, 9]
             return search_results[:target_count]
     
     def _simple_filter_results(self, query, results, target_count):
-        """Simple keyword-based filtering with financial source prioritization"""
+        """Hierarchical filtering: Financial -> News -> Discussion -> Social -> General"""
         query_words = set(query.lower().split())
         
-        # Define financial source rankings
-        tier_1_financial = ['bloomberg.com', 'reuters.com', 'wsj.com', 'ft.com', 'marketwatch.com']
-        tier_2_financial = ['cnbc.com', 'finance.yahoo.com', 'barrons.com', 'investopedia.com', 'morningstar.com']
-        tier_3_financial = ['cnn.com/business', 'forbes.com', 'seekingalpha.com', 'fool.com', 'zacks.com']
+        # Define hierarchical source rankings
+        tier_1_premium_financial = ['bloomberg.com', 'reuters.com', 'wsj.com', 'ft.com', 'marketwatch.com']
+        tier_2_mainstream_financial = ['cnbc.com', 'finance.yahoo.com', 'barrons.com', 'investopedia.com', 'morningstar.com']
+        tier_3_financial_analysis = ['seekingalpha.com', 'fool.com', 'zacks.com', 'benzinga.com', 'gurufocus.com']
+        tier_4_reputable_news = ['cnn.com', 'bbc.com', 'forbes.com', 'nytimes.com', 'washingtonpost.com', 'ap.org']
+        tier_5_discussion_boards = ['reddit.com/r/investing', 'reddit.com/r/stocks', 'reddit.com/r/SecurityAnalysis', 'stocktwits.com', 'investorshub.com']
+        tier_6_social_filtered = ['reddit.com/r/wallstreetbets', 'twitter.com', 'reddit.com']
+        tier_7_general_news = ['usa today.com', 'abcnews.com', 'nbcnews.com', 'cbsnews.com']
         
-        # Score results based on keyword matches and source quality
+        # Score results based on hierarchical source quality and relevance
         scored_results = []
         for result in results:
             score = 0
             text = (result.get('title', '') + ' ' + result.get('snippet', '')).lower()
             link = result.get('link', '').lower()
             
-            # Count keyword matches
+            # Base keyword matches
             for word in query_words:
                 if word in text:
                     score += 1
             
-            # Financial source bonuses (heavily weighted)
-            if any(domain in link for domain in tier_1_financial):
-                score += 5  # Highest priority for premium financial sources
-            elif any(domain in link for domain in tier_2_financial):
-                score += 3  # High priority for mainstream financial sources
-            elif any(domain in link for domain in tier_3_financial):
-                score += 2  # Medium priority for financial content
+            # Hierarchical source scoring (descending priority)
+            if any(domain in link for domain in tier_1_premium_financial):
+                score += 10  # Premium financial sources get highest priority
+            elif any(domain in link for domain in tier_2_mainstream_financial):
+                score += 8   # Mainstream financial sources
+            elif any(domain in link for domain in tier_3_financial_analysis):
+                score += 6   # Financial analysis sites
+            elif any(domain in link for domain in tier_4_reputable_news):
+                score += 4   # Reputable general news sources
+            elif any(domain in link for domain in tier_5_discussion_boards):
+                score += 3   # Quality discussion boards and reddit
+            elif any(domain in link for domain in tier_6_social_filtered):
+                score += 2   # Social media (filtered for quality)
+            elif any(domain in link for domain in tier_7_general_news):
+                score += 1   # General news sources
             
             # Bonus for financial keywords in title/snippet
-            financial_keywords = ['earnings', 'revenue', 'profit', 'stock', 'shares', 'market', 'analyst', 'price target', 'upgrade', 'downgrade']
+            financial_keywords = [
+                'earnings', 'revenue', 'profit', 'stock', 'shares', 'market', 'analyst', 
+                'price target', 'upgrade', 'downgrade', 'dividend', 'eps', 'guidance',
+                'beat estimates', 'miss estimates', 'outlook', 'forecast', 'valuation'
+            ]
             for keyword in financial_keywords:
                 if keyword in text:
                     score += 1
             
-            # Heavy penalty for non-financial sources
-            if any(domain in link for domain in ['facebook.com', 'twitter.com', 'instagram.com', 'tiktok.com']):
-                score -= 2
+            # Bonus for sentiment-related keywords
+            sentiment_keywords = [
+                'bullish', 'bearish', 'optimistic', 'pessimistic', 'positive', 'negative',
+                'buy rating', 'sell rating', 'hold rating', 'outperform', 'underperform'
+            ]
+            for keyword in sentiment_keywords:
+                if keyword in text:
+                    score += 2  # Higher weight for sentiment indicators
             
-            # Bonus for recent financial content indicators
-            if any(word in text for word in ['today', 'latest', 'breaking', 'just in', 'updated']):
+            # Penalty for low-quality or irrelevant sources
+            if any(domain in link for domain in ['facebook.com', 'instagram.com', 'tiktok.com', 'pinterest.com']):
+                score -= 3  # Heavy penalty for low-quality social media
+            
+            # Bonus for recent content indicators
+            if any(word in text for word in ['today', 'latest', 'breaking', 'just in', 'updated', 'this week']):
                 score += 1
+            
+            # Bonus for specific financial publication indicators
+            if any(phrase in text for phrase in ['sec filing', 'quarterly report', 'annual report', '10-k', '10-q']):
+                score += 3  # High value for official financial documents
             
             scored_results.append((score, result))
         
-        # Sort by score and return top results
+        # Sort by score (highest first) and return top results
         scored_results.sort(key=lambda x: x[0], reverse=True)
-        return [result for score, result in scored_results[:target_count] if score > 0]
+        filtered_results = [result for score, result in scored_results[:target_count] if score > 0]
+        
+        # Debug logging to show source distribution
+        if filtered_results:
+            source_counts = {}
+            for result in filtered_results:
+                domain = result.get('link', '').lower()
+                for tier_name, domains in [
+                    ('Tier 1 Financial', tier_1_premium_financial),
+                    ('Tier 2 Financial', tier_2_mainstream_financial),
+                    ('Tier 3 Analysis', tier_3_financial_analysis),
+                    ('Tier 4 News', tier_4_reputable_news),
+                    ('Tier 5 Discussion', tier_5_discussion_boards),
+                    ('Tier 6 Social', tier_6_social_filtered),
+                    ('Tier 7 General', tier_7_general_news)
+                ]:
+                    if any(d in domain for d in domains):
+                        source_counts[tier_name] = source_counts.get(tier_name, 0) + 1
+                        break
+            
+            print(f"Source distribution: {source_counts}")
+        
+        return filtered_results
     
     def extract_content_from_url(self, url, max_length=4000):
         """

@@ -154,39 +154,46 @@ class TickerValidator:
     
     def generate_search_queries(self, ticker: str, company_info: Dict) -> List[str]:
         """
-        Generate optimized search queries for financial sentiment analysis.
+        Generate comprehensive search queries in hierarchical order for financial sentiment analysis.
+        
+        Hierarchy: Financial Outlets -> Reputable News -> Discussion Boards -> Social Media -> General Web
         
         Args:
             ticker (str): Ticker symbol
             company_info (Dict): Company information
             
         Returns:
-            List[str]: List of search queries optimized for financial sources
+            List[str]: List of search queries optimized for diverse, hierarchical sources
         """
         company_name = company_info['name']
         
         queries = [
-            # Primary ticker search
-            f"${ticker} stock news analysis",
-            f"{ticker} earnings financial news",
+            # TIER 1: Premium Financial Sources (Highest Priority)
+            f"${ticker} site:bloomberg.com OR site:reuters.com OR site:marketwatch.com OR site:wsj.com OR site:ft.com",
+            f'"{company_name}" earnings site:barrons.com OR site:cnbc.com OR site:finance.yahoo.com',
             
-            # Company name searches
-            f'"{company_name}" stock analysis latest',
-            f'"{company_name}" earnings report financial',
+            # TIER 2: Reputable News Sources
+            f"${ticker} stock news site:cnn.com OR site:bbc.com OR site:forbes.com OR site:reuters.com",
+            f'"{company_name}" financial news site:nytimes.com OR site:washingtonpost.com OR site:ap.org',
             
-            # Sector-specific searches
-            f"{ticker} {company_info['sector']} stock sentiment",
+            # TIER 3: Financial Analysis & Discussion Boards
+            f"${ticker} analysis site:seekingalpha.com OR site:fool.com OR site:zacks.com OR site:investopedia.com",
+            f'"{company_name}" discussion site:stocktwits.com OR site:investorshub.com',
             
-            # Financial source specific searches
-            f"${ticker} site:bloomberg.com OR site:reuters.com OR site:marketwatch.com OR site:cnbc.com OR site:finance.yahoo.com",
-            f'"{company_name}" site:wsj.com OR site:ft.com OR site:barrons.com',
+            # TIER 4: Reddit & Social Discussion (Filtered for quality)
+            f"${ticker} reddit site:reddit.com/r/investing OR site:reddit.com/r/stocks OR site:reddit.com/r/SecurityAnalysis",
+            f"${ticker} sentiment site:reddit.com/r/wallstreetbets",
             
-            # Reddit sentiment
-            f"${ticker} reddit sentiment",
-            f"{ticker} stock reddit discussion"
+            # TIER 5: Broader Financial Community & News
+            f"${ticker} stock opinion OR earnings OR forecast",
+            f'"{company_name}" latest news OR analyst rating OR price target',
+            
+            # TIER 6: Recent Breaking News (Any reputable source)
+            f"${ticker} breaking news OR latest update OR just released",
+            f'"{company_name}" today OR this week OR recent'
         ]
         
-        return queries[:6]  # Limit to avoid rate limits
+        return queries[:3]  # Reduced to 3 to avoid Google API rate limits
     
     def is_market_hours(self) -> bool:
         """Check if markets are currently open (rough estimate)."""

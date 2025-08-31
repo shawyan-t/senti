@@ -681,6 +681,14 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 )
                 units.append(search_unit)
         
+        # If no search results were found, return proper error
+        if not units:
+            print("No search results found - API rate limited")
+            raise HTTPException(
+                status_code=503, 
+                detail="Unable to retrieve financial data at this time. Google Search API is rate limited. Please try again in a few minutes."
+            )
+        
         # Step 4: Run comprehensive analysis pipeline
         print("Running comprehensive sentiment analysis pipeline...")
         try:
@@ -799,7 +807,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             
             # Context information
             "context_sources": len(search_results),
-            "recent_developments_identified": len([u for u in units if u != main_unit]),
+            "recent_developments_identified": len(units),
             
             # Source citations and explanations
             "source_citations": [
@@ -834,7 +842,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 "accuracy_indicators": {
                     "model_agreement": f"{comprehensive_results['sentiment']['confidence']:.1%}",
                     "source_diversity": f"{len(set(u.source_domain for u in units))} different source types",
-                    "temporal_coverage": f"Analysis spans {max(1, (max([u.publish_time for u in units]) - min([u.publish_time for u in units])).days)} days",
+                    "temporal_coverage": f"Analysis spans {max(1, (max([u.publish_time for u in units]) - min([u.publish_time for u in units])).days) if units else 0} days",
                     "data_quality": "high" if len(units) >= 3 else "medium" if len(units) >= 2 else "low"
                 }
             },
