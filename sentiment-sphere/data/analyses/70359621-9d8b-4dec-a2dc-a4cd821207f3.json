@@ -1,0 +1,373 @@
+{
+  "id": "70359621-9d8b-4dec-a2dc-a4cd821207f3",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "META",
+  "timestamp": "2025-09-01T12:07:21.506449",
+  "enhanced_summary": "Comprehensive analysis of 21 content units with 87.7% confidence. Sentiment: 0.445 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 21,
+    "average_recency_weight": 0.2993502820940795
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.44529935177917324,
+      "confidence_interval": [
+        0.04581935177917322,
+        0.8339963690476189
+      ],
+      "statistical_significance": 0.8779177810384278
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9974,
+        "textblob_score": 0.17258184523809528,
+        "afinn_score": 0.0565149136577708,
+        "consensus": 0.40883225296528863
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.44529935177917324
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.251791192441213,
+      "polarization_index": 0.45526423652572834,
+      "model_agreement": 0.5447357634742717
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.45526423652572834,
+    "polarity_breakdown": {
+      "positive": 0.678,
+      "negative": 0.105,
+      "neutral": 0.216,
+      "wilson_ci": {
+        "positive": [
+          0.5781197407116693,
+          0.7781197407116692
+        ],
+        "negative": [
+          0.0054700648220826625,
+          0.2054700648220827
+        ],
+        "neutral": [
+          0.11641019446624809,
+          0.3164101944662481
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.2993502820940795,
+    "novelty_score": 0.9323320385296274,
+    "total_evidence_weight": 0.6819651319807217
+  },
+  "vad_analysis": {
+    "valence": 0.723,
+    "arousal": 0.487,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 21,
+  "recent_developments_identified": 21,
+  "source_citations": [
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/18/meta-stock-path-to-2x-growth/",
+      "text_sample": "The company’s evolution into an AI-driven advertising leader, together with Instagram’s revenue strength and substantial infrastructure spending, creates several...",
+      "contribution_weight": "100.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/video/Is-Meta-Platforms-Inc.-stock-showing-strong-momentum",
+      "text_sample": "Aug 13, 2025 ... Is Meta Platforms Inc. stock showing strong momentum ✌️【Real-Time Stock Group】✌️Invest $100 in our safe platform and start earning passive income every month.",
+      "contribution_weight": "90.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "hispo.ru",
+      "url": "https://hispo.ru/LatestCon/why-meta-platforms-inc.-stock-attracts-strong-analyst-attention",
+      "text_sample": "Aug 14, 2025 ... why meta platforms inc. stock attracts strong analyst attention - Maximize Dividend Income with Government-Registered U.S. Investment Firms.",
+      "contribution_weight": "80.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.cnn.com",
+      "url": "https://www.cnn.com/markets/stocks/META",
+      "text_sample": "3 days ago ... View Meta Platforms Inc Class A META stock quote prices, financial information, real-time forecasts, and company news from CNN ... earnings date. Dividend ...",
+      "contribution_weight": "70.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/META/",
+      "text_sample": "Aug 11, 2025 ... Find the latest Meta Platforms, Inc. (META) stock quote, history, news and other vital information to help you with your stock trading and investing.",
+      "contribution_weight": "60.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/02/william-blair-lifts-earnings-estimates-for-meta-platforms/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Equities researchers at William Blair increased their Q1 2026 earnings estimates for shares of Meta Platforms in a research report issued on Wednesda...",
+      "contribution_weight": "50.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-roth-capital/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Analysts at Roth Capital increased their Q3 2025 earnings per share (EPS) estimates for shares of Meta Platforms in a research report issued on Wedne...",
+      "contribution_weight": "40.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/wedbush-analysts-boost-earnings-estimates-for-meta-platforms/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Investment analysts at Wedbush boosted their Q3 2025 earnings per share estimates for shares of Meta Platforms in a research note issued on Thursday,...",
+      "contribution_weight": "30.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/14/meta-platforms-inc-nasdaqmeta-stock-position-boosted-by-smart-money-group-llc/",
+      "text_sample": "Smart Money Group LLC raised its holdings in Meta Platforms, Inc. (NASDAQ:META – Free Report) by 20.4% in the first quarter, according to its most recent 13F filing with the Securities and Exchange Co...",
+      "contribution_weight": "20.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/02/da-davidson-weighs-in-on-meta-platforms-q3-earnings/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – DA Davidson issued their Q3 2025 earnings per share estimates for Meta Platforms in a note issued to investors on Thursday, July 31st. DA Davidson an...",
+      "contribution_weight": "10.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "www.morningstar.com",
+      "url": "https://www.morningstar.com/news/marketwatch/2025082688/metas-gravity-defying-growth-means-its-getting-closer-to-this-intriguing-milestone",
+      "text_sample": "6 days ago ... A shake-up is coming to the digital-advertising industry, as Meta Platforms Inc ... revenue performance.\" Meta's second-quarter 2025 earnings blew ...",
+      "contribution_weight": "10.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.tradingview.com",
+      "url": "https://www.tradingview.com/symbols/NASDAQ-META/",
+      "text_sample": "Aug 14, 2025 ... Watch Meta Platforms, Inc. stock price performance more closely on the chart. ... EBITDA measures a company's operating performance, its growth signifies an ...",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "roboforex.com",
+      "url": "https://roboforex.com/beginners/analytics/forex-forecast/stocks/stocks-forecast-meta-platforms-meta/",
+      "text_sample": "Aug 22, 2025 ... Meta Platforms, Inc. (NASDAQ: META) has published its Q2 2025 results, reporting revenue of 47.52 billion USD, up 22% year-on-year, and earnings ...",
+      "contribution_weight": "10.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "csimarket.com",
+      "url": "https://csimarket.com/stocks/competitionSEG2.php?code=META",
+      "text_sample": "Aug 23, 2025 ... Meta Platforms Inc 's Q2 2025 quarter and 12 months market share, relative to the META's competitors. Based on total revenues.",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/equities/facebook-inc",
+      "text_sample": "3 days ago ... Industry. Software & IT Services. Sector. Technology. Employees. 75945. Market. United States · Meta Platforms Inc SWOT Analysis. Future Prospects. Analyst ...",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "cmte.ieee.org",
+      "url": "https://cmte.ieee.org/futuredirections/future-tech-forum/the-twin-drivers-of-the-electronics-industrys-accelerated-growth-fabless-design-and-foundry-manufacturing/",
+      "text_sample": "Aug 7, 2025 ... ... industry, with over 30 years of experience specializing in market forecasting and analysis. ... Bo Zhao is a Tech Lead at Meta Platforms, Inc., specializing in ...",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "markets.ft.com",
+      "url": "https://markets.ft.com/data/equities/tearsheet/summary?s=META:NSQ",
+      "text_sample": "3 hours ago ... Latest Meta Platforms Inc (META:NSQ) share price with interactive charts ... Tech Sector · Telecoms · Transport. Show more Tech link. Tech · Artificial ...",
+      "contribution_weight": "10.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4mk1t/whats_your_highest_earning_stock_ever/",
+      "text_sample": "What has been your highest earning stock investment ever? Please share the stock ticker, the price you bought it at back then vs what it trades at now, and roughly how much profit you made from it. I ",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1muo6ix/meta_is_planning_to_downsize_its_ai_division/",
+      "text_sample": "https://www.nytimes.com/2025/08/19/technology/mark-zuckerberg-meta-ai.html\n> \n> On Tuesday, Meta is expected to announce that it will split its A.I. division - which is known as Meta Superintelligence",
+      "contribution_weight": "10.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mvxost/meta_freezes_ai_hiring_after_spending_spree/",
+      "text_sample": "As per WSJ \nhttps://www.wsj.com/tech/ai/meta-ai-hiring-freeze-fda6b3c4\n\nWith the sell offs the past two days, I wonder how this news will affect the markets, if anything. \n\nAlso considering the chatgp",
+      "contribution_weight": "10.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mwril1/meta_inks_10b_cloud_deal_with_google_cloud/",
+      "text_sample": "https://finance.yahoo.com/news/meta-signs-10-billion-plus-230020207.html\n\nIn a strategic shift from traditional AWS and Azure,, Meta has reportedly entered into a six-year, $10 billion-plus cloud deal",
+      "contribution_weight": "10.0%",
+      "recency": "30 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "META (Meta Platforms Inc.)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Meta",
+      "Platforms",
+      "Stock",
+      "Share",
+      "Meta Platforms",
+      "Market",
+      "Price",
+      "People",
+      "Company",
+      "Earnings"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 21 related sources",
+        "relevance": "high",
+        "source_count": 21
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "87.7%",
+      "source_diversity": "14 different source types",
+      "temporal_coverage": "Analysis spans 24 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.14222236716498055,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "3 days ago ... View Meta Platforms Inc Class A META stock quote prices, financial information, real-time forecasts, and company news from CNN ... earn...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3447708170728958,
+      "avg_quality": 0.6701298701298701,
+      "sources": [
+        "hispo.ru",
+        "www.cnn.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.10835698529204713,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "The company’s evolution into an AI-driven advertising leader, together with Instagram’s revenue strength and substantial infrastructure spending, crea...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.20387408851051475,
+      "avg_quality": 0.7165692007797271,
+      "sources": [
+        "www.forbes.com",
+        "bradfordtaxinstitute.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.10168055872212955,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Analysts at Roth Capital increased their Q3 2025 earnings per share (EPS) estimates for shares of M...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.48954163396569406,
+      "avg_quality": 0.6975359911406424,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.011942556073499403,
+      "max": 0.09618446062817106,
+      "mean": 0.032474530094320074,
+      "std": 0.02004771542508582
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 21,
+      "high_source_units": 0,
+      "low_toxicity_units": 21
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.22426705968368912,
+      "gini_coefficient": 0.3703398484699798
+    }
+  }
+}

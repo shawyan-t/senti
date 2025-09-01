@@ -38,7 +38,9 @@ def load_config():
         'twitter_api_secret': os.getenv('TWITTER_API_SECRET'),
         'news_api_key': os.getenv('NEWSAPI_KEY'),
         'google_search_api_key': os.getenv('GOOGLE_SEARCH_API_KEY'),
-        'google_search_cx': os.getenv('GOOGLE_SEARCH_CX')
+        'google_search_cx': os.getenv('GOOGLE_SEARCH_CX'),
+        'reddit_client_id': os.getenv('REDDIT_CLIENT_ID'),
+        'reddit_client_secret': os.getenv('REDDIT_CLIENT_SECRET')
     }
     
     # Double check for required keys

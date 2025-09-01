@@ -792,6 +792,139 @@ class SearchEngineConnector:
             print(f"Error fetching news articles: {e}")
             return []
     
+    def fetch_reddit_discussions(self, company_name, ticker, sector, days_back=14, limit=15):
+        """Fetch Reddit discussions about a specific company/ticker"""
+        try:
+            import praw
+            from datetime import datetime, timedelta
+            from utils.config import config
+            
+            # Initialize Reddit connection
+            reddit = praw.Reddit(
+                client_id=config.get('reddit_client_id'),
+                client_secret=config.get('reddit_client_secret'),
+                user_agent='SentimentSphere:v1.0 (by u/Awkward_Sandwich_184)',
+                ratelimit_seconds=600  # 10-minute rate limit to be safe
+            )
+            
+            # Smart subreddit selection based on sector and ticker popularity
+            subreddits = self._get_relevant_subreddits(sector, ticker)
+            
+            print(f"📱 Searching Reddit: {subreddits} for {ticker} ({company_name})")
+            
+            cutoff_date = datetime.now() - timedelta(days=days_back)
+            reddit_results = []
+            
+            # Search each subreddit
+            for subreddit_name in subreddits:
+                try:
+                    subreddit = reddit.subreddit(subreddit_name)
+                    
+                    # Search for posts mentioning the ticker or company
+                    search_queries = [ticker, company_name.split()[0]]  # e.g., ["AAPL", "Apple"] 
+                    
+                    for search_query in search_queries:
+                        # Limit posts per subreddit to manage API calls
+                        posts = list(subreddit.search(search_query, sort='relevance', time_filter='month', limit=5))
+                        
+                        for post in posts:
+                            post_date = datetime.fromtimestamp(post.created_utc)
+                            if post_date < cutoff_date:
+                                continue
+                            
+                            # Filter for quality posts (upvotes, not removed)
+                            if post.score < 5 or post.removed_by_category:
+                                continue
+                            
+                            # Get top comments for sentiment analysis
+                            post.comments.replace_more(limit=0)  # Flatten comment tree
+                            top_comments = []
+                            
+                            for comment in post.comments.list()[:5]:  # Top 5 comments
+                                if (hasattr(comment, 'body') and 
+                                    len(comment.body) > 20 and 
+                                    comment.score > 1 and 
+                                    not comment.stickied):
+                                    top_comments.append(comment.body)
+                            
+                            # Combine post title + body + top comments
+                            full_content = f"{post.title}\n{post.selftext}\n" + "\n".join(top_comments)
+                            
+                            reddit_results.append({
+                                'title': f"r/{subreddit_name}: {post.title}",
+                                'link': f"https://reddit.com{post.permalink}",
+                                'snippet': post.selftext[:200] if post.selftext else post.title,
+                                'full_content': full_content[:2000],  # Limit content size
+                                'published_date': post_date.isoformat(),
+                                'source': 'reddit',
+                                'engine': 'reddit_praw',
+                                'metadata': {
+                                    'subreddit': subreddit_name,
+                                    'upvotes': post.score,
+                                    'comments': post.num_comments,
+                                    'author': str(post.author) if post.author else '[deleted]'
+                                }
+                            })
+                            
+                            if len(reddit_results) >= limit:
+                                break
+                        
+                        if len(reddit_results) >= limit:
+                            break
+                    
+                    if len(reddit_results) >= limit:
+                        break
+                        
+                except Exception as e:
+                    print(f"Error searching r/{subreddit_name}: {e}")
+                    continue
+            
+            print(f"📱 Found {len(reddit_results)} Reddit discussions for {ticker}")
+            return reddit_results[:limit]
+            
+        except Exception as e:
+            print(f"Reddit API error: {e}")
+            return []
+    
+    def _get_relevant_subreddits(self, sector, ticker):
+        """Get relevant subreddits based on company sector and ticker"""
+        # Base financial subreddits (always included)
+        base_subreddits = ['investing', 'stocks']
+        
+        # Sector-specific subreddits
+        sector_map = {
+            'Technology': ['apple', 'tech', 'gadgets'] if ticker in ['AAPL'] else ['tech', 'gadgets'],
+            'Healthcare': ['biotech', 'medicine'],
+            'Financial Services': ['SecurityAnalysis', 'ValueInvesting'],
+            'Consumer Defensive': ['investing'],  # Generic for consumer goods
+            'Communication Services': ['tech', 'socialmedia'],
+            'Consumer Discretionary': ['investing', 'stocks'],
+            'Energy': ['energy', 'investing'],
+            'Industrials': ['investing', 'stocks'],
+            'Materials': ['investing', 'stocks'],
+            'Real Estate': ['realestate', 'investing'],
+            'Utilities': ['investing', 'stocks']
+        }
+        
+        # Get sector-specific subreddits
+        sector_subreddits = sector_map.get(sector, [])
+        
+        # Popular ticker-specific subreddits (for major companies)
+        ticker_specific = {
+            'AAPL': ['apple'],
+            'TSLA': ['teslamotors', 'teslainvestorsclub'],
+            'GME': ['Superstonk', 'GME'],
+            'AMC': ['amcstock'],
+            'NVDA': ['nvidia'],
+            'AMD': ['AMD_Stock']
+        }
+        
+        specific_subs = ticker_specific.get(ticker, [])
+        
+        # Combine and limit to 3 subreddits to manage API calls
+        all_subreddits = base_subreddits + sector_subreddits + specific_subs
+        return list(dict.fromkeys(all_subreddits))[:3]  # Remove duplicates, limit to 3
+
     def search_engine_query(self, query, num_results=10, recent_only=True, company_context=None):
         """
         Query multiple search engines for reliable, relevant results with LLM-based filtering.

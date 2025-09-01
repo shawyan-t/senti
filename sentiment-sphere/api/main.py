@@ -106,6 +106,92 @@ def calculate_vad_from_mathematical_score(sentiment_score, emotion_analysis=None
         "dominance": round(max(0, min(1, dominance)), 3)
     }
 
+def extract_entities_from_search_results(search_results):
+    """Extract common keywords and phrases from full article content"""
+    if not search_results:
+        return []
+    
+    # Combine all text from search results - prioritize full content over snippets
+    all_text = ""
+    content_count = 0
+    
+    for result in search_results:
+        title = result.get('title', '')
+        snippet = result.get('snippet', '')
+        full_content = result.get('full_content', '')
+        
+        # Use full content if available, otherwise fall back to snippet
+        if full_content and len(full_content) > 200:  # Meaningful content
+            all_text += f"{title} {full_content} "
+            content_count += 1
+        else:
+            all_text += f"{title} {snippet} "
+    
+    print(f"🔍 Entity extraction from {len(search_results)} results ({content_count} with full content)")
+    
+    # Extract keywords using better NLP approach
+    import re
+    from collections import Counter
+    
+    # Financial/business terms to prioritize (more comprehensive)
+    financial_terms = [
+        'earnings', 'revenue', 'profit', 'growth', 'market', 'stock', 'shares', 'investment', 
+        'financial', 'quarter', 'performance', 'analyst', 'rating', 'portfolio', 'dividend',
+        'merger', 'acquisition', 'ipo', 'valuation', 'liquidity', 'volatility', 'bullish', 
+        'bearish', 'outlook', 'forecast', 'guidance', 'metrics', 'margin', 'efficiency'
+    ]
+    
+    # Extract meaningful phrases (2-3 words) and single words
+    phrases = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,2}\b', all_text)  # Capitalized phrases
+    words = re.findall(r'\b[A-Za-z]{4,}\b', all_text.lower())  # Single meaningful words
+    
+    # Combine phrases and words
+    all_terms = [phrase.strip() for phrase in phrases] + words
+    term_counts = Counter(all_terms)
+    
+    # Enhanced stop words
+    stop_words = {
+        'the', 'and', 'for', 'are', 'with', 'this', 'that', 'from', 'they', 'have', 'had',
+        'was', 'were', 'been', 'said', 'will', 'would', 'could', 'should', 'may', 'can',
+        'more', 'than', 'other', 'such', 'what', 'some', 'time', 'very', 'when', 'much',
+        'also', 'your', 'work', 'life', 'only', 'over', 'think', 'most', 'even', 'back'
+    }
+    
+    # Get most relevant entities
+    entities = []
+    for term, count in term_counts.most_common(30):
+        term_lower = term.lower()
+        if (term_lower not in stop_words and 
+            len(term) > 3 and 
+            count >= 2 and  # Appears multiple times
+            (term_lower in financial_terms or  # Financial term
+             count >= 4 or  # Very frequent
+             term[0].isupper())):  # Proper noun (likely company/product name)
+            
+            # Clean up the term
+            clean_term = term.title() if not term[0].isupper() else term
+            if clean_term not in entities:
+                entities.append(clean_term)
+    
+    print(f"📊 Extracted entities: {entities[:10]}")
+    return entities[:10]  # Return top 10 entities
+
+def create_enhanced_summary(unit_count, confidence, mathematical_results, comprehensive_results):
+    """Create enhanced summary with correct sentiment score"""
+    # Use mathematical score if available, otherwise comprehensive score
+    sentiment_score = (mathematical_results['mathematical_sentiment_analysis']['composite_score']['value'] 
+                      if mathematical_results else comprehensive_results['sentiment']['score'])
+    
+    # Determine sentiment label
+    if sentiment_score > 0.1:
+        sentiment_label = "positive"
+    elif sentiment_score < -0.1:
+        sentiment_label = "negative"
+    else:
+        sentiment_label = "neutral"
+    
+    return f"Comprehensive analysis of {unit_count} content units with {confidence:.1%} confidence. Sentiment: {sentiment_score:.3f} ({sentiment_label})"
+
 app = FastAPI(title="Sentimizer API")
 
 # Configure CORS
@@ -689,32 +775,46 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         source_type = "financial_ticker"
         domain = "financial_market"
         
-        # Step 4: Get financial search context using specialized queries
+        # Step 4: Get financial search context using specialized queries + Reddit
         search_results = []
         if input_data.use_search_apis:
             print(f"Fetching financial search context for {ticker}...")
             search_connector = SearchEngineConnector()
             
-            # Use multiple financial search queries for comprehensive coverage
+            # 4a. Traditional search (NewsAPI + Google)
             for search_query in search_queries:
                 try:
                     results = search_connector.get_cached_or_fresh_data(search_query, company_context=company_info)
-                    search_results.extend(results[:5])  # Top 5 from each query
+                    search_results.extend(results[:10])  # Top 10 from each query
                     print(f"Got {len(results)} results for query: {search_query}")
                 except Exception as e:
                     print(f"Error with search query '{search_query}': {e}")
+            
+            # 4b. Reddit discussions (NEW)
+            try:
+                reddit_results = search_connector.fetch_reddit_discussions(
+                    company_info['name'], 
+                    ticker, 
+                    company_info.get('sector', 'Financial'),
+                    days_back=14, 
+                    limit=10
+                )
+                search_results.extend(reddit_results)
+                print(f"Added {len(reddit_results)} Reddit discussions")
+            except Exception as e:
+                print(f"Reddit integration failed (continuing without): {e}")
             
             # Limit total results and ensure uniqueness
             seen_urls = set()
             unique_results = []
             for result in search_results:
                 url = result.get('link', '')
-                if url not in seen_urls and len(unique_results) < 20:
+                if url not in seen_urls and len(unique_results) < 50:
                     seen_urls.add(url)
                     unique_results.append(result)
             
             search_results = unique_results
-            print(f"Final unique search results: {len(search_results)}")
+            print(f"Final unique search results: {len(search_results)} (including Reddit)")
         
         # Step 5: Create canonical units ONLY from search results (no ticker unit)
         print("Creating canonical units for comprehensive analysis...")
@@ -857,7 +957,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             "timestamp": timestamp.isoformat(),
             
             # Enhanced summary
-            "enhanced_summary": f"Comprehensive analysis of {len(units)} content units with {comprehensive_results['sentiment']['confidence']:.1%} confidence. Sentiment: {comprehensive_results['sentiment']['score']:.3f} ({'positive' if comprehensive_results['sentiment']['score'] > 0.1 else 'negative' if comprehensive_results['sentiment']['score'] < -0.1 else 'neutral'})",
+            "enhanced_summary": create_enhanced_summary(len(units), comprehensive_results['sentiment']['confidence'], mathematical_results, comprehensive_results),
             
             # Content metrics following specification
             "content_metrics": {
@@ -919,11 +1019,11 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 } for unit in units
             ],
             
-            # Query summary and recent events
+            # Query summary and recent events with dynamic industry
             "query_summary": {
-                "query": content,
-                "query_type": "financial" if any(word in content.lower() for word in ["stock", "price", "earnings", "revenue", "market", "investor", "share", "dividend", "financial", "company", "business"]) else "general",
-                "entities_detected": list(set([word.title() for word in content.split() if len(word) > 2])),
+                "query": f"{ticker} ({company_info['name']})",
+                "query_type": company_info.get('sector', 'Financial'),  # Use actual sector from yfinance
+                "entities_detected": extract_entities_from_search_results(search_results),
                 "recent_events": [
                     {
                         "event": f"Found {len([u for u in units if u.source_domain != 'user_input'])} related sources",
@@ -939,10 +1039,10 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 "confidence_basis": f"Based on agreement between {len([k for k in ['vader', 'textblob', 'afinn', 'roberta'] if True])} different sentiment models",
                 "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
                 "accuracy_indicators": {
-                    "model_agreement": f"{comprehensive_results['sentiment']['confidence']:.1%}",
+                    "model_agreement": f"{(mathematical_results['mathematical_sentiment_analysis']['uncertainty_metrics']['model_agreement'] if mathematical_results else comprehensive_results['sentiment']['confidence']):.1%}",
                     "source_diversity": f"{len(set(u.source_domain for u in units))} different source types",
                     "temporal_coverage": f"Analysis spans {max(1, (max([u.publish_time for u in units]) - min([u.publish_time for u in units])).days) if units else 0} days",
-                    "data_quality": "high" if len(units) >= 3 else "medium" if len(units) >= 2 else "low"
+                    "data_quality": "high" if len(units) >= 5 else "medium" if len(units) >= 3 else "low"
                 }
             },
             

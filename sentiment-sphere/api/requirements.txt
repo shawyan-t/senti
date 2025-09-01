@@ -32,4 +32,7 @@ cython>=3.0.0
 
 # Advanced Analysis
 networkx>=3.1
-sympy>=1.12 
+sympy>=1.12
+
+# Reddit API
+praw>=7.7.1 
