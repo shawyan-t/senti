@@ -1,0 +1,338 @@
+{
+  "id": "9b8df65e-4568-44a7-ade7-382763db001f",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "MRVL",
+  "timestamp": "2025-09-01T14:22:53.583638",
+  "enhanced_summary": "Comprehensive analysis of 16 content units with 88.1% confidence. Sentiment: 0.213 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 16,
+    "average_recency_weight": 0.5096139662686392
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.21274713349398713,
+      "confidence_interval": [
+        0.004379562043795621,
+        0.5975173524720894
+      ],
+      "statistical_significance": 0.6759617905323372
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9674,
+        "textblob_score": 0.08538676236044658,
+        "afinn_score": 0.010948905109489052,
+        "consensus": 0.3545785558233119
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.21274713349398713
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2596678830054135,
+      "polarization_index": 0.3786731634694897,
+      "model_agreement": 0.6213268365305102
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3786731634694897,
+    "polarity_breakdown": {
+      "positive": 0.585,
+      "negative": 0.129,
+      "neutral": 0.286,
+      "wilson_ci": {
+        "positive": [
+          0.48509885339759484,
+          0.6850988533975948
+        ],
+        "negative": [
+          0.028725286650601284,
+          0.2287252866506013
+        ],
+        "neutral": [
+          0.18617585995180388,
+          0.3861758599518039
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5096139662686392,
+    "novelty_score": 0.9003509771684027,
+    "total_evidence_weight": 0.74182140432857
+  },
+  "vad_analysis": {
+    "valence": 0.606,
+    "arousal": 0.417,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 16,
+  "recent_developments_identified": 16,
+  "source_citations": [
+    {
+      "source": "investor.marvell.com",
+      "url": "https://investor.marvell.com/2025-08-28-Marvell-Technology,-Inc-Reports-Second-Quarter-of-Fiscal-Year-2026-Financial-Results",
+      "text_sample": "4 days ago ... Non-GAAP financial measures exclude the effect of stock-based compensation ... Marvell Technology, Inc. Condensed Consolidated Statements of Operations ...",
+      "contribution_weight": "100.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/marvell-technology-inc-reports-second-200500565.html",
+      "text_sample": "4 days ago ... Marvell Technology, Inc. Reports Second Quarter of Fiscal Year 2026 Financial Results · Q2 Net Revenue: $2.006 billion, a new record, grew by 58% year-on-year.",
+      "contribution_weight": "90.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/brokerages-set-marvell-technology-inc-nasdaqmrvl-pt-at-94-70/",
+      "text_sample": "Marvell Technology, Inc. (NASDAQ:MRVL – Get Free Report) has been given an average recommendation of “Moderate Buy” by the thirty-one brokerages that are currently covering the company, Marketbeat Rat...",
+      "contribution_weight": "80.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "www.tipranks.com",
+      "url": "https://www.tipranks.com/stocks/mrvl/earnings",
+      "text_sample": "4 days ago ... During Marvell Technology Inc.'s earnings call for the second quarter of fiscal year 2026, the company announced record revenue of $2.006 billion, marking a ...",
+      "contribution_weight": "70.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/26/marvell-technology-mrvl-projected-to-post-earnings-on-thursday/",
+      "text_sample": "Marvell Technology (NASDAQ:MRVL – Get Free Report) is anticipated to post its Q2 2026 results after the market closes on Thursday, August 28th. Analysts expect Marvell Technology to post earnings of $...",
+      "contribution_weight": "60.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "siliconangle.com",
+      "url": "https://siliconangle.com/2025/08/28/marvells-stock-slumps-concerns-custom-silicon-long-term-prospects-look-strong/",
+      "text_sample": "Marvell Technology Inc. could only match Wall Street’s expectations on earnings and revenue as it delivered its latest financial results today, and followed with soft guidance for the current quarter....",
+      "contribution_weight": "50.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/marvell-technology-nasdaqmrvl-trading-down-16-8-following-analyst-downgrade/",
+      "text_sample": "Marvell Technology, Inc. (NASDAQ:MRVL – Get Free Report) shares dropped 16.8% on Friday after JPMorgan Chase & Co. lowered their price target on the stock from $130.00 to $120.00. JPMorgan Chase & Co....",
+      "contribution_weight": "40.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/wells-fargo-company-cuts-marvell-technology-nasdaqmrvl-price-target-to-90-00/",
+      "text_sample": "Marvell Technology (NASDAQ:MRVL – Get Free Report) had its price objective cut by investment analysts at Wells Fargo & Company from $95.00 to $90.00 in a research report issued on Friday,Benzinga repo...",
+      "contribution_weight": "30.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/17/marvell-technology-nasdaqmrvl-downgraded-by-wall-street-zen-to-hold/",
+      "text_sample": "Marvell Technology (NASDAQ:MRVL – Get Free Report) was downgraded by investment analysts at Wall Street Zen from a “buy” rating to a “hold” rating in a note issued to investors on Sunday. Other equiti...",
+      "contribution_weight": "20.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/marvell-technology-nasdaqmrvl-raised-to-buy-at-wall-street-zen/",
+      "text_sample": "Wall Street Zen upgraded shares of Marvell Technology (NASDAQ:MRVL – Free Report) from a hold rating to a buy rating in a report issued on Saturday morning. MRVL has been the subject of a number of ot...",
+      "contribution_weight": "10.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.marvell.com",
+      "url": "https://www.marvell.com/company/newsroom.html",
+      "text_sample": "4 days ago ... ... Business to Infineon for $2.5 Billion in All-Cash Transaction. LEARN MORE. Card image. PRESS RELEASES. August 04, 2025. Marvell Technology, Inc. Announces ...",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/live/earnings-live-alibaba-stock-soars-marvell-tanks-with-macys-salesforce-set-to-round-out-the-reporting-season-203012622.html",
+      "text_sample": "3 days ago ... According to FactSet, 98% of S&P 500 companies have reported results so far. ... MRVL Marvell Technology, Inc. 62.87 -14.37 (-18.60%) · CHA Chagee Holdings ...",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/market-activity/stocks/mrvl/earnings",
+      "text_sample": "1 day ago ... Marvell Technology, Inc. Reports Second Quarter of Fiscal Year 2026 Financial Results. 4 days ago. See All Press Releases ->. Earnings Per Share. Estimated ...",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "seekingalpha.com",
+      "url": "https://seekingalpha.com/symbol/MRVL",
+      "text_sample": "2 days ago ... ... expanding AI market share. SA InsightsThu, Aug. 2817 Comments · Marvell Technology, Inc. (MRVL) Q2 2026 Earnings Call Transcript · SA TranscriptsThu, Aug. 28 ...",
+      "contribution_weight": "10.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/marvell-technology-mrvl-reports-surging-171638956.html",
+      "text_sample": "3 days ago ... ... tech sector trends instead of exclusively company-specific factors. Over ... MRVL Marvell Technology, Inc. 62.87 -14.37 (-18.60%) · CHA Chagee Holdings ...",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/stocks/mrvl/",
+      "text_sample": "3 days ago ... A detailed overview of Marvell Technology, Inc. (MRVL) stock, including real ... Marvell Technology, Dell And Other Big Stocks Moving Lower In Friday's Pre-Market ...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "MRVL (Marvell Technology, Inc.)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Marvell",
+      "Technology",
+      "Mrvl",
+      "Marvell Technology",
+      "Quarter",
+      "Year",
+      "Second",
+      "Earnings",
+      "Share",
+      "Nasdaq"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 16 related sources",
+        "relevance": "high",
+        "source_count": 16
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "62.1%",
+      "source_diversity": "9 different source types",
+      "temporal_coverage": "Analysis spans 26 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.19530525807425422,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Marvell Technology Inc. could only match Wall Street’s expectations on earnings and revenue as it delivered its latest financial results today, and fo...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5373130345850933,
+      "avg_quality": 0.7105311355311356,
+      "sources": [
+        "siliconangle.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.12315737248390024,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "4 days ago ... Non-GAAP financial measures exclude the effect of stock-based compensation ... Marvell Technology, Inc. Condensed Consolidated Statemen...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2594532763302974,
+      "avg_quality": 0.6859820089955022,
+      "sources": [
+        "investor.marvell.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.10265471013345905,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Marvell Technology, Inc. (NASDAQ:MRVL – Get Free Report) shares dropped 16.8% on Friday after JPMorgan Chase & Co. lowered their price target on the s...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.533438942694825,
+      "avg_quality": 0.6910852713178295,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.013277035332871917,
+      "max": 0.15858866217386677,
+      "mean": 0.046363837770535626,
+      "std": 0.03552564372383774
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 16,
+      "high_source_units": 0,
+      "low_toxicity_units": 16
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2137828070860357,
+      "gini_coefficient": 0.2509850290352573
+    }
+  }
+}

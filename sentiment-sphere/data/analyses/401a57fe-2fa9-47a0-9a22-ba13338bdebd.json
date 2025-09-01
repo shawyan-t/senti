@@ -1,0 +1,409 @@
+{
+  "id": "401a57fe-2fa9-47a0-9a22-ba13338bdebd",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "GME",
+  "timestamp": "2025-09-01T12:56:34.004781",
+  "enhanced_summary": "Comprehensive analysis of 26 content units with 87.6% confidence. Sentiment: 0.026 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9965791596000958,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 26,
+    "average_recency_weight": 0.38732430893542674
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.025939001311064924,
+      "confidence_interval": [
+        -0.5766539107494193,
+        0.5943572292191435
+      ],
+      "statistical_significance": 0.061864331897751645
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9801,
+        "textblob_score": 0.11810886045960668,
+        "afinn_score": 0.031486146095717885,
+        "consensus": 0.3765650021851082
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.025939001311064924
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 1.9343352043430855,
+      "polarization_index": 0.6280402744044287,
+      "model_agreement": 0.37195972559557133
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.6280402744044287,
+    "polarity_breakdown": {
+      "positive": 0.171,
+      "negative": 0.114,
+      "neutral": 0.715,
+      "wilson_ci": {
+        "positive": [
+          0.0711126801573278,
+          0.2711126801573278
+        ],
+        "negative": [
+          0.014075120104885208,
+          0.21407512010488522
+        ],
+        "neutral": [
+          0.614812199737787,
+          0.814812199737787
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0034208403999041854,
+    "toxicity_rate": 0.0027183546923348714,
+    "freshness_score": 0.38732430893542674,
+    "novelty_score": 0.8925873966041497,
+    "total_evidence_weight": 0.7704748382130513
+  },
+  "vad_analysis": {
+    "valence": 0.513,
+    "arousal": 0.361,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 26,
+  "recent_developments_identified": 26,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/GME.VI/earnings-calls/",
+      "text_sample": "6 days ago ... Yahoo Finance provides transcripts for the latest GameStop Corp. (GME.VI) earnings call and access historical call transcripts to help inform your ...",
+      "contribution_weight": "100.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/gamestop-corp-gme-trending-stock-130002986.html",
+      "text_sample": "7 days ago ... GameStop Corp. (GME) Is a Trending Stock: Facts to Know Before Betting on It ... GameStop (GME) is one of the stocks most watched by Zacks.com visitors lately. So ...",
+      "contribution_weight": "90.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "uk.finance.yahoo.com",
+      "url": "https://uk.finance.yahoo.com/quote/GS2C.F/latest-news/",
+      "text_sample": "4 days ago ... Find the latest GameStop Corp. (GS2C.F) stock quote, history, news and other ... Top Stocks Personal Finance Investing News Earnings Videos. About. Data ...",
+      "contribution_weight": "80.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/14/pnc-financial-services-group-inc-buys-4653-shares-of-gamestop-corp-nysegme/",
+      "text_sample": "PNC Financial Services Group Inc. grew its position in GameStop Corp. (NYSE:GME – Free Report) by 24.9% in the first quarter, according to its most recent filing with the SEC. The fund owned 23,315 sh...",
+      "contribution_weight": "70.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/vanguard-group-inc-raises-holdings-in-gamestop-corp-nysegme/",
+      "text_sample": "Vanguard Group Inc. raised its position in shares of GameStop Corp. (NYSE:GME – Free Report) by 0.2% in the 1st quarter, according to the company in its most recent disclosure with the Securities & Ex...",
+      "contribution_weight": "60.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.payrollplus.ltd.uk",
+      "url": "https://www.payrollplus.ltd.uk/blank/Is-GameStop-Corp.-stock-a-good-pick-for-beginners",
+      "text_sample": "Aug 23, 2025 ... ✌️【Stock Market Education】✌️$100 is your gateway to financial freedom. Invest smart, earn big!If you want to give, give. Is GameStop Corp. stock a good pick for ...",
+      "contribution_weight": "50.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/blank/[Risk-Management]-Stop-Loss-vs-Take-Profit:-Top-Picks-Update",
+      "text_sample": "Aug 21, 2025 ... Tags:What makes GameStop Corp. stock price move sharply. Description. Product ... Of which, gaming revenue is 179.9 billion yuan, currently accounting for only ...",
+      "contribution_weight": "40.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "www.marketwatch.com",
+      "url": "https://www.marketwatch.com/investing/stock/gme/financials",
+      "text_sample": "3 days ago ... GameStop Corp. Cl A Annual stock financials by MarketWatch. View the latest GME financial statements, income statements and financial ratios.",
+      "contribution_weight": "30.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.datainsightsmarket.com",
+      "url": "https://www.datainsightsmarket.com/companies/GME",
+      "text_sample": "3 days ago ... Get the latest GameStop Corp. (GME) stock price, market cap, P/E ratio, revenue, earnings call summary, income statement, key executives, and financial ...",
+      "contribution_weight": "20.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/equities/gamestop-corp-financial-summary",
+      "text_sample": "3 days ago ... GameStop Corp's net income for the latest quarter was 44.80. How did GameStop Corp's performance compare year-over-year in the latest quarter? The company's ...",
+      "contribution_weight": "10.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "csimarket.com",
+      "url": "https://csimarket.com/stocks/competitionSEG2.php?code=GME",
+      "text_sample": "Aug 16, 2025 ... Gamestop Corp News · Gamestop Corp latest News · Gamestop Corp's Business Segments · Gamestop Corp's Income Statement · Gamestop Corp's Balance Sheets ...",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "de.finance.yahoo.com",
+      "url": "https://de.finance.yahoo.com/quote/GS2C.F/",
+      "text_sample": "3 days ago ... GameStop Corp. Overview Specialty Retail / Consumer Cyclical ; GameStop setzt auf Sammelkarten – doch die Aktie stürzt weiter ab. Investing.com • vor 2 Monaten ...",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "de.finance.yahoo.com",
+      "url": "https://de.finance.yahoo.com/quote/GS2C.DE/",
+      "text_sample": "2 days ago ... GameStop Corp Overview Specialty Retail / Consumer Cyclical. GameStop Corp ... Mkt Cap EUR 8,678Mrd. Industry Specialty Retail. TD.MI. TrenDevice S.p.A.. 0 ...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.marketwatch.com",
+      "url": "https://www.marketwatch.com/investing/stock/gme",
+      "text_sample": "2 days ago ... GME | Complete GameStop Corp. Cl A stock news by MarketWatch. View real-time stock prices and stock quotes for a full financial overview.",
+      "contribution_weight": "10.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/articles/why-gamestop-gme-outpaced-stock-market-today",
+      "text_sample": "Aug 4, 2025 ... The Gaming industry is part of the Consumer Discretionary sector. ... GameStop Corp. (GME) : Free Stock Analysis Report · This article originally ...",
+      "contribution_weight": "10.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "www.ainvest.com",
+      "url": "https://www.ainvest.com/news/gamestop-earnings-stock-price-increases-options-activity-shows-mixed-sentiment-financial-health-analysis-2508/",
+      "text_sample": "5 days ago ... ... report [1]. GameStop Corp operates as a multichannel video game, consumer electronics, and services retailer. With a market capitalization of approximately ...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n0c1lc/trump_says_hes_firing_fed_governor_lisa_cook/",
+      "text_sample": "For those who say that the Fed chair only has one vote (which is true), looks like Trump's looking to change another vote, combined with the other Fed governor who just resigned (Adriana Kugler) - tha",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n375s7/in_hindsight_what_was_the_most_alarming_metric/",
+      "text_sample": "Anyone who’s paying attention knows AI is in a bubble. But that doesn’t mean it can’t continue to climb higher and higher. That being said (and I understand it’s not a 1:1 comparable) what was the sin",
+      "contribution_weight": "10.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mzfq0m/when_you_invest_in_roth_ira_and_a_taxable/",
+      "text_sample": "Hello, so I have both Roth and a taxable brokerage account, I have similar funds in there, for example, I have VXUS in my Roth and IXUS in my brokerage. Both overlap each other heavily but since they ",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n458y3/rstocks_weekly_thread_on_meme_stocks_saturday_aug/",
+      "text_sample": "The meme stock scheduled posts will now run weekly and post Saturday afternoon and won't be a sticky; you're probably seeing this because automod sent you here!\n\n[Full list of meme stocks here.](https",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Superstonk/comments/1mtv298/gme_will_breakout_this_week/",
+      "text_sample": "Hi all, im back with a small update.\n\nQuick tldr for apes:\n\n1. Bollinger bands, gme is as tight as it can be! \nOn the daily 23.08 upwards and 22.93 lower.\n\nIt will break out this range as every stock ",
+      "contribution_weight": "10.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Superstonk/comments/1n16jhq/just_how_deep_value_is_gme_right_now_why/",
+      "text_sample": "#So let me get this straight:\n \n#GameStop has a current Market Cap of $9.98 Billion.\n \n#To see what Wall Street \"believes\" the core operating value (not EV or book value) of the underlying business is",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Superstonk/comments/1mvdupa/why_does_gme_hold_its_ground_so_steady_now/",
+      "text_sample": "Looks like it \"can't\" go further down. I mean, of course it probably can, but seeing how this price holds I think buying when it does eventually go down is a given?  \n\nI don't own that many shares and",
+      "contribution_weight": "10.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Superstonk/comments/1n2bqcr/breaking_congresswoman_lisa_mcclain_bought_gme_on/",
+      "text_sample": "🚨 BREAKING - Congresswoman Lisa McClain bought $GME on bond offering day.",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Superstonk/comments/1n3lnho/tightest_daily_bollinger_bands_in_the_history_of/",
+      "text_sample": "Go touch grass, watch football, be with your family/friends this long weekend, the stock will take care of itself sooner than you can even imagine. IWM Breakout and ATH incoming. Massive rotation out ",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Superstonk/comments/1n10jdf/gamestop_announces_release_date_for_second/",
+      "text_sample": "GameStop Announces Release Date for Second Quarter Fiscal 2025 Results",
+      "contribution_weight": "10.0%",
+      "recency": "23 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "GME (GameStop Corp.)",
+    "query_type": "Consumer Cyclical",
+    "entities_detected": [
+      "Gamestop",
+      "Stock",
+      "Corp",
+      "Stocks",
+      "Price",
+      "Market",
+      "Earnings",
+      "Company",
+      "Https",
+      "Quarter"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 26 related sources",
+        "relevance": "high",
+        "source_count": 26
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "37.2%",
+      "source_diversity": "13 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.1866527701688351,
+      "sentiment": 0.0281703746198656,
+      "unit_count": 2,
+      "representative_text": "Vanguard Group Inc. raised its position in shares of GameStop Corp. (NYSE:GME – Free Report) by 0.2% in the 1st quarter, according to the company in i...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.553264458972821,
+      "avg_quality": 0.6770527859237536,
+      "sources": [
+        "www.payrollplus.ltd.uk",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.08371441299843929,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "4 days ago ... Find the latest GameStop Corp. (GS2C.F) stock quote, history, news and other ... Top Stocks Personal Finance Investing News Earnings Vi...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6788961038961039,
+      "sources": [
+        "www.etfdailynews.com",
+        "uk.finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.08077269465295216,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "3 days ago ... GameStop Corp. Cl A Annual stock financials by MarketWatch. View the latest GME financial statements, income statements and financial r...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.28393971751701785,
+      "avg_quality": 0.6863095238095238,
+      "sources": [
+        "www.marketwatch.com",
+        "bradfordtaxinstitute.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.009076098970769981,
+      "max": 0.14547488350808555,
+      "mean": 0.029633647623578896,
+      "std": 0.026495714956851983
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 25,
+      "high_source_units": 0,
+      "low_toxicity_units": 25
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2539018120193596,
+      "gini_coefficient": 0.24065092444824032
+    }
+  }
+}

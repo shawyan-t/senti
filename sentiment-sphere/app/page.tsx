@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import SentimizerTitle from "@/components/sentimizer-title"
 import { analyzeText, analyzeFile, getAnalyses, getAnalysis, Analysis } from "@/lib/api"
 import { VisualizationDashboard } from "@/components/visualization-dashboard"
+import { ProfessionalVisualizationDashboard } from "@/components/professional-visualization-dashboard"
 import dynamic from 'next/dynamic';
 const UMAP3DScatter = dynamic(() => import('@/components/charts/umap-3d-scatter').then(mod => mod.UMAP3DScatter), { ssr: false });
 
@@ -844,27 +845,34 @@ export default function Home() {
                     </div>
                   )}
 
-                  {/* Visualization Dashboard */}
-                  <VisualizationDashboard 
-                    analysisData={(() => {
-                      const transformedData = transformMathematicalAnalysis(analysisResult)
-                      const plutchikEmotions = analysisResult.emotion_vector_analysis?.plutchik_coordinates || {}
-                      return {
-                        sentiment: transformedData.sentiment,
-                        metadata: transformedData.metadata,
-                        emotions: Object.entries(plutchikEmotions).map(([emotion, score]) => ({
-                          emotion,
-                          score: score as number
-                        })),
-                        timeSeriesData: [], // Will be fixed in next step
-                        keywords: (analysisResult.emotion_vector_analysis?.dominant_emotions || []).map((emotion: string) => ({
-                          keyword: emotion,
-                          frequency: (plutchikEmotions[emotion] as number || 0) * 100,
-                          sentiment: transformedData.sentiment.sentiment as any
-                        }))
-                      }
-                    })()}
-                  />
+                  {/* Professional Financial Visualization Dashboard */}
+                  {analysisResult.visualizations ? (
+                    <ProfessionalVisualizationDashboard 
+                      visualizations={analysisResult.visualizations}
+                    />
+                  ) : (
+                    /* Fallback to old dashboard if no professional visualizations */
+                    <VisualizationDashboard 
+                      analysisData={(() => {
+                        const transformedData = transformMathematicalAnalysis(analysisResult)
+                        const plutchikEmotions = analysisResult.emotion_vector_analysis?.plutchik_coordinates || {}
+                        return {
+                          sentiment: transformedData.sentiment,
+                          metadata: transformedData.metadata,
+                          emotions: Object.entries(plutchikEmotions).map(([emotion, score]) => ({
+                            emotion,
+                            score: score as number
+                          })),
+                          timeSeriesData: [], // Will be fixed in next step
+                          keywords: (analysisResult.emotion_vector_analysis?.dominant_emotions || []).map((emotion: string) => ({
+                            keyword: emotion,
+                            frequency: (plutchikEmotions[emotion] as number || 0) * 100,
+                            sentiment: transformedData.sentiment.sentiment as any
+                          }))
+                        }
+                      })()}
+                    />
+                  )}
 
                   {/* 3D UMAP Visualization */}
                   <div className="mt-12">

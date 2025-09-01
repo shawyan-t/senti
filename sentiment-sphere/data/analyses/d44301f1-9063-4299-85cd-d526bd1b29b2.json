@@ -1,0 +1,403 @@
+{
+  "id": "d44301f1-9063-4299-85cd-d526bd1b29b2",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "SKIN",
+  "timestamp": "2025-09-01T15:34:43.915349",
+  "enhanced_summary": "Comprehensive analysis of 25 content units with 86.6% confidence. Sentiment: 0.168 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9964354286890095,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 25,
+    "average_recency_weight": 0.46867712365249026
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.16787330819792462,
+      "confidence_interval": [
+        -0.15621951219512198,
+        0.608950243902439
+      ],
+      "statistical_significance": 0.5158730286536968
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9951,
+        "textblob_score": 0.05945121951219512,
+        "afinn_score": 0.08481532147742818,
+        "consensus": 0.3797888469965411
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.16787330819792462
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.230106449250577,
+      "polarization_index": 0.43590018541685205,
+      "model_agreement": 0.564099814583148
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.43590018541685205,
+    "polarity_breakdown": {
+      "positive": 0.567,
+      "negative": 0.133,
+      "neutral": 0.3,
+      "wilson_ci": {
+        "positive": [
+          0.4671493232791699,
+          0.6671493232791699
+        ],
+        "negative": [
+          0.033212669180207516,
+          0.23321266918020753
+        ],
+        "neutral": [
+          0.19963800754062258,
+          0.3996380075406226
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0035645713109905214,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.46867712365249026,
+    "novelty_score": 0.8962486769634093,
+    "total_evidence_weight": 0.9210253724304668
+  },
+  "vad_analysis": {
+    "valence": 0.584,
+    "arousal": 0.404,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 25,
+  "recent_developments_identified": 25,
+  "source_citations": [
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/deutsche-bank-ag-sells-8226-shares-of-the-beauty-health-company-skin/",
+      "text_sample": "Deutsche Bank AG lessened its stake in shares of The Beauty Health Company (NASDAQ:SKIN – Free Report) by 4.9% in the first quarter, according to the company in its most recent 13F filing with the Sec...",
+      "contribution_weight": "100.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "ca.finance.yahoo.com",
+      "url": "https://ca.finance.yahoo.com/quote/SKIN/",
+      "text_sample": "Aug 7, 2025 ... Find the latest The Beauty Health Company (SKIN) stock quote, history ... The Beauty Health Company (SKIN) Surpasses Q2 Earnings and Revenue Estimates.",
+      "contribution_weight": "90.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/beauty-health-company-skin-surpasses-230002908.html",
+      "text_sample": "Aug 7, 2025 ... The Beauty Health Company (SKIN) came out with quarterly earnings of $0.03 per share, beating the Zacks Consensus Estimate of a loss of $0.06 per share.",
+      "contribution_weight": "80.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "sg.finance.yahoo.com",
+      "url": "https://sg.finance.yahoo.com/quote/SKIN/",
+      "text_sample": "Aug 7, 2025 ... Find the latest The Beauty Health Company (SKIN) stock quote, history ... The Beauty Health Company (SKIN) Surpasses Q2 Earnings and Revenue Estimates.",
+      "contribution_weight": "70.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/bullish-on/Why-DGNX-stock-attracts-strong-analyst-attention",
+      "text_sample": "Aug 23, 2025 ... ... 【Passive Income】✌️ Our free US stock expert group shares strategies to maximize ... Tags:What makes The Beauty Health Company stock price move sharply.",
+      "contribution_weight": "60.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/market-activity/stocks/skin/historical",
+      "text_sample": "8 days ago ... Stocks. The Beauty Health Company (SKIN) Surpasses Q2 Earnings and Revenue Estimates ... The Beauty Health Company Announces Q2 2025 Financial Results ...",
+      "contribution_weight": "50.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/09/beauty-health-nasdaqskin-upgraded-by-wall-street-zen-to-buy-rating/",
+      "text_sample": "Beauty Health (NASDAQ:SKIN – Get Free Report) was upgraded by Wall Street Zen from a “hold” rating to a “buy” rating in a research note issued on Saturday. A number of other equities research analysts...",
+      "contribution_weight": "40.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "simplywall.st",
+      "url": "https://simplywall.st/stocks/us/household/nasdaq-skin/beauty-health/news/the-beauty-health-companys-nasdaqskin-30-price-boost-is-out",
+      "text_sample": "2 days ago ... The The Beauty Health Company ( NASDAQ:SKIN ) share price has done very well ... Perhaps the market is expecting its poor revenue performance to improve, keeping ...",
+      "contribution_weight": "30.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "www.zacks.com",
+      "url": "https://www.zacks.com/stock/news/2681017/the-beauty-health-company-skin-surpasses-q2-earnings-and-revenue-estimates?cid=CS-YAHOO-FT-tale_of_the_tape|yseop_template_4-2681017",
+      "text_sample": "Aug 7, 2025 ... The Beauty Health Company (SKIN) Surpasses Q2 Earnings and Revenue Estimates ... Past performance is no guarantee of future results. Up Next. Horizon ...",
+      "contribution_weight": "20.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "www.zoominfo.com",
+      "url": "https://www.zoominfo.com/c/beauty-health-co/552701748",
+      "text_sample": "Aug 7, 2025 ... The Beauty Health Company (NASDAQ:SKIN) Q2 2025 Earnings ... BeautyHealth Reports Second Quarter 2025 Financial Results. The Beauty Health Company ...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.globenewswire.com",
+      "url": "https://www.globenewswire.com/news-release/2025/08/07/3129656/0/en/BeautyHealth-Reports-Second-Quarter-2025-Financial-Results.html",
+      "text_sample": "Aug 7, 2025 ... See “Forward-Looking Statements” for additional information. The Beauty Health Company Condensed Consolidated Statements of Comprehensive Income (Loss) (1)",
+      "contribution_weight": "10.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/articles/beauty-health-company-skin-surpasses-q2-earnings-and-revenue-estimates",
+      "text_sample": "Aug 7, 2025 ... The Beauty Health Company (SKIN) Surpasses Q2 Earnings and Revenue Estimates ... performance of the stock as well. In terms of the Zacks Industry Rank ...",
+      "contribution_weight": "10.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.linkedin.com",
+      "url": "https://www.linkedin.com/jobs/view/category-manager-lighting-at-crescent-electric-supply-company-4292432871",
+      "text_sample": "3 days ago ... Your focus will be to ensure the product assortment drives business performance (revenue ... Prestige Beauty Advisor. Ulta Beauty. Appleton, WI 2 weeks ago.",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/cspi-generates-18-revenue-growth-123000752.html",
+      "text_sample": "Aug 14, 2025 ... The Company also announced that the Board of Directors declared a quarterly dividend of $0.03 per share payable September 15, 2025, to shareholders of ...",
+      "contribution_weight": "10.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/HLS.TO/earnings/HLS.TO-Q2-2025-earnings_call-344008.html/",
+      "text_sample": "Aug 14, 2025 ... Let's start with a look at our Q2 and year to date business performance. Revenue in the quarter was $14,200,000 and $26,800,000 for the year to date period.",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "www.tipranks.com",
+      "url": "https://www.tipranks.com/stocks/skin/stock-analysis",
+      "text_sample": "Aug 19, 2025 ... US. Employees769. SectorConsumer Defensive. Sector Strength46. IndustryHousehold & Personal Products ... The Beauty Health Company designs, develops, manufactures ...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "nz.finance.yahoo.com",
+      "url": "https://nz.finance.yahoo.com/quote/SLSN/",
+      "text_sample": "Aug 11, 2025 ... Overview Household & Personal Products / Consumer Defensive. Solesence ... The Beauty Health Company. 2.0800. +1.96%. Mkt cap 263.796M. Industry Household ...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "finviz.com",
+      "url": "https://finviz.com/quote.ashx?t=SKIN",
+      "text_sample": "Aug 14, 2025 ... Consumer Defensive • Household & Personal Products • USA • NASD · Chart Stock ... The Beauty Health Company (SKIN) Reports Q1 Loss, Tops Revenue Estimates.",
+      "contribution_weight": "10.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mujwym/how_do_i_talk_my_coworker_out_of_an_investment/",
+      "text_sample": "I’ve got a coworker who’s nearing retirement age, and he’s starting to panic a little about whether he has enough saved. Totally understandable that kind of stress can make anyone vulnerable. But it’s",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mxgfn1/the_federal_government_investing_in_a_private/",
+      "text_sample": "First of all, does \"taking a stake in\" mean effectively the same thing as \"buying 10% of the stock of\"?\n\nhttps://finance.yahoo.com/news/trump-says-us-will-take-10-stake-in-intel-180452265.html\n\nYeah, ",
+      "contribution_weight": "10.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mumnf5/the_fed_is_not_cutting_in_september/",
+      "text_sample": "Everyone piling into “September rate cut” bets is ignoring the actual data and listening to wishful thinking. The Fed isn’t going to hand out a cut just because markets want it.\n\nThe labor market is s",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n2mk6m/are_we_still_a_free_market_when_the_executive/",
+      "text_sample": "This apparent pump and dump spotted by Peter Schiff https://x.com/peterschiff/status/1896637889687204155?s=61&t=7QFl7dNiHVpjsF6BIYe-Og\n\noccurred the same week Trump announced aggressive tariffs on Can",
+      "contribution_weight": "10.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n375s7/in_hindsight_what_was_the_most_alarming_metric/",
+      "text_sample": "Anyone who’s paying attention knows AI is in a bubble. But that doesn’t mean it can’t continue to climb higher and higher. That being said (and I understand it’s not a 1:1 comparable) what was the sin",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "Four years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/month. Today her account is worth $4,535.56, up +44.97% overall with an unrealized gain of +$1,390.97.\n\nH",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mxdrxr/trump_says_intel_has_agreed_to_give_the_us_a_10/",
+      "text_sample": "https://www.bloomberg.com/news/articles/2025-08-22/trump-poised-to-unveil-intel-deal-for-equity-stake-on-friday\n\n>President Donald Trump said Intel Corp. had agreed to give the US government a 10% equ",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "SKIN (The Beauty Health Company)",
+    "query_type": "Consumer Defensive",
+    "entities_detected": [
+      "Company",
+      "Beauty",
+      "Health",
+      "Skin",
+      "The Beauty Health",
+      "Stock",
+      "Quarter",
+      "Revenue",
+      "Trump",
+      "Price"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 25 related sources",
+        "relevance": "high",
+        "source_count": 25
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "56.4%",
+      "source_diversity": "15 different source types",
+      "temporal_coverage": "Analysis spans 30 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.2105559513430757,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Beauty Health (NASDAQ:SKIN – Get Free Report) was upgraded by Wall Street Zen from a “hold” rating to a “buy” rating in a research note issued on Satu...",
+      "why_important": [
+        "above average weight ✓",
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.7591584610117079,
+      "avg_quality": 0.6625694444444444,
+      "sources": [
+        "www.etfdailynews.com",
+        "simplywall.st"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.12236840628665474,
+      "sentiment": -0.11579021594426915,
+      "unit_count": 2,
+      "representative_text": "Aug 7, 2025 ... The Beauty Health Company (SKIN) came out with quarterly earnings of $0.03 per share, beating the Zacks Consensus Estimate of a loss o...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3121864179923589,
+      "avg_quality": 0.6433333333333333,
+      "sources": [
+        "sg.finance.yahoo.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_12",
+      "weight": 0.10627722123470851,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "https://www.bloomberg.com/news/articles/2025-08-22/trump-poised-to-unveil-intel-deal-for-equity-stake-on-friday\n\n>President Donald Trump said Intel Co...",
+      "why_important": [
+        "above average weight ✓",
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.9999999141377351,
+      "avg_quality": 0.7764705882352941,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.012935254281131705,
+      "max": 0.12435870949277696,
+      "mean": 0.03684101489721867,
+      "std": 0.030392181009235214
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 24,
+      "high_source_units": 0,
+      "low_toxicity_units": 25
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2504121358990003,
+      "gini_coefficient": 0.21555212989317996
+    }
+  }
+}

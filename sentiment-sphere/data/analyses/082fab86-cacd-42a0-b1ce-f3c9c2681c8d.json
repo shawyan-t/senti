@@ -1,0 +1,359 @@
+{
+  "id": "082fab86-cacd-42a0-b1ce-f3c9c2681c8d",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "PLTR",
+  "timestamp": "2025-09-01T15:29:06.756614",
+  "enhanced_summary": "Comprehensive analysis of 19 content units with 86.2% confidence. Sentiment: 0.425 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 19,
+    "average_recency_weight": 0.5709191156290587
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.4252465397134599,
+      "confidence_interval": [
+        0.03654858691444057,
+        0.8132342934572204
+      ],
+      "statistical_significance": 0.8574753794245702
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9916,
+        "textblob_score": 0.09137146728610143,
+        "afinn_score": 0.04326123128119801,
+        "consensus": 0.3754108995224332
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.4252465397134599
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2464455024886605,
+      "polarization_index": 0.46675855460283194,
+      "model_agreement": 0.5332414453971681
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.46675855460283194,
+    "polarity_breakdown": {
+      "positive": 0.67,
+      "negative": 0.107,
+      "neutral": 0.222,
+      "wilson_ci": {
+        "positive": [
+          0.570098615885384,
+          0.770098615885384
+        ],
+        "negative": [
+          0.00747534602865399,
+          0.207475346028654
+        ],
+        "neutral": [
+          0.122426038085962,
+          0.32242603808596204
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5709191156290587,
+    "novelty_score": 0.900855555241478,
+    "total_evidence_weight": 0.8437087423515497
+  },
+  "vad_analysis": {
+    "valence": 0.713,
+    "arousal": 0.481,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 19,
+  "recent_developments_identified": 19,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/palantir-2-500-run-bulls-140000031.html",
+      "text_sample": "(Bloomberg) -- Palantir Technologies Inc.’s meteoric rise is pushing the company’s valuation further into record territory, forcing bullish investors to bank...",
+      "contribution_weight": "100.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "siliconangle.com",
+      "url": "https://siliconangle.com/2025/08/04/palantir-posts-48-revenue-growth-beats-expectations-across-board/",
+      "text_sample": "Shares of Palantir Technologies Inc. were up over 3% in late trading today after the big data analytics company reported earnings and revenue beats it its fiscal second quarter and gave an outlook ahe...",
+      "contribution_weight": "90.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "investors.palantir.com",
+      "url": "https://investors.palantir.com/news-details/2025/Palantir-Reports-Q2-2025-U-S--Comm-Revenue-Growth-of-93-YY-and-Revenue-Growth-of-48-YY-Guides-Q3-Revenue-to-50-YY-Raises-FY-2025-Revenue-Guidance-to-45-YY-and-U-S--Comm-Revenue-Guidance-to-85-YY-Crushing-Consensus-Expectations/",
+      "text_sample": "Aug 4, 2025 ... About Palantir Technologies Inc. Foundational software of tomorrow ... Weighted-average shares of common stock outstanding used in computing earnings per share ...",
+      "contribution_weight": "80.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/palantir-extends-sompo-collaboration-targeting-140439871.html",
+      "text_sample": "Palantir Technologies Inc. (NASDAQ:PLTR) shares were trading relatively flat on Tuesday. The company said its long-running collaboration with SOMPO Holdings ...",
+      "contribution_weight": "70.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/PLTR/",
+      "text_sample": "Aug 6, 2025 ... Find the latest Palantir Technologies Inc. (PLTR) stock quote, history ... Earnings Growth & Price Strength Make Palantir Technologies Inc. (PLTR) a ...",
+      "contribution_weight": "60.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "en.wikipedia.org",
+      "url": "https://en.wikipedia.org/wiki/Palantir_Technologies",
+      "text_sample": "Aug 22, 2025 ... Palantir Technologies Inc. is an American publicly traded company specializing in software platforms for data mining. Headquartered in Denver, Colorado, ...",
+      "contribution_weight": "50.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/07/palantir-technologies-nasdaqpltr-shares-gap-up-on-strong-earnings/",
+      "text_sample": "Palantir Technologies Inc. (NASDAQ:PLTR – Get Free Report) shares gapped up before the market opened on Tuesday following a better than expected earnings announcement. The stock had previously closed ...",
+      "contribution_weight": "40.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/07/palantir-technologies-nasdaqpltr-shares-up-3-4-after-analyst-upgrade/",
+      "text_sample": "Shares of Palantir Technologies Inc. (NASDAQ:PLTR – Get Free Report) shot up 3.4% during mid-day trading on Wednesday after The Goldman Sachs Group raised their price target on the stock from $90.00 t...",
+      "contribution_weight": "30.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/08/palantir-technologies-nasdaqpltr-given-new-155-00-price-target-at-cantor-fitzgerald/",
+      "text_sample": "Palantir Technologies (NASDAQ:PLTR – Free Report) had its price target raised by Cantor Fitzgerald from $110.00 to $155.00 in a research note published on Tuesday morning,Benzinga reports. Cantor Fitz...",
+      "contribution_weight": "20.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/06/palantir-technologies-nasdaqpltr-price-target-raised-to-165-00/",
+      "text_sample": "Palantir Technologies (NASDAQ:PLTR – Free Report) had its price target increased by UBS Group from $110.00 to $165.00 in a report published on Tuesday morning,Benzinga reports. UBS Group currently has...",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "investors.palantir.com",
+      "url": "https://investors.palantir.com/files/Palantir%20Q2%202025%20Business%20Update.pdf",
+      "text_sample": "Aug 3, 2025 ... Total revenue grew 48% Y/Y and. 14% Q/Q, driven by the continued acceleration of our US business. © 2025 Palantir Technologies Inc. $600M. $800M. $200M. $400M.",
+      "contribution_weight": "10.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "www.palantir.com",
+      "url": "https://www.palantir.com/q2-2025-letter/en/",
+      "text_sample": "Aug 4, 2025 ... Our overall business generated more than $1 billion in revenue for the ... performance of our business. © 2025 Palantir Technologies Inc. All rights ...",
+      "contribution_weight": "10.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "sg.finance.yahoo.com",
+      "url": "https://sg.finance.yahoo.com/quote/PLTR/",
+      "text_sample": "Aug 15, 2025 ... Palantir Technologies Inc. Overview Software - Infrastructure / Technology · Full Time Employees · Fiscal Year Ends · Sector · Industry · Recent News: PLTR · Earnings ...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.tradingview.com",
+      "url": "https://www.tradingview.com/symbols/NASDAQ-PLTR/",
+      "text_sample": "Aug 11, 2025 ... About Palantir Technologies Inc. ﻿. Sector. Technology Services.",
+      "contribution_weight": "10.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/market-outlook/News-Update:-Palantir-Technologies-Inc.-Market-Report",
+      "text_sample": "Aug 21, 2025 ... News Update: Palantir Technologies Inc. Market Report ✌️【Risk Control】 ... ✌️【Risk Control】✌️Invest smartly in blockchain technology. Start ...",
+      "contribution_weight": "10.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4mk1t/whats_your_highest_earning_stock_ever/",
+      "text_sample": "What has been your highest earning stock investment ever? Please share the stock ticker, the price you bought it at back then vs what it trades at now, and roughly how much profit you made from it. I ",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n375s7/in_hindsight_what_was_the_most_alarming_metric/",
+      "text_sample": "Anyone who’s paying attention knows AI is in a bubble. But that doesn’t mean it can’t continue to climb higher and higher. That being said (and I understand it’s not a 1:1 comparable) what was the sin",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mz4r0e/advice_on_investing_in_tech_stocks_nvidia_rtx/",
+      "text_sample": "Hi,\n\nI want to start investing in tech stocks for a couple of hundreds of dollars monthly.\n\nI am investing with the long term aspect (10-20 years) in mind.\n\nI been looking into these five stocks, and ",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1muod3j/why_is_pretty_much_everything_going_down_today/",
+      "text_sample": "I've been looking at the stock market today and pretty much everything is going down, mostly starting at the same time. HAG, PLTR, GOOG, RXRX, BA, RDDT, TSM, HOOD, MSTR, WBD, NVDA are just some of the",
+      "contribution_weight": "10.0%",
+      "recency": "13 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "PLTR (Palantir Technologies Inc.)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Palantir",
+      "Technologies",
+      "Pltr",
+      "Price",
+      "Stock",
+      "Palantir Technologies Inc",
+      "Going",
+      "Stocks",
+      "Bubble",
+      "Nasdaq"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 19 related sources",
+        "relevance": "high",
+        "source_count": 19
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "53.3%",
+      "source_diversity": "10 different source types",
+      "temporal_coverage": "Analysis spans 28 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.2457774197604639,
+      "sentiment": 0.24337729405172379,
+      "unit_count": 2,
+      "representative_text": "Aug 4, 2025 ... About Palantir Technologies Inc. Foundational software of tomorrow ... Weighted-average shares of common stock outstanding used in com...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5999999821486445,
+      "avg_quality": 0.6935897435897436,
+      "sources": [
+        "investors.palantir.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.1202395442314806,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 22, 2025 ... Palantir Technologies Inc. is an American publicly traded company specializing in software platforms for data mining. Headquartered i...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3823590508239205,
+      "avg_quality": 0.6288888888888889,
+      "sources": [
+        "en.wikipedia.org",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.10597279951673406,
+      "sentiment": 0.020212205248485597,
+      "unit_count": 2,
+      "representative_text": "Shares of Palantir Technologies Inc. (NASDAQ:PLTR – Get Free Report) shot up 3.4% during mid-day trading on Wednesday after The Goldman Sachs Group ra...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5532644480429575,
+      "avg_quality": 0.6803243574051407,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.012312120582738343,
+      "max": 0.20289308197504616,
+      "mean": 0.04440572328166051,
+      "std": 0.04416728131175116
+    },
+    "factor_analysis": {
+      "high_freshness_units": 3,
+      "high_novelty_units": 19,
+      "high_source_units": 0,
+      "low_toxicity_units": 19
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2404776337975959,
+      "gini_coefficient": 0.11284376734994395
+    }
+  }
+}
