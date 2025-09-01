@@ -299,10 +299,10 @@ def create_polarity_share_bars_with_intervals(analysis_results):
     # Add sample size and confidence level info (top-left under title)
     if total_units:
         fig.add_annotation(
-            x=0.01, y=0.92,
+            x=0.01, y=1,
             xref="paper", yref="paper",
             xanchor='left', yanchor='top',
-            text=f"n={total_units} units • 95% CI",
+            text=f"n={total_units} units",
             showarrow=False,
             font=dict(size=11, color="#666"),
             align="left",
@@ -373,24 +373,7 @@ def create_vad_compass(analysis_results):
             hoverinfo='skip'
         ))
     
-    # Add quadrant labels (smaller font, closer to center to avoid clipping)
-    quadrant_labels = [
-        ('High Valence\nHigh Arousal', 45, 0.78),
-        ('Low Valence\nHigh Arousal', 135, 0.78),
-        ('Low Valence\nLow Arousal', 225, 0.78),
-        ('High Valence\nLow Arousal', 315, 0.78)
-    ]
-    
-    for label, angle, radius in quadrant_labels:
-        fig.add_trace(go.Scatterpolar(
-            r=[radius],
-            theta=[angle],
-            mode='text',
-            text=[label],
-            textfont=dict(size=8, color='gray'),
-            showlegend=False,
-            hoverinfo='skip'
-        ))
+    # Quadrant labels removed per request
     
     # Plot VAD point (using Valence-Arousal as primary axes)
     va_angle = np.arctan2(arousal, valence) * 180/np.pi
@@ -399,21 +382,31 @@ def create_vad_compass(analysis_results):
     fig.add_trace(go.Scatterpolar(
         r=[va_magnitude],
         theta=[va_angle],
-        mode='markers+text',
+        mode='markers',
         marker=dict(
             size=20,
             color=dominance,  # Use dominance for color
             colorscale='RdYlGn',
             cmin=-1,
             cmax=1,
-            colorbar=dict(title="Dominance", x=1.24, len=0.85, thickness=12, tickfont=dict(size=9), titlefont=dict(size=10)),
+            colorbar=dict(title="Dominance", x=1.24, len=0.85, thickness=12, tickfont=dict(size=9)),
             line=dict(color='black', width=2)
         ),
-        text=[f'V:{valence:.2f}<br>A:{arousal:.2f}<br>D:{dominance:.2f}'],
-        textposition='top center',
         name='VAD Position',
-        hovertemplate='<b>VAD Analysis</b><br>Valence: %{text}<br>Arousal: %{r:.2f}<br>Angle: %{theta:.1f}°<extra></extra>'
+        hovertemplate='<b>VAD Analysis</b><br>Arousal (r): %{r:.2f}<br>Angle (θ): %{theta:.1f}°<extra></extra>'
     ))
+
+    # Add V/A/D values as a single annotation above the plot to avoid overlap
+    fig.add_annotation(
+        x=0.5,
+        y=1.08,
+        xref='paper',
+        yref='paper',
+        text=f"V: {valence:.2f}  |  A: {arousal:.2f}  |  D: {dominance:.2f}",
+        showarrow=False,
+        font=dict(size=12, color='#e2e8f0'),
+        align='center'
+    )
     
     # Add center point reference
     fig.add_trace(go.Scatterpolar(
@@ -431,14 +424,6 @@ def create_vad_compass(analysis_results):
             font=dict(size=14)
         ),
         polar=dict(
-            radialaxis=dict(
-                visible=True,
-                range=[0, 1],
-                tickvals=[0.25, 0.5, 0.75, 1.0],
-                ticktext=['Low', 'Med-', 'Med+', 'High'],
-                tickfont=dict(size=8),
-                gridcolor='lightgray'
-            ),
             angularaxis=dict(
                 tickvals=[0, 90, 180, 270],
                 ticktext=['High<br>Valence', 'High<br>Arousal', 'Low<br>Valence', 'Low<br>Arousal'],
@@ -446,10 +431,10 @@ def create_vad_compass(analysis_results):
                 direction='counterclockwise',
                 rotation=90
             ),
-            domain=dict(x=[0.0, 0.88], y=[0.0, 1.0])
+            domain=dict(x=[0.0, 1.0], y=[0.0, 1.0])
         ),
         height=460,
-        margin=dict(l=70, r=120, t=80, b=70),
+        margin=dict(l=70, r=120, t=90, b=70),
         paper_bgcolor='rgba(0,0,0,0)'
     )
     
@@ -695,7 +680,7 @@ def create_rolling_sentiment_timeline(analysis_results):
             y=trend_line(x_numeric),
             mode='lines',
             name='Trend Line',
-            line=dict(color='purple', width=2, dash='dot'),
+            line=dict(color='white', width=2, dash='dot'),
             opacity=0.8
         ))
         
@@ -717,14 +702,14 @@ def create_rolling_sentiment_timeline(analysis_results):
     
     fig.update_layout(
         title=dict(
-            text="Rolling Sentiment Timeline",
+            text="Time",
             x=0.5,
             y=0.98,
             font=dict(size=14)
         ),
         hovermode='x unified',
         xaxis=dict(
-            title="Time",
+            title="",
             showgrid=True,
             gridcolor='lightgray',
             automargin=True,
@@ -737,7 +722,9 @@ def create_rolling_sentiment_timeline(analysis_results):
                     dict(count=24, label="1D", step="hour", stepmode="backward"),
                     dict(count=7, label="1W", step="day", stepmode="backward"),
                     dict(step="all")
-                ])
+                ]),
+                y=-0.15,
+                x=0.01
             )
         ),
         yaxis=dict(
@@ -752,7 +739,7 @@ def create_rolling_sentiment_timeline(analysis_results):
         legend=dict(
             orientation="h",
             yanchor="top",
-            y=-0.3,
+            y=-0.08,
             xanchor="left",
             x=0,
             font=dict(size=10)
