@@ -196,9 +196,17 @@ def create_enhanced_summary(unit_count, confidence, mathematical_results, compre
 app = FastAPI(title="Sentimizer API")
 
 # Configure CORS
+# CORS: allow local dev and Vercel domains explicitly when credentials are used
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "*"],  # Allow frontend origins
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "https://localhost:3000",
+        # Add your production Vercel domain(s) explicitly if known
+        # e.g., "https://sentimizer.vercel.app",
+    ],
+    allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -1673,10 +1681,21 @@ async def health_check():
             "google_search_api": bool(config.get('google_search_api_key') and config.get('google_search_cx'))
         }
         
+        # Avoid heavy JSON loads on health checks; just count files quickly.
+        analyses_dir_exists = os.path.exists(ANALYSES_DIR)
+        data_dir_exists = os.path.exists(DATA_DIR)
+        try:
+            analyses_count = len([f for f in os.listdir(ANALYSES_DIR) if f.endswith('.json')]) if analyses_dir_exists else 0
+            # Also include top-level JSONs in DATA_DIR (excluding the analyses subdir)
+            data_json_count = len([f for f in os.listdir(DATA_DIR) if f.endswith('.json') and os.path.isfile(os.path.join(DATA_DIR, f))]) if data_dir_exists else 0
+            total_count = analyses_count + data_json_count
+        except Exception:
+            total_count = 0
+
         data_status = {
-            "analyses_dir_exists": os.path.exists(ANALYSES_DIR),
-            "data_dir_exists": os.path.exists(DATA_DIR),
-            "analyses_count": len(load_all_analyses())
+            "analyses_dir_exists": analyses_dir_exists,
+            "data_dir_exists": data_dir_exists,
+            "analyses_count": total_count,
         }
         
         # Keep health check response structure intact, this is likely used by system monitoring

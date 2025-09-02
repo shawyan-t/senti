@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button"
 import { Textarea } from "../components/ui/textarea"
 import { cn } from "../lib/utils"
 import SentimizerTitle from "../components/sentimizer-title"
-import { analyzeText, analyzeFile, getAnalysis, Analysis } from "../lib/api"
+import { analyzeText, analyzeFile, getAnalysis, getAnalyses, Analysis } from "../lib/api"
 import { VisualizationDashboard } from "../components/visualization-dashboard"
 import { ProfessionalVisualizationDashboard } from "../components/professional-visualization-dashboard"
 import dynamic from 'next/dynamic';
@@ -42,11 +42,69 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Load analyses list into local cache once per session (or when explicitly refreshed)
+  useEffect(() => {
+    const SESSION_FLAG = 'sentimizer_analyses_loaded_session'
+    const LAST_SYNC_TS = 'sentimizer_analyses_last_sync'
+    const CACHE_TTL_MS = 5 * 60 * 1000 // 5 minutes
+
+    const shouldSync = () => {
+      try {
+        const loaded = sessionStorage.getItem(SESSION_FLAG)
+        const last = Number(localStorage.getItem(LAST_SYNC_TS) || '0')
+        const now = Date.now()
+        if (!loaded) return true
+        if (now - last > CACHE_TTL_MS) return true
+      } catch (e) {
+        // If storage fails, attempt a one-time sync
+        return true
+      }
+      return false
+    }
+
+    const syncFromServer = async () => {
+      try {
+        if (!shouldSync()) return
+        const serverAnalyses = await getAnalyses()
+        // Convert to lightweight local list
+        const entries = Object.values(serverAnalyses || {}) as any[]
+        const list = entries.map((item) => {
+          const id = item.id || item.analysis_id
+          const label = (item.query_summary && item.query_summary.query) || item.source || 'Analysis'
+          const ts = item.timestamp || new Date().toISOString()
+          const ticker = (() => {
+            const idx = (label || '').indexOf('(')
+            const base = (idx > 0 ? label.slice(0, idx) : label).trim()
+            const tok = (base.split(' ')[0] || '').toUpperCase()
+            return tok
+          })()
+          return { id, source: label, ticker, timestamp: ts }
+        }).filter(a => a && a.id)
+        // Persist to the same LOCAL_KEY format used elsewhere
+        localStorage.setItem(LOCAL_KEY, JSON.stringify(list))
+        sessionStorage.setItem(SESSION_FLAG, '1')
+        localStorage.setItem(LAST_SYNC_TS, String(Date.now()))
+        // Refresh in-memory view if currently on Analyses tab
+        if (activeTab === 'analyses') {
+          loadPreviousAnalyses()
+        }
+      } catch (e) {
+        // Non-blocking: ignore failures
+        console.warn('Sync analyses failed:', e)
+      }
+    }
+
+    // Kick off a background sync once after page load
+    syncFromServer()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     // Sync displayed analysis with active tab
     if (activeTab === "analyses") {
       setAnalysisResult(savedAnalysisResult)
       setError(null)
+      // Load from local cache only; server sync happens once per session in a background effect
       loadPreviousAnalyses()
     } else if (activeTab === "about") {
       setAnalysisResult(null)
