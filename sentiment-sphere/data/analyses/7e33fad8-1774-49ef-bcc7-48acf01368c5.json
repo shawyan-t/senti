@@ -1,0 +1,290 @@
+{
+  "id": "7e33fad8-1774-49ef-bcc7-48acf01368c5",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "NVDA",
+  "timestamp": "2025-09-01T22:56:01.189856",
+  "enhanced_summary": "Comprehensive analysis of 9 content units with 86.4% confidence. Sentiment: 0.196 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 9,
+    "average_recency_weight": 0.26024890185816185
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.1963244746566703,
+      "confidence_interval": [
+        -0.07018219200999637,
+        0.6205983121916843
+      ],
+      "statistical_significance": 0.6060244900664733
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9992,
+        "textblob_score": 0.10539156095842149,
+        "afinn_score": 0.043697478991596636,
+        "consensus": 0.3827630133166727
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.1963244746566703
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.245670613725481,
+      "polarization_index": 0.4114556529744521,
+      "model_agreement": 0.5885443470255479
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.4114556529744521,
+    "polarity_breakdown": {
+      "positive": 0.579,
+      "negative": 0.13,
+      "neutral": 0.291,
+      "wilson_ci": {
+        "positive": [
+          0.47852978986266814,
+          0.6785297898626681
+        ],
+        "negative": [
+          0.03036755253433296,
+          0.23036755253433297
+        ],
+        "neutral": [
+          0.1911026576029989,
+          0.3911026576029989
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.26024890185816185,
+    "novelty_score": 0.6665043112221366,
+    "total_evidence_weight": 0.1623335368976315
+  },
+  "vad_analysis": {
+    "valence": 0.598,
+    "arousal": 0.412,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 9,
+  "recent_developments_identified": 9,
+  "source_citations": [
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4mk1t/whats_your_highest_earning_stock_ever/",
+      "text_sample": "What's your highest earning stock ever?\nWhat has been your highest earning stock investment ever? Please share the stock ticker, the price you bought it at back then vs what it trades at now, and roug...",
+      "contribution_weight": "100.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mz4r0e/advice_on_investing_in_tech_stocks_nvidia_rtx/",
+      "text_sample": "Advice on investing in tech stocks (Nvidia, RTX, Palantir, AMD, ASML)\nHi,\n\nI want to start investing in tech stocks for a couple of hundreds of dollars monthly.\n\nI am investing with the long term aspe...",
+      "contribution_weight": "90.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mwvbiq/nvidia_orders_suppliers_to_halt_work_on/",
+      "text_sample": "Nvidia orders suppliers to halt work on China-focussed H20 AI chip\nSo much for the H20. I've posted before that people who thought that Nvidia had the all clear were being premature. Now it seems Nvid...",
+      "contribution_weight": "80.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mzwfjs/nvda_up_35_into_earnings/",
+      "text_sample": "NVDA Up 35% Into Earnings\nNvidia reports earnings on Wednesday (Aug 27) after the close, and the setup looks like a textbook high-stakes event. The stock is currently trading at $181.30, up over 35% i...",
+      "contribution_weight": "70.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mx6l7i/nvda_before_or_after_earning_report/",
+      "text_sample": "NVDA before or after earning report?\nLooking to add NVDA to my portfolio and I’m wondering if I should buy in before or after their earnings update on the 27th. I’m leaning towards before since I bet ...",
+      "contribution_weight": "60.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n1s58d/nvda_2q26_earnings_result/",
+      "text_sample": "NVDA 2Q26 Earnings Result\n**Earnings per share**: $1.05, adjusted, up 54% from a year ago\n\n**Revenue**: Revenue of $46.7 billion, up 6% from Q1 and up 56% from a year ago\n\nNVIDIA (NASDAQ: NVDA) today ...",
+      "contribution_weight": "50.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "My 8yo is destroying my returns and beating the S&P\nFour years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/month. Today her account is worth $4,535.56, up +44.9...",
+      "contribution_weight": "40.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2ndkr/nvidias_top_two_mystery_customers_made_up_39_of/",
+      "text_sample": "Nvidia’s top two mystery customers made up 39% of the chipmaker’s Q2 revenue\nhttps://www.cnbc.com/2025/08/28/nvidias-top-two-mystery-customers-made-up-39percent-of-its-q2-revenue-.html\n\n> Two Nvidia c...",
+      "contribution_weight": "30.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n3dv7e/alibaba_unveils_homegrown_ai_chip_to_replace/",
+      "text_sample": "Alibaba unveils homegrown AI chip to replace Nvidia’s H20 in China\nNo paywall: https://finance.yahoo.com/news/chinas-alibaba-develops-ai-chip-090846681.html\n\n(Reuters) -China's Alibaba has developed a...",
+      "contribution_weight": "20.0%",
+      "recency": "3 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "NVDA (NVIDIA Corporation)",
+    "query_type": "Technology, NVIDIA, you, earnings, nvidia, for, that, before",
+    "entities_detected": [
+      "Nvidia",
+      "Revenue",
+      "Earnings",
+      "China",
+      "Stocks",
+      "Year",
+      "Nvda",
+      "Before",
+      "Chip",
+      "Quarter"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 9 related sources",
+        "relevance": "high",
+        "source_count": 9
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "58.9%",
+      "source_diversity": "1 different source types",
+      "temporal_coverage": "Analysis spans 9 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.05975038673668079,
+      "sentiment": 0.035515736998266316,
+      "unit_count": 2,
+      "representative_text": "What's your highest earning stock ever?\nWhat has been your highest earning stock investment ever? Please share the stock ticker, the price you bought ...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2938600762617295,
+      "avg_quality": 0.577109011845854,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.036289169767758096,
+      "sentiment": 0.0013771145389115458,
+      "unit_count": 2,
+      "representative_text": "Nvidia orders suppliers to halt work on China-focussed H20 AI chip\nSo much for the H20. I've posted before that people who thought that Nvidia had the...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5904060606060606,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.028689333715096285,
+      "sentiment": 0.024682127865439826,
+      "unit_count": 2,
+      "representative_text": "My 8yo is destroying my returns and beating the S&P\nFour years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/mon...",
+      "why_important": [
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2509434341891841,
+      "avg_quality": 0.5643525592055003,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [
+    {
+      "phrase": "amazing earnings (which isn´t guaranteed)",
+      "sentiment_impact": "+",
+      "weight": 0.01782082965928738,
+      "source": "reddit.com"
+    }
+  ],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.00994899442099238,
+      "max": 0.0419295570773934,
+      "mean": 0.018037059655292387,
+      "std": 0.009052350471277037
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 2,
+      "high_source_units": 0,
+      "low_toxicity_units": 9
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2582926355127372,
+      "gini_coefficient": 0.5376478622143137
+    }
+  }
+}

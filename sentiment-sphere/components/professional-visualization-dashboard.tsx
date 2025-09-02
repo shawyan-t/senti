@@ -94,7 +94,7 @@ export function ProfessionalVisualizationDashboard({
       <div className="space-y-8">
         {/* Executive Overview Section */}
         <div>
-          <h4 className="text-xl font-semibold text-emerald-300 mb-4">📊 Executive Overview</h4>
+          <h4 className="text-xl font-semibold text-emerald-300 mb-4">📊 Visual Overview</h4>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Sentiment Index */}
             {visualizations.sentiment_index ? (
@@ -203,7 +203,7 @@ export function ProfessionalVisualizationDashboard({
       {/* Footer */}
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-400">
-          🎯 Professional visualizations generated using advanced statistical analysis with bootstrap confidence intervals and Wilson bounds
+          Means use bootstrap confidence intervals; proportions use Wilson score intervals.
         </p>
       </div>
     </div>

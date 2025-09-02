@@ -995,6 +995,44 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 }
             }
         
+        # Build programmatic query type expansion from sector/industry/name and top keywords
+        try:
+            stop = {
+                'inc','co','corp','corporation','company','ltd','plc','the','and','group','holdings','llc'
+            }
+            sector_tokens = re.findall(r"[A-Za-z][A-Za-z\-]+", str(company_info.get('sector',''))) if company_info.get('sector') else []
+            industry_tokens = re.findall(r"[A-Za-z][A-Za-z\-]+", str(company_info.get('industry',''))) if company_info.get('industry') else []
+            name_tokens_full = re.findall(r"[A-Za-z][A-Za-z\-]+", company_info.get('name',''))
+            name_tokens = [w for w in name_tokens_full if w.lower() not in stop]
+            # Collect text for keyword extraction
+            text_blob = (str(company_info.get('business_summary','')) + "\n" + "\n".join([getattr(u, 'text','') for u in units][:5]))
+            kw_counts = {}
+            for tok in re.findall(r"[A-Za-z][A-Za-z\-]+", text_blob.lower()):
+                if len(tok) < 3: 
+                    continue
+                if tok in stop:
+                    continue
+                if tok in {company_info.get('name','').lower(), company_info.get('short_name','').lower(), ticker.lower()}:
+                    continue
+                kw_counts[tok] = kw_counts.get(tok, 0) + 1
+            top_kw = [w for w,_ in sorted(kw_counts.items(), key=lambda x: -x[1])[:6]]
+            # Merge and dedupe preserving order
+            merged = list(sector_tokens) + list(industry_tokens) + list(name_tokens) + list(top_kw)
+            seen = set()
+            expansions = []
+            for t in merged:
+                t_str = str(t)
+                if not t_str:
+                    continue
+                if t_str in seen:
+                    continue
+                seen.add(t_str)
+                expansions.append(t_str)
+            expansions = expansions[:8]
+            query_type_str = ", ".join(expansions) if expansions else (company_info.get('sector','Financial') or 'Financial')
+        except Exception:
+            query_type_str = company_info.get('sector','Financial') or 'Financial'
+
         comprehensive_analysis = {
             "id": analysis_id,
             "status": "success",
@@ -1076,7 +1114,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             # Query summary and recent events with dynamic industry
             "query_summary": {
                 "query": f"{ticker} ({company_info['name']})",
-                "query_type": company_info.get('sector', 'Financial'),  # Use actual sector from yfinance
+                "query_type": query_type_str,
                 "entities_detected": extract_entities_from_search_results(search_results),
                 "recent_events": [
                     {
@@ -1090,7 +1128,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             # Calculation methodology 
             "calculation_methodology": {
                 "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
-                "confidence_basis": f"Based on agreement between {len([k for k in ['vader', 'textblob', 'afinn', 'roberta'] if True])} different sentiment models",
+                "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
                 "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
                 "accuracy_indicators": {
                     "model_agreement": f"{(mathematical_results['mathematical_sentiment_analysis']['uncertainty_metrics']['model_agreement'] if mathematical_results else comprehensive_results['sentiment']['confidence']):.1%}",

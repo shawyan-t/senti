@@ -87,7 +87,7 @@ export default function EnhancedPage() {
       </main>
 
       <footer className="mt-auto border-t border-gray-800 py-4 text-center text-sm text-gray-500">
-        Powered by OpenAI&apos;s GPT models • © 2025 Sentimizer
+        <span suppressHydrationWarning>Powered by OpenAI&apos;s GPT models • © 2025 Sentimizer</span>
       </footer>
     </div>
   )

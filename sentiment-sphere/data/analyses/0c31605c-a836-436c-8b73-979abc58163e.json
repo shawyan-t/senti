@@ -1,0 +1,239 @@
+{
+  "id": "0c31605c-a836-436c-8b73-979abc58163e",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "VOO",
+  "timestamp": "2025-09-01T23:00:18.639831",
+  "enhanced_summary": "Comprehensive analysis of 4 content units with 86.5% confidence. Sentiment: 0.224 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9959299755266949,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 4,
+    "average_recency_weight": 0.20598161393963313
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.22408315579971977,
+      "confidence_interval": [
+        0.009238249594813615,
+        0.6141249062049061
+      ],
+      "statistical_significance": 0.6874856093731889
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9982,
+        "textblob_score": 0.07602453102453098,
+        "afinn_score": 0.046191247974068074,
+        "consensus": 0.3734719263328663
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.22408315579971977
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.257851917618844,
+      "polarization_index": 0.3881366504573084,
+      "model_agreement": 0.6118633495426916
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3881366504573084,
+    "polarity_breakdown": {
+      "positive": 0.59,
+      "negative": 0.128,
+      "neutral": 0.283,
+      "wilson_ci": {
+        "positive": [
+          0.4896332623198879,
+          0.6896332623198879
+        ],
+        "negative": [
+          0.027591684420028018,
+          0.22759168442002803
+        ],
+        "neutral": [
+          0.1827750532600841,
+          0.3827750532600841
+        ]
+      }
+    },
+    "sarcasm_rate": 0.004070024473305122,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.20598161393963313,
+    "novelty_score": 0.6029072994304917,
+    "total_evidence_weight": 0.06534448025310566
+  },
+  "vad_analysis": {
+    "valence": 0.612,
+    "arousal": 0.421,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 4,
+  "recent_developments_identified": 4,
+  "source_citations": [
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n04iys/should_i_invest_in_voo_right_now/",
+      "text_sample": "Should I invest in VOO right now?\nI’m 18 years old and I have 10k in savings. \n\nMy dad is big on investing (only been into it for nearly a year) we are pretty poor and he wants to have money. \n\nWell, ...",
+      "contribution_weight": "100.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1my51sp/fidelity_vs_vanguard_which_would_you_recommend_to/",
+      "text_sample": "Fidelity vs vanguard, which would you recommend to put money all in one place\nHi, my former employer 401k was moved to fidelity, but my Roth IRA and brokerage are in vanguard, would anyone recommend f...",
+      "contribution_weight": "90.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n3rio5/my_old_employers_401k_is_switching_to_vanguard/",
+      "text_sample": "My old employer's 401(k) is switching to Vanguard from Empower. Is it normal for Empower to be calling me?\nI got an snail mail from my old employer that the 401(k) I have with them is switching from E...",
+      "contribution_weight": "80.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1muajgs/voo_vs_vbr_for_the_next_decade/",
+      "text_sample": "VOO vs VBR for the next decade.\nBetween 1965-1982, the S&P only averaged 2.5% annually while small cap value averaged 17.6%.  Between 2000-2009, the S&P averaged 0% annually while small cap value aver...",
+      "contribution_weight": "70.0%",
+      "recency": "13 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "VOO (Vanguard S&P 500 ETF)",
+    "query_type": "ETF, Vanguard, you, vanguard, have, that, for, but",
+    "entities_detected": [
+      "Vanguard",
+      "Employer",
+      "Fidelity",
+      "Money",
+      "Empower",
+      "Like",
+      "Invest",
+      "About",
+      "Want",
+      "Averaged"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 4 related sources",
+        "relevance": "high",
+        "source_count": 4
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "61.2%",
+      "source_diversity": "1 different source types",
+      "temporal_coverage": "Analysis spans 10 days",
+      "data_quality": "medium"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.03386229284406121,
+      "sentiment": -0.03805920729712918,
+      "unit_count": 2,
+      "representative_text": "Fidelity vs vanguard, which would you recommend to put money all in one place\nHi, my former employer 401k was moved to fidelity, but my Roth IRA and b...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.54113318305626,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.03148218740904444,
+      "sentiment": -0.008647134469590152,
+      "unit_count": 2,
+      "representative_text": "VOO vs VBR for the next decade.\nBetween 1965-1982, the S&P only averaged 2.5% annually while small cap value averaged 17.6%.  Between 2000-2009, the S...",
+      "why_important": [
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.21286281562059833,
+      "avg_quality": 0.5381270412329047,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [
+    {
+      "phrase": "great idea but i’m worried about tax implications and he is pressuring me like crazy",
+      "sentiment_impact": "+",
+      "weight": 0.016826147262858283,
+      "source": "reddit.com"
+    }
+  ],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.015193619557685662,
+      "max": 0.017036145581202932,
+      "mean": 0.01633612006327641,
+      "std": 0.0007137455779568312
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 0,
+      "high_source_units": 0,
+      "low_toxicity_units": 4
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.26071284851015786,
+      "gini_coefficient": 0.9535908965947963
+    }
+  }
+}

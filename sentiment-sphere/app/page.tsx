@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Cloud, Loader2 } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 import SentimizerTitle from "@/components/sentimizer-title"
-import { analyzeText, analyzeFile, getAnalyses, getAnalysis, Analysis } from "@/lib/api"
+import { analyzeText, analyzeFile, getAnalysis, Analysis } from "@/lib/api"
 import { VisualizationDashboard } from "@/components/visualization-dashboard"
 import { ProfessionalVisualizationDashboard } from "@/components/professional-visualization-dashboard"
 import dynamic from 'next/dynamic';
@@ -22,12 +22,16 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [titleAnimationComplete, setTitleAnimationComplete] = useState(false)
   const [analysisResult, setAnalysisResult] = useState<Analysis | null>(null)
+  const [tickerAnalysisResult, setTickerAnalysisResult] = useState<Analysis | null>(null)
+  const [savedAnalysisResult, setSavedAnalysisResult] = useState<Analysis | null>(null)
   const [previousAnalyses, setPreviousAnalyses] = useState<Record<string, AnalysisData>>({})
   const [selectedAnalysisId, setSelectedAnalysisId] = useState("")
   const [uploadedFile, setUploadedFile] = useState<File | null>(null)
   const [fileName, setFileName] = useState("")
   const [error, setError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const [saveStatus, setSaveStatus] = useState<string | null>(null)
+  const [removeStatus, setRemoveStatus] = useState<string | null>(null)
 
   useEffect(() => {
     // Simulate loading delay for entrance animation
@@ -39,21 +43,50 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    // Load previous analyses when the tab is selected
+    // Sync displayed analysis with active tab
     if (activeTab === "analyses") {
+      setAnalysisResult(savedAnalysisResult)
+      setError(null)
       loadPreviousAnalyses()
+    } else if (activeTab === "about") {
+      setAnalysisResult(null)
+      setError(null)
+    } else if (activeTab === "ticker") {
+      setAnalysisResult(tickerAnalysisResult)
+      setError(null)
     }
   }, [activeTab])
 
-  const loadPreviousAnalyses = async () => {
+  const LOCAL_KEY = 'sentimizer_saved_analyses_v1'
+
+  const getDisplayLabelFromAnalysis = (ar: any) => {
+    if (ar?.query_summary?.query) return ar.query_summary.query
+    if (ar?.source) return ar.source
+    return 'Analysis'
+  }
+
+  const extractTickerFromLabel = (label: string) => {
+    if (!label) return ''
+    const idx = label.indexOf('(')
+    const base = (idx > 0 ? label.slice(0, idx) : label).trim()
+    const tok = base.split(' ')[0]
+    return (tok || '').toUpperCase()
+  }
+  const loadPreviousAnalyses = () => {
     try {
-      const analyses = await getAnalyses()
-      setPreviousAnalyses(analyses)
-      if (Object.keys(analyses).length > 0) {
-        setSelectedAnalysisId(Object.keys(analyses)[0])
-      }
+      const raw = localStorage.getItem(LOCAL_KEY)
+      const arr: any[] = raw ? JSON.parse(raw) : []
+      const map: Record<string, AnalysisData> = {}
+      arr.forEach((item: any) => {
+        if (item && item.id) map[item.id] = item
+      })
+      setPreviousAnalyses(map)
+      const keys = Object.keys(map)
+      if (keys.length > 0) setSelectedAnalysisId((prev) => prev && map[prev] ? prev : keys[0])
+      else setSelectedAnalysisId("")
     } catch (error) {
-      console.error("Failed to load analyses:", error)
+      console.error("Failed to load local analyses:", error)
+      setPreviousAnalyses({})
     }
   }
 
@@ -78,7 +111,7 @@ export default function Home() {
         emotion_entropy: result.emotion_vector_analysis?.emotion_entropy
       }
     }
-  }
+  };
 
   const handleAnalyze = async () => {
     if (!text.trim()) return
@@ -87,7 +120,8 @@ export default function Home() {
     setError(null) // Clear previous errors
     try {
       const result = await analyzeText(text)
-      setAnalysisResult(result)
+      setTickerAnalysisResult(result)
+      if (activeTab === "ticker") setAnalysisResult(result)
     } catch (error) {
       console.error("Error analyzing text:", error)
       const errorMessage = error instanceof Error ? error.message : 'Analysis failed'
@@ -125,7 +159,8 @@ export default function Home() {
     setError(null) // Clear previous errors
     try {
       const result = await analyzeFile(uploadedFile)
-      setAnalysisResult(result)
+      setTickerAnalysisResult(result)
+      if (activeTab === "ticker") setAnalysisResult(result)
     } catch (error) {
       console.error("Error analyzing file:", error)
       const errorMessage = error instanceof Error ? error.message : 'File analysis failed'
@@ -142,7 +177,8 @@ export default function Home() {
     setError(null) // Clear previous errors
     try {
       const result = await getAnalysis(selectedAnalysisId)
-      setAnalysisResult(result)
+      setSavedAnalysisResult(result)
+      if (activeTab === "analyses") setAnalysisResult(result)
     } catch (error) {
       console.error("Error loading analysis:", error)
       const errorMessage = error instanceof Error ? error.message : 'Failed to load analysis'
@@ -151,6 +187,45 @@ export default function Home() {
       setIsAnalyzing(false)
     }
   }
+
+  const saveCurrentAnalysisToLocal = () => {
+    if (!analysisResult) return
+    const id = (analysisResult as any).analysis_id || (analysisResult as any).id
+    if (!id) return
+    try {
+      const raw = localStorage.getItem(LOCAL_KEY)
+      const arr: any[] = raw ? JSON.parse(raw) : []
+      const label = getDisplayLabelFromAnalysis(analysisResult as any)
+      const meta = {
+        id,
+        source: label,
+        ticker: extractTickerFromLabel(label),
+        timestamp: (analysisResult as any).timestamp || new Date().toISOString(),
+      }
+      const exists = arr.some((x: any) => x.id === id)
+      const next = exists ? arr.map((x: any) => x.id === id ? meta : x) : [...arr, meta]
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(next))
+      if (activeTab === 'analyses') loadPreviousAnalyses()
+      setSaveStatus('Saved')
+      setTimeout(() => setSaveStatus(null), 1200)
+    } catch (e) {
+      console.error('Failed to save to local storage', e)
+    }
+  };
+
+  const removeSavedAnalysisFromLocal = (id: string) => {
+    try {
+      const raw = localStorage.getItem(LOCAL_KEY)
+      const arr: any[] = raw ? JSON.parse(raw) : []
+      const next = arr.filter((x: any) => x.id !== id)
+      localStorage.setItem(LOCAL_KEY, JSON.stringify(next))
+      loadPreviousAnalyses()
+      setRemoveStatus('Removed')
+      setTimeout(() => setRemoveStatus(null), 1200)
+    } catch (e) {
+      console.error('Failed to remove from local storage', e)
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-900 via-purple-950 to-slate-900 text-gray-200">
@@ -183,7 +258,7 @@ export default function Home() {
         >
           <SentimizerTitle onAnimationComplete={() => setTitleAnimationComplete(true)} />
           <p className="absolute mt-32 text-center text-emerald-300 font-light tracking-wide">
-            🏦 Stock Market Sentiment Analysis • NASDAQ & NYSE Only
+            Stock Market Sentiment Analysis
           </p>
         </motion.div>
 
@@ -194,8 +269,8 @@ export default function Home() {
               <div className="bg-white/5 backdrop-blur-sm h-16 rounded-lg mb-8 shadow-lg shadow-purple-900/20"></div>
 
               <div className="w-full">
-                <div className="grid grid-cols-2 mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
-                  {["ticker", "analyses"].map((tab) => (
+                <div className="grid grid-cols-3 mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
+                  {["ticker", "analyses", "about"].map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
@@ -208,6 +283,7 @@ export default function Home() {
                     >
                       {tab === "ticker" && "📈 Stock Ticker Analysis"}
                       {tab === "analyses" && "📊 Saved Analyses"}
+                      {tab === "about" && "ℹ️ About"}
                     </button>
                   ))}
                 </div>
@@ -259,9 +335,7 @@ export default function Home() {
                         <p className="text-sm text-emerald-200/70">
                           Examples: AAPL (Apple), NVDA (NVIDIA), META (Meta), VOO (Vanguard S&P 500 ETF)
                         </p>
-                        <p className="text-xs text-gray-400">
-                          Only NASDAQ and NYSE tickers are supported
-                        </p>
+                        
                       </div>
                       <Button
                         onClick={handleAnalyze}
@@ -311,7 +385,7 @@ export default function Home() {
                         ) : (
                           Object.entries(previousAnalyses).map(([id, data]) => (
                             <option key={id} value={id}>
-                              {data.source || "Unknown"} ({new Date(data.timestamp).toLocaleDateString()})
+                              {data.source || "Unknown"} ({new Date(data.timestamp).toLocaleString()})
                             </option>
                           ))
                         )}
@@ -322,7 +396,7 @@ export default function Home() {
                         </svg>
                       </div>
                     </div>
-                    <div>
+                    <div className="flex items-center gap-3">
                       <Button
                         className={cn(
                           "bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400",
@@ -342,7 +416,110 @@ export default function Home() {
                           "View Analysis"
                         )}
                       </Button>
+                      <Button
+                        variant="secondary"
+                        className="text-sm bg-slate-700/60 border border-slate-600 hover:bg-slate-700"
+                        disabled={!selectedAnalysisId}
+                        onClick={() => selectedAnalysisId && removeSavedAnalysisFromLocal(selectedAnalysisId)}
+                      >
+                        Remove from Saved
+                      </Button>
+                      {removeStatus && (
+                        <span className="text-sm text-emerald-300">{removeStatus}</span>
+                      )}
                     </div>
+                  </div>
+                )}
+
+                {activeTab === "about" && (
+                  <div className="space-y-6">
+                    {/* About Sentimizer */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.4 }}
+                      className="bg-slate-800/50 border border-emerald-500/20 rounded-lg p-6"
+                    >
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-3">About Sentimizer</h3>
+                      <p className="text-gray-300 mb-3">
+                        Sentimizer analyzes real market discussion and news to quantify sentiment and surface trends with transparent, math‑based visuals.
+                      </p>
+                      
+                    </motion.div>
+
+                    {/* How It's Calculated */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.05, duration: 0.4 }}
+                      className="bg-slate-800/50 border border-emerald-500/20 rounded-lg p-6"
+                    >
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-3">How It’s Calculated</h3>
+                      <div className="space-y-3 text-sm text-gray-300">
+                        <div>
+                          <span className="font-medium text-emerald-200">Per‑source sentiment:</span>
+                          <span className="ml-2 block text-gray-300">
+                            s = mean([VADER, TextBlob, AFINN, RoBERTa]) in [-1, 1]. Combine lexicon + transformer into one per‑source score.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">Corrections:</span>
+                          <span className="ml-2 block text-gray-300">
+                            s' = s * (1 − lambda_tox * p_tox) − gamma_sarc * p_sarc * sign(s). Short: dampen toxicity; flip/attenuate sarcasm.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">Weights:</span>
+                          <span className="ml-2 block text-gray-300">
+                            w_final = w_fresh * w_domain * w_engage * w_retrieval * w_lang, with w_fresh = exp(−delta_t / tau). Short: fresher, credible, high‑quality, relevant, engaged sources count more.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">Aggregation:</span>
+                          <span className="ml-2 block text-gray-300">
+                            S = Tukey biweight over s&apos; with weights w_final. Short: robust weighted mean to reduce outlier impact.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">Uncertainty:</span>
+                          <span className="ml-2 block text-gray-300">
+                            Mean CI via bootstrap; proportions via Wilson intervals. Short: honest intervals for averages and shares.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">VAD (valence/arousal/dominance):</span>
+                          <span className="ml-2 block text-gray-300">
+                            (v, a, d) in [-1,1]^3 from emotion probabilities and s. Short: map emotion mix and sentiment to VAD.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">Timeline:</span>
+                          <span className="ml-2 block text-gray-300">
+                            Rolling mean(s) over dated s' plus OLS trend y = a + b * t. Short: smooth trajectories and show trend line.
+                          </span>
+                        </div>
+                        <div>
+                          <span className="font-medium text-emerald-200">3D UMAP:</span>
+                          <span className="ml-2 block text-gray-300">
+                            Embed(text) → UMAP 3D; color = sentiment; (optional) size/opacity = weight/recency. Short: cluster topics and sentiment in 3D.
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+
+                    {/* Purpose */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.1, duration: 0.4 }}
+                      className="bg-slate-800/50 border border-emerald-500/20 rounded-lg p-6"
+                    >
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-3">Purpose</h3>
+                      <p className="text-gray-300">
+                        Provide a clear, math‑driven view of market sentiment: no synthetic data, transparent methods, and visuals that make source‑level
+                        evidence, uncertainty, and trends easy to inspect.
+                      </p>
+                    </motion.div>
                   </div>
                 )}
               </div>
@@ -433,13 +610,25 @@ export default function Home() {
               )}
 
               {/* Analysis Result Display */}
-              {analysisResult && (
+              {(activeTab === 'ticker' || activeTab === 'analyses') && analysisResult && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
                   className="mt-8 bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20"
                 >
+                  <div className="flex items-center justify-end mb-2 gap-3">
+                    <Button
+                      variant="secondary"
+                      className="text-sm bg-slate-700/60 border border-slate-600 hover:bg-slate-700"
+                      onClick={saveCurrentAnalysisToLocal}
+                    >
+                      Save Analysis
+                    </Button>
+                    {saveStatus && (
+                      <span className="text-sm text-emerald-300">{saveStatus}</span>
+                    )}
+                  </div>
                   <h2 className="text-2xl font-bold text-emerald-400 mb-4">Analysis Results</h2>
                   
                   {/* Comprehensive Sentiment Analysis Results */}
@@ -895,7 +1084,7 @@ export default function Home() {
                   transition={{ delay: 0.2 }}
                   className="mt-4 text-emerald-200/80 max-w-3xl mx-auto"
                 >
-                  From news articles to financial reports, Sentimizer uses advanced AI to analyze and interpret sentiment, extract key topics, and identify trends.
+                  From news articles to financial reports, Sentimizer uses AI and advanced math to interpret sentiment and visualize trends.
                 </motion.p>
               </motion.div>
             </motion.div>
@@ -904,7 +1093,7 @@ export default function Home() {
       </main>
 
       <footer className="mt-8 pb-8 text-center text-sm text-emerald-200/30">
-        <p>© 2023 Sentimizer • Powered by OpenAI's GPT models</p>
+        <p suppressHydrationWarning>© 2025 Sentimizer • Powered by OpenAI's GPT models</p>
       </footer>
     </div>
   )

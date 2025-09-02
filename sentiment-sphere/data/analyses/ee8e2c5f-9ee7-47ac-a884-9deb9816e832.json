@@ -1,0 +1,186 @@
+{
+  "id": "ee8e2c5f-9ee7-47ac-a884-9deb9816e832",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "VZ",
+  "timestamp": "2025-09-01T22:59:21.667460",
+  "enhanced_summary": "Comprehensive analysis of 1 content units with 88.1% confidence. Sentiment: 0.000 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 1,
+    "average_recency_weight": 0.9999999988690478
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.0,
+      "confidence_interval": [
+        0.0,
+        0.0
+      ],
+      "statistical_significance": 0.0
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.0,
+        "textblob_score": 0.0,
+        "afinn_score": 0.0,
+        "consensus": 0.0
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.0
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.3219280941660148,
+      "polarization_index": 0.0,
+      "model_agreement": 1.0
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.0,
+    "polarity_breakdown": {
+      "positive": 0.168,
+      "negative": 0.112,
+      "neutral": 0.72,
+      "wilson_ci": {
+        "positive": [
+          0.068,
+          0.268
+        ],
+        "negative": [
+          0.01200000000000001,
+          0.21200000000000002
+        ],
+        "neutral": [
+          0.62,
+          0.82
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.9999999988690478,
+    "novelty_score": 1.0,
+    "total_evidence_weight": 0.2757357220905896
+  },
+  "vad_analysis": {
+    "valence": 0.5,
+    "arousal": 0.354,
+    "dominance": 0.4
+  },
+  "document_analysis": {
+    "total_length": 2,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 0,
+  "recent_developments_identified": 1,
+  "source_citations": [
+    {
+      "source": "ticker_analysis",
+      "url": "https://finance.yahoo.com/quote/VZ",
+      "text_sample": "VZ (Verizon Communications Inc.) - Communication Services sector analysis",
+      "contribution_weight": "100.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "VZ (Verizon Communications Inc.)",
+    "query_type": "Communication, Services, Telecom, Verizon, Communications, verizon, services, communications",
+    "entities_detected": [],
+    "recent_events": [
+      {
+        "event": "Found 1 related sources",
+        "relevance": "high",
+        "source_count": 1
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "100.0%",
+      "source_diversity": "1 different source types",
+      "temporal_coverage": "Insufficient dated sources",
+      "data_quality": "low"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "ticker_cluster_0",
+      "weight": 0.2757357220905896,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "VZ (Verizon Communications Inc.) - Communication Services sector analysis...",
+      "why_important": [
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.9999999988690477,
+      "avg_quality": 0.7,
+      "sources": [
+        "ticker_analysis"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.2757357220905896,
+      "max": 0.2757357220905896,
+      "mean": 0.2757357220905896,
+      "std": 0.0
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 1,
+      "high_source_units": 0,
+      "low_toxicity_units": 1
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 1.0,
+      "gini_coefficient": 0.0
+    }
+  }
+}
