@@ -1,0 +1,298 @@
+{
+  "id": "7ccd472e-d3ec-469b-bdae-f442501ed8c0",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "SKIN",
+  "timestamp": "2025-09-02T02:32:14.508093",
+  "enhanced_summary": "Comprehensive analysis of 10 content units with 86.1% confidence. Sentiment: -0.147 (negative)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9830758945038492,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 10,
+    "average_recency_weight": 0.2170093675324266
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": -0.1472002607311021,
+      "confidence_interval": [
+        -0.581922527555187,
+        0.12877099348172225
+      ],
+      "statistical_significance": 0.46930259798262797
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": -0.9902,
+        "textblob_score": 0.06098736222406439,
+        "afinn_score": -0.021074380165289255,
+        "consensus": -0.3167623393137416
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": -0.1472002607311021
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.013578780234712,
+      "polarization_index": 0.4294737271128042,
+      "model_agreement": 0.5705262728871958
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.4294737271128042,
+    "polarity_breakdown": {
+      "positive": 0.135,
+      "negative": 0.559,
+      "neutral": 0.306,
+      "wilson_ci": {
+        "positive": [
+          0.03527997392688978,
+          0.2352799739268898
+        ],
+        "negative": [
+          0.45888010429244086,
+          0.6588801042924408
+        ],
+        "neutral": [
+          0.20583992178066943,
+          0.4058399217806694
+        ]
+      }
+    },
+    "sarcasm_rate": 0.016924105496150806,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.2170093675324266,
+    "novelty_score": 0.6988855792981177,
+    "total_evidence_weight": 0.14728550011964506
+  },
+  "vad_analysis": {
+    "valence": 0.426,
+    "arousal": 0.398,
+    "dominance": 0.4
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 10,
+  "recent_developments_identified": 10,
+  "source_citations": [
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mujwym/how_do_i_talk_my_coworker_out_of_an_investment/",
+      "text_sample": "How do I talk my coworker out of an investment scam?\nI’ve got a coworker who’s nearing retirement age, and he’s starting to panic a little about whether he has enough saved. Totally understandable tha...",
+      "contribution_weight": "100.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mxgfn1/the_federal_government_investing_in_a_private/",
+      "text_sample": "The Federal Government investing in a private business: \"I've got a baaaad feeling about this...\"\nFirst of all, does \"taking a stake in\" mean effectively the same thing as \"buying 10% of the stock of\"...",
+      "contribution_weight": "90.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mumnf5/the_fed_is_not_cutting_in_september/",
+      "text_sample": "The Fed is Not Cutting in September\nEveryone piling into “September rate cut” bets is ignoring the actual data and listening to wishful thinking. The Fed isn’t going to hand out a cut just because mar...",
+      "contribution_weight": "80.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n2mk6m/are_we_still_a_free_market_when_the_executive/",
+      "text_sample": "Are we still a free market when the executive office manipulates the stock market and buys a crypto treasury firm?\nThis apparent pump and dump spotted by Peter Schiff https://x.com/peterschiff/status/...",
+      "contribution_weight": "70.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n375s7/in_hindsight_what_was_the_most_alarming_metric/",
+      "text_sample": "In hindsight, what was the most alarming metric that the dotcom bubble was going to pop?\nAnyone who’s paying attention knows AI is in a bubble. But that doesn’t mean it can’t continue to climb higher ...",
+      "contribution_weight": "60.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "My 8yo is destroying my returns and beating the S&P\nFour years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/month. Today her account is worth $4,535.56, up +44.9...",
+      "contribution_weight": "50.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mxdrxr/trump_says_intel_has_agreed_to_give_the_us_a_10/",
+      "text_sample": "Trump Says Intel Has Agreed to Give the US a 10% Equity Stake\nhttps://www.bloomberg.com/news/articles/2025-08-22/trump-poised-to-unveil-intel-deal-for-equity-stake-on-friday\n\n>President Donald Trump s...",
+      "contribution_weight": "40.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Health/comments/1n43iyg/the_new_head_of_the_cdc_has_no_training_in/",
+      "text_sample": "The new head of the CDC has no training in medicine and once helped Peter Thiel develop man-made islands floating outside U.S. territory\n\n>> A former associate of billionaire tech entrepreneur Peter T...",
+      "contribution_weight": "30.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Health/comments/1n2gi4b/why_rfk_jr_just_broke_the_cdc/",
+      "text_sample": "Why RFK Jr. just broke the CDC\n\nMiddle management should follow suit. Bring the CDC to a halt. The president needs to learn a valuable lesson. Some posts have to be filled with real professionals and ...",
+      "contribution_weight": "20.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/Health/comments/1n3lexf/rfk_jrs_damage_to_the_cdc_is_past_the_point_of_no/",
+      "text_sample": "RFK Jr.’s damage to the CDC is ‘past the point of no return,’ Dr. Demetre Daskalakis warns\n\nThis is a terrifying timeline.\nWelcome to Disease and Death.  Check back in one year.\nCDC now stands for Com...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "SKIN (The Beauty Health Company)",
+    "query_type": "Consumer, Defensive, Household, Personal, Products, Beauty, Health, that",
+    "entities_detected": [
+      "Just",
+      "Trump",
+      "About",
+      "Market",
+      "Government",
+      "Intel",
+      "Going",
+      "Scam",
+      "Like",
+      "Them"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 10 related sources",
+        "relevance": "high",
+        "source_count": 10
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "57.1%",
+      "source_diversity": "1 different source types",
+      "temporal_coverage": "Analysis spans 11 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.037098435745272995,
+      "sentiment": -0.003312520787673319,
+      "unit_count": 2,
+      "representative_text": "How do I talk my coworker out of an investment scam?\nI’ve got a coworker who’s nearing retirement age, and he’s starting to panic a little about wheth...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5570961181359979,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.03532222560480448,
+      "sentiment": -0.025334402239067653,
+      "unit_count": 2,
+      "representative_text": "Are we still a free market when the executive office manipulates the stock market and buys a crypto treasury firm?\nThis apparent pump and dump spotted...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5758260201842913,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.03274497945845579,
+      "sentiment": 0.022824449947954788,
+      "unit_count": 2,
+      "representative_text": "My 8yo is destroying my returns and beating the S&P\nFour years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/mon...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2400260542742218,
+      "avg_quality": 0.5578877005347593,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [
+    {
+      "phrase": "amazing beautiful conversation",
+      "sentiment_impact": "+",
+      "weight": 0.017052943355699155,
+      "source": "reddit.com"
+    }
+  ],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.004875287717946704,
+      "max": 0.019309426945814237,
+      "mean": 0.014728550011964506,
+      "std": 0.004644779898597242
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 5,
+      "high_source_units": 0,
+      "low_toxicity_units": 10
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.13110202246744268,
+      "gini_coefficient": 0.6684390918431493
+    }
+  }
+}
