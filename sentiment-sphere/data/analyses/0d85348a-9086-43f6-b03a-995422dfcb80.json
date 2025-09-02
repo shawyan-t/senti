@@ -1,0 +1,351 @@
+{
+  "id": "0d85348a-9086-43f6-b03a-995422dfcb80",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "TSLA",
+  "timestamp": "2025-09-01T16:16:29.469395",
+  "enhanced_summary": "Comprehensive analysis of 18 content units with 87.6% confidence. Sentiment: 0.069 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 18,
+    "average_recency_weight": 0.46390181559899124
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.06947217742882543,
+      "confidence_interval": [
+        -0.42896782257117455,
+        0.6135482282282282
+      ],
+      "statistical_significance": 0.18603859653430455
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9922,
+        "textblob_score": 0.04557057057057057,
+        "afinn_score": 0.0595903165735568,
+        "consensus": 0.3657869623813757
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.06947217742882543
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.1127560834183465,
+      "polarization_index": 0.5528935893185871,
+      "model_agreement": 0.4471064106814129
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.5528935893185871,
+    "polarity_breakdown": {
+      "positive": 0.176,
+      "negative": 0.118,
+      "neutral": 0.706,
+      "wilson_ci": {
+        "positive": [
+          0.07633666129145905,
+          0.27633666129145906
+        ],
+        "negative": [
+          0.01755777419430604,
+          0.21755777419430605
+        ],
+        "neutral": [
+          0.6061055645142349,
+          0.8061055645142349
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.46390181559899124,
+    "novelty_score": 0.9294545626717042,
+    "total_evidence_weight": 0.5204930479429488
+  },
+  "vad_analysis": {
+    "valence": 0.535,
+    "arousal": 0.374,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 18,
+  "recent_developments_identified": 18,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/tesla-inc-tsla-bull-case-091425933.html",
+      "text_sample": "We came across a bullish thesis on Tesla, Inc. on Investment Ideas by Antonio’s Substack by Antonio Linares. In this article, we will summarize the bulls...",
+      "contribution_weight": "100.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/11/what-is-zacks-researchs-estimate-for-tesla-q3-earnings/",
+      "text_sample": "Tesla, Inc. (NASDAQ:TSLA – Free Report) – Equities research analysts at Zacks Research lowered their Q3 2025 earnings per share estimates for Tesla in a research note issued to investors on Wednesday,...",
+      "contribution_weight": "90.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/29/analysts-set-tesla-inc-nasdaqtsla-price-target-at-303-31/",
+      "text_sample": "Shares of Tesla, Inc. (NASDAQ:TSLA – Get Free Report) have been given an average rating of “Hold” by the forty-two ratings firms that are currently covering the company, Marketbeat reports. Nine inves...",
+      "contribution_weight": "80.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/brokerages-set-tesla-inc-nasdaqtsla-price-target-at-303-31/",
+      "text_sample": "Shares of Tesla, Inc. (NASDAQ:TSLA – Get Free Report) have earned a consensus rating of “Hold” from the forty-two analysts that are presently covering the firm, Marketbeat.com reports. Nine research a...",
+      "contribution_weight": "70.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/james-murdoch-sells-120000-shares-of-tesla-nasdaqtsla-stock/",
+      "text_sample": "Tesla, Inc. (NASDAQ:TSLA – Get Free Report) Director James Murdoch sold 120,000 shares of Tesla stock in a transaction dated Tuesday, August 26th. The stock was sold at an average price of $350.29, fo...",
+      "contribution_weight": "60.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/tesla-nasdaqtsla-trading-down-1-9-following-insider-selling/",
+      "text_sample": "Shares of Tesla, Inc. (NASDAQ:TSLA – Get Free Report) traded down 1.9% during mid-day trading on Friday following insider selling activity. The stock traded as low as $337.48 and last traded at $339.4...",
+      "contribution_weight": "50.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/25/tesla-nasdaqtsla-stock-acquired-rep-lisa-c-mcclain/",
+      "text_sample": "Representative Lisa C. McClain (R-Michigan) recently bought shares of Tesla, Inc. (NASDAQ:TSLA). In a filing disclosed on August 13th, the Representative disclosed that they had bought between $1,001 ...",
+      "contribution_weight": "40.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/tesla-nasdaqtsla-receives-outperform-rating-from-wedbush-2/",
+      "text_sample": "Wedbush reiterated their outperform rating on shares of Tesla (NASDAQ:TSLA – Free Report) in a research note released on Monday,Benzinga reports. They currently have a $500.00 target price on the elec...",
+      "contribution_weight": "30.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n3o2cj/what_is_your_strategy_for_weathering_a_bear_market/",
+      "text_sample": "Sorry if this is a common topic in this sub, but I didnt begin my investment strategy until early 2023.\n\nSave for a few hiccups, I have only felt a real bull run. THe tricky part here is that Im in my",
+      "contribution_weight": "20.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mzu3vn/help_on_my_next_more_conservative_investment_move/",
+      "text_sample": "Eight years ago, I decided to invest one month of my life researching growth and value investing. My reasoning was, with $30,000 I can never throw up or fill with which I am going to retire. Therefore",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "Four years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/month. Today her account is worth $4,535.56, up +44.97% overall with an unrealized gain of +$1,390.97.\n\nH",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n42jj2/tesla_stock_price_engineered_not_earned_analyst/",
+      "text_sample": ">Johnson, an analyst at **GLJ Research**, alleged on Friday that Tesla’s stock prices are being artificially supported through options market manipulation rather than fundamental performance.\n\n>“TSLA ",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n32rq3/rstocks_daily_discussion_fundamentals_friday_aug/",
+      "text_sample": "This is the daily discussion, so anything stocks related is fine, but the theme for today is on fundamentals, but if fundamentals aren't your thing then just ignore the theme.\n\nSome helpful day to day",
+      "contribution_weight": "10.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2e3f7/tesla_sales_in_europe_slump_40_as_byd_new_car/",
+      "text_sample": "From [TheGuardian](https://www.theguardian.com/technology/2025/aug/28/tesla-sales-in-europe-slump-byd-new-car-registrations-more-than-triple-elon-musk):\n\n>Tesla sales slumped 40% across Europe in July",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2qp6n/tesla_fsd_turns_off_more_us_consumers_than_its/",
+      "text_sample": "https://www.cnbc.com/2025/08/28/tesla-fsd-turns-away-more-us-consumers-than-attracts-survey-finds.html\n\n> A poll conducted this month shows more U.S. consumers say Tesla’s Full Self-Driving (Supervise",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/teslamotors/comments/1mxlgkc/tesla_cybertruck_secures_5star_nhtsa_safety/",
+      "text_sample": "Tesla Cybertruck secures 5-Star NHTSA safety ratings for driver and passenger - TeslaNorth",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/teslamotors/comments/1mu503x/tesla_officially_launches_6seater_model_y_l_in/",
+      "text_sample": "Roughly $47,000 USD",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/teslamotors/comments/1n2z0lh/tesla_model_y_performance_launched_in_norway/",
+      "text_sample": "Tesla Model Y Performance launched in Norway",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "TSLA (Tesla Inc.)",
+    "query_type": "Consumer Discretionary",
+    "entities_detected": [
+      "Tesla",
+      "Tsla",
+      "Market",
+      "Stock",
+      "Just",
+      "Stocks",
+      "Nasdaq",
+      "Research",
+      "Earnings",
+      "About"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 18 related sources",
+        "relevance": "high",
+        "source_count": 18
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "44.7%",
+      "source_diversity": "3 different source types",
+      "temporal_coverage": "Analysis spans 30 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.14173567062206818,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "We came across a bullish thesis on Tesla, Inc. on Investment Ideas by Antonio’s Substack by Antonio Linares. In this article, we will summarize the bu...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.31218641640306577,
+      "avg_quality": 0.6897279549718573,
+      "sources": [
+        "www.etfdailynews.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_6",
+      "weight": 0.08471104878099855,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "From [TheGuardian](https://www.theguardian.com/technology/2025/aug/28/tesla-sales-in-europe-slump-byd-new-car-registrations-more-than-triple-elon-musk...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5999999401851888,
+      "avg_quality": 0.7114285714285715,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_7",
+      "weight": 0.08001684635488124,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "https://www.cnbc.com/2025/08/28/tesla-fsd-turns-away-more-us-consumers-than-attracts-survey-finds.html\n\n> A poll conducted this month shows more U.S. ...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5999999400607675,
+      "avg_quality": 0.7168269230769231,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.004132329346302187,
+      "max": 0.09568930320589936,
+      "mean": 0.02891628044127493,
+      "std": 0.025121033737091927
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 18,
+      "high_source_units": 0,
+      "low_toxicity_units": 18
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.1838435759787283,
+      "gini_coefficient": 0.12724596534417765
+    }
+  }
+}

@@ -147,11 +147,11 @@ def create_sentiment_index_with_uncertainty(analysis_results):
     
     # Determine sentiment category and color
     if main_score > 0.1:
-        sentiment_label = "BULLISH"
+        sentiment_label = "POSITIVE"
         primary_color = "#10B981"  # Green
         secondary_color = "rgba(16, 185, 129, 0.3)"
     elif main_score < -0.1:
-        sentiment_label = "BEARISH"
+        sentiment_label = "NEGATIVE"
         primary_color = "#EF4444"  # Red
         secondary_color = "rgba(239, 68, 68, 0.3)"
     else:
@@ -173,9 +173,9 @@ def create_sentiment_index_with_uncertainty(analysis_results):
             'borderwidth': 2,
             'bordercolor': "gray",
             'steps': [
-                {'range': [0, 30], 'color': 'rgba(239, 68, 68, 0.2)'},  # Bearish zone
+                {'range': [0, 30], 'color': 'rgba(239, 68, 68, 0.2)'},  # Negative zone
                 {'range': [30, 70], 'color': 'rgba(107, 114, 128, 0.2)'},  # Neutral zone
-                {'range': [70, 100], 'color': 'rgba(16, 185, 129, 0.2)'}   # Bullish zone
+                {'range': [70, 100], 'color': 'rgba(16, 185, 129, 0.2)'}   # Positive zone
             ],
             'threshold': {
                 'line': {'color': "red", 'width': 4},
@@ -185,8 +185,8 @@ def create_sentiment_index_with_uncertainty(analysis_results):
         }
     ))
     
-    # Add uncertainty ribbon (confidence interval) as a separate indicator
-    if uncertainty['sample_size'] > 1:
+    # Add uncertainty ribbon (confidence interval) only when valid sample size > 1
+    if uncertainty['sample_size'] and uncertainty['sample_size'] > 1:
         fig.add_shape(
             type="rect",
             x0=0.85, y0=lower_bound/100, x1=0.9, y1=upper_bound/100,
@@ -270,7 +270,7 @@ def create_polarity_share_bars_with_intervals(analysis_results):
     neg_lower, neg_upper = wilson_confidence_interval(negative_count, total_units)
     
     # Convert back to percentages
-    categories = ['Bearish', 'Neutral', 'Bullish']
+    categories = ['Negative', 'Neutral', 'Positive']
     percentages = [negative_pct, neutral_pct, positive_pct]
     lower_bounds = [neg_lower * 100, neu_lower * 100, pos_lower * 100]
     upper_bounds = [neg_upper * 100, neu_upper * 100, pos_upper * 100]
@@ -596,14 +596,14 @@ def create_rolling_sentiment_timeline(analysis_results):
     for source in sources:
         # If a true timestamp exists, prefer it; otherwise, derive a bounded recent timestamp to avoid overlap
         ts = source.get('published_at') or source.get('published_date') or source.get('timestamp')
-        if ts:
-            try:
-                timestamp = pd.to_datetime(ts)
-            except Exception:
-                timestamp = now - timedelta(hours=int(np.random.randint(0, 168)))
-        else:
-            # Spread synthetic times over last week to reduce collisions instead of pure random jitter
-            timestamp = now - timedelta(hours=int(np.random.randint(0, 168)))
+        if not ts:
+            # Skip sources without valid timestamps (no synthetic times)
+            continue
+        try:
+            timestamp = pd.to_datetime(ts)
+        except Exception:
+            # Skip unparseable timestamps
+            continue
 
         sentiment = float(source.get('sentiment', 0))
         title = source.get('title', 'Unknown')
@@ -618,7 +618,7 @@ def create_rolling_sentiment_timeline(analysis_results):
         fig.add_annotation(
             x=0.5, y=0.5,
             xref="paper", yref="paper",
-            text="Insufficient data for timeline analysis",
+            text="No sufficient dated sources for timeline",
             showarrow=False,
             font=dict(size=14, color="#666")
         )
@@ -674,27 +674,17 @@ def create_rolling_sentiment_timeline(analysis_results):
         x_numeric = [(t - df['timestamp'].min()).total_seconds()/3600 for t in df['timestamp']]
         trend_coef = np.polyfit(x_numeric, df['sentiment'], 1)
         trend_line = np.poly1d(trend_coef)
+        trend_direction = "Improving" if trend_coef[0] > 0 else "Declining" if trend_coef[0] < 0 else "Stable"
         
         fig.add_trace(go.Scatter(
             x=df['timestamp'],
             y=trend_line(x_numeric),
             mode='lines',
-            name='Trend Line',
+            name=f'Trend ({trend_direction})',
             line=dict(color='white', width=2, dash='dot'),
             opacity=0.8
         ))
-        
-        # Add trend annotation
-        trend_direction = "↗ Improving" if trend_coef[0] > 0 else "↘ Declining" if trend_coef[0] < 0 else "→ Stable"
-        fig.add_annotation(
-            x=0.02, y=0.98,
-            xref="paper", yref="paper",
-            text=f"Trend: {trend_direction}",
-            showarrow=False,
-            font=dict(size=12, color="purple"),
-            align="left"
-        )
-    
+
     # Add horizontal reference lines
     fig.add_hline(y=0, line_dash="dot", line_color="gray", opacity=0.5)
     fig.add_hline(y=0.1, line_dash="dot", line_color="green", opacity=0.3)
@@ -716,15 +706,28 @@ def create_rolling_sentiment_timeline(analysis_results):
             nticks=8,
             tickformat="%b %d",
             title_standoff=30,
-            rangeslider=dict(visible=True),
+            rangeslider=dict(
+                visible=True,
+                thickness=0.10,
+                bgcolor='rgba(0,0,0,0.7)',
+                bordercolor='rgba(255,255,255,0.1)',
+                borderwidth=1
+            ),
             rangeselector=dict(
                 buttons=list([
                     dict(count=24, label="1D", step="hour", stepmode="backward"),
                     dict(count=7, label="1W", step="day", stepmode="backward"),
-                    dict(step="all")
+                    dict(step="all", label="ALL")
                 ]),
-                y=-0.15,
-                x=0.01
+                x=0.5,
+                xanchor='center',
+                y=-0.22,
+                yanchor='top',
+                bgcolor='rgba(0,0,0,0.85)',
+                activecolor='#1f2937',
+                font=dict(color='#e5e7eb', size=10),
+                bordercolor='rgba(255,255,255,0.1)',
+                borderwidth=1
             )
         ),
         yaxis=dict(
@@ -733,16 +736,19 @@ def create_rolling_sentiment_timeline(analysis_results):
             showgrid=True,
             gridcolor='lightgray'
         ),
-        height=380,
-        margin=dict(l=60, r=60, t=90, b=110),
+        height=420,
+        margin=dict(l=60, r=60, t=160, b=140),
         paper_bgcolor='rgba(0,0,0,0)',
         legend=dict(
             orientation="h",
-            yanchor="top",
-            y=-0.08,
-            xanchor="left",
-            x=0,
-            font=dict(size=10)
+            yanchor="bottom",
+            y=1.10,
+            xanchor="center",
+            x=0.5,
+            font=dict(size=10),
+            bgcolor='rgba(0,0,0,0)',
+            bordercolor='rgba(255,255,255,0.1)',
+            borderwidth=0
         )
     )
     

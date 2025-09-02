@@ -1,0 +1,266 @@
+{
+  "id": "51fec32e-d16c-4fcd-8874-551d8ae3fcc2",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "TMUS",
+  "timestamp": "2025-09-01T18:15:55.097834",
+  "enhanced_summary": "Comprehensive analysis of 6 content units with 88.1% confidence. Sentiment: 0.630 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 6,
+    "average_recency_weight": 0.5560497781541348
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.6301162849207278,
+      "confidence_interval": [
+        0.275835544179987,
+        0.9829370256614686
+      ],
+      "statistical_significance": 0.9585730850391074
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9927,
+        "textblob_score": 0.14629629629629629,
+        "afinn_score": 0.075,
+        "consensus": 0.40466543209876543
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.9365851283073425,
+        "consensus": 0.9365851283073425
+      },
+      "all_models_consensus": 0.6301162849207278
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.270305451473437,
+      "polarization_index": 0.42530928423089853,
+      "model_agreement": 0.5746907157691015
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.42530928423089853,
+    "polarity_breakdown": {
+      "positive": 0.752,
+      "negative": 0.087,
+      "neutral": 0.161,
+      "wilson_ci": {
+        "positive": [
+          0.6520465139682912,
+          0.8520465139682911
+        ],
+        "negative": [
+          0,
+          0.18698837150792721
+        ],
+        "neutral": [
+          0.060965114523781644,
+          0.2609651145237817
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5560497781541348,
+    "novelty_score": 0.880610742172657,
+    "total_evidence_weight": 0.4206212937553286
+  },
+  "vad_analysis": {
+    "valence": 0.815,
+    "arousal": 0.543,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 6,
+  "recent_developments_identified": 6,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/t-mobile-tmus-beats-q2-115537208.html",
+      "text_sample": "T-Mobile US, Inc. (NYSE:TMUS) ranks among the best 5G stocks to buy now. On August 21, T-Mobile US, Inc. (NYSE:TMUS) reported strong financial performance...",
+      "contribution_weight": "100.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/16/q3-eps-estimates-for-t-mobile-us-boosted-by-zacks-research/",
+      "text_sample": "T-Mobile US, Inc. (NASDAQ:TMUS – Free Report) – Analysts at Zacks Research boosted their Q3 2025 earnings estimates for shares of T-Mobile US in a research report issued on Wednesday, August 13th. Zac...",
+      "contribution_weight": "90.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/18/insider-selling-t-mobile-us-inc-nasdaqtmus-director-sells-17520760-80-in-stock/",
+      "text_sample": "T-Mobile US, Inc. (NASDAQ:TMUS – Get Free Report) Director Telekom Ag Deutsche sold 69,840 shares of the company’s stock in a transaction dated Thursday, August 14th. The stock was sold at an average ...",
+      "contribution_weight": "80.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/telekom-ag-deutsche-sells-69840-shares-of-t-mobile-us-nasdaqtmus-stock/",
+      "text_sample": "T-Mobile US, Inc. (NASDAQ:TMUS – Get Free Report) Director Telekom Ag Deutsche sold 69,840 shares of the firm’s stock in a transaction dated Friday, August 29th. The stock was sold at an average price...",
+      "contribution_weight": "70.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/26/t-mobile-us-nasdaqtmus-director-telekom-ag-deutsche-sells-69840-shares-of-stock/",
+      "text_sample": "T-Mobile US, Inc. (NASDAQ:TMUS – Get Free Report) Director Telekom Ag Deutsche sold 69,840 shares of the business’s stock in a transaction that occurred on Friday, August 22nd. The shares were sold at...",
+      "contribution_weight": "60.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/26/t-mobile-us-nasdaqtmus-director-telekom-ag-deutsche-sells-69840-shares/",
+      "text_sample": "T-Mobile US, Inc. (NASDAQ:TMUS – Get Free Report) Director Telekom Ag Deutsche sold 69,840 shares of the business’s stock in a transaction that occurred on Monday, August 25th. The shares were sold at...",
+      "contribution_weight": "50.0%",
+      "recency": "7 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "TMUS (T-Mobile US, Inc.)",
+    "query_type": "Communication Services",
+    "entities_detected": [
+      "Mobile",
+      "Tmus",
+      "Shares",
+      "Nasdaq",
+      "Stock",
+      "Sold",
+      "Director",
+      "Telekom",
+      "Deutsche",
+      "Director Telekom Ag"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 6 related sources",
+        "relevance": "high",
+        "source_count": 6
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "57.5%",
+      "source_diversity": "2 different source types",
+      "temporal_coverage": "Analysis spans 25 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.14786169571278152,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "T-Mobile US, Inc. (NASDAQ:TMUS – Free Report) – Analysts at Zacks Research boosted their Q3 2025 earnings estimates for shares of T-Mobile US in a res...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.34477082859226077,
+      "avg_quality": 0.6645833333333333,
+      "sources": [
+        "finance.yahoo.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.1403842826213833,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "T-Mobile US, Inc. (NASDAQ:TMUS – Get Free Report) Director Telekom Ag Deutsche sold 69,840 shares of the business’s stock in a transaction that occurr...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5596783642745357,
+      "avg_quality": 0.6931818181818181,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.13237531542116376,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "T-Mobile US, Inc. (NASDAQ:TMUS – Get Free Report) Director Telekom Ag Deutsche sold 69,840 shares of the firm’s stock in a transaction dated Friday, A...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4796127377146281,
+      "avg_quality": 0.680232558139535,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.03125900057802539,
+      "max": 0.11371824794536109,
+      "mean": 0.07010354895922143,
+      "std": 0.03444432724430441
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 6,
+      "high_source_units": 0,
+      "low_toxicity_units": 6
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.27035780079053706,
+      "gini_coefficient": 0.47132894948207205
+    }
+  }
+}

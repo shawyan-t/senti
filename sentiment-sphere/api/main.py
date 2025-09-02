@@ -831,26 +831,45 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         # For financial analysis, we don't include the ticker itself as a unit
         # Only real search results with actual financial content
         
-        # Add search result units if available
+        # Add search result units if available (no synthetic timestamps)
         for i, result in enumerate(search_results):
-            if result.get('snippet'):
-                search_unit = CanonicalUnit(
-                    text=result['snippet'],
-                    source_domain=re.search(r'https?://([^/]+)', result.get('link', '')).group(1) if result.get('link') else 'search_result',
-                    url=result.get('link', ''),
-                    author=None,
-                    platform_stats={"upvotes": max(1, 10 - i), "views": max(1, 100 - i*10)},  # Ranking proxy
-                    publish_time=datetime.now() - timedelta(days=random.randint(0, 30)),  # Estimate
-                    last_edit_time=None,
-                    first_seen_time=datetime.now(),
-                    language="en",
-                    cluster_id=f"search_cluster_{i//2}",  # Group search results
-                    thread_depth=0,
-                    retrieval_score=max(0.1, 1.0 - i*0.1),  # Decreasing by rank
-                    length=len(result['snippet']),
-                    unit_id=str(uuid.uuid4())
-                )
-                units.append(search_unit)
+            snippet = result.get('snippet')
+            full_content = result.get('full_content')
+            if not snippet and not full_content:
+                continue
+            # Try to obtain a publish time from result payload if present
+            publish_raw = (
+                result.get('publishedAt')
+                or result.get('published_at')
+                or result.get('published_date')
+                or result.get('date')
+            )
+            publish_time = None
+            if publish_raw:
+                try:
+                    # Parse to UTC then drop tzinfo to ensure naive datetime for safe subtraction
+                    ts = pd.to_datetime(publish_raw, utc=True)
+                    publish_time = ts.to_pydatetime().replace(tzinfo=None)
+                except Exception:
+                    publish_time = None
+            # If no publish time, skip adding to time-sensitive analyses but still allow as a unit with None time
+            search_unit = CanonicalUnit(
+                text=(full_content or snippet or result.get('title', '')),
+                source_domain=re.search(r'https?://([^/]+)', result.get('link', '')).group(1) if result.get('link') else 'search_result',
+                url=result.get('link', ''),
+                author=None,
+                platform_stats={"upvotes": max(1, 10 - i), "views": max(1, 100 - i*10)},  # Ranking proxy
+                publish_time=publish_time or datetime.min,  # Use datetime.min to indicate unknown
+                last_edit_time=None,
+                first_seen_time=datetime.now(),
+                language="en",
+                cluster_id=f"search_cluster_{i//2}",  # Group search results
+                thread_depth=0,
+                retrieval_score=max(0.1, 1.0 - i*0.1),  # Decreasing by rank
+                length=len(snippet),
+                unit_id=str(uuid.uuid4())
+            )
+            units.append(search_unit)
         
         # If no search results were found, create a basic ticker unit for analysis
         if not units:
@@ -909,7 +928,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             print("No news content found for mathematical analysis")
             mathematical_results = None
         
-        # Step 5: Create response following the specification
+        # Step 5: Create response following the specification (no synthetic fallbacks)
         analysis_id = str(uuid.uuid4())
         timestamp = datetime.now()
         
@@ -919,36 +938,42 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             # Also include emotion analysis
             emotion_analysis = mathematical_results["emotion_vector_analysis"]
         else:
-            # Fallback to comprehensive results if no mathematical analysis
+            # No synthetic mathematical analysis; rely strictly on comprehensive results without fabricating CIs
+            composite_value = comprehensive_results["sentiment"]["score"]
+            # Attempt to approximate uncertainty from unit-level distribution if available
+            try:
+                # Access internal unit sentiments if exposed; otherwise set None
+                unit_scores = comprehensive_results.get('unit_sentiments', [])
+                if unit_scores and isinstance(unit_scores, list):
+                    arr = np.array([float(s) for s in unit_scores if s is not None])
+                    if len(arr) > 1:
+                        se = arr.std(ddof=1) / np.sqrt(len(arr))
+                        ci = [float(composite_value - 1.96*se), float(composite_value + 1.96*se)]
+                    else:
+                        ci = [composite_value, composite_value]
+                else:
+                    ci = [composite_value, composite_value]
+            except Exception:
+                ci = [composite_value, composite_value]
             mathematical_sentiment_analysis = {
                 "composite_score": {
-                    "value": comprehensive_results["sentiment"]["score"],
-                    "confidence_interval": [
-                        comprehensive_results["sentiment"]["score"] - 0.1,
-                        comprehensive_results["sentiment"]["score"] + 0.1
-                    ],
-                    "statistical_significance": comprehensive_results["sentiment"]["confidence"]
+                    "value": composite_value,
+                    "confidence_interval": ci,
+                    "statistical_significance": comprehensive_results["sentiment"].get("confidence", 0)
                 },
-                "multi_model_validation": {
-                    "lexicon_based": {
-                        "consensus": comprehensive_results["sentiment"]["score"]
-                    },
-                    "transformer_based": {
-                        "consensus": comprehensive_results["sentiment"]["score"]
-                    },
-                    "all_models_consensus": comprehensive_results["sentiment"]["score"]
-                },
+                "multi_model_validation": {},
                 "uncertainty_metrics": {
-                    "sentiment_entropy": 0.0,
-                    "polarization_index": comprehensive_results["sentiment"]["disagreement"],
-                    "model_agreement": 1 - comprehensive_results["sentiment"]["disagreement"]
+                    "sentiment_entropy": comprehensive_results["sentiment"].get("entropy", 0.0),
+                    "polarization_index": comprehensive_results["sentiment"].get("disagreement", 0.0),
+                    "model_agreement": 1 - comprehensive_results["sentiment"].get("disagreement", 0.0)
                 }
             }
+            # No synthetic emotions
             emotion_analysis = {
-                "plutchik_coordinates": {emotion: 0.125 for emotion in ['joy', 'trust', 'fear', 'surprise', 'sadness', 'disgust', 'anger', 'anticipation']},
-                "dominant_emotions": [],
-                "emotion_entropy": 0.0,
-                "emotional_coherence": 1.0
+                "plutchik_coordinates": comprehensive_results.get("emotion", {}),
+                "dominant_emotions": sorted(comprehensive_results.get("emotion", {}).keys(), key=lambda k: comprehensive_results.get("emotion", {}).get(k, 0), reverse=True)[:3],
+                "emotion_entropy": -sum(p * np.log(p + 1e-10) for p in comprehensive_results.get("emotion", {}).values()) if comprehensive_results.get("emotion") else 0,
+                "emotional_coherence": 1 - comprehensive_results["sentiment"].get("disagreement", 0.0)
             }
         
         # Use mathematical emotion analysis if available
@@ -1012,10 +1037,12 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 "total_evidence_weight": comprehensive_results["coverage"]["total_weight"]
             },
             
-            # VAD analysis - use mathematical results to calculate more accurate VAD
-            "vad_analysis": calculate_vad_from_mathematical_score(
-                mathematical_results["mathematical_sentiment_analysis"]["composite_score"]["value"] if mathematical_results else comprehensive_results["sentiment"]["score"],
-                mathematical_results["emotion_vector_analysis"] if mathematical_results else None
+            # VAD analysis - only compute if mathematical results present; no synthetic
+            "vad_analysis": (
+                calculate_vad_from_mathematical_score(
+                    mathematical_results["mathematical_sentiment_analysis"]["composite_score"]["value"],
+                    mathematical_results["emotion_vector_analysis"]
+                ) if mathematical_results else None
             ),
             
             # Document analysis
@@ -1038,7 +1065,11 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                     "url": unit.url if unit.url != "user_input" else None,
                     "text_sample": unit.text[:200] + "..." if len(unit.text) > 200 else unit.text,
                     "contribution_weight": f"{(unit.retrieval_score * 100):.1f}%",
-                    "recency": "User Input" if unit.source_domain == "user_input" else f"{(datetime.now() - unit.publish_time).days} days ago"
+                    "recency": (
+                        "User Input" if unit.source_domain == "user_input" else (
+                            (f"{(datetime.now() - unit.publish_time).days} days ago" if unit.publish_time and unit.publish_time != datetime.min else "Unknown")
+                        )
+                    )
                 } for unit in units
             ],
             
@@ -1064,7 +1095,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 "accuracy_indicators": {
                     "model_agreement": f"{(mathematical_results['mathematical_sentiment_analysis']['uncertainty_metrics']['model_agreement'] if mathematical_results else comprehensive_results['sentiment']['confidence']):.1%}",
                     "source_diversity": f"{len(set(u.source_domain for u in units))} different source types",
-                    "temporal_coverage": f"Analysis spans {max(1, (max([u.publish_time for u in units]) - min([u.publish_time for u in units])).days) if units else 0} days",
+                    "temporal_coverage": (lambda _times: f"Analysis spans {max(1, (_times.max() - _times.min()).days)} days" if len(_times) > 1 else "Insufficient dated sources")(np.array([u.publish_time for u in units if getattr(u, 'publish_time', None) and u.publish_time != datetime.min])),
                     "data_quality": "high" if len(units) >= 5 else "medium" if len(units) >= 3 else "low"
                 }
             },
@@ -1081,7 +1112,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         
         print(f"Enhanced mathematical analysis completed with ID: {analysis_saved_id}")
         
-        # Step 8: Generate professional visualizations
+        # Step 8: Generate professional visualizations (only from real data)
         print("Generating professional financial sentiment visualizations...")
         visualizations = {}
 
@@ -1106,11 +1137,20 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                                 ])
                             except Exception:
                                 avg_sent = 0.0
-                            sources_list.append({
+                            published_iso = None
+                            try:
+                                if getattr(u, 'publish_time', None) and u.publish_time != datetime.min:
+                                    published_iso = u.publish_time.isoformat()
+                            except Exception:
+                                published_iso = None
+                            src_item = {
                                 'title': getattr(u, 'url', 'Source') or getattr(u, 'source_domain', 'Source'),
                                 'url': None if getattr(u, 'url', None) == 'user_input' else getattr(u, 'url', None),
                                 'sentiment': float(avg_sent)
-                            })
+                            }
+                            if published_iso:
+                                src_item['published_at'] = published_iso
+                            sources_list.append(src_item)
                 # Attach for visualizations that expect 'sources'
                 comprehensive_analysis['sources'] = sources_list
             except Exception:
@@ -1149,31 +1189,41 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 pass
 
             # Executive Overview Visualizations
+            # Always include Sentiment Index (does not require synthetic data)
             visualizations["sentiment_index"] = {
                 "chart_data": create_sentiment_index_with_uncertainty(comprehensive_analysis).to_json(),
                 "description": "Primary sentiment indicator with statistical confidence bands"
             }
             
-            visualizations["polarity_distribution"] = {
-                "chart_data": create_polarity_share_bars_with_intervals(comprehensive_analysis).to_json(),
-                "description": "Sentiment distribution with Wilson confidence intervals"
-            }
+            # Include Polarity Distribution only if unit_count > 0 and distribution provided
+            if comprehensive_analysis.get('comprehensive_metrics', {}).get('polarity_breakdown') is not None:
+                visualizations["polarity_distribution"] = {
+                    "chart_data": create_polarity_share_bars_with_intervals(comprehensive_analysis).to_json(),
+                    "description": "Sentiment distribution with Wilson confidence intervals"
+                }
             
-            visualizations["vad_compass"] = {
-                "chart_data": create_vad_compass(comprehensive_analysis).to_json(),
-                "description": "Emotional dimensions analysis (Valence-Arousal-Dominance)"
-            }
+            # Include VAD only if calculated from mathematical analysis
+            if comprehensive_analysis.get('mathematical_sentiment_analysis', {}).get('vad_analysis'):
+                visualizations["vad_compass"] = {
+                    "chart_data": create_vad_compass(comprehensive_analysis).to_json(),
+                    "description": "Emotional dimensions analysis (Valence-Arousal-Dominance)"
+                }
             
             # Source Analysis Visualizations
-            visualizations["source_quality"] = {
-                "chart_data": create_source_quality_matrix(comprehensive_analysis).to_json(),
-                "description": "Source reliability and quality assessment matrix"
-            }
+            # Include Source Quality only if sources present
+            if comprehensive_analysis.get('sources'):
+                visualizations["source_quality"] = {
+                    "chart_data": create_source_quality_matrix(comprehensive_analysis).to_json(),
+                    "description": "Source reliability and quality assessment matrix"
+                }
             
-            visualizations["sentiment_timeline"] = {
-                "chart_data": create_rolling_sentiment_timeline(comprehensive_analysis).to_json(),
-                "description": "Rolling sentiment timeline with trend analysis"
-            }
+            # Include timeline only if dated sources exist (the function also enforces)
+            tl_fig = create_rolling_sentiment_timeline(comprehensive_analysis)
+            if len(tl_fig.data) > 0:
+                visualizations["sentiment_timeline"] = {
+                    "chart_data": tl_fig.to_json(),
+                    "description": "Rolling sentiment timeline with trend analysis"
+                }
             
             print(f"✓ Generated {len(visualizations)} professional visualizations")
 

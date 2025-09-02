@@ -1,0 +1,280 @@
+{
+  "id": "044b41af-c9fc-4988-a689-d4eff9ec1f6f",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "MA",
+  "timestamp": "2025-09-01T18:30:23.210078",
+  "enhanced_summary": "Comprehensive analysis of 8 content units with 86.9% confidence. Sentiment: 0.422 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 8,
+    "average_recency_weight": 0.2418885384899017
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.42194381971322786,
+      "confidence_interval": [
+        0.037538772984255855,
+        0.8068349532710279
+      ],
+      "statistical_significance": 0.857069841304062
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9781,
+        "textblob_score": 0.07554433221099888,
+        "afinn_score": 0.056074766355140186,
+        "consensus": 0.36990636618871303
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.42194381971322786
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2470960459637634,
+      "polarization_index": 0.46375597043704886,
+      "model_agreement": 0.5362440295629511
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.46375597043704886,
+    "polarity_breakdown": {
+      "positive": 0.669,
+      "negative": 0.108,
+      "neutral": 0.223,
+      "wilson_ci": {
+        "positive": [
+          0.5687775278852912,
+          0.7687775278852912
+        ],
+        "negative": [
+          0.0078056180286772,
+          0.2078056180286772
+        ],
+        "neutral": [
+          0.12341685408603156,
+          0.3234168540860316
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.2418885384899017,
+    "novelty_score": 0.9099688905894859,
+    "total_evidence_weight": 0.263621353857188
+  },
+  "vad_analysis": {
+    "valence": 0.711,
+    "arousal": 0.48,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 2,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 8,
+  "recent_developments_identified": 8,
+  "source_citations": [
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/analysts-set-mastercard-incorporated-nysema-pt-at-617-93/",
+      "text_sample": "Shares of Mastercard Incorporated (NYSE:MA – Get Free Report) have received an average recommendation of “Moderate Buy” from the thirty-one ratings firms that are presently covering the firm, Marketbe...",
+      "contribution_weight": "100.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/18/zacks-research-has-optimistic-view-of-mastercard-q1-earnings/",
+      "text_sample": "Mastercard Incorporated (NYSE:MA – Free Report) – Analysts at Zacks Research raised their Q1 2026 earnings per share (EPS) estimates for shares of Mastercard in a report released on Wednesday, August ...",
+      "contribution_weight": "90.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/q3-eps-estimates-for-mastercard-lifted-by-seaport-res-ptn/",
+      "text_sample": "Mastercard Incorporated (NYSE:MA – Free Report) – Equities research analysts at Seaport Res Ptn raised their Q3 2025 earnings estimates for shares of Mastercard in a note issued to investors on Thursd...",
+      "contribution_weight": "80.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/fy2025-eps-estimates-for-mastercard-lifted-by-william-blair/",
+      "text_sample": "Mastercard Incorporated (NYSE:MA – Free Report) – Investment analysts at William Blair upped their FY2025 earnings per share estimates for shares of Mastercard in a report released on Thursday, July 3...",
+      "contribution_weight": "70.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/17/zacks-research-has-strong-outlook-for-mastercard-q3-earnings/",
+      "text_sample": "Mastercard Incorporated (NYSE:MA – Free Report) – Zacks Research boosted their Q3 2025 EPS estimates for shares of Mastercard in a research report issued to clients and investors on Wednesday, August ...",
+      "contribution_weight": "60.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/24/mastercard-nysema-hits-new-12-month-high-whats-next/",
+      "text_sample": "Mastercard Incorporated (NYSE:MA – Get Free Report) shares reached a new 52-week high during mid-day trading on Friday . The company traded as high as $599.44 and last traded at $598.93, with a volume...",
+      "contribution_weight": "50.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/03/mastercard-nysema-price-target-raised-to-656-00-at-royal-bank-of-canada/",
+      "text_sample": "Mastercard (NYSE:MA – Get Free Report) had its price objective upped by Royal Bank Of Canada from $650.00 to $656.00 in a research note issued to investors on Friday, Marketbeat.com reports. The firm ...",
+      "contribution_weight": "40.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n59kh7/where_would_you_go_after_you_have_a_simple_fund/",
+      "text_sample": "The last few months I got myself on track with a boring 2-3 fund strategy. It’s autopilot at this point which is great but I really enjoy learning investing/finance. A bit bored now since there isn’t ",
+      "contribution_weight": "30.0%",
+      "recency": "29 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "MA (Mastercard Incorporated)",
+    "query_type": "Financial Services",
+    "entities_detected": [
+      "Mastercard",
+      "Nyse",
+      "Report",
+      "Incorporated",
+      "Free",
+      "Chars",
+      "Research",
+      "Shares",
+      "Estimates",
+      "Earnings"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 8 related sources",
+        "relevance": "high",
+        "source_count": 8
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "53.6%",
+      "source_diversity": "2 different source types",
+      "temporal_coverage": "Analysis spans 21 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.07052127255633248,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Mastercard Incorporated (NYSE:MA – Free Report) – Zacks Research boosted their Q3 2025 EPS estimates for shares of Mastercard in a research report iss...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.28393971581813016,
+      "avg_quality": 0.6810227272727273,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.06926028036385024,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Mastercard Incorporated (NYSE:MA – Free Report) – Investment analysts at William Blair upped their FY2025 earnings per share estimates for shares of M...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2382265197480443,
+      "avg_quality": 0.6854166666666667,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.06838961614857762,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Shares of Mastercard Incorporated (NYSE:MA – Get Free Report) have received an average recommendation of “Moderate Buy” from the thirty-one ratings fi...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.689695945945946,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.022371834000224477,
+      "max": 0.047867565324079944,
+      "mean": 0.0329526692321485,
+      "std": 0.00788424139506753
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 8,
+      "high_source_units": 0,
+      "low_toxicity_units": 8
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.18157696492982628,
+      "gini_coefficient": 0.7352920298741925
+    }
+  }
+}

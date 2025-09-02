@@ -69,7 +69,9 @@ export function SentimentTimeline({
       y: sentiments,
       line: {
         color: '#10B981', // Emerald
-        width: 3
+        width: 3,
+        shape: 'spline',
+        smoothing: 1.2
       },
       hoverinfo: 'text',
       text: sortedData.map(d => 
@@ -109,6 +111,11 @@ export function SentimentTimeline({
     yaxis: {
       title: 'Sentiment',
       range: [-1, 1],
+      tickmode: 'linear' as const,
+      dtick: 0.5,
+      ticks: 'outside' as const,
+      ticklen: 8,
+      tickcolor: 'rgba(255, 255, 255, 0.3)',
       zeroline: true,
       zerolinecolor: 'rgba(255, 255, 255, 0.2)',
       gridcolor: 'rgba(255, 255, 255, 0.1)',
@@ -136,7 +143,7 @@ export function SentimentTimeline({
       pad: 0
     },
     autosize: true,
-    height: height,
+    height: Math.max(height, 320),
     paper_bgcolor: 'rgba(0,0,0,0)',
     plot_bgcolor: 'rgba(0,0,0,0)',
     showlegend: false,

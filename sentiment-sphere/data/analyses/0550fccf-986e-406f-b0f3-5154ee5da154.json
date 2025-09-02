@@ -1,0 +1,275 @@
+{
+  "id": "0550fccf-986e-406f-b0f3-5154ee5da154",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "NKE",
+  "timestamp": "2025-09-01T16:46:31.154199",
+  "enhanced_summary": "Comprehensive analysis of 7 content units with 88.1% confidence. Sentiment: 0.106 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 7,
+    "average_recency_weight": 0.5053912919637154
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.10605436748436747,
+      "confidence_interval": [
+        -0.29359999999999997,
+        0.59416
+      ],
+      "statistical_significance": 0.3182433823664581
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9796,
+        "textblob_score": 0.018671837421837426,
+        "afinn_score": 0.032,
+        "consensus": 0.34342394580727914
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.10605436748436747
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.191703099434838,
+      "polarization_index": 0.48057281512798067,
+      "model_agreement": 0.5194271848720193
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.48057281512798067,
+    "polarity_breakdown": {
+      "positive": 0.542,
+      "negative": 0.139,
+      "neutral": 0.318,
+      "wilson_ci": {
+        "positive": [
+          0.44242174699374703,
+          0.642421746993747
+        ],
+        "negative": [
+          0.039394563251563236,
+          0.23939456325156325
+        ],
+        "neutral": [
+          0.21818368975468974,
+          0.4181836897546898
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5053912919637154,
+    "novelty_score": 0.9186197727864628,
+    "total_evidence_weight": 0.3832829496406269
+  },
+  "vad_analysis": {
+    "valence": 0.553,
+    "arousal": 0.385,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 7,
+  "recent_developments_identified": 7,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/invested-10k-nike-stock-10-120150522.html",
+      "text_sample": "Nike Inc. (NYSE:NKE) designs, develops, markets, and sells athletic and casual footwear, apparel, equipment, and accessories globally. It is set to report...",
+      "contribution_weight": "100.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/07/harbour-investments-inc-sells-715-shares-of-nike-inc-nysenke/",
+      "text_sample": "Harbour Investments Inc. cut its stake in shares of NIKE, Inc. (NYSE:NKE – Free Report) by 15.7% during the 1st quarter, according to its most recent 13F filing with the Securities and Exchange Commis...",
+      "contribution_weight": "90.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/nike-nysenke-chairman-sells-6535902-54-in-stock/",
+      "text_sample": "NIKE, Inc. (NYSE:NKE – Get Free Report) Chairman Mark Parker sold 86,078 shares of the firm’s stock in a transaction on Thursday, August 14th. The stock was sold at an average price of $75.93, for a t...",
+      "contribution_weight": "80.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/stock-traders-purchase-large-volume-of-nike-call-options-nysenke/",
+      "text_sample": "NIKE, Inc. (NYSE:NKE – Get Free Report) saw unusually large options trading on Friday. Traders acquired 168,472 call options on the company. Thisisanincreaseofapproximately59% compared to the typical ...",
+      "contribution_weight": "70.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/connor-clark-lunn-investment-management-ltd-purchases-shares-of-3559-nike-inc-nke/",
+      "text_sample": "Connor Clark & Lunn Investment Management Ltd. bought a new position in NIKE, Inc. (NYSE:NKE – Free Report) during the 1st quarter, HoldingsChannel reports. The fund bought 3,559 shares of the footwea...",
+      "contribution_weight": "60.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "wwd.com",
+      "url": "http://wwd.com/footwear-news/shoe-industry-news/crocs-patraic-reagan-cfo-former-nike-exec-1238092939/",
+      "text_sample": "Patraic Reagan, who had a 13-year career with Nike before joining SharkNinja, will become the new CFO at Crocs Inc., starting Sept. 22, 2025.",
+      "contribution_weight": "50.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2hvpv/nike_to_lay_off_about_1_of_corporate_staff_in_its/",
+      "text_sample": "Nike is planning another round of layoffs as part of CEO Elliott Hill’s efforts to realign the business and get it back to growth, CNBC has learned. \n\nThe cuts will impact less than 1% of Nike’s corpo",
+      "contribution_weight": "40.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "NKE (NIKE, Inc.)",
+    "query_type": "Consumer Cyclical",
+    "entities_detected": [
+      "Nike",
+      "Nyse",
+      "Staff",
+      "Chars",
+      "Business",
+      "Stock",
+      "Shares",
+      "Report",
+      "Part",
+      "Free"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 7 related sources",
+        "relevance": "high",
+        "source_count": 7
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "51.9%",
+      "source_diversity": "4 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.11830858636090656,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "Nike is planning another round of layoffs as part of CEO Elliott Hill’s efforts to realign the business and get it back to growth, CNBC has learned. \n...",
+      "why_important": [
+        "above average weight ✓",
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.9999999079513932,
+      "avg_quality": 0.7108108108108109,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.10017785201804877,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Patraic Reagan, who had a 13-year career with Nike before joining SharkNinja, will become the new CFO at Crocs Inc., starting Sept. 22, 2025....",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3121864172850708,
+      "avg_quality": 0.7200000000000001,
+      "sources": [
+        "www.etfdailynews.com",
+        "wwd.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.0837441062917503,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Harbour Investments Inc. cut its stake in shares of NIKE, Inc. (NYSE:NKE – Free Report) by 15.7% during the 1st quarter, according to its most recent ...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6977272727272728,
+      "sources": [
+        "finance.yahoo.com",
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.028718083250811117,
+      "max": 0.11830858636090656,
+      "mean": 0.05475470709151814,
+      "std": 0.027620737774104655
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 7,
+      "high_source_units": 0,
+      "low_toxicity_units": 7
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.308671665337148,
+      "gini_coefficient": 0.5153138212878543
+    }
+  }
+}

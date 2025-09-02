@@ -1,0 +1,300 @@
+{
+  "id": "d673e334-3ed6-42c2-a23c-5676901ef313",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "IBM",
+  "timestamp": "2025-09-01T17:30:57.529930",
+  "enhanced_summary": "Comprehensive analysis of 11 content units with 87.1% confidence. Sentiment: 0.025 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 11,
+    "average_recency_weight": 0.21892412245680948
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.025466825396825366,
+      "confidence_interval": [
+        -0.5683531746031746,
+        0.5875611904761904
+      ],
+      "statistical_significance": 0.06103319057718015
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9691,
+        "textblob_score": 0.12847222222222224,
+        "afinn_score": 0.02976190476190476,
+        "consensus": 0.3757780423280423
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.025466825396825366
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 1.9359213064599592,
+      "polarization_index": 0.6250284628525026,
+      "model_agreement": 0.3749715371474974
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.6250284628525026,
+    "polarity_breakdown": {
+      "positive": 0.171,
+      "negative": 0.114,
+      "neutral": 0.715,
+      "wilson_ci": {
+        "positive": [
+          0.07105601904761905,
+          0.27105601904761906
+        ],
+        "negative": [
+          0.014037346031746056,
+          0.21403734603174607
+        ],
+        "neutral": [
+          0.6149066349206349,
+          0.8149066349206349
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.21892412245680948,
+    "novelty_score": 0.8879114221389968,
+    "total_evidence_weight": 0.272378613534705
+  },
+  "vad_analysis": {
+    "valence": 0.513,
+    "arousal": 0.361,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 11,
+  "recent_developments_identified": 11,
+  "source_citations": [
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/20/zacks-research-issues-negative-forecast-for-ibm-earnings/",
+      "text_sample": "International Business Machines Corporation (NYSE:IBM – Free Report) – Analysts at Zacks Research dropped their Q2 2027 earnings per share estimates for shares of International Business Machines in a ...",
+      "contribution_weight": "100.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mwtncq/what_would_be_a_good_international_etf_to_add/",
+      "text_sample": "Currently I have voo+ schg +schd. This my core in my Roth that I max and in my brokerage because I don't want to wait until I'm 65 to receive income. I was thinking of adding in some international exp",
+      "contribution_weight": "90.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mvlrf2/growth_or_value_and_domestic_or_international/",
+      "text_sample": "# \n\nI have about $500K in funds to deploy thanks to an inheritance. I wan to explore four options:\n\na) G + D i.e. VTI\n\nb) G + I  \n\nc) V + D  i.e. VONV\n\nd) V + I\n\nSo does anyone have any inclination of",
+      "contribution_weight": "80.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n0kcmg/do_you_think_amd_goes_back_on_bull_run_from_ibm/",
+      "text_sample": "If Nvidia has good earnings does that help AMD or hurt AMD?\n\nDo you think we get to $200 by November 11 meeting after q3 earnings?\n\nDo you think we hit 1 trillion market  cap by 2028?\n\nWhat are people",
+      "contribution_weight": "70.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2y9of/ibm_and_amd_join_forces_to_build_the_future_of/",
+      "text_sample": "> IBM and AMD announced plans to develop next-generation computing architectures based on the combination of quantum computers and high-performance computing, known as quantum-centric supercomputing. ",
+      "contribution_weight": "60.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mwhd5g/gpt5_was_the_ai_canary_in_the_coal_mine_we_are/",
+      "text_sample": "OpenAI is one of the leaders in the AI space right now with the top two or three models currently available for the last 5-6 years. GPT 5 was just released and though it typically scores on the top of",
+      "contribution_weight": "50.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mzf7n2/why_didnt_intel_go_up_as_expected/",
+      "text_sample": "So I was watching INTC pretty closely this week, especially after the headlines that the US government was planning to take a roughly 10% stake in Intel through the CHIPS Act funding. That sounded lik",
+      "contribution_weight": "40.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mutzqc/openais_sam_altman_sees_ai_bubble_forming_as/",
+      "text_sample": "https://www.cnbc.com/2025/08/18/openai-sam-altman-warns-ai-market-is-in-a-bubble.html\n\n> “When bubbles happen, smart people get overexcited about a kernel of truth,” Altman told a small group of repor",
+      "contribution_weight": "30.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n1xk7a/intel_warns_shareholders_that_the_us_governments/",
+      "text_sample": "[https://www.tomshardware.com/pc-components/cpus/intel-warns-shareholders-that-the-us-governments-10-percent-stake-could-hurt-companys-international-sales](https://www.tomshardware.com/pc-components/c",
+      "contribution_weight": "20.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n3k9zf/most_trump_tariffs_are_not_legal_us_appeals_court/",
+      "text_sample": "https://www.reuters.com/legal/government/most-trump-tariffs-are-not-legal-us-appeals-court-rules-2025-08-29/\n\n>NEW YORK, Aug 29 (Reuters) - A U.S. appeals court ruled on Friday that most of Donald Tru",
+      "contribution_weight": "10.0%",
+      "recency": "17 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n1oftl/google_has_eliminated_35_of_managers_overseeing/",
+      "text_sample": "Google has eliminated more than one-third of its managers overseeing small teams, an executive told employees last week, as the company continues its focus on efficiencies across the organization.\n\n“R",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "IBM (International Business Machines Corporation)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "International",
+      "Intel",
+      "Company",
+      "Https",
+      "Tariffs",
+      "Stocks",
+      "Bubble",
+      "Altman",
+      "Google",
+      "Earnings"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 11 related sources",
+        "relevance": "high",
+        "source_count": 11
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "37.5%",
+      "source_diversity": "2 different source types",
+      "temporal_coverage": "Analysis spans 16 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.10173834854680591,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "International Business Machines Corporation (NYSE:IBM – Free Report) – Analysts at Zacks Research dropped their Q2 2027 earnings per share estimates f...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.23822652157895144,
+      "avg_quality": 0.6672756410256411,
+      "sources": [
+        "reddit.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.04490956340325534,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "> IBM and AMD announced plans to develop next-generation computing architectures based on the combination of quantum computers and high-performance co...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.73725,
+      "sources": [
+        "reddit.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.04261871735833289,
+      "sentiment": 0.09196960309973744,
+      "unit_count": 2,
+      "representative_text": "If Nvidia has good earnings does that help AMD or hurt AMD?\n\nDo you think we get to $200 by November 11 meeting after q3 earnings?\n\nDo you think we hi...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6294021739130434,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.014412944269784898,
+      "max": 0.06742081183741498,
+      "mean": 0.024761692139518635,
+      "std": 0.014509897419925491
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 11,
+      "high_source_units": 0,
+      "low_toxicity_units": 11
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.24752608496857845,
+      "gini_coefficient": 0.4935318412147208
+    }
+  }
+}

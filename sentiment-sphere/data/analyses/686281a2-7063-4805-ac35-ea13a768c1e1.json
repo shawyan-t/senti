@@ -1,0 +1,294 @@
+{
+  "id": "686281a2-7063-4805-ac35-ea13a768c1e1",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "NFLX",
+  "timestamp": "2025-09-01T18:41:34.871877",
+  "enhanced_summary": "Comprehensive analysis of 10 content units with 86.5% confidence. Sentiment: 0.293 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 10,
+    "average_recency_weight": 0.49713909648787075
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.2933829043495571,
+      "confidence_interval": [
+        0.05643545336916491,
+        0.631022904349557
+      ],
+      "statistical_significance": 0.8173850995090899
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9941,
+        "textblob_score": 0.1093627450980392,
+        "afinn_score": 0.06345177664974619,
+        "consensus": 0.3889715072492618
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.2933829043495571
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2696672394893254,
+      "polarization_index": 0.3643771412019369,
+      "model_agreement": 0.635622858798063
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3643771412019369,
+    "polarity_breakdown": {
+      "positive": 0.617,
+      "negative": 0.121,
+      "neutral": 0.262,
+      "wilson_ci": {
+        "positive": [
+          0.5173531617398229,
+          0.7173531617398229
+        ],
+        "negative": [
+          0.020661709565044276,
+          0.22066170956504427
+        ],
+        "neutral": [
+          0.1619851286951328,
+          0.3619851286951328
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.49713909648787075,
+    "novelty_score": 0.912069847209233,
+    "total_evidence_weight": 0.5127465601830773
+  },
+  "vad_analysis": {
+    "valence": 0.647,
+    "arousal": 0.442,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 10,
+  "recent_developments_identified": 10,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/netflixs-6-billion-uk-spend-171521982.html",
+      "text_sample": "Netflix (NASDAQ:NFLX) stock traded higher on Friday, backed by investor optimism over its U.K. financial arm’s results and FIFA Women’s World Cup deal win...",
+      "contribution_weight": "100.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/jump-financial-llc-has-869000-stake-in-netflix-inc-nflx/",
+      "text_sample": "Jump Financial LLC trimmed its position in shares of Netflix, Inc. (NASDAQ:NFLX – Free Report) by 95.7% during the first quarter, according to its most recent disclosure with the Securities & Exchange...",
+      "contribution_weight": "90.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/af067ae4b9cf6f43",
+      "text_sample": "On CNBC's “Halftime Report Final Trades,” Blue Line Capital’s Bill Baruch named Netflix, Inc. (NASDAQ:NFLX) as his final trade.\nOn the earnings front, Netflix, on July 17, reported upbeat second-quart...",
+      "contribution_weight": "80.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/25/netflix-inc-nasdaqnflx-receives-1297-66-average-pt-from-brokerages/",
+      "text_sample": "Shares of Netflix, Inc. (NASDAQ:NFLX – Get Free Report) have been assigned a consensus rating of “Moderate Buy” from the thirty-six brokerages that are presently covering the stock, MarketBeat.com rep...",
+      "contribution_weight": "70.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/06/intrust-bank-na-has-3-13-million-position-in-netflix-inc-nasdaqnflx/",
+      "text_sample": "Intrust Bank NA raised its position in shares of Netflix, Inc. (NASDAQ:NFLX – Free Report) by 4.2% during the 1st quarter, Holdings Channel.com reports. The firm owned 3,361 shares of the Internet tel...",
+      "contribution_weight": "60.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/27/netflix-nasdaqnflx-stock-price-up-1-6-after-analyst-upgrade/",
+      "text_sample": "Netflix, Inc. (NASDAQ:NFLX – Get Free Report)’s share price was up 1.6% during trading on Monday after Wall Street Zen upgraded the stock from a hold rating to a buy rating. The company traded as high...",
+      "contribution_weight": "50.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/netflix-nasdaqnflx-downgraded-by-wall-street-zen-to-hold/",
+      "text_sample": "Wall Street Zen cut shares of Netflix (NASDAQ:NFLX – Free Report) from a buy rating to a hold rating in a report released on Saturday morning. Other analysts also recently issued research reports abou...",
+      "contribution_weight": "40.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/netflix-nasdaqnflx-downgraded-to-hold-rating-by-wall-street-zen/",
+      "text_sample": "Netflix (NASDAQ:NFLX – Get Free Report) was downgraded by research analysts at Wall Street Zen from a “buy” rating to a “hold” rating in a research note issued on Saturday. Several other analysts have...",
+      "contribution_weight": "30.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/23/netflix-nasdaqnflx-raised-to-buy-at-wall-street-zen/",
+      "text_sample": "Netflix (NASDAQ:NFLX – Get Free Report) was upgraded by analysts at Wall Street Zen from a “hold” rating to a “buy” rating in a research note issued on Friday. NFLX has been the subject of several oth...",
+      "contribution_weight": "20.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "Four years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/month. Today her account is worth $4,535.56, up +44.97% overall with an unrealized gain of +$1,390.97.\n\nH",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "NFLX (Netflix Inc.)",
+    "query_type": "Communication Services",
+    "entities_detected": [
+      "Netflix",
+      "Nflx",
+      "Nasdaq",
+      "Rating",
+      "Chars",
+      "Report",
+      "Free",
+      "Wall",
+      "Street",
+      "Wall Street Zen"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 10 related sources",
+        "relevance": "high",
+        "source_count": 10
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "63.6%",
+      "source_diversity": "4 different source types",
+      "temporal_coverage": "Analysis spans 25 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.23185771267632216,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Shares of Netflix, Inc. (NASDAQ:NFLX – Get Free Report) have been assigned a consensus rating of “Moderate Buy” from the thirty-six brokerages that ar...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5716654585722338,
+      "avg_quality": 0.6844932432432433,
+      "sources": [
+        "www.etfdailynews.com",
+        "biztoc.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.09839607199306971,
+      "sentiment": 0.10887748535289442,
+      "unit_count": 2,
+      "representative_text": "Netflix (NASDAQ:NFLX) stock traded higher on Friday, backed by investor optimism over its U.K. financial arm’s results and FIFA Women’s World Cup deal...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.21982551516997334,
+      "avg_quality": 0.7145833333333333,
+      "sources": [
+        "www.etfdailynews.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.09019357382578873,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Wall Street Zen cut shares of Netflix (NASDAQ:NFLX – Free Report) from a buy rating to a hold rating in a report released on Saturday morning. Other a...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4257195203112535,
+      "avg_quality": 0.6806818181818182,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.01591624713809398,
+      "max": 0.1688663088057334,
+      "mean": 0.05127465601830774,
+      "std": 0.04342405552033933
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 10,
+      "high_source_units": 0,
+      "low_toxicity_units": 10
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.32933679505414776,
+      "gini_coefficient": 0.1969351906084862
+    }
+  }
+}

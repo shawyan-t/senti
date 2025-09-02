@@ -1,0 +1,294 @@
+{
+  "id": "1cb6f1e7-d5ab-4033-b4b9-3c5fdd96bc04",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "INTU",
+  "timestamp": "2025-09-01T19:40:15.363591",
+  "enhanced_summary": "Comprehensive analysis of 10 content units with 88.1% confidence. Sentiment: 0.335 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 10,
+    "average_recency_weight": 0.616118679776371
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.3351608156471078,
+      "confidence_interval": [
+        0.051287557220141486,
+        0.7102334248855595
+      ],
+      "statistical_significance": 0.8543589866811184
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9924,
+        "textblob_score": 0.11037037037037037,
+        "afinn_score": 0.07303370786516854,
+        "consensus": 0.39193469274517967
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.3351608156471078
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.269225291854402,
+      "polarization_index": 0.37167443802716776,
+      "model_agreement": 0.6283255619728323
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.37167443802716776,
+    "polarity_breakdown": {
+      "positive": 0.634,
+      "negative": 0.116,
+      "neutral": 0.249,
+      "wilson_ci": {
+        "positive": [
+          0.5340643262588431,
+          0.7340643262588431
+        ],
+        "negative": [
+          0.016483918435289208,
+          0.21648391843528922
+        ],
+        "neutral": [
+          0.14945175530586766,
+          0.3494517553058677
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.616118679776371,
+    "novelty_score": 0.9143980429900324,
+    "total_evidence_weight": 0.5605263674724342
+  },
+  "vad_analysis": {
+    "valence": 0.668,
+    "arousal": 0.454,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 10,
+  "recent_developments_identified": 10,
+  "source_citations": [
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34295470/is-wall-street-bullish-or-bearish-on-intuit-stock",
+      "text_sample": "Intuit has trailed the broader market over the past year, yet analysts remain strongly optimistic about the stock’s future outlook.",
+      "contribution_weight": "100.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/19/intuit-buy-intu-stock-now/",
+      "text_sample": "Currently, consensus calls for earnings per share of $2.66 on revenue of $3.75 billion for the upcoming quarter.",
+      "contribution_weight": "90.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-reaffirms-buy-rating-072816623.html",
+      "text_sample": "With strong revenue growth and significant hedge fund interest, Intuit Inc. (NASDAQ:INTU) secures a spot on our list of the 14 Best IT Stocks to Buy for the ...",
+      "contribution_weight": "80.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/intuit-inc-nasdaqintu-receives-806-27-consensus-pt-from-brokerages/",
+      "text_sample": "Intuit Inc. (NASDAQ:INTU – Get Free Report) has earned an average recommendation of “Moderate Buy” from the twenty-four analysts that are presently covering the stock, MarketBeat Ratings reports. One ...",
+      "contribution_weight": "70.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/24/intuit-nasdaqintu-shares-gap-down-after-analyst-downgrade/",
+      "text_sample": "Shares of Intuit Inc. (NASDAQ:INTU – Get Free Report) gapped down prior to trading on Friday after Zacks Research downgraded the stock from a strong-buy rating to a hold rating. The stock had previous...",
+      "contribution_weight": "60.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/27/intuit-inc-nasdaqintu-receives-consensus-rating-of-moderate-buy-from-analysts/",
+      "text_sample": "Shares of Intuit Inc. (NASDAQ:INTU – Get Free Report) have received an average recommendation of “Moderate Buy” from the twenty-five brokerages that are currently covering the stock, MarketBeat report...",
+      "contribution_weight": "50.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/3b0208e94c05ab4f",
+      "text_sample": "Intuit Inc (NASDAQ:INTU) reported fourth-quarter financial results for fiscal 2025 after the market close on Thursday. Here’s a look at the key details from the print.\nINTU shares are sliding. Check t...",
+      "contribution_weight": "40.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/14/intuit-intu-projected-to-post-quarterly-earnings-on-thursday/",
+      "text_sample": "Intuit (NASDAQ:INTU – Get Free Report) is projected to release its Q4 2025 earnings data after the market closes on Thursday, August 21st. Analysts expect Intuit to post earnings of $2.65 per share an...",
+      "contribution_weight": "30.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/25/citigroup-cuts-intuit-nasdaqintu-price-target-to-803-00/",
+      "text_sample": "Intuit (NASDAQ:INTU – Free Report) had its target price trimmed by Citigroup from $815.00 to $803.00 in a report published on Friday,Benzinga reports. They currently have a buy rating on the software ...",
+      "contribution_weight": "20.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/24/morgan-stanley-issues-pessimistic-forecast-for-intuit-nasdaqintu-stock-price/",
+      "text_sample": "Intuit (NASDAQ:INTU – Get Free Report) had its target price decreased by equities research analysts at Morgan Stanley from $900.00 to $880.00 in a report released on Friday,Benzinga reports. The broke...",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "INTU (Intuit Inc.)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Intuit",
+      "Intu",
+      "Nasdaq",
+      "Chars",
+      "Intuit Inc",
+      "Stock",
+      "Report",
+      "Free",
+      "Get Free Report",
+      "Rating"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 10 related sources",
+        "relevance": "high",
+        "source_count": 10
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "62.8%",
+      "source_diversity": "5 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.17438895062520887,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Intuit Inc. (NASDAQ:INTU – Get Free Report) has earned an average recommendation of “Moderate Buy” from the twenty-four analysts that are presently co...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4257195194587171,
+      "avg_quality": 0.7293103448275862,
+      "sources": [
+        "www.etfdailynews.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.15385411811670602,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Shares of Intuit Inc. (NASDAQ:INTU – Get Free Report) gapped down prior to trading on Friday after Zacks Research downgraded the stock from a strong-b...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.6038740762369949,
+      "avg_quality": 0.694659090909091,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_4",
+      "weight": 0.10048603478640898,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Intuit (NASDAQ:INTU – Get Free Report) had its target price decreased by equities research analysts at Morgan Stanley from $900.00 to $880.00 in a rep...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5999999854166669,
+      "avg_quality": 0.7211585365853658,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.01762055940640941,
+      "max": 0.13578532551743944,
+      "mean": 0.05605263674724342,
+      "std": 0.04145956300782575
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 10,
+      "high_source_units": 0,
+      "low_toxicity_units": 10
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.24224609830529897,
+      "gini_coefficient": 0.2542299963795447
+    }
+  }
+}

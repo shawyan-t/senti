@@ -1,0 +1,337 @@
+{
+  "id": "d9bdbe51-0ef0-4125-88ca-029c8ed3300f",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "AMD",
+  "timestamp": "2025-09-01T17:08:19.268795",
+  "enhanced_summary": "Comprehensive analysis of 16 content units with 87.6% confidence. Sentiment: 0.416 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 16,
+    "average_recency_weight": 0.5475339065234526
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.4161655122655123,
+      "confidence_interval": [
+        0.0466810966810967,
+        0.7861155844155844
+      ],
+      "statistical_significance": 0.870483642571568
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9945,
+        "textblob_score": 0.13924963924963932,
+        "afinn_score": 0.04707792207792208,
+        "consensus": 0.39360918710918713
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.4161655122655123
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.254811786152193,
+      "polarization_index": 0.4369595804607672,
+      "model_agreement": 0.5630404195392328
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.4369595804607672,
+    "polarity_breakdown": {
+      "positive": 0.666,
+      "negative": 0.108,
+      "neutral": 0.225,
+      "wilson_ci": {
+        "positive": [
+          0.5664662049062049,
+          0.7664662049062049
+        ],
+        "negative": [
+          0.008383448773448765,
+          0.20838344877344878
+        ],
+        "neutral": [
+          0.12515034632034633,
+          0.32515034632034634
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.5475339065234526,
+    "novelty_score": 0.9054061104546536,
+    "total_evidence_weight": 0.6297471645046795
+  },
+  "vad_analysis": {
+    "valence": 0.708,
+    "arousal": 0.478,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 16,
+  "recent_developments_identified": 16,
+  "source_citations": [
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/28/advanced-micro-devices-inc-nasdaqamd-receives-180-12-consensus-price-target-from-brokerages/",
+      "text_sample": "Advanced Micro Devices, Inc. (NASDAQ:AMD – Get Free Report) has earned a consensus recommendation of “Moderate Buy” from the thirty-eight research firms that are presently covering the company, Market...",
+      "contribution_weight": "100.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/28/advanced-micro-devices-nasdaqamd-trading-1-7-higher-following-analyst-upgrade/",
+      "text_sample": "Shares of Advanced Micro Devices, Inc. (NASDAQ:AMD – Get Free Report) traded up 1.7% during trading on Tuesday after Truist Financial upgraded the stock from a hold rating to a buy rating. Truist Fina...",
+      "contribution_weight": "90.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/08/advanced-micro-devices-nasdaqamd-shares-down-8-1-following-weak-earnings/",
+      "text_sample": "Advanced Micro Devices, Inc. (NASDAQ:AMD – Get Free Report)’s stock price traded down 8.1% during mid-day trading on Wednesday following a weaker than expected earnings announcement. The stock traded ...",
+      "contribution_weight": "80.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/28/advanced-micro-devices-nasdaqamd-ceo-sells-36893250-00-in-stock/",
+      "text_sample": "Advanced Micro Devices, Inc. (NASDAQ:AMD – Get Free Report) CEO Lisa Su sold 225,000 shares of Advanced Micro Devices stock in a transaction on Thursday, August 21st. The shares were sold at an averag...",
+      "contribution_weight": "70.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "siliconangle.com",
+      "url": "https://siliconangle.com/2025/08/05/amds-earnings-fall-short-due-china-chip-ban-despite-good-traction-ai/",
+      "text_sample": "Advanced Micro Devices Inc.’s stock was headed lower in extended trading today after it delivered mixed financial results, with earnings coming up short of Wall Street’s targets. The chipmaker reporte...",
+      "contribution_weight": "60.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "financialpost.com",
+      "url": "https://financialpost.com/pmn/business-pmn/amd-under-pressure-to-show-ai-gains-with-stock-beating-nvidia",
+      "text_sample": "Advanced Micro Devices Inc. earnings are expected to show the chipmaker is increasingly benefiting from the artificial intelligence arms race. The question is whether it’s enough to justify a rally th...",
+      "contribution_weight": "50.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/28/advanced-micro-devices-nasdaqamd-stock-rating-upgraded-by-truist-financial/",
+      "text_sample": "Advanced Micro Devices (NASDAQ:AMD – Get Free Report) was upgraded by analysts at Truist Financial from a “hold” rating to a “buy” rating in a note issued to investors on Tuesday, Marketbeat Ratings r...",
+      "contribution_weight": "40.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/08/advanced-micro-devices-nasdaqamd-given-new-173-00-price-target-at-truist-financial/",
+      "text_sample": "Advanced Micro Devices (NASDAQ:AMD – Get Free Report) had its price objective upped by equities researchers at Truist Financial from $111.00 to $173.00 in a research note issued on Wednesday,Benzinga ...",
+      "contribution_weight": "30.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/16/advanced-micro-devices-nasdaqamd-stock-price-expected-to-rise-mizuho-analyst-says/",
+      "text_sample": "Advanced Micro Devices (NASDAQ:AMD – Get Free Report) had its target price lifted by investment analysts at Mizuho from $183.00 to $205.00 in a note issued to investors on Thursday,Benzinga reports. T...",
+      "contribution_weight": "20.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/09/advanced-micro-devices-nasdaqamd-price-target-raised-to-195-00/",
+      "text_sample": "Advanced Micro Devices (NASDAQ:AMD – Free Report) had its target price hoisted by TD Cowen from $165.00 to $195.00 in a report issued on Wednesday morning, Marketbeat reports. TD Cowen currently has a...",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mz4r0e/advice_on_investing_in_tech_stocks_nvidia_rtx/",
+      "text_sample": "Hi,\n\nI want to start investing in tech stocks for a couple of hundreds of dollars monthly.\n\nI am investing with the long term aspect (10-20 years) in mind.\n\nI been looking into these five stocks, and ",
+      "contribution_weight": "10.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mzbcch/sofi_matched_1_of_my_max_ira_and_put_me_over/",
+      "text_sample": "Question. So my husband and I opened IRAs a month ago, deposited the max 7k in each and are letting them sit until 2026 to do it again. I go to check the account and SoFi did a 1% match I supposed and",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n0kcmg/do_you_think_amd_goes_back_on_bull_run_from_ibm/",
+      "text_sample": "If Nvidia has good earnings does that help AMD or hurt AMD?\n\nDo you think we get to $200 by November 11 meeting after q3 earnings?\n\nDo you think we hit 1 trillion market  cap by 2028?\n\nWhat are people",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2y9of/ibm_and_amd_join_forces_to_build_the_future_of/",
+      "text_sample": "> IBM and AMD announced plans to develop next-generation computing architectures based on the combination of quantum computers and high-performance computing, known as quantum-centric supercomputing. ",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1muo6ix/meta_is_planning_to_downsize_its_ai_division/",
+      "text_sample": "https://www.nytimes.com/2025/08/19/technology/mark-zuckerberg-meta-ai.html\n> \n> On Tuesday, Meta is expected to announce that it will split its A.I. division - which is known as Meta Superintelligence",
+      "contribution_weight": "10.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/tech/comments/1mvbhq6/laserfree_vision_correction_uses_electrical/",
+      "text_sample": "Laser-free vision correction uses electrical current to reshape eye | In early trials, it reversed myopia without the need for traditional surgery – and could be the most radical advancement in eyesig...",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "AMD (Advanced Micro Devices, Inc.)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Advanced",
+      "Micro",
+      "Devices",
+      "Nasdaq",
+      "Advanced Micro Devices",
+      "Earnings",
+      "Nvidia",
+      "Stocks",
+      "Meta",
+      "Price"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 16 related sources",
+        "relevance": "high",
+        "source_count": 16
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "56.3%",
+      "source_diversity": "4 different source types",
+      "temporal_coverage": "Analysis spans 28 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.18795478632781262,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Advanced Micro Devices Inc. earnings are expected to show the chipmaker is increasingly benefiting from the artificial intelligence arms race. The que...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5334389383367856,
+      "avg_quality": 0.7023954116059379,
+      "sources": [
+        "siliconangle.com",
+        "financialpost.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.12215717936750924,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Advanced Micro Devices, Inc. (NASDAQ:AMD – Get Free Report) has earned a consensus recommendation of “Moderate Buy” from the thirty-eight research fir...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.36459633854072643,
+      "avg_quality": 0.6720329024676851,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.11192742868305827,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Advanced Micro Devices (NASDAQ:AMD – Get Free Report) was upgraded by analysts at Truist Financial from a “hold” rating to a “buy” rating in a note is...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5334389382916357,
+      "avg_quality": 0.703885422575156,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.009871987954274884,
+      "max": 0.14696167842858848,
+      "mean": 0.03935919778154247,
+      "std": 0.03748857529725205
+    },
+    "factor_analysis": {
+      "high_freshness_units": 2,
+      "high_novelty_units": 16,
+      "high_source_units": 0,
+      "low_toxicity_units": 16
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.23336616139300845,
+      "gini_coefficient": 0.061728950361991775
+    }
+  }
+}

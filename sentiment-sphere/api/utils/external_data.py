@@ -580,11 +580,9 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
     try:
         # Geographic data
         country_data = data_fetcher.get_country_interest_data(cleaned_topic)
+        # Use only real data; do not generate synthetic country sentiment
         if not country_data or len(country_data.get('countries', [])) < 5:
-            # If we don't get enough real data, generate it
-            from .sentiment_generator import generate_country_sentiment
-            generated_countries = generate_country_sentiment(topic)
-            result['global_data'] = {'countries': generated_countries, 'source': 'generated', 'query': topic}
+            result['global_data'] = {'countries': [], 'source': 'missing', 'query': topic, 'warning': 'Insufficient real country data'}
         else:
             result['global_data'] = country_data
         
@@ -601,32 +599,24 @@ def get_online_sentiment(topic, subtopics=None, days_back=30):
             # Convert to the format used by visualizations
             result['historical_data'] = time_data.to_dict('records')
         else:
-            # Generate synthetic data
-            from .sentiment_generator import generate_time_series_data
-            result['historical_data'] = generate_time_series_data(topic, days=365)
+            # No synthetic time series
+            result['historical_data'] = []
             
         # Keyword data
         keyword_data = data_fetcher.fetch_related_queries(cleaned_topic)
         if not keyword_data or len(keyword_data.get('main_topic_keywords', [])) < 5:
-            # Generate keyword data if we don't have enough
-            from .sentiment_generator import generate_topic_keywords
-            result['keyword_data'] = generate_topic_keywords(topic)
+            # No synthetic keywords; mark missing
+            result['keyword_data'] = {"main_topic": topic, "main_topic_keywords": [], "subtopics": [], "subtopic_keywords": {}, "warning": "Insufficient real keyword data"}
         else:
             result['keyword_data'] = keyword_data
             
     except Exception as e:
         print(f"Error getting Google Trends data: {e}")
         
-        # Generate synthetic data for visualizations if real data failed
-        # This ensures the UI always has something to display
-        from .sentiment_generator import generate_country_sentiment, generate_time_series_data, generate_topic_keywords
-        
-        try:
-            result['global_data'] = {'countries': generate_country_sentiment(topic), 'source': 'generated', 'query': topic}
-            result['historical_data'] = generate_time_series_data(topic, days=365)
-            result['keyword_data'] = generate_topic_keywords(topic)
-        except Exception as e2:
-            print(f"Error generating fallback data: {e2}")
+        # Do not fabricate synthetic data; leave results empty with warnings
+        result.setdefault('global_data', {'countries': [], 'source': 'missing', 'query': topic})
+        result.setdefault('historical_data', [])
+        result.setdefault('keyword_data', {"main_topic": topic, "main_topic_keywords": [], "subtopics": [], "subtopic_keywords": {}})
     
     # Enhance data with OpenAI analysis for more context awareness
     try:
@@ -808,7 +798,7 @@ class SearchEngineConnector:
             )
             
             # Smart subreddit selection based on sector and ticker popularity
-            subreddits = self._get_relevant_subreddits(sector, ticker)
+            subreddits = self._get_relevant_subreddits(sector, ticker, company_name)
             
             print(f"📱 Searching Reddit: {subreddits} for {ticker} ({company_name})")
             
@@ -886,8 +876,8 @@ class SearchEngineConnector:
             print(f"Reddit API error: {e}")
             return []
     
-    def _get_relevant_subreddits(self, sector, ticker):
-        """Get relevant subreddits based on company sector and ticker"""
+    def _get_relevant_subreddits(self, sector, ticker, company_name):
+        """Get relevant subreddits based on company sector, ticker, and derived aliases (programmatic)"""
         # Base financial subreddits (always included)
         base_subreddits = ['investing', 'stocks']
         
@@ -920,10 +910,46 @@ class SearchEngineConnector:
         }
         
         specific_subs = ticker_specific.get(ticker, [])
-        
-        # Combine and limit to 3 subreddits to manage API calls
-        all_subreddits = base_subreddits + sector_subreddits + specific_subs
-        return list(dict.fromkeys(all_subreddits))[:3]  # Remove duplicates, limit to 3
+
+        # Programmatically derive aliases for subreddit candidates
+        import re
+        base = re.sub(r'\b(the|company|co\.?|corporation|corp\.?|inc\.?|ltd\.?|plc|group|holdings?)\b', '', company_name, flags=re.I)
+        base = re.sub(r'\s+', ' ', base).strip().lower()
+        tokens = re.findall(r'[a-z0-9]+', base)
+        alias_subs = []
+        if tokens:
+            alias_subs.append(''.join(tokens))
+            alias_subs.append('_'.join(tokens))
+            alias_subs.append(tokens[-1])  # brand token
+        # Ticker-based
+        alias_subs.append(ticker.lower())
+
+        # Sector-based topical subs (general, not per ticker)
+        sector_topics = {
+            'Technology': ['technology'],
+            'Communication Services': ['television', 'movies', 'entertainment'],
+            'Consumer Discretionary': ['consumerdiscretionary'],
+            'Consumer Staples': ['consumerstaples'],
+            'Healthcare': ['healthcare'],
+            'Financial Services': ['securityanalysis', 'valueinvesting'],
+            'Energy': ['energy'],
+            'Industrials': ['industrial'],
+            'Materials': ['materials'],
+            'Real Estate': ['realestate'],
+            'Utilities': ['utilities']
+        }
+        topical = [s.lower() for s in sector_topics.get(sector, [])]
+
+        # Combine candidates and limit to 5 to manage API calls
+        all_subreddits = base_subreddits + sector_subreddits + specific_subs + alias_subs + topical
+        # Deduplicate preserving order
+        seen = set()
+        result = []
+        for s in all_subreddits:
+            if s and s not in seen:
+                seen.add(s)
+                result.append(s)
+        return result[:5]
 
     def search_engine_query(self, query, num_results=10, recent_only=True, company_context=None):
         """

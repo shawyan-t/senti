@@ -1,0 +1,322 @@
+{
+  "id": "fd8e0a14-fc62-4272-b765-14399d2117ab",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "META",
+  "timestamp": "2025-09-01T20:11:55.948353",
+  "enhanced_summary": "Comprehensive analysis of 14 content units with 87.6% confidence. Sentiment: 0.447 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 14,
+    "average_recency_weight": 0.3875203356450078
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.44719968253968256,
+      "confidence_interval": [
+        0.06123174603174604,
+        0.8326411190476192
+      ],
+      "statistical_significance": 0.8801044211595718
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9973,
+        "textblob_score": 0.17123809523809527,
+        "afinn_score": 0.06746031746031746,
+        "consensus": 0.4119994708994709
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.44719968253968256
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2525073361451877,
+      "polarization_index": 0.4535510752659845,
+      "model_agreement": 0.5464489247340155
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.4535510752659845,
+    "polarity_breakdown": {
+      "positive": 0.679,
+      "negative": 0.105,
+      "neutral": 0.216,
+      "wilson_ci": {
+        "positive": [
+          0.5788798730158731,
+          0.778879873015873
+        ],
+        "negative": [
+          0.005280031746031727,
+          0.20528003174603174
+        ],
+        "neutral": [
+          0.11584009523809521,
+          0.3158400952380952
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.3875203356450078,
+    "novelty_score": 0.9096772014247352,
+    "total_evidence_weight": 0.42762003223315986
+  },
+  "vad_analysis": {
+    "valence": 0.724,
+    "arousal": 0.488,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 14,
+  "recent_developments_identified": 14,
+  "source_citations": [
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/18/meta-stock-path-to-2x-growth/",
+      "text_sample": "The company’s evolution into an AI-driven advertising leader, together with Instagram’s revenue strength and substantial infrastructure spending, creates several...",
+      "contribution_weight": "100.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/10/rep-cleo-fields-purchases-shares-of-meta-platforms-inc-nasdaqmeta-2/",
+      "text_sample": "Representative Cleo Fields (D-Louisiana) recently bought shares of Meta Platforms, Inc. (NASDAQ:META). In a filing disclosed on August 06th, the Representative disclosed that they had bought between $...",
+      "contribution_weight": "90.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/02/william-blair-lifts-earnings-estimates-for-meta-platforms/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Equities researchers at William Blair increased their Q1 2026 earnings estimates for shares of Meta Platforms in a research report issued on Wednesda...",
+      "contribution_weight": "80.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-roth-capital/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Analysts at Roth Capital increased their Q3 2025 earnings per share (EPS) estimates for shares of Meta Platforms in a research report issued on Wedne...",
+      "contribution_weight": "70.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/wedbush-analysts-boost-earnings-estimates-for-meta-platforms/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Investment analysts at Wedbush boosted their Q3 2025 earnings per share estimates for shares of Meta Platforms in a research note issued on Thursday,...",
+      "contribution_weight": "60.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/14/meta-platforms-inc-nasdaqmeta-stock-position-boosted-by-smart-money-group-llc/",
+      "text_sample": "Smart Money Group LLC raised its holdings in Meta Platforms, Inc. (NASDAQ:META – Free Report) by 20.4% in the first quarter, according to its most recent 13F filing with the Securities and Exchange Co...",
+      "contribution_weight": "50.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/02/da-davidson-weighs-in-on-meta-platforms-q3-earnings/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – DA Davidson issued their Q3 2025 earnings per share estimates for Meta Platforms in a note issued to investors on Thursday, July 31st. DA Davidson an...",
+      "contribution_weight": "40.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/04/fy2025-eps-estimate-for-meta-platforms-increased-by-analyst/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Equities researchers at DA Davidson upped their FY2025 earnings per share (EPS) estimates for shares of Meta Platforms in a report released on Thursd...",
+      "contribution_weight": "30.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/22/aspire-growth-partners-llc-acquires-45-shares-of-meta-platforms-inc-meta/",
+      "text_sample": "Aspire Growth Partners LLC grew its holdings in Meta Platforms, Inc. (NASDAQ:META – Free Report) by 7.3% during the 1st quarter, according to the company in its most recent disclosure with the Securit...",
+      "contribution_weight": "20.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-william-blair/",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Stock analysts at William Blair boosted their Q3 2025 earnings estimates for shares of Meta Platforms in a research note issued on Wednesday, July 30...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4mk1t/whats_your_highest_earning_stock_ever/",
+      "text_sample": "What has been your highest earning stock investment ever? Please share the stock ticker, the price you bought it at back then vs what it trades at now, and roughly how much profit you made from it. I ",
+      "contribution_weight": "10.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1muo6ix/meta_is_planning_to_downsize_its_ai_division/",
+      "text_sample": "https://www.nytimes.com/2025/08/19/technology/mark-zuckerberg-meta-ai.html\n> \n> On Tuesday, Meta is expected to announce that it will split its A.I. division - which is known as Meta Superintelligence",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mvxost/meta_freezes_ai_hiring_after_spending_spree/",
+      "text_sample": "As per WSJ \nhttps://www.wsj.com/tech/ai/meta-ai-hiring-freeze-fda6b3c4\n\nWith the sell offs the past two days, I wonder how this news will affect the markets, if anything. \n\nAlso considering the chatgp",
+      "contribution_weight": "10.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mwril1/meta_inks_10b_cloud_deal_with_google_cloud/",
+      "text_sample": "https://finance.yahoo.com/news/meta-signs-10-billion-plus-230020207.html\n\nIn a strategic shift from traditional AWS and Azure,, Meta has reportedly entered into a six-year, $10 billion-plus cloud deal",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "META (Meta Platforms Inc.)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Meta",
+      "Platforms",
+      "Meta Platforms",
+      "Nasdaq",
+      "Shares",
+      "Report",
+      "Chars",
+      "Estimates",
+      "Stock",
+      "Earnings"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 14 related sources",
+        "relevance": "high",
+        "source_count": 14
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "54.6%",
+      "source_diversity": "3 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.13383997129932437,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Smart Money Group LLC raised its holdings in Meta Platforms, Inc. (NASDAQ:META – Free Report) by 20.4% in the first quarter, according to its most rec...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5334389376781705,
+      "avg_quality": 0.7127906976744187,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.10610186070614644,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Representative Cleo Fields (D-Louisiana) recently bought shares of Meta Platforms, Inc. (NASDAQ:META). In a filing disclosed on August 06th, the Repre...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.238226519495726,
+      "avg_quality": 0.7039473684210527,
+      "sources": [
+        "www.etfdailynews.com",
+        "www.forbes.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.05929999958851799,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Meta Platforms, Inc. (NASDAQ:META – Free Report) – Equities researchers at William Blair increased their Q1 2026 earnings estimates for shares of Meta...",
+      "why_important": [
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.687797619047619,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.010451504975010859,
+      "max": 0.10640523735874993,
+      "mean": 0.03054428801665427,
+      "std": 0.025147256311046213
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 14,
+      "high_source_units": 0,
+      "low_toxicity_units": 14
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2488312738836624,
+      "gini_coefficient": 0.22191492843362737
+    }
+  }
+}

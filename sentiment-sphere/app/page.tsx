@@ -364,7 +364,7 @@ export default function Home() {
                            error.includes("rate limit") ? "Rate Limit Reached" : 
                            "Analysis Failed"}
                         </h3>
-                        <p className="text-red-200 text-sm leading-relaxed">
+                        <div className="text-red-200 text-sm leading-relaxed">
                           {error.includes("Both NewsAPI and Google Search API are currently unavailable") ? (
                             <>
                               <strong>All Data Sources Unavailable:</strong> Both our primary data sources (NewsAPI and Google Search API) 
@@ -419,7 +419,7 @@ export default function Home() {
                               </ul>
                             </>
                           )}
-                        </p>
+                        </div>
                         <button 
                           onClick={() => setError(null)}
                           className="mt-3 text-red-300 hover:text-red-200 text-sm underline"
@@ -852,26 +852,9 @@ export default function Home() {
                     />
                   ) : (
                     /* Fallback to old dashboard if no professional visualizations */
-                    <VisualizationDashboard 
-                      analysisData={(() => {
-                        const transformedData = transformMathematicalAnalysis(analysisResult)
-                        const plutchikEmotions = analysisResult.emotion_vector_analysis?.plutchik_coordinates || {}
-                        return {
-                          sentiment: transformedData.sentiment,
-                          metadata: transformedData.metadata,
-                          emotions: Object.entries(plutchikEmotions).map(([emotion, score]) => ({
-                            emotion,
-                            score: score as number
-                          })),
-                          timeSeriesData: [], // Will be fixed in next step
-                          keywords: (analysisResult.emotion_vector_analysis?.dominant_emotions || []).map((emotion: string) => ({
-                            keyword: emotion,
-                            frequency: (plutchikEmotions[emotion] as number || 0) * 100,
-                            sentiment: transformedData.sentiment.sentiment as any
-                          }))
-                        }
-                      })()}
-                    />
+                    <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">
+                      <p className="text-gray-400">No visualization data available.</p>
+                    </div>
                   )}
 
                   {/* 3D UMAP Visualization */}

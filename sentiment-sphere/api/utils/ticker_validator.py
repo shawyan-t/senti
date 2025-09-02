@@ -190,13 +190,44 @@ class TickerValidator:
         # Use ONLY company name for NewsAPI queries to avoid ticker confusion
         # For tickers like SKIN, search for "The Beauty Health Company" not "SKIN"
         queries = [
-            # TIER 1: Company name only with financial context
+            # TIER 1: Company name with financial context
             f'"{company_name}" stock earnings financial',
             f'"{company_name}" business performance revenue',
-            f'"{company_name}" {sector} industry analysis'
+            f'"{company_name}" {sector} industry analysis',
         ]
+
+        # Add ticker-inclusive queries to improve recall for major names
+        ticker = ticker.upper()
+        queries += [
+            f'{ticker} stock news OR earnings OR analysis',
+            f'"{company_name}" site:reuters.com OR site:bloomberg.com OR site:finance.yahoo.com',
+        ]
+
+        # Programmatically derive aliases from company name (remove corporate suffixes)
+        import re
+        base = re.sub(r'\b(the|company|co\.?|corporation|corp\.?|inc\.?|ltd\.?|plc|group|holdings?)\b', '', company_name, flags=re.I)
+        base = re.sub(r'\s+', ' ', base).strip()
+        tokens = re.findall(r'[A-Za-z0-9]+', base)
+        alias_candidates = []
+        if tokens:
+            alias_candidates.append(base)
+            alias_candidates.append(tokens[-1])  # often brand token
+            alias_candidates.append(''.join(tokens))
+            alias_candidates.append('_'.join(tokens))
+
+        for alias in alias_candidates:
+            queries.append(f'"{alias}" stock news OR earnings OR analysis')
+            queries.append(f'"{alias}" reddit OR discussion OR comments')
+
+        # Deduplicate while preserving order
+        seen = set()
+        deduped = []
+        for q in queries:
+            if q not in seen:
+                seen.add(q)
+                deduped.append(q)
         
-        return queries  # Return all queries for better coverage
+        return deduped
     
     def is_market_hours(self) -> bool:
         """Check if markets are currently open (rough estimate)."""

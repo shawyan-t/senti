@@ -1,0 +1,332 @@
+{
+  "id": "9aab5463-2f2e-4167-8792-be174e28053d",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "DIS",
+  "timestamp": "2025-09-01T21:03:01.126133",
+  "enhanced_summary": "Comprehensive analysis of 15 content units with 87.4% confidence. Sentiment: 0.425 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 15,
+    "average_recency_weight": 0.19999999999999998
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.42457155333826063,
+      "confidence_interval": [
+        0.038048472530179844,
+        0.8110946341463414
+      ],
+      "statistical_significance": 0.8561500036045984
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9942,
+        "textblob_score": 0.06158459595959596,
+        "afinn_score": 0.06707317073170732,
+        "consensus": 0.37428592223043444
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.42457155333826063
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.245990061077905,
+      "polarization_index": 0.46806411808024634,
+      "model_agreement": 0.5319358819197537
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.46806411808024634,
+    "polarity_breakdown": {
+      "positive": 0.67,
+      "negative": 0.108,
+      "neutral": 0.223,
+      "wilson_ci": {
+        "positive": [
+          0.5698286213353043,
+          0.7698286213353043
+        ],
+        "negative": [
+          0.007542844666173915,
+          0.20754284466617393
+        ],
+        "neutral": [
+          0.12262853399852178,
+          0.32262853399852176
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.19999999999999998,
+    "novelty_score": 0.9372152330087755,
+    "total_evidence_weight": 0.3950647448861893
+  },
+  "vad_analysis": {
+    "valence": 0.712,
+    "arousal": 0.481,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 15,
+  "recent_developments_identified": 15,
+  "source_citations": [
+    {
+      "source": "www.bostonherald.com",
+      "url": "https://www.bostonherald.com/2025/08/06/wall-street-mcdonalds-disney-earnings/",
+      "text_sample": "By STAN CHOE, Associated Press Business Writers\r\nNEW YORK (AP) Wall Street is holding relatively steady on Wednesday following a mixed set of profit reports from such giants as McDonalds and The Walt…...",
+      "contribution_weight": "100.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.investopedia.com",
+      "url": "https://www.investopedia.com/what-analysts-think-of-disney-stock-ahead-of-earnings-11781925",
+      "text_sample": "Mario Tama / Getty Images\r\n Walt Disney shares have gained about 8% since the start of this year\r\n<ul><li>Disney is slated to report fiscal third-quarter results Wednesday morning, with analysts bull…...",
+      "contribution_weight": "90.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/walt-disney-company-dis-children-192135523.html",
+      "text_sample": "We recently published 10 Stocks Jim Cramer Discussed As He Blasted Chinas Hostility Towards The US. The Walt Disney Company (NYSE:DIS) is one of the stocks Jim Cramer recently discussed.\r\nThe Walt Di…...",
+      "contribution_weight": "80.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34153352/is-disney-stock-a-magical-buy-after-earnings",
+      "text_sample": "Entertainment leader The Walt Disney Company (DIS) recently reported solid profitability gains in its third-quarter results. The company also stands on the cusp of a significant acquisition of the NF…...",
+      "contribution_weight": "70.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/08/how-disney-stock-can-surge-to-230/",
+      "text_sample": "Sign for the media brand Disney Store on 9th July 2025 in London, United Kingdom. (photo by Mike Kemp/In Pictures via Getty Images)\r\nIn Pictures via Getty Images\r\nDisney (NYSE:DIS)\r\n Q3 results indic…...",
+      "contribution_weight": "60.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/disney-lifts-profit-outlook-as-parks-streaming-drive-q3-earnings-beat--but-linear-declines-weigh-on-shares-110808538.html",
+      "text_sample": "Disney (DIS) reported fiscal third quarter earnings on Wednesday that beat expectations, driven by continued strength in its domestic parks business and a year-over-year swing to profitability in its…...",
+      "contribution_weight": "50.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-inch-higher-as-earnings-take-center-stage-233644959.html",
+      "text_sample": "Disney (DIS) said late Tuesday that ESPN has reached a preliminary agreement with the NFL to acquire media assets including NFL Network, NFL RedZone, and NFL Fantasy in exchange for a 10% equity stak…...",
+      "contribution_weight": "40.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/live/stock-market-today-dow-sp-500-nasdaq-rise-as-earnings-take-center-stage-133342728.html",
+      "text_sample": "Disney (DIS) said late Tuesday that ESPN has reached a preliminary agreement with the NFL to acquire media assets including NFL Network, NFL RedZone, and NFL Fantasy in exchange for a 10% equity stak…...",
+      "contribution_weight": "30.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-sees-19-upside-004737140.html",
+      "text_sample": "The Walt Disney Company (NYSE:DIS) is among the best holding company stocks to invest in. Benjamin Swinburne, an analyst at Morgan Stanley, has raised the price target on The Walt Disney Company (NYS…...",
+      "contribution_weight": "20.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/disney-stock-slides-amid-sharp-decline-in-linear-tv-business-as-outlook-fails-to-impress-200422037.html",
+      "text_sample": "Disney (DIS) reported fiscal third quarter earnings on Wednesday that beat expectations, driven by continued strength in its domestic parks business and a year-over-year swing to profitability in its…...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/disney-stock-slides-amid-sharp-decline-in-linear-tv-business-tepid-outlook-143015143.html",
+      "text_sample": "Disney (DIS) reported fiscal third quarter earnings on Wednesday that beat expectations, driven by continued strength in its domestic parks business and a year-over-year swing to profitability in its…...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/disney-raises-profit-outlook-as-parks-streaming-fuel-q3-earnings-beat--but-investor-caution-lingers-133310976.html",
+      "text_sample": "Disney (DIS) reported fiscal third quarter earnings on Wednesday that beat expectations, driven by continued strength in its domestic parks business and a year-over-year swing to profitability in its…...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/carolinereid/2025/08/07/the-23-billion-sparkle-abu-dhabi-could-have-on-disney/",
+      "text_sample": "Bob Iger announces the launch of Disneyland Abu Dhabi, with Miral group CEO Mohamed Al Zaabi, Miral chairman, Mohamed Al Mubarak, and chairman of Disney Experiences, Josh DAmaro\r\nMiral\r\nDisneys upcom…...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/jjkinahan/2025/08/06/small-caps-rally-disney-expands-streaming-tech-stocks-face-pressure/",
+      "text_sample": "ESPN will add to its NFL presence by purchasing the NFL Network. ESPN's parent company, Disney, made the announcement Tuesday. (Perry Knotts/Getty Images)\r\nGetty Images\r\nKey Takeaways\r\n<ul><li>Small …...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/disney-hulu-fully-integrated-new-app-2026-2025-8",
+      "text_sample": "Disney Plus ranks among the best streaming services we've tested.Photo Illustration by Thomas Fuller/SOPA Images/LightRocket via Getty Images\r\n<ul><li>Disney is fully integrating Hulu into Disney+.</…...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "DIS (Walt Disney Co.)",
+    "query_type": "Communication Services",
+    "entities_detected": [
+      "Disney",
+      "Chars",
+      "Earnings",
+      "Year",
+      "Walt",
+      "Company",
+      "Stock",
+      "Business",
+      "Images",
+      "Wednesday"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 15 related sources",
+        "relevance": "high",
+        "source_count": 15
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "53.2%",
+      "source_diversity": "6 different source types",
+      "temporal_coverage": "Analysis spans 11 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.11002078341194943,
+      "sentiment": 0.07648655977975694,
+      "unit_count": 2,
+      "representative_text": "By STAN CHOE, Associated Press Business Writers\r\nNEW YORK (AP) Wall Street is holding relatively steady on Wednesday following a mixed set of profit r...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.7396103896103896,
+      "sources": [
+        "www.bostonherald.com",
+        "www.investopedia.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.0700876022664756,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Disney (DIS) reported fiscal third quarter earnings on Wednesday that beat expectations, driven by continued strength in its domestic parks business a...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.7152534562211982,
+      "sources": [
+        "finance.yahoo.com",
+        "www.forbes.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.06582347524315628,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "We recently published 10 Stocks Jim Cramer Discussed As He Blasted Chinas Hostility Towards The US. The Walt Disney Company (NYSE:DIS) is one of the s...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6627232142857142,
+      "sources": [
+        "finance.yahoo.com",
+        "www.barchart.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.013643261508347127,
+      "max": 0.05646519754503931,
+      "mean": 0.026337649659079296,
+      "std": 0.013751080225089266
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 15,
+      "high_source_units": 0,
+      "low_toxicity_units": 15
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.14292643997202495,
+      "gini_coefficient": 0.4612447841701425
+    }
+  }
+}

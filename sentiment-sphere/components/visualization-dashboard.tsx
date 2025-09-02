@@ -82,13 +82,13 @@ export function VisualizationDashboard({
     setMounted(true)
   }, [])
 
-  // Extract emotion data or use defaults
-  const emotions = analysisData.emotions || generateEmotionsFromSentiment(analysisData.sentiment?.score || 0)
+  // Use only provided emotions; no synthetic fallbacks
+  const emotions = analysisData.emotions || []
   
-  // Prepare keywords data
-  const keywords = analysisData.keywords || generateKeywordsFromTopics(analysisData.metadata?.topics)
+  // Use only provided keywords; no synthetic fallbacks
+  const keywords = analysisData.keywords || []
   
-  // Prepare time series data
+  // Use only provided time series data; no synthetic fallbacks
   const timeSeriesData = analysisData.timeSeriesData || []
 
   if (!mounted) return null
@@ -112,7 +112,13 @@ export function VisualizationDashboard({
           title="Emotion Analysis" 
           subtitle="Emotional dimensions expressed in content"
         >
-          <EmotionRadarChart emotions={emotions} height={300} />
+          {emotions.length > 0 ? (
+            <EmotionRadarChart emotions={emotions} height={300} />
+          ) : (
+            <div className="w-full h-[300px] flex items-center justify-center text-gray-400">
+              No emotion data available
+            </div>
+          )}
         </DashboardPanel>
         
         {/* Keyword Treemap */}
@@ -120,76 +126,16 @@ export function VisualizationDashboard({
           title="Key Topics & Themes" 
           subtitle="Important keywords sized by frequency"
         >
-          <KeywordTreemap keywords={keywords} height={300} />
+          {keywords.length > 0 ? (
+            <KeywordTreemap keywords={keywords} height={300} />
+          ) : (
+            <div className="w-full h-[300px] flex items-center justify-center text-gray-400">
+              No keyword data available
+            </div>
+          )}
         </DashboardPanel>
       </DashboardLayout>
     </div>
   )
 }
-
-// Helper function to generate mock emotion data based on sentiment score
-function generateEmotionsFromSentiment(sentimentScore: number) {
-  // Default base values
-  const emotions = [
-    { emotion: 'Joy', score: 0.2 },
-    { emotion: 'Trust', score: 0.3 },
-    { emotion: 'Fear', score: 0.1 },
-    { emotion: 'Surprise', score: 0.15 },
-    { emotion: 'Sadness', score: 0.1 },
-    { emotion: 'Disgust', score: 0.05 },
-    { emotion: 'Anger', score: 0.05 },
-    { emotion: 'Anticipation', score: 0.25 },
-  ]
-  
-  // Adjust based on sentiment score (-1 to 1)
-  if (sentimentScore > 0) {
-    // More positive sentiment increases joy, trust, anticipation
-    emotions[0].score += sentimentScore * 0.4 // Joy
-    emotions[1].score += sentimentScore * 0.3 // Trust
-    emotions[7].score += sentimentScore * 0.2 // Anticipation
-    
-    // Decrease negative emotions
-    emotions[2].score = Math.max(0.05, emotions[2].score - sentimentScore * 0.2) // Fear
-    emotions[4].score = Math.max(0.05, emotions[4].score - sentimentScore * 0.2) // Sadness
-    emotions[5].score = Math.max(0.05, emotions[5].score - sentimentScore * 0.2) // Disgust
-    emotions[6].score = Math.max(0.05, emotions[6].score - sentimentScore * 0.2) // Anger
-  } else if (sentimentScore < 0) {
-    // More negative sentiment increases sadness, fear, anger, disgust
-    emotions[2].score -= sentimentScore * 0.3 // Fear
-    emotions[4].score -= sentimentScore * 0.3 // Sadness
-    emotions[5].score -= sentimentScore * 0.2 // Disgust
-    emotions[6].score -= sentimentScore * 0.3 // Anger
-    
-    // Decrease positive emotions
-    emotions[0].score = Math.max(0.05, emotions[0].score + sentimentScore * 0.3) // Joy
-    emotions[1].score = Math.max(0.05, emotions[1].score + sentimentScore * 0.2) // Trust
-    emotions[7].score = Math.max(0.05, emotions[7].score + sentimentScore * 0.2) // Anticipation
-  }
-  
-  // Normalize so the sum equals 1
-  const total = emotions.reduce((sum, e) => sum + e.score, 0)
-  return emotions.map(e => ({ ...e, score: e.score / total }))
-}
-
-// Helper function to generate keyword data from topics
-function generateKeywordsFromTopics(topics?: string[]) {
-  if (!topics || topics.length === 0) {
-    return []
-  }
-  
-  // Convert topics to keyword data
-  return topics.map((topic, index) => {
-    // Frequency decreases with index (first topics are more important)
-    const frequency = 100 - (index * 10)
-    
-    // Randomly assign sentiment
-    const sentiments: Array<'positive' | 'neutral' | 'negative'> = ['positive', 'neutral', 'negative']
-    const sentiment = sentiments[Math.floor(Math.random() * sentiments.length)]
-    
-    return {
-      keyword: topic,
-      frequency: Math.max(10, frequency), // Ensure minimum frequency of 10
-      sentiment
-    }
-  })
-} 
+// Note: All mock/synthetic generators removed for production correctness

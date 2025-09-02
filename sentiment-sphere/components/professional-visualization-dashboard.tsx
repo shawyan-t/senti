@@ -84,13 +84,20 @@ export function ProfessionalVisualizationDashboard({
     <div className={`mt-12 ${className}`}>
       <h3 className="text-2xl font-bold text-emerald-400 mb-6">Professional Financial Sentiment Dashboard</h3>
       
+      {/* Missing data banner */}
+      {(!visualizations || Object.keys(visualizations).length === 0) && (
+        <div className="mb-4 p-3 rounded bg-amber-900/30 text-amber-300 border border-amber-700/40">
+          No visualization data available. Data sources may be incomplete.
+        </div>
+      )}
+
       <div className="space-y-8">
         {/* Executive Overview Section */}
         <div>
           <h4 className="text-xl font-semibold text-emerald-300 mb-4">📊 Executive Overview</h4>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Sentiment Index */}
-            {visualizations.sentiment_index && (
+            {visualizations.sentiment_index ? (
               <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
@@ -102,10 +109,14 @@ export function ProfessionalVisualizationDashboard({
                   height={350}
                 />
               </div>
+            ) : (
+              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+                No Sentiment Index data available
+              </div>
             )}
 
             {/* Polarity Distribution */}
-            {visualizations.polarity_distribution && (
+            {visualizations.polarity_distribution ? (
               <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
@@ -117,10 +128,14 @@ export function ProfessionalVisualizationDashboard({
                   height={350}
                 />
               </div>
+            ) : (
+              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+                No polarity distribution data available
+              </div>
             )}
 
             {/* VAD Compass */}
-            {visualizations.vad_compass && (
+            {visualizations.vad_compass ? (
               <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
@@ -132,6 +147,10 @@ export function ProfessionalVisualizationDashboard({
                   height={400}
                 />
               </div>
+            ) : (
+              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+                No VAD data available
+              </div>
             )}
           </div>
         </div>
@@ -141,7 +160,7 @@ export function ProfessionalVisualizationDashboard({
           <h4 className="text-xl font-semibold text-emerald-300 mb-4">🔍 Source Analysis</h4>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Source Quality Matrix */}
-            {visualizations.source_quality && (
+            {visualizations.source_quality ? (
               <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
@@ -153,10 +172,14 @@ export function ProfessionalVisualizationDashboard({
                   height={300}
                 />
               </div>
+            ) : (
+              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+                No source quality data available
+              </div>
             )}
 
             {/* Sentiment Timeline */}
-            {visualizations.sentiment_timeline && (
+            {visualizations.sentiment_timeline ? (
               <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
@@ -167,6 +190,10 @@ export function ProfessionalVisualizationDashboard({
                   chartData={visualizations.sentiment_timeline.chart_data} 
                   height={350}
                 />
+              </div>
+            ) : (
+              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+                No timeline data available
               </div>
             )}
           </div>

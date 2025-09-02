@@ -1,0 +1,197 @@
+{
+  "id": "f5b73db0-c894-42db-8fca-3ef133485f57",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "MCD",
+  "timestamp": "2025-09-01T20:10:10.593099",
+  "enhanced_summary": "Comprehensive analysis of 1 content units with 88.1% confidence. Sentiment: -0.024 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 1,
+    "average_recency_weight": 0.999999950584492
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": -0.023529411764705882,
+      "confidence_interval": [
+        -0.07058823529411765,
+        0.0
+      ],
+      "statistical_significance": 0.626099033699941
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.0,
+        "textblob_score": 0.0,
+        "afinn_score": -0.11764705882352941,
+        "consensus": -0.0392156862745098
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": -0.023529411764705882
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.3202101277442413,
+      "polarization_index": 0.047058823529411764,
+      "model_agreement": 0.9529411764705882
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.047058823529411764,
+    "polarity_breakdown": {
+      "positive": 0.114,
+      "negative": 0.171,
+      "neutral": 0.715,
+      "wilson_ci": {
+        "positive": [
+          0.013882352941176512,
+          0.21388235294117652
+        ],
+        "negative": [
+          0.07082352941176473,
+          0.27082352941176474
+        ],
+        "neutral": [
+          0.6152941176470588,
+          0.8152941176470587
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.999999950584492,
+    "novelty_score": 0.9411764705882353,
+    "total_evidence_weight": 0.2286974093088979
+  },
+  "vad_analysis": {
+    "valence": 0.488,
+    "arousal": 0.361,
+    "dominance": 0.4
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 1,
+  "recent_developments_identified": 1,
+  "source_citations": [
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n02bqo/trump_and_rfk_jr_to_ban_covid19_vaccine_within/",
+      "text_sample": "https://www.thedailybeast.com/donald-trump-and-robert-f-kennedy-junior-to-ban-covid-19-vaccine-within-months/\n\n> The Trump administration will move to pull the COVID vaccine off the U.S. market “withi",
+      "contribution_weight": "100.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "MCD (McDonald's Corporation)",
+    "query_type": "Consumer Cyclical",
+    "entities_detected": [
+      "Vaccine",
+      "Covid",
+      "Kennedy",
+      "Trump",
+      "Within",
+      "Months",
+      "Told",
+      "Malhotra",
+      "Within Months",
+      "Daily Beast"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 1 related sources",
+        "relevance": "high",
+        "source_count": 1
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "95.3%",
+      "source_diversity": "1 different source types",
+      "temporal_coverage": "Analysis spans 1 days",
+      "data_quality": "low"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.2286974093088979,
+      "sentiment": 0.0,
+      "unit_count": 1,
+      "representative_text": "https://www.thedailybeast.com/donald-trump-and-robert-f-kennedy-junior-to-ban-covid-19-vaccine-within-months/\n\n> The Trump administration will move to...",
+      "why_important": [
+        "very recent ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.999999950584492,
+      "avg_quality": 0.7352941176470588,
+      "sources": [
+        "reddit.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.2286974093088979,
+      "max": 0.2286974093088979,
+      "mean": 0.2286974093088979,
+      "std": 0.0
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 1,
+      "high_source_units": 0,
+      "low_toxicity_units": 1
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 1.0,
+      "gini_coefficient": 0.0
+    }
+  }
+}

@@ -1,0 +1,329 @@
+{
+  "id": "becaf7e4-b683-4f23-9a14-7ce403d32cca",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "MSFT",
+  "timestamp": "2025-09-01T16:58:18.416117",
+  "enhanced_summary": "Comprehensive analysis of 15 content units with 87.2% confidence. Sentiment: 0.387 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 15,
+    "average_recency_weight": 0.2799524102640833
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.38690353560893387,
+      "confidence_interval": [
+        0.05292088074167721,
+        0.74124
+      ],
+      "statistical_significance": 0.8735877587175358
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9854,
+        "textblob_score": 0.1336309523809524,
+        "afinn_score": 0.06548672566371681,
+        "consensus": 0.3948392260148898
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.38690353560893387
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2631282029312887,
+      "polarization_index": 0.40179277577849193,
+      "model_agreement": 0.5982072242215081
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.40179277577849193,
+    "polarity_breakdown": {
+      "positive": 0.655,
+      "negative": 0.111,
+      "neutral": 0.234,
+      "wilson_ci": {
+        "positive": [
+          0.5547614142435736,
+          0.7547614142435736
+        ],
+        "negative": [
+          0.011309646439106591,
+          0.2113096464391066
+        ],
+        "neutral": [
+          0.1339289393173198,
+          0.3339289393173198
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.2799524102640833,
+    "novelty_score": 0.8985335437228525,
+    "total_evidence_weight": 0.3696506876780274
+  },
+  "vad_analysis": {
+    "valence": 0.693,
+    "arousal": 0.47,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 15,
+  "recent_developments_identified": 15,
+  "source_citations": [
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/microsoft-corporation-msft-shares-acquired-by-apollon-financial-llc/",
+      "text_sample": "Apollon Financial LLC boosted its stake in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 1.9% in the first quarter, HoldingsChannel reports. The firm owned 35,616 shares of the software giant’s...",
+      "contribution_weight": "100.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/microsoft-corporation-nasdaqmsft-shares-sold-by-stonebridge-financial-group-llc/",
+      "text_sample": "Stonebridge Financial Group LLC lowered its position in shares of Microsoft Corporation (NASDAQ:MSFT – Free Report) by 2.2% in the first quarter, according to its most recent Form 13F filing with the ...",
+      "contribution_weight": "90.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/microsoft-corporation-msft-shares-purchased-by-catalyst-financial-partners-llc/",
+      "text_sample": "Catalyst Financial Partners LLC boosted its position in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 2.9% in the first quarter, according to its most recent disclosure with the Securities and ...",
+      "contribution_weight": "80.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/microsoft-corporation-msft-shares-sold-by-quattro-financial-advisors-llc/",
+      "text_sample": "Quattro Financial Advisors LLC lessened its holdings in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 50.9% in the 1st quarter, according to the company in its most recent 13F filing with the S...",
+      "contribution_weight": "70.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/outfitter-financial-llc-reduces-stake-in-microsoft-corporation-msft/",
+      "text_sample": "Outfitter Financial LLC cut its holdings in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 4.7% in the 1st quarter, according to the company in its most recent filing with the Securities and Exc...",
+      "contribution_weight": "60.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/18/strategic-financial-concepts-llc-increases-stake-in-microsoft-corporation-msft/",
+      "text_sample": "Strategic Financial Concepts LLC lifted its position in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 5.0% during the 1st quarter, according to its most recent disclosure with the SEC. The fund...",
+      "contribution_weight": "50.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/08/microsoft-corporation-nasdaqmsft-shares-sold-by-nadler-financial-group-inc/",
+      "text_sample": "Nadler Financial Group Inc. trimmed its position in shares of Microsoft Corporation (NASDAQ:MSFT – Free Report) by 8.2% in the first quarter, HoldingsChannel.com reports. The fund owned 28,253 shares ...",
+      "contribution_weight": "40.0%",
+      "recency": "17 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/11/microsoft-corporation-nasdaqmsft-shares-bought-by-convergence-financial-llc/",
+      "text_sample": "Convergence Financial LLC lifted its stake in shares of Microsoft Corporation (NASDAQ:MSFT – Free Report) by 3.0% during the first quarter, according to the company in its most recent disclosure with ...",
+      "contribution_weight": "30.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/microsoft-corporation-nasdaqmsft-shares-bought-by-root-financial-partners-llc/",
+      "text_sample": "Root Financial Partners LLC boosted its stake in shares of Microsoft Corporation (NASDAQ:MSFT – Free Report) by 50.5% during the first quarter, according to its most recent Form 13F filing with the SE...",
+      "contribution_weight": "20.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/03/microsoft-corporation-nasdaqmsft-is-woodtrust-financial-corps-7th-largest-position/",
+      "text_sample": "WoodTrust Financial Corp increased its stake in shares of Microsoft Corporation (NASDAQ:MSFT – Free Report) by 2.9% in the first quarter, according to its most recent Form 13F filing with the SEC. The...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4mk1t/whats_your_highest_earning_stock_ever/",
+      "text_sample": "What has been your highest earning stock investment ever? Please share the stock ticker, the price you bought it at back then vs what it trades at now, and roughly how much profit you made from it. I ",
+      "contribution_weight": "10.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n2ccop/what_to_have_invested_in_one_stock/",
+      "text_sample": "Hi all. About ten years ago when I was still a college student, my family member, who was a financial advisor, invested some of my money for me in various stocks. He invested my money for a few years,",
+      "contribution_weight": "10.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4ymkz/sunday_discussion_single_stock_portfolio/",
+      "text_sample": "The market is closed and everyone is out on the long holiday, \n\nImagine that you must close all positions in your portfolio, buy only one company shares, and hold it tight for the next 20 years. What ",
+      "contribution_weight": "10.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2ndkr/nvidias_top_two_mystery_customers_made_up_39_of/",
+      "text_sample": "https://www.cnbc.com/2025/08/28/nvidias-top-two-mystery-customers-made-up-39percent-of-its-q2-revenue-.html\n\n> Two Nvidia customers made up 39% of Nvidia’s revenue in its July quarter, the company rev",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mwjnr5/mag_7_ai_deals_are_creating_zombie_startups_you/",
+      "text_sample": "https://www.cnbc.com/2025/08/19/how-ai-zombie-deals-work-meta-google.html\n\n> Jeff Wang got a big promotion last month. There were lots of tears, but not the happy kind. The 39-year-old was unexpectedl",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "MSFT (Microsoft Corporation)",
+    "query_type": "Technology",
+    "entities_detected": [
+      "Microsoft",
+      "Msft",
+      "Financial",
+      "Microsoft Corporation",
+      "Corporation",
+      "Shares",
+      "Nasdaq",
+      "Quarter",
+      "Company",
+      "Stock"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 15 related sources",
+        "relevance": "high",
+        "source_count": 15
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "59.8%",
+      "source_diversity": "2 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.0843712928673554,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Quattro Financial Advisors LLC lessened its holdings in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 50.9% in the 1st quarter, according to th...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2839397145550653,
+      "avg_quality": 0.7161585365853659,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.06979993914794916,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Apollon Financial LLC boosted its stake in Microsoft Corporation (NASDAQ:MSFT – Free Report) by 1.9% in the first quarter, HoldingsChannel reports. Th...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.7109451219512195,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_4",
+      "weight": 0.06287779673361664,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "WoodTrust Financial Corp increased its stake in shares of Microsoft Corporation (NASDAQ:MSFT – Free Report) by 2.9% in the first quarter, according to...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4257195179012091,
+      "avg_quality": 0.6976744186046512,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.009305098561812296,
+      "max": 0.05187877385128165,
+      "mean": 0.024643379178535155,
+      "std": 0.012582925007302233
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 15,
+      "high_source_units": 0,
+      "low_toxicity_units": 15
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.14034540061905426,
+      "gini_coefficient": 0.4337158695838321
+    }
+  }
+}

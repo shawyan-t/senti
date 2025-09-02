@@ -1,0 +1,324 @@
+{
+  "id": "24ece30a-5b48-48f9-99b7-739d98a18943",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "MS",
+  "timestamp": "2025-09-01T19:17:54.756193",
+  "enhanced_summary": "Comprehensive analysis of 14 content units with 87.4% confidence. Sentiment: 0.316 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 14,
+    "average_recency_weight": 0.24596564296212486
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.3160663406069727,
+      "confidence_interval": [
+        0.07868823676950089,
+        0.6585000000000001
+      ],
+      "statistical_significance": 0.8510988430538688
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9975,
+        "textblob_score": 0.17222222222222225,
+        "afinn_score": 0.11060948081264109,
+        "consensus": 0.42677723434495446
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.3160663406069727
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2739911294958253,
+      "polarization_index": 0.3542348211989861,
+      "model_agreement": 0.6457651788010139
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3542348211989861,
+    "polarity_breakdown": {
+      "positive": 0.626,
+      "negative": 0.118,
+      "neutral": 0.255,
+      "wilson_ci": {
+        "positive": [
+          0.5264265362427891,
+          0.7264265362427891
+        ],
+        "negative": [
+          0.018393365939302714,
+          0.21839336593930272
+        ],
+        "neutral": [
+          0.15518009781790817,
+          0.35518009781790816
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.24596564296212486,
+    "novelty_score": 0.9241416931275231,
+    "total_evidence_weight": 0.41054852840313094
+  },
+  "vad_analysis": {
+    "valence": 0.658,
+    "arousal": 0.448,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 2,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 14,
+  "recent_developments_identified": 14,
+  "source_citations": [
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33951573/morgan-stanley-stock-is-wall-street-bullish-or-bearish",
+      "text_sample": "As Morgan Stanley outshines the broader market, Wall Street appears optimistic about the stock’s prospects.",
+      "contribution_weight": "100.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-lowers-pt-equitable-152931643.html",
+      "text_sample": "Equitable Holdings, Inc. (NYSE:EQH) is one of the best cheap strong buy stocks to buy now. On August 18, Morgan Stanley lowered the firm’s price target on...",
+      "contribution_weight": "90.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-hikes-leonardo-drs-002907076.html",
+      "text_sample": "Leonardo DRS, Inc. (NASDAQ:DRS) is among the 11 Best Large Cap Defense Stocks to Buy According to Analysts. On July 31, Morgan Stanley analyst Kristine Liwag...",
+      "contribution_weight": "80.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-lifts-pt-charles-014349822.html",
+      "text_sample": "The Charles Schwab Corporation (NYSE:SCHW) is one of the best stocks to invest in for beginners. On July 29, Morgan Stanley lifted the firm’s price target on...",
+      "contribution_weight": "70.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-says-bull-market-095642443.html",
+      "text_sample": "Despite recent economic headwinds, a resilient corporate earnings backdrop and better-than-feared data offer some optimism. Still, with July’s weak jobs...",
+      "contribution_weight": "60.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-reaffirms-buy-rating-072816623.html",
+      "text_sample": "With strong revenue growth and significant hedge fund interest, Intuit Inc. (NASDAQ:INTU) secures a spot on our list of the 14 Best IT Stocks to Buy for the ...",
+      "contribution_weight": "50.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "www.pymnts.com",
+      "url": "http://www.pymnts.com/news/fintech-investments/2025/daloopa-raises-18-million-dollars-ai-driven-financial-data-platform/",
+      "text_sample": "Daloopa, a company using artificial intelligence to enhance financial data, raised $18 million in a Series B funding round. [contact-form-7] The funding will help Daloopa build solutions to “improve t...",
+      "contribution_weight": "40.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/23/cresset-asset-management-llc-boosts-stake-in-broadridge-financial-solutions-inc-br/",
+      "text_sample": "Cresset Asset Management LLC lifted its position in shares of Broadridge Financial Solutions, Inc. (NYSE:BR – Free Report) by 1.8% during the 1st quarter, HoldingsChannel reports. The fund owned 2,820...",
+      "contribution_weight": "30.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/03/citizens-financial-group-nysecfg-stock-rating-upgraded-by-jpmorgan-chase-co/",
+      "text_sample": "Citizens Financial Group (NYSE:CFG – Get Free Report) was upgraded by analysts at JPMorgan Chase & Co. from a “neutral” rating to an “overweight” rating in a research note issued to investors on Frida...",
+      "contribution_weight": "20.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/traders-fleeing-stocks-feared-under-130001182.html",
+      "text_sample": "(Bloomberg) -- Artificial intelligence’s imprint on US financial markets is unmistakable. Nvidia Corp. is the most valuable company in the world at nearly...",
+      "contribution_weight": "10.0%",
+      "recency": "17 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/16/atria-wealth-solutions-inc-decreases-stock-holdings-in-broadridge-financial-solutions-inc-nysebr/",
+      "text_sample": "Atria Wealth Solutions Inc. cut its position in Broadridge Financial Solutions, Inc. (NYSE:BR – Free Report) by 8.9% in the 1st quarter, according to its most recent disclosure with the Securities and...",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/invesco-ltd-has-2-81-million-stock-position-in-tenaris-s-a-ts/",
+      "text_sample": "Invesco Ltd. lowered its stake in shares of Tenaris S.A. (NYSE:TS – Free Report) by 13.6% during the first quarter, Holdings Channel reports. The fund owned 71,791 shares of the industrial products co...",
+      "contribution_weight": "10.0%",
+      "recency": "22 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mypdyp/trying_to_overhaul_my_ira_and_taxable_brokerage/",
+      "text_sample": "I’m looking for a gut-check on a simple plan. I have an IRA (\\~$80k) and a taxable brokerage (\\~$267k) with Morgan Stanley. Both are managed accounts. Right now about 60% of the portfolio equity is ef",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mu2zqa/nvda_cj_muse_an_analyst_at_cantor_fitzgerald/",
+      "text_sample": "C.J. Muse, an analyst at Cantor Fitzgerald, called the demand for AI compute “seemingly insatiable” in a recent note and raised his price target from $200 to $240 on Monday, for one of the highest tar",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "MS (Morgan Stanley)",
+    "query_type": "Financial Services",
+    "entities_detected": [
+      "Morgan",
+      "Stanley",
+      "Chars",
+      "Financial",
+      "Nyse",
+      "Stocks",
+      "Price",
+      "Target",
+      "Solutions",
+      "Morgan Stanley"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 14 related sources",
+        "relevance": "high",
+        "source_count": 14
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "64.6%",
+      "source_diversity": "5 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.09478519348846812,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Equitable Holdings, Inc. (NYSE:EQH) is one of the best cheap strong buy stocks to buy now. On August 18, Morgan Stanley lowered the firm’s price targe...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.21982551352138185,
+      "avg_quality": 0.7144444444444445,
+      "sources": [
+        "www.barchart.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.08796310547036465,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Daloopa, a company using artificial intelligence to enhance financial data, raised $18 million in a Series B funding round. [contact-form-7] The fundi...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.31218641438154104,
+      "avg_quality": 0.691025641025641,
+      "sources": [
+        "www.pymnts.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.06276813870519674,
+      "sentiment": 0.06898512344200286,
+      "unit_count": 2,
+      "representative_text": "With strong revenue growth and significant hedge fund interest, Intuit Inc. (NASDAQ:INTU) secures a spot on our list of the 14 Best IT Stocks to Buy f...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.23822651781954665,
+      "avg_quality": 0.7393103448275862,
+      "sources": [
+        "finance.yahoo.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.013624679605400826,
+      "max": 0.059961452354092705,
+      "mean": 0.029324894885937928,
+      "std": 0.013991070934624535
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 14,
+      "high_source_units": 0,
+      "low_toxicity_units": 14
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.1460520455092573,
+      "gini_coefficient": 0.48106699532124075
+    }
+  }
+}
