@@ -690,6 +690,26 @@ def create_rolling_sentiment_timeline(analysis_results):
     fig.add_hline(y=0.1, line_dash="dot", line_color="green", opacity=0.3)
     fig.add_hline(y=-0.1, line_dash="dot", line_color="red", opacity=0.3)
     
+    # Compute dynamic y-axis range to improve vertical spacing while respecting bounds
+    try:
+        y_min_raw = float(np.nanmin(df['sentiment'].values))
+        y_max_raw = float(np.nanmax(df['sentiment'].values))
+        y_min = max(-1.1, y_min_raw)
+        y_max = min(1.1, y_max_raw)
+        y_span = max(0.0, y_max - y_min)
+        pad = max(0.05, y_span * 0.2)  # 20% padding, min 0.05
+        y_min = max(-1.1, y_min - pad)
+        y_max = min(1.1, y_max + pad)
+        # Ensure minimum span for readability
+        if (y_max - y_min) < 0.3:
+            extra = (0.3 - (y_max - y_min)) / 2.0
+            y_min = max(-1.1, y_min - extra)
+            y_max = min(1.1, y_max + extra)
+        # Compute a reasonable tick step (~4-5 ticks)
+        y_dtick = max(0.05, round((y_max - y_min) / 5.0, 2))
+    except Exception:
+        y_min, y_max, y_dtick = -1.1, 1.1, 0.5
+    
     fig.update_layout(
         title=dict(
             text="Time",
@@ -732,7 +752,12 @@ def create_rolling_sentiment_timeline(analysis_results):
         ),
         yaxis=dict(
             title="Sentiment Score",
-            range=[-1.1, 1.1],
+            range=[-1, 1],
+            tickmode='array',
+            tickvals=[-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1],
+            ticktext=['-1.00', '-0.75', '-0.50', '-0.25', '0', '0.25', '0.50', '0.75', '1.00'],
+            ticks='outside',
+            ticklen=8,
             showgrid=True,
             gridcolor='lightgray'
         ),

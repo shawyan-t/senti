@@ -57,6 +57,11 @@ export function SentimentTimeline({
 
   const dates = sortedData.map(d => d.date)
   const sentiments = sortedData.map(d => d.sentiment)
+
+  // Fixed y-axis ticks for consistent spacing
+  const yMin = -1
+  const yMax = 1
+  const tickVals = [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1]
   const volumes = sortedData.map(d => d.volume || 0)
 
   // Define traces for the chart
@@ -71,7 +76,7 @@ export function SentimentTimeline({
         color: '#10B981', // Emerald
         width: 3,
         shape: 'spline',
-        smoothing: 1.2
+        smoothing: 1.25
       },
       hoverinfo: 'text',
       text: sortedData.map(d => 
@@ -110,9 +115,10 @@ export function SentimentTimeline({
     },
     yaxis: {
       title: 'Sentiment',
-      range: [-1, 1],
-      tickmode: 'linear' as const,
-      dtick: 0.5,
+      range: [yMin, yMax],
+      tickmode: 'array' as const,
+      tickvals: tickVals,
+      ticktext: tickVals.map(v => v.toFixed(2).replace('-0.00', '0.00')),
       ticks: 'outside' as const,
       ticklen: 8,
       tickcolor: 'rgba(255, 255, 255, 0.3)',
@@ -143,7 +149,7 @@ export function SentimentTimeline({
       pad: 0
     },
     autosize: true,
-    height: Math.max(height, 320),
+    height: Math.max(height, 360),
     paper_bgcolor: 'rgba(0,0,0,0)',
     plot_bgcolor: 'rgba(0,0,0,0)',
     showlegend: false,

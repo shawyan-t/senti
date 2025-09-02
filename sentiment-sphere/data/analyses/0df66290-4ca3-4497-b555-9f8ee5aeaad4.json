@@ -1,0 +1,373 @@
+{
+  "id": "0df66290-4ca3-4497-b555-9f8ee5aeaad4",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "NFLX",
+  "timestamp": "2025-09-01T21:29:30.995676",
+  "enhanced_summary": "Comprehensive analysis of 21 content units with 86.9% confidence. Sentiment: -0.009 (neutral)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9998638523963242,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 21,
+    "average_recency_weight": 0.45291287891555576
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": -0.009259545203856013,
+      "confidence_interval": [
+        -0.42289146041960163,
+        0.2724584819008741
+      ],
+      "statistical_significance": 0.032656565963865236
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": -0.7339,
+        "textblob_score": 0.07321923083159038,
+        "afinn_score": 0.014383043149129448,
+        "consensus": -0.21543257533976004
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": -0.009259545203856013
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.1657890984574197,
+      "polarization_index": 0.425146666882592,
+      "model_agreement": 0.5748533331174079
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.425146666882592,
+    "polarity_breakdown": {
+      "positive": 0.113,
+      "negative": 0.169,
+      "neutral": 0.718,
+      "wilson_ci": {
+        "positive": [
+          0.01274076361630852,
+          0.21274076361630853
+        ],
+        "negative": [
+          0.06911114542446276,
+          0.2691111454244628
+        ],
+        "neutral": [
+          0.6181480909592287,
+          0.8181480909592287
+        ]
+      }
+    },
+    "sarcasm_rate": 0.00013614760367570687,
+    "toxicity_rate": 0.0018818221282793546,
+    "freshness_score": 0.45291287891555576,
+    "novelty_score": 0.9088431774849459,
+    "total_evidence_weight": 0.8035001067436038
+  },
+  "vad_analysis": {
+    "valence": 0.495,
+    "arousal": 0.356,
+    "dominance": 0.4
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 21,
+  "recent_developments_identified": 21,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/netflixs-6-billion-uk-spend-171521982.html",
+      "text_sample": "Netflix (NASDAQ:NFLX) stock traded higher on Friday, backed by investor optimism over its U.K. financial arms results and FIFA Womens World Cup deal win.\r\nThe streaming giants U.K. unit grew revenue …...",
+      "contribution_weight": "100.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/jump-financial-llc-has-869000-stake-in-netflix-inc-nflx/",
+      "text_sample": "Jump Financial LLC trimmed its position in shares of Netflix, Inc. (NASDAQ:NFLX – Free Report) by 95.7% during the first quarter, according to its most recent disclosure with the Securities &amp; Exc…...",
+      "contribution_weight": "90.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/af067ae4b9cf6f43",
+      "text_sample": "On CNBC's Halftime Report Final Trades, Blue Line Capitals Bill Baruch named Netflix, Inc. (NASDAQ:NFLX) as his final trade.On the earnings front, Netflix, on July 17, reported upbeat second-quarter …...",
+      "contribution_weight": "80.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/25/netflix-inc-nasdaqnflx-receives-1297-66-average-pt-from-brokerages/",
+      "text_sample": "Shares of Netflix, Inc. (NASDAQ:NFLX – Get Free Report) have been assigned a consensus rating of “Moderate Buy” from the thirty-six brokerages that are presently covering the stock, MarketBeat.com re…...",
+      "contribution_weight": "70.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/06/intrust-bank-na-has-3-13-million-position-in-netflix-inc-nasdaqnflx/",
+      "text_sample": "Intrust Bank NA raised its position in shares of Netflix, Inc. (NASDAQ:NFLX – Free Report) by 4.2% during the 1st quarter, Holdings Channel.com reports. The firm owned 3,361 shares of the Internet te…...",
+      "contribution_weight": "60.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/27/netflix-nasdaqnflx-stock-price-up-1-6-after-analyst-upgrade/",
+      "text_sample": "Netflix, Inc. (NASDAQ:NFLX – Get Free Report)’s share price was up 1.6% during trading on Monday after Wall Street Zen upgraded the stock from a hold rating to a buy rating. The company traded as hig…...",
+      "contribution_weight": "50.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/netflix-nasdaqnflx-downgraded-by-wall-street-zen-to-hold/",
+      "text_sample": "Wall Street Zen cut shares of Netflix (NASDAQ:NFLX – Free Report) from a buy rating to a hold rating in a report released on Saturday morning.\r\nOther analysts also recently issued research reports ab…...",
+      "contribution_weight": "40.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/netflix-nasdaqnflx-downgraded-to-hold-rating-by-wall-street-zen/",
+      "text_sample": "Netflix (NASDAQ:NFLX – Get Free Report) was downgraded by research analysts at Wall Street Zen from a “buy” rating to a “hold” rating in a research note issued on Saturday.\r\nSeveral other analysts ha…...",
+      "contribution_weight": "30.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/23/netflix-nasdaqnflx-raised-to-buy-at-wall-street-zen/",
+      "text_sample": "Netflix (NASDAQ:NFLX – Get Free Report) was upgraded by analysts at Wall Street Zen from a “hold” rating to a “buy” rating in a research note issued on Friday.\r\nNFLX has been the subject of several o…...",
+      "contribution_weight": "20.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/jim-cramer-netflix-very-highly-170128722.html",
+      "text_sample": "Netflix, Inc. (NASDAQ:NFLX) is one of the stocks Jim Cramer put under the spotlight. When a caller highlighted that the stock is receiving some hate despite the fundamentals looking good after the re…...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/signal-buy-dip-netflix-stock-190246878.html",
+      "text_sample": "Streaming stock Netflix Inc (NASDAQ:NFLX) has cooled off from its July 30 record high of $1,341,15, last seen trading at $1,225.62. Those betting on a short-term comeback are in luck; the recent dip …...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33988282/netflix-stock-is-wall-street-bullish-or-bearish",
+      "text_sample": "Los Gatos, California-based Netflix, Inc. (NFLX) is a provider of entertainment services. It offers TV series, documentaries, and feature films across various genres and languages. With a market cap …...",
+      "contribution_weight": "10.0%",
+      "recency": "24 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/netflix-nflx-surged-multiple-tailwinds-125322756.html",
+      "text_sample": "RiverPark Advisors, an investment advisory firm and sponsor of the RiverPark family of mutual funds, released its RiverPark Large Growth Fund Q2 2025 investor letter. A copy of the letter can be down…...",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33925052/netflix-stock-hasnt-gone-anywhere-in-3-months-how-should-you-play-nflx-here",
+      "text_sample": "While Netflix stock (NFLX) outperformed the market and the broader tech space in the first four months of the year, it has since lost momentum. The stock has gained just about 1.7% over the last thre…...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/netflix-nflx-secures-broadcasting-rights-142032301.html",
+      "text_sample": "Netflix, Inc. (NASDAQ:NFLX) is one of the Good Stocks to Invest in Now. On August 8, Netflix, Inc. (NASDAQ:NFLX) announced that it has secured official broadcasting rights for the FIFA Womens World C…...",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/29/netflix-stock-worth-the-risk-at-1200/",
+      "text_sample": "Binary code displayed on a laptop screen displayed on a laptop screen and Netflix logo displayed on a phone screen are seen in this illustration photo taken in Krakow, Poland on August 8, 2025. (Phot…...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/0335da91f960a541",
+      "text_sample": "Shares of Netflix Inc (NASDAQ:NFLX) are trading lower Tuesday afternoon, despite a lack of company specific news for the session. Heres what investors need to know.What To Know: The stock is potentia…...",
+      "contribution_weight": "10.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "My 8yo is destroying my returns and beating the S&P\nFour years ago my 4yo daughter (now 8yo) started her UGMA account with just $200 and added $50/month. Today her account is worth $4,535.56, up +44.9...",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/netflix/comments/1mw700m/the_most_binge_worthy_netflix_show_or_movie_youve/",
+      "text_sample": "The most binge worthy Netflix show or movie you’ve ever watched\nYou ever start a show or movie on Netflix thinking you’ll just watch one episode, then suddenly it’s 3am and you’ve watched the whole th...",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/netflix/comments/1n10zec/anyone_else_having_trouble_navigating_netflix/",
+      "text_sample": "Anyone else having trouble navigating Netflix?\nsome shows work and some shows don't even load the episode grid. It's like they play from the preview. The whole service just seems to be melting down an...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/netflix/comments/1mv1iic/had_this_gem_of_an_interaction_with_a_netflix_rep/",
+      "text_sample": "Had this gem of an interaction with a Netflix rep. I called for support and he ended up cancelling my account.\nSome of the messages were cut out for privacy. If parts of the conversation doesn't make ...",
+      "contribution_weight": "10.0%",
+      "recency": "12 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "NFLX (Netflix Inc.)",
+    "query_type": "Communication Services",
+    "entities_detected": [
+      "Netflix",
+      "Nflx",
+      "Nasdaq",
+      "Chars",
+      "Stock",
+      "Rating",
+      "Report",
+      "Just",
+      "Account",
+      "Wall"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 21 related sources",
+        "relevance": "high",
+        "source_count": 21
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between 4 different sentiment models",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "57.5%",
+      "source_diversity": "6 different source types",
+      "temporal_coverage": "Analysis spans 26 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.250376273474284,
+      "sentiment": 0.017630607344717737,
+      "unit_count": 2,
+      "representative_text": "Jump Financial LLC trimmed its position in shares of Netflix, Inc. (NASDAQ:NFLX – Free Report) by 95.7% during the first quarter, according to its mos...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5023343631559304,
+      "avg_quality": 0.7264705882352942,
+      "sources": [
+        "finance.yahoo.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.11867792013822445,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Shares of Netflix, Inc. (NASDAQ:NFLX – Get Free Report) have been assigned a consensus rating of “Moderate Buy” from the thirty-six brokerages that ar...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.26885679997014944,
+      "avg_quality": 0.6984375,
+      "sources": [
+        "www.etfdailynews.com",
+        "biztoc.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.08483669087246151,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Netflix, Inc. (NASDAQ:NFLX – Get Free Report)’s share price was up 1.6% during trading on Monday after Wall Street Zen upgraded the stock from a hold ...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3222599505115106,
+      "avg_quality": 0.7040601503759398,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.010048377158756672,
+      "max": 0.20217247944812083,
+      "mean": 0.03826190984493351,
+      "std": 0.04058801494619239
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 19,
+      "high_source_units": 0,
+      "low_toxicity_units": 21
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.34103698251461395,
+      "gini_coefficient": 0.13454614508783114
+    }
+  }
+}

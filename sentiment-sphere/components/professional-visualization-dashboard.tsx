@@ -169,7 +169,7 @@ export function ProfessionalVisualizationDashboard({
                 <p className="text-sm text-gray-400 mb-4">{visualizations.source_quality.description}</p>
                 <PlotlyChart 
                   chartData={visualizations.source_quality.chart_data} 
-                  height={300}
+                  height={600}
                 />
               </div>
             ) : (
@@ -188,7 +188,7 @@ export function ProfessionalVisualizationDashboard({
                 <p className="text-sm text-gray-400 mb-4">{visualizations.sentiment_timeline.description}</p>
                 <PlotlyChart 
                   chartData={visualizations.sentiment_timeline.chart_data} 
-                  height={350}
+                  height={600}
                 />
               </div>
             ) : (
