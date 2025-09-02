@@ -1,7 +1,0 @@
-{
-  "buildCommand": "cd sentiment-sphere && npm run build",
-  "outputDirectory": "sentiment-sphere/.next",
-  "installCommand": "cd sentiment-sphere && npm install",
-  "framework": "nextjs",
-  "functions": {}
-}
