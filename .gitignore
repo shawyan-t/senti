@@ -69,3 +69,4 @@ yarn-error.log*
 
 # HuggingFace model cache (will auto-download)
 hf_models/
+.vercel

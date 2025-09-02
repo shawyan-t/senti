@@ -1,5 +1,4 @@
-// @ts-expect-error: No types for react-plotly.js
-import Plot from 'react-plotly.js';
+import dynamic from 'next/dynamic'
 import React from 'react';
 import { UMAP } from 'umap-js';
 
@@ -9,6 +8,8 @@ interface UMAP3DScatterProps {
   colors?: string[];
   hovertexts?: string[];
 }
+
+const Plot = dynamic(() => import('./plotly-wrapper'), { ssr: false })
 
 export const UMAP3DScatter: React.FC<UMAP3DScatterProps> = ({ embeddings, labels, colors, hovertexts }) => {
   // Only run UMAP if embeddings are present and have enough dimensions

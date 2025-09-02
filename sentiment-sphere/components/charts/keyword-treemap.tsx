@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { Loader2 } from 'lucide-react'
 
-// Dynamically import Plotly to avoid SSR issues
-const Plot = dynamic(() => import('react-plotly.js'), { 
+// Dynamically import Plotly wrapper (pre-minified Plotly build)
+const Plot = dynamic(() => import('./plotly-wrapper'), {
   ssr: false,
   loading: () => <div className="w-full h-[250px] flex items-center justify-center">
     <Loader2 className="h-8 w-8 text-emerald-500 animate-spin" />

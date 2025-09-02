@@ -1,0 +1,7 @@
+# Exclude non-frontend content from Vercel upload/build context
+api/**
+data/**
+*.log
+**/__pycache__/**
+**/*.pyc
+.DS_Store

@@ -1,0 +1,478 @@
+{
+  "id": "cc4fa927-bd61-448a-b5e0-0db31538eac4",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "VOO",
+  "timestamp": "2025-09-02T03:54:28.869547",
+  "enhanced_summary": "Comprehensive analysis of 35 content units with 86.8% confidence. Sentiment: 0.364 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9957443835028307,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 35,
+    "average_recency_weight": 0.2931662682479566
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.3644282504197211,
+      "confidence_interval": [
+        0.04561931111867881,
+        0.7285114285714286
+      ],
+      "statistical_significance": 0.8634639907007906
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9999,
+        "textblob_score": 0.1306716628895314,
+        "afinn_score": 0.04871244635193133,
+        "consensus": 0.3930947030804876
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.3644282504197211
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2647124028717274,
+      "polarization_index": 0.3920391698579261,
+      "model_agreement": 0.6079608301420739
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3920391698579261,
+    "polarity_breakdown": {
+      "positive": 0.646,
+      "negative": 0.114,
+      "neutral": 0.241,
+      "wilson_ci": {
+        "positive": [
+          0.5457713001678884,
+          0.7457713001678884
+        ],
+        "negative": [
+          0.013557174958027884,
+          0.2135571749580279
+        ],
+        "neutral": [
+          0.1406715248740837,
+          0.3406715248740837
+        ]
+      }
+    },
+    "sarcasm_rate": 0.004255616497169359,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.2931662682479566,
+    "novelty_score": 0.779612717688617,
+    "total_evidence_weight": 0.7201709257952711
+  },
+  "vad_analysis": {
+    "valence": 0.682,
+    "arousal": 0.463,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 35,
+  "recent_developments_identified": 35,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/vanguard-value-etf-simplest-way-082200082.html",
+      "text_sample": "The S&P 500(SNPINDEX: ^GSPC) has historically been a fantastic way to compound wealth -- generating annualized total returns of 9% to 10%. The proliferation of low-cost index funds and exchange-traded...",
+      "contribution_weight": "100.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.cnbc.com",
+      "url": "https://www.cnbc.com/quotes/VOO",
+      "text_sample": "Vanguard S&P 500 ETF VOO:NYSE Arca\nRT Quote | Last NASDAQ LS, VOL From CTA | USD\nLast | 08/29/25 EDT\n593.08-3.44 (-0.58%)\nVolume\n6,961,080\n52 week range\n442.80 - 597.07\n- Open0.00\n- Day High0.00\n- Day...",
+      "contribution_weight": "90.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/consider-vanguard-p-500-etf-082600091.html",
+      "text_sample": "John Bogle, the founder of the Vanguard Group, once told investors: \"Don't look for the needle in the haystack. Just buy the haystack.\" Instead of choosing individual stocks, Bogle believed that it wa...",
+      "contribution_weight": "80.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "advisors.vanguard.com",
+      "url": "https://advisors.vanguard.com/investments/products/voo/vanguard-sp-500-etf",
+      "text_sample": "We're sorry but this webapp doesn't work properly without JavaScript enabled. Please enable it to continue.",
+      "contribution_weight": "70.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "investor.vanguard.com",
+      "url": "https://investor.vanguard.com/investment-products/etfs/profile/voo",
+      "text_sample": "4 days ago ... Vanguard S&P 500 ETF (VOO) - Find objective, share price, performance ... stock trading generally. Performance could be hurt by: Stock market risk: The ...",
+      "contribution_weight": "60.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investopedia.com",
+      "url": "https://www.investopedia.com/the-best-25-sp500-stocks-8778635",
+      "text_sample": "The widely followed Standard & Poor’s 500 Index is the standard by which stock market performance in the U.S. is often measured, as it tracks 500 of the largest and most stable publicly traded compani...",
+      "contribution_weight": "50.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.etftrends.com",
+      "url": "https://www.etftrends.com/making-sense-nvidia-earnings-etf-impact/",
+      "text_sample": "6 days ago ... What we learn today about the company's earnings and forward guidance will impact many metrics. ... For example, the Vanguard S&P 500 ETF (VOO) — the year's most ...",
+      "contribution_weight": "40.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.theglobeandmail.com",
+      "url": "https://www.theglobeandmail.com/investing/markets/stocks/VOO-A/pressreleases/34161133/even-at-an-all-time-high-the-vanguard-sp-500-etf-isn-t-as-expensive-as-it-seems/",
+      "text_sample": "Key Points\nThe S&P 500 has gotten more expensive because of outsized gains in recent years.\nThe index is much more growth-oriented than in the past, which helps justify a higher valuation.\nThe S&P 500...",
+      "contribution_weight": "30.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.morningstar.com",
+      "url": "https://www.morningstar.com/news/accesswire/1060726msn/cspi-generates-18-revenue-growth-during-fy-2025-third-quarter",
+      "text_sample": "CSPi Generates 18% Revenue Growth During FY 2025 Third Quarter\nReports Continued Progress Penetrating AZT PROTECT™ Sales Channels as Managed Services and Cloud-Based Businesses Maintain Growth Traject...",
+      "contribution_weight": "20.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-hls-therapeutics-q2-2025-sees-revenue-decline-stock-gains-93CH-4192535",
+      "text_sample": "Aug 14, 2025 ... Vanguard 500 Index Admiral · Vanguard Total Bond Market II Index Fund Investor ... Our flagship Tech Titans strategy doubled the S&P 500 within 18 months ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.marketwatch.com",
+      "url": "https://www.marketwatch.com/investing/fund/voo",
+      "text_sample": "4 days ago ... VOO | A complete Vanguard S&P 500 ETF exchange traded fund overview by ... Vanguard S&P 500 ETF Sees Positive Fund Flows Amid Tech Sector Highlights.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.etftrends.com",
+      "url": "https://www.etftrends.com/",
+      "text_sample": "4 days ago ... ... Vanguard S&P 500 ETF · QQQ – Invesco QQQ ETF · GLD – SPDR Gold Shares ETF · IVV ... ETF Prime: ETF Trends and Market Insights With J.P. Morgan & Nasdaq. By ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/market-activity/etf/voo",
+      "text_sample": "3 days ago ... Market: Closed. Vanguard S&P 500 ETF (VOO). Volume: 7,512,032. VOO Alerts ×. No updates available. Summary : VOO · Edit my quotes. Breadcrumb. Vanguard S&P 500 ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/etf/voo/",
+      "text_sample": "Vanguard S&P 500 ETF (VOO)\n| Assets | $738.90B |\n| Expense Ratio | 0.03% |\n| PE Ratio | 26.80 |\n| Shares Out | 2.95B |\n| Dividend (ttm) | $6.93 |\n| Dividend Yield | 1.17% |\n| Ex-Dividend Date | Jun 30...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/market-activity/etf/voo/news-headlines",
+      "text_sample": "3 days ago ... Should You Consider Vanguard S&P 500 ETF (VOO) Before the Next Market Shift? 1 day ago • The Motley Fool. Markets. Worried About a Stock Market ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "research.investors.com",
+      "url": "https://research.investors.com/stock-quotes/nyse-vanguard-sandp-500-etf-voo.htm",
+      "text_sample": "STOCK/COMPANY DATA FOR VOO\n- Today's Range\n-\n591.25\n-\n595.55\n- 52-Week Range\n- 442.80\n-\n597.07\n- Price % Chg. Last 4 Weeks\n- 3.59%\n- 50-Day Avg. Volume\n- 6,396,500\n- Shares Outstanding\n- 1191.8 Mil\n- ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "public.com",
+      "url": "https://public.com/stocks/voo",
+      "text_sample": "Buy VOO ETF\nStart investing\nVanguard S&P 500 ETF (VOO)\nOrder type\nBuy in\nOrder amount\nEst. shares\n0 shares\nAbout Vanguard S&P 500 ETF (VOO)\n| AUM | 740.11B |\n| Category | Large Cap |\n| Price / earning...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "247wallst.com",
+      "url": "https://247wallst.com/companies/voo/",
+      "text_sample": "3 days ago ... A fund that mirrors the performance of the S&P 500 Index. It invests in a wide array of sectors, focusing on large-cap companies that show both growth and ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.marketbeat.com",
+      "url": "https://www.marketbeat.com/stocks/NYSEARCA/VOO/chart/",
+      "text_sample": "Vanguard S&P 500 ETF (VOO) Chart & Stock Price History $593.08 -3.44 (-0.58%) Closing price 08/29/2025 04:10 PM EasternExtended Trading$593.08 0.00 (0.00%) As of 08/29/2025 07:59 PM Eastern Extended t...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/prem-watsas-strategic-moves-vanguard-120051929.html",
+      "text_sample": "Exploring Prem Watsa (Trades, Portfolio)'s Latest Investment Decisions in Q2 2025\nPrem Watsa (Trades, Portfolio), a renowned value investor and the driving force behind Fairfax Financial, recently sub...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/prediction-buying-vanguard-p-500-134500299.html",
+      "text_sample": "Key Points\n-\nThe Vanguard S&P 500 ETF tracks the movements of the broad-based index.\n-\nThe popular ETF has historically achieved annual gains of about 10%.\n-\nIf you avoid market timing, you can take a...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/vanguard-p-500-etf-simplest-183200417.html",
+      "text_sample": "The largest growth-focused U.S. companies by market cap are Nvidia (NASDAQ: NVDA), Microsoft(NASDAQ: MSFT), Apple (NASDAQ: AAPL), Amazon(NASDAQ: AMZN), Alphabet(NASDAQ: GOOG)(NASDAQ: GOOGL), Meta Plat...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "fr.finance.yahoo.com",
+      "url": "https://fr.finance.yahoo.com/quote/VOO/performance/",
+      "text_sample": "2 days ago ... NYSEArca - Nasdaq Real Time Price • USD. Vanguard S&P 500 ETF (VOO). Suivre. Ajouter des avoirs. 593,08 -3,44 (-0,58 %). À la clôture : 29 août à 16:00:00 UTC−4.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.reuters.com",
+      "url": "https://www.reuters.com/company/invesco-ltd/",
+      "text_sample": "Aug 7, 2025 ... Vanguard Group's Standard & Poor's 500 ETF is on the edge of finally seizing ... S&P 500 Trust , according to data from FactSet, LSEG and other sources.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.fool.com",
+      "url": "https://www.fool.com/investing/2025/08/07/buying-the-vanguard-sp-500-etf-today-could-set/",
+      "text_sample": "It's easy to assume the only way to build long-term wealth from your investments is by picking individual stocks at the perfect time. In fact, quite the opposite can be true. Millions of investors hav...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.fool.com",
+      "url": "https://www.fool.com/investing/2025/08/30/consider-vanguard-etf-voo-before-market-shift/",
+      "text_sample": "John Bogle, the founder of the Vanguard Group, once told investors: \"Don't look for the needle in the haystack. Just buy the haystack.\" Instead of choosing individual stocks, Bogle believed that it wa...",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/warren-buffett-says-most-investors-074100333.html",
+      "text_sample": "Warren Buffett believes most investors should own an index fund that tracks the S&P 500, which provides exposure to the largest U.S. companies.\nThe S&P 500 has been a money-making investment over ever...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.reddit.com",
+      "url": "https://www.reddit.com/r/ETFs/comments/1mjcjkg/is_there_an_etf_tracking_sp_500_that_is_currently/",
+      "text_sample": "The Exchange-Traded Funds Community and Forum\nI've been waiting for voo to get down to 570 to buy in but doesn't seem like that'll happen, willing to buy something else if it's on a down turn",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.markets.com",
+      "url": "https://www.markets.com/analysis/voo-etf-stock-analysis-what-is-the-outlook-of-voo-etf-stock-price",
+      "text_sample": "VOO ETF Stock Analysis: The VOO ETF, which tracks the S&P 500 index, has garnered attention as a cornerstone investment option for those looking to gain exposure to a broad swath of the U.S. stock mar...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "investor.vanguard.com",
+      "url": "https://investor.vanguard.com/investment-products/etfs/profile/vti",
+      "text_sample": "4 days ago ... Vanguard Total Stock Market ETF (VTI) - Find objective, share price ... Earnings growth rate, 22.5%, 22.5%. Short-term reserves, —, —. P/E ratio, 26.8x, 26.7x.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.youtube.com",
+      "url": "https://www.youtube.com/watch?v=0YKjon7WK1A",
+      "text_sample": "About\nPress\nCopyright\nContact us\nCreators\nAdvertise\nDevelopers\nTerms\nPrivacy\nPolicy & Safety\nHow YouTube works\nTest new features\nNFL Sunday Ticket\n© 2025 Google LLC",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n04iys/should_i_invest_in_voo_right_now/",
+      "text_sample": "Should I invest in VOO right now?\nI’m 18 years old and I have 10k in savings. \n\nMy dad is big on investing (only been into it for nearly a year) we are pretty poor and he wants to have money. \n\nWell, ...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1my51sp/fidelity_vs_vanguard_which_would_you_recommend_to/",
+      "text_sample": "Fidelity vs vanguard, which would you recommend to put money all in one place\nHi, my former employer 401k was moved to fidelity, but my Roth IRA and brokerage are in vanguard, would anyone recommend f...",
+      "contribution_weight": "10.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n3rio5/my_old_employers_401k_is_switching_to_vanguard/",
+      "text_sample": "My old employer's 401(k) is switching to Vanguard from Empower. Is it normal for Empower to be calling me?\nI got an snail mail from my old employer that the 401(k) I have with them is switching from E...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n6au4k/should_i_sell_my_spy_to_move_to_voo/",
+      "text_sample": "Should I sell my SPY to move to VOO\nI have been investing in SPY for the last several years and have roughly $450K in it. \n\nI’m not an active investor, and this money is mostly just put away to help e...",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "VOO (Vanguard S&P 500 ETF)",
+    "query_type": "ETF, Vanguard, week, high, index, vanguard, etf, day",
+    "entities_detected": [
+      "Vanguard",
+      "Fund",
+      "Index",
+      "Market",
+      "Stock",
+      "Investing",
+      "Stocks",
+      "Nasdaq",
+      "Which",
+      "Price"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 35 related sources",
+        "relevance": "high",
+        "source_count": 35
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "60.8%",
+      "source_diversity": "23 different source types",
+      "temporal_coverage": "Analysis spans 25 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.08376035912877876,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "6 days ago ... What we learn today about the company's earnings and forward guidance will impact many metrics. ... For example, the Vanguard S&P 500 E...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3213497024351629,
+      "avg_quality": 0.6352886405959033,
+      "sources": [
+        "www.etftrends.com",
+        "www.theglobeandmail.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.07637663011111295,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "We're sorry but this webapp doesn't work properly without JavaScript enabled. Please enable it to continue....",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.668154761904762,
+      "sources": [
+        "advisors.vanguard.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.05206203926113573,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "4 days ago ... Vanguard S&P 500 ETF (VOO) - Find objective, share price, performance ... stock trading generally. Performance could be hurt by: Stock ...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5802899686520376,
+      "sources": [
+        "investor.vanguard.com",
+        "www.investopedia.com"
+      ]
+    }
+  ],
+  "key_evidence": [
+    {
+      "phrase": "fantastic way to compound wealth -- generating annualized total returns of 9% to 10%",
+      "sentiment_impact": "+",
+      "weight": 0.03649364278914489,
+      "source": "finance.yahoo.com"
+    }
+  ],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.006587295067236088,
+      "max": 0.06427683874890365,
+      "mean": 0.02057631216557917,
+      "std": 0.012555777336948244
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 21,
+      "high_source_units": 0,
+      "low_toxicity_units": 35
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.21522972234966883,
+      "gini_coefficient": 0.38553024640450395
+    }
+  }
+}

@@ -9,6 +9,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  // Reduce build-time memory and artifact size
+  productionBrowserSourceMaps: false,
 }
 
 export default nextConfig
