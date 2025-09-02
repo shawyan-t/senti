@@ -13,8 +13,9 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+# Only ignore build artefact libs at repo root, not app libs
+/lib/
+/lib64/
 parts/
 sdist/
 var/
