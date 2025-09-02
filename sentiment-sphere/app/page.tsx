@@ -442,7 +442,7 @@ export default function Home() {
                     >
                       <h3 className="text-xl font-semibold text-emerald-300 mb-3">About Sentimizer</h3>
                       <p className="text-gray-300 mb-3">
-                        Sentimizer analyzes real market discussion and news to quantify sentiment and surface trends with transparent, math‑based visuals.
+                        Sentimizer analyzes real market discussion and news to visualize sentiment, powered by AI and math. You can get a variety of metrics and visuals, as well as the sources associated with these results for a given query. The intention is to prioritize recency and results inclined towards financial discussion.
                       </p>
                       
                     </motion.div>
@@ -459,49 +459,49 @@ export default function Home() {
                         <div>
                           <span className="font-medium text-emerald-200">Per‑source sentiment:</span>
                           <span className="ml-2 block text-gray-300">
-                            s = mean([VADER, TextBlob, AFINN, RoBERTa]) in [-1, 1]. Combine lexicon + transformer into one per‑source score.
+                            s = mean([VADER, TextBlob, AFINN, RoBERTa]) in [-1, 1]. Combines multiple AI analyzers into one score per source.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">Corrections:</span>
                           <span className="ml-2 block text-gray-300">
-                            s' = s * (1 − lambda_tox * p_tox) − gamma_sarc * p_sarc * sign(s). Short: dampen toxicity; flip/attenuate sarcasm.
+                            s' = s * (1 − lambda_tox * p_tox) − gamma_sarc * p_sarc * sign(s). Dampens toxicity and flips/attenuates sarcasm.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">Weights:</span>
                           <span className="ml-2 block text-gray-300">
-                            w_final = w_fresh * w_domain * w_engage * w_retrieval * w_lang, with w_fresh = exp(−delta_t / tau). Short: fresher, credible, high‑quality, relevant, engaged sources count more.
+                            w_final = w_fresh * w_domain * w_engage * w_retrieval * w_lang, with w_fresh = exp(−delta_t / tau). Fresher, credible, high‑quality, relevant, engaged sources count more.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">Aggregation:</span>
                           <span className="ml-2 block text-gray-300">
-                            S = Tukey biweight over s&apos; with weights w_final. Short: robust weighted mean to reduce outlier impact.
+                            S = Tukey biweight over s' with weights w_final. Robust weighted mean to reduce outlier impact.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">Uncertainty:</span>
                           <span className="ml-2 block text-gray-300">
-                            Mean CI via bootstrap; proportions via Wilson intervals. Short: honest intervals for averages and shares.
+                            Mean CI via bootstrap; proportions via Wilson intervals. Honest confidence intervals for averages and percentages.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">VAD (valence/arousal/dominance):</span>
                           <span className="ml-2 block text-gray-300">
-                            (v, a, d) in [-1,1]^3 from emotion probabilities and s. Short: map emotion mix and sentiment to VAD.
+                            (v, a, d) in [-1,1]³ from emotion probabilities and s. Maps emotion mix and sentiment to psychological dimensions.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">Timeline:</span>
                           <span className="ml-2 block text-gray-300">
-                            Rolling mean(s) over dated s' plus OLS trend y = a + b * t. Short: smooth trajectories and show trend line.
+                            Rolling mean(s) over dated s' plus OLS trend y = a + b * t. Smooths trajectories and shows trend direction.
                           </span>
                         </div>
                         <div>
                           <span className="font-medium text-emerald-200">3D UMAP:</span>
                           <span className="ml-2 block text-gray-300">
-                            Embed(text) → UMAP 3D; color = sentiment; (optional) size/opacity = weight/recency. Short: cluster topics and sentiment in 3D.
+                            Embed(text) → UMAP 3D; color = sentiment; (optional) size/opacity = weight/recency. Clusters topics and sentiment in 3D space.
                           </span>
                         </div>
                       </div>
@@ -514,11 +514,12 @@ export default function Home() {
                       transition={{ delay: 0.1, duration: 0.4 }}
                       className="bg-slate-800/50 border border-emerald-500/20 rounded-lg p-6"
                     >
-                      <h3 className="text-xl font-semibold text-emerald-300 mb-3">Purpose</h3>
+                      <h3 className="text-xl font-semibold text-emerald-300 mb-3">Credits</h3>
                       <p className="text-gray-300">
-                        Provide a clear, math‑driven view of market sentiment: no synthetic data, transparent methods, and visuals that make source‑level
-                        evidence, uncertainty, and trends easy to inspect.
-                      </p>
+    Created by <a href="https://shawyan.net" className="text-emerald-300 hover:text-emerald-200">Shawyan
+  Tabari</a>.
+    Built with Next.js, Python, and OpenAI APIs.
+  </p>
                     </motion.div>
                   </div>
                 )}
