@@ -1,0 +1,9 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r sentiment-sphere/api/requirements.txt"
+
+[deploy]
+startCommand = "cd sentiment-sphere/api && python main.py"
+
+[[services]]
+name = "sentimizer-api"
