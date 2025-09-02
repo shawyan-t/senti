@@ -1121,6 +1121,10 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             # 1) Provide a 'sources' list with per-source sentiment approximations
             try:
                 sources_list = []
+                texts_for_embed = []
+                labels_for_embed = []
+                colors_for_embed = []
+                hovers_for_embed = []
                 # Reuse the mathematical analyzer for a lightweight lexicon pass per unit
                 if 'units' in locals() and len(units) > 0:
                     math_analyzer = get_mathematical_analyzer()
@@ -1151,6 +1155,30 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                             if published_iso:
                                 src_item['published_at'] = published_iso
                             sources_list.append(src_item)
+
+                            # Collect for embeddings and labels/colors in the same order
+                            const_text = u.text if isinstance(u.text, str) else str(u.text)
+                            texts_for_embed.append(const_text)
+                            const_domain = getattr(u, 'source_domain', 'source')
+                            labels_for_embed.append(const_domain)
+                            if avg_sent > 0.1:
+                                colors_for_embed.append('#10B981')  # green
+                            elif avg_sent < -0.1:
+                                colors_for_embed.append('#EF4444')  # red
+                            else:
+                                colors_for_embed.append('#FBBF24')  # yellow
+
+                            # Build rich hovertext: domain, URL, date, sentiment, retrieval score, and snippet
+                            try:
+                                import html
+                                url = getattr(u, 'url', '') or ''
+                                date_txt = published_iso if published_iso else 'Unknown'
+                                score_txt = f"{getattr(u, 'retrieval_score', 0.0):.2f}"
+                                snippet = (const_text[:140] + '…') if len(const_text) > 150 else const_text
+                                hover = f"<b>{const_domain}</b><br>{html.escape(url)}<br>Date: {date_txt}<br>Sent: {avg_sent:.3f} • Score: {score_txt}<br>{html.escape(snippet)}"
+                            except Exception:
+                                hover = f"{const_domain}<br>{getattr(u, 'url', '') or ''}<br>Sent: {avg_sent:.3f}"
+                            hovers_for_embed.append(hover)
                 # Attach for visualizations that expect 'sources'
                 comprehensive_analysis['sources'] = sources_list
             except Exception:
@@ -1174,6 +1202,23 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                     comprehensive_analysis.setdefault('mathematical_sentiment_analysis', {})['polarity_distribution'] = pol_percent
             except Exception:
                 pass
+
+            # 4) Compute and attach 3D embeddings for UMAP scatter if possible
+            try:
+                if texts_for_embed:
+                    try:
+                        from utils.sentiment_generator import generate_embeddings as _gen_embed
+                        embs3d = _gen_embed(texts_for_embed)
+                    except Exception as _e:
+                        print(f"Embedding generation failed: {_e}")
+                        embs3d = []
+                    if isinstance(embs3d, list) and len(embs3d) == len(texts_for_embed):
+                        comprehensive_analysis['embeddings'] = embs3d
+                        comprehensive_analysis['embedding_labels'] = labels_for_embed
+                        comprehensive_analysis['embedding_colors'] = colors_for_embed
+                        comprehensive_analysis['embedding_hovertexts'] = hovers_for_embed
+            except Exception as _e2:
+                print(f"UMAP embedding pipeline error: {_e2}")
 
             # 3) Provide VAD under mathematical_sentiment_analysis in 0..100 scale for compass
             try:

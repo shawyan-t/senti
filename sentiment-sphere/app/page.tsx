@@ -865,6 +865,7 @@ export default function Home() {
                         embeddings={(analysisResult as any).embeddings}
                         labels={(analysisResult as any).embedding_labels}
                         colors={(analysisResult as any).embedding_colors}
+                        hovertexts={(analysisResult as any).embedding_hovertexts}
                       />
                     ) : (
                       <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">

@@ -122,20 +122,38 @@ def create_sentiment_index_with_uncertainty(analysis_results):
         )
         return fig
     
-    # Get main sentiment score and individual scores for uncertainty
-    if mathematical_results:
-        main_score = mathematical_results.get('composite_score', {}).get('value', 0)
-        individual_scores = mathematical_results.get('individual_scores', {})
-        sentiment_scores = [
-            individual_scores.get('vader_sentiment', 0),
-            individual_scores.get('textblob_sentiment', 0),
-            individual_scores.get('afinn_sentiment', 0),
-            individual_scores.get('roberta_sentiment', 0),
-            individual_scores.get('financial_sentiment', 0)
-        ]
+    # Prefer per-source sentiments when available to base the index on all gathered sources
+    source_sentiments = []
+    try:
+        srcs = analysis_results.get('sources', [])
+        if isinstance(srcs, list) and srcs:
+            for s in srcs:
+                val = s.get('sentiment', None)
+                if isinstance(val, (int, float)):
+                    source_sentiments.append(float(val))
+    except Exception:
+        source_sentiments = []
+
+    if source_sentiments:
+        # Use all source sentiments for composite and uncertainty
+        import numpy as _np
+        main_score = float(_np.mean(source_sentiments))
+        sentiment_scores = source_sentiments
     else:
-        main_score = comprehensive_results.get('sentiment', {}).get('score', 0)
-        sentiment_scores = [main_score]  # Limited data
+        # Fallback to model-based composite
+        if mathematical_results:
+            main_score = mathematical_results.get('composite_score', {}).get('value', 0)
+            individual_scores = mathematical_results.get('individual_scores', {})
+            sentiment_scores = [
+                individual_scores.get('vader_sentiment', 0),
+                individual_scores.get('textblob_sentiment', 0),
+                individual_scores.get('afinn_sentiment', 0),
+                individual_scores.get('roberta_sentiment', 0),
+                individual_scores.get('financial_sentiment', 0)
+            ]
+        else:
+            main_score = comprehensive_results.get('sentiment', {}).get('score', 0)
+            sentiment_scores = [main_score]  # Limited data
     
     # Calculate uncertainty metrics
     uncertainty = calculate_sentiment_uncertainty(sentiment_scores)
@@ -652,7 +670,8 @@ def create_rolling_sentiment_timeline(analysis_results):
             ),
             name='Sources',
             hovertemplate='<b>%{text}</b><br>%{x|%b %d, %H:%M}<br>Sentiment: %{y:.3f}<extra></extra>',
-            text=df['source']
+            text=df['source'],
+            hoverlabel=dict(bgcolor='#000000', bordercolor='#FFFFFF', font=dict(color='#FFFFFF'))
         ))
     
     # Add rolling averages (always visible)
@@ -665,7 +684,8 @@ def create_rolling_sentiment_timeline(analysis_results):
                 mode='lines',
                 name=f'{window}-Source Rolling Avg',
                 line=dict(width=3, dash='dash' if window > window_sizes[0] else 'solid'),
-                opacity=0.95
+                opacity=0.95,
+                hoverlabel=dict(bgcolor='#000000', bordercolor='#FFFFFF', font=dict(color='#FFFFFF'))
             ))
     
     # Add trend line
@@ -682,7 +702,8 @@ def create_rolling_sentiment_timeline(analysis_results):
             mode='lines',
             name=f'Trend ({trend_direction})',
             line=dict(color='white', width=2, dash='dot'),
-            opacity=0.8
+            opacity=0.8,
+            hoverlabel=dict(bgcolor='#000000', bordercolor='#FFFFFF', font=dict(color='#FFFFFF'))
         ))
 
     # Add horizontal reference lines
@@ -717,7 +738,8 @@ def create_rolling_sentiment_timeline(analysis_results):
             y=0.98,
             font=dict(size=14)
         ),
-        hovermode='x unified',
+        hovermode='closest',
+        hoverlabel=dict(bgcolor='#000000', bordercolor='#FFFFFF', font=dict(color='#FFFFFF')),
         xaxis=dict(
             title="",
             showgrid=True,
