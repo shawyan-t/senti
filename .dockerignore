@@ -1,0 +1,25 @@
+# Ignore frontend files for backend deployment
+sentiment-sphere/node_modules
+sentiment-sphere/.next
+sentiment-sphere/dist
+
+# Ignore local data files
+sentiment-sphere/data
+sentiment-sphere/api/data
+*.db
+*.sqlite
+*.json
+
+# Ignore git and IDE files
+.git
+.gitignore
+.vscode
+.idea
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
