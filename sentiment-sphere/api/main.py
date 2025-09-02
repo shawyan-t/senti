@@ -804,48 +804,104 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         source_type = "financial_ticker"
         domain = "financial_market"
         
-        # Step 4: Get financial search context using specialized queries + Reddit
+        # Step 4: Get financial search context using specialized queries + Reddit (concurrent + bounded)
         search_results = []
-        if input_data.use_search_apis:
-            print(f"Fetching financial search context for {ticker}...")
+        enable_search = (str(os.getenv("ENABLE_SEARCH", "true")).lower() == "true") and input_data.use_search_apis
+        enable_reddit = str(os.getenv("ENABLE_REDDIT", "true")).lower() == "true"
+        max_queries = int(os.getenv("MAX_SEARCH_QUERIES", "0") or 0)  # 0 = no cap
+        max_results_total = int(os.getenv("MAX_SEARCH_RESULTS", "0") or 0)  # 0 = no cap
+        max_content_fetch = int(os.getenv("MAX_CONTENT_FETCH", "0") or 0)
+        max_content_fetch = max_content_fetch if max_content_fetch > 0 else 50
+
+        if enable_search:
+            print(f"Fetching financial search context for {ticker} with concurrency…")
+            import asyncio as _asyncio
             search_connector = SearchEngineConnector()
-            
-            # 4a. Traditional search (NewsAPI + Google)
-            for search_query in search_queries:
+
+            # Respect optional caps without changing UI behavior
+            queries_to_run = list(search_queries)
+            if max_queries and len(queries_to_run) > max_queries:
+                queries_to_run = queries_to_run[:max_queries]
+
+            # Run the query fetches concurrently in threads (since connector is sync/requests-based)
+            async def run_query(q):
                 try:
-                    results = search_connector.get_cached_or_fresh_data(search_query, company_context=company_info)
-                    search_results.extend(results[:10])  # Top 10 from each query
-                    print(f"Got {len(results)} results for query: {search_query}")
+                    return await _asyncio.to_thread(
+                        search_connector.get_cached_or_fresh_data,
+                        q,
+                        company_context=company_info,
+                    )
                 except Exception as e:
-                    print(f"Error with search query '{search_query}': {e}")
-            
-            # 4b. Reddit discussions (NEW) — run sync PRAW in a thread to avoid blocking event loop
-            try:
-                import asyncio as _asyncio
-                reddit_results = await _asyncio.to_thread(
-                    search_connector.fetch_reddit_discussions,
-                    company_info['name'],
-                    ticker,
-                    company_info.get('sector', 'Financial'),
-                    14,
-                    10
-                )
-                search_results.extend(reddit_results)
-                print(f"Added {len(reddit_results)} Reddit discussions")
-            except Exception as e:
-                print(f"Reddit integration failed (continuing without): {e}")
-            
-            # Limit total results and ensure uniqueness
+                    print(f"Search query error: {q}: {e}")
+                    return []
+
+            query_tasks = [_asyncio.create_task(run_query(q)) for q in queries_to_run]
+            query_lists = await _asyncio.gather(*query_tasks, return_exceptions=False)
+            for q, results in zip(queries_to_run, query_lists):
+                print(f"Got {len(results)} results for query: {q}")
+                search_results.extend(results or [])
+
+            # Reddit discussions concurrently (thread) if enabled
+            if enable_reddit:
+                try:
+                    reddit_results = await _asyncio.to_thread(
+                        search_connector.fetch_reddit_discussions,
+                        company_info['name'],
+                        ticker,
+                        company_info.get('sector', 'Financial'),
+                        14,
+                        10
+                    )
+                    search_results.extend(reddit_results or [])
+                    print(f"Added {len(reddit_results)} Reddit discussions")
+                except Exception as e:
+                    print(f"Reddit integration failed (continuing without): {e}")
+
+            # Uniqueness & optional global cap
             seen_urls = set()
             unique_results = []
             for result in search_results:
-                url = result.get('link', '')
-                if url not in seen_urls and len(unique_results) < 50:
-                    seen_urls.add(url)
-                    unique_results.append(result)
-            
+                url = result.get('link') or result.get('url') or ''
+                if not url:
+                    continue
+                if url in seen_urls:
+                    continue
+                seen_urls.add(url)
+                unique_results.append(result)
+                if max_results_total and len(unique_results) >= max_results_total:
+                    break
             search_results = unique_results
             print(f"Final unique search results: {len(search_results)} (including Reddit)")
+
+            # Concurrent content extraction for top results to reduce wall-clock time
+            def _extract(res):
+                try:
+                    url = res.get('link') or res.get('url')
+                    if not url:
+                        return None
+                    return search_connector.extract_content_from_url(url)
+                except Exception:
+                    return None
+
+            limited = search_results[:max_content_fetch]
+            sem = _asyncio.Semaphore(int(os.getenv("CONTENT_FETCH_CONCURRENCY", "10") or 10))
+
+            async def extract_task(res):
+                async with sem:
+                    return await _asyncio.to_thread(_extract, res)
+
+            extract_tasks = [_asyncio.create_task(extract_task(r)) for r in limited]
+            extracted = await _asyncio.gather(*extract_tasks, return_exceptions=False)
+            # Enrich search_results items with extracted content where available
+            enriched = []
+            for res, ext in zip(limited, extracted):
+                if ext and isinstance(ext, dict) and ext.get('content'):
+                    res = dict(res)
+                    res['full_content'] = ext.get('content')
+                    res['title'] = res.get('title') or ext.get('title')
+                enriched.append(res)
+            # Keep enriched at front, then the remainder (unchanged)
+            search_results = enriched + search_results[len(limited):]
         
         # Step 5: Create canonical units ONLY from search results (no ticker unit)
         print("Creating canonical units for comprehensive analysis...")

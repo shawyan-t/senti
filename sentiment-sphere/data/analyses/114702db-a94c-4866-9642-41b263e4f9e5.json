@@ -1,0 +1,358 @@
+{
+  "id": "114702db-a94c-4866-9642-41b263e4f9e5",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "GE",
+  "timestamp": "2025-09-02T14:19:42.498873",
+  "enhanced_summary": "Comprehensive analysis of 19 content units with 88.1% confidence. Sentiment: 0.349 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 1.0,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 19,
+    "average_recency_weight": 0.3638653177537078
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.3492413752139334,
+      "confidence_interval": [
+        0.05743331319842948,
+        0.6993027984496122
+      ],
+      "statistical_significance": 0.8686052566809807
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9978,
+        "textblob_score": 0.20964718614718617,
+        "afinn_score": 0.03875968992248062,
+        "consensus": 0.4154022920232223
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.3492413752139334
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.270662313754801,
+      "polarization_index": 0.3691101205374144,
+      "model_agreement": 0.6308898794625857
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3691101205374144,
+    "polarity_breakdown": {
+      "positive": 0.64,
+      "negative": 0.115,
+      "neutral": 0.245,
+      "wilson_ci": {
+        "positive": [
+          0.5396965500855734,
+          0.7396965500855733
+        ],
+        "negative": [
+          0.01507586247860665,
+          0.21507586247860666
+        ],
+        "neutral": [
+          0.14522758743581998,
+          0.34522758743582
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.3638653177537078,
+    "novelty_score": 0.8709744633177905,
+    "total_evidence_weight": 0.4938214684480498
+  },
+  "vad_analysis": {
+    "valence": 0.675,
+    "arousal": 0.458,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 2,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 19,
+  "recent_developments_identified": 19,
+  "source_citations": [
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/26/financial-analysis-vertical-aerospace-nyseevtl-and-ge-aerospace-nysege/",
+      "text_sample": "Vertical Aerospace (NYSE:EVTL – Get Free Report) and GE Aerospace (NYSE:GE – Get Free Report) are both aerospace companies, but which is the superior stock? We will contrast the two companies based o…...",
+      "contribution_weight": "100.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/ge-aerospace-nysege-downgraded-by-wall-street-zen-to-hold/",
+      "text_sample": "Wall Street Zen downgraded shares of GE Aerospace (NYSE:GE – Free Report) from a buy rating to a hold rating in a research note released on Saturday morning.\r\nA number of other equities research anal…...",
+      "contribution_weight": "90.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/15/defense-stocks-to-follow-now-august-13th/",
+      "text_sample": "GE Aerospace, Boeing, Citigroup, Celestica, and Momentus are the five Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly traded compan…...",
+      "contribution_weight": "80.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/20/promising-defense-stocks-to-watch-now-august-17th/",
+      "text_sample": "Boeing, GE Aerospace, and Citigroup are the three Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of companies that design, manufacture, and su…...",
+      "contribution_weight": "70.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/19/defense-stocks-to-add-to-your-watchlist-august-16th/",
+      "text_sample": "Boeing, GE Aerospace, and Citigroup are the three Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly traded companies that design, man…...",
+      "contribution_weight": "60.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/top-defense-stocks-to-watch-now-august-10th/",
+      "text_sample": "Rocket Lab, GE Aerospace, Boeing, Citigroup, and Analog Devices are the five Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly traded…...",
+      "contribution_weight": "50.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/10/promising-defense-stocks-to-follow-now-august-7th/",
+      "text_sample": "Boeing, Citigroup, GE Aerospace, Corning, and Celestica are the five Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly traded compani…...",
+      "contribution_weight": "40.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/17/top-defense-stocks-to-add-to-your-watchlist-august-14th/",
+      "text_sample": "GE Aerospace, Rocket Lab, Boeing, Celestica, and Citigroup are the five Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly traded comp…...",
+      "contribution_weight": "30.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/08/best-defense-stocks-to-consider-august-5th/",
+      "text_sample": "Boeing, Citigroup, BWX Technologies, GE Aerospace, and Celestica are the five Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly trade…...",
+      "contribution_weight": "20.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/17/promising-defense-stocks-to-add-to-your-watchlist-august-15th/",
+      "text_sample": "Boeing, GE Aerospace, and Citigroup are the three Defense stocks to watch today, according to MarketBeat’s stock screener tool. Defense stocks are shares of publicly traded companies that design, man…...",
+      "contribution_weight": "10.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33952036/is-wall-street-bullish-or-bearish-on-ge-aerospace-stock",
+      "text_sample": "Evendale, Ohio-based GE Aerospace (GE) designs and produces commercial and defense aircraft engines, integrated engine components, electric power, and mechanical aircraft systems. With a market cap o…...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/cathay-pacific-purchase-more-ge-003225786.html",
+      "text_sample": "GE Aerospace (NYSE:GE) is among the 11 Best Large Cap Defense Stocks to Buy According to Analysts. On August 6, the company announced that Cathay Pacific has signed an agreement to purchase more GE9X…...",
+      "contribution_weight": "10.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/jim-cramer-says-ge-aerospace-170134774.html",
+      "text_sample": "GE Aerospace (NYSE:GE) is one of the stocks Jim Cramer put under the spotlight. When a caller inquired about the company, highlighting the institutional support for CEO Larry Culp, Cramer said:\r\nYes,…...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/19/ge-stock-to-500/",
+      "text_sample": "CHONGQING, CHINA - APRIL 20: In this photo illustration, the GE Aerospace logo is displayed on a smartphone screen on April 20, 2025, in Chongqing, China. (Photo illustration by Cheng Xin/Getty Image…...",
+      "contribution_weight": "10.0%",
+      "recency": "14 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/bofa-raises-ge-aerospace-ge-191201603.html",
+      "text_sample": "GE Aerospace (NYSE:GE) is one of the best performing S&amp;P 500 stocks to buy now. On July 28, BofA raised the firms price target on GE Aerospace to $310 from $230, while keeping a Buy rating on the…...",
+      "contribution_weight": "10.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/richardson-electronics-gatx-general-motors-194558945.html",
+      "text_sample": "A number of stocks jumped in the afternoon session after the major indices rebounded, as Fed Chair Jerome Powell delivered dovish remarks at the much-awaited Jackson Hole symposium. Powell suggested …...",
+      "contribution_weight": "10.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/jimosman/2025/08/29/build-a-bear-stock-has-quietly-crushed-wall-street-expectations/",
+      "text_sample": "New York, New York, USA - November 7, 2019: Build-A-Bear Workshop on 34th street in Manhattan.\r\ngetty\r\nMost investors associate Build-A-Bear with a mall novelty from a bygone era, not as a serious in…...",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/judge-traded-boeing-stock-reversed-zunum-trade-secrets-appeal-2025-8",
+      "text_sample": "The Boeing 777X has revolutionary folding wingtips that are a first in commercial aviation.Taylor Rains/Business Insider\r\n<ul><li>A judge who disclosed trading Boeing stock threw out a big trade-secr…...",
+      "contribution_weight": "10.0%",
+      "recency": "18 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/GEAerospace/comments/1n2ac3r/union_vs_non_union_at_ge/",
+      "text_sample": "Union vs non union at GE\nSo what positions are union at GE? I just accepted a job, I don’t think it is a union position, and nothing in the job decription or interview process mentioned it. It’s a sup...",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "GE (GE Aerospace)",
+    "query_type": "Industrials, Aerospace, Defense, GE, defense, aerospace, are, engines",
+    "entities_detected": [
+      "Stocks",
+      "Defense",
+      "Aerospace",
+      "Chars",
+      "Stock",
+      "Boeing",
+      "Shares",
+      "Watch",
+      "Nyse",
+      "August"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 19 related sources",
+        "relevance": "high",
+        "source_count": 19
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "63.1%",
+      "source_diversity": "6 different source types",
+      "temporal_coverage": "Analysis spans 23 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.16472346679773076,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Wall Street Zen downgraded shares of GE Aerospace (NYSE:GE – Free Report) from a buy rating to a hold rating in a research note released on Saturday m...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.5361910234783089,
+      "avg_quality": 0.6468725868725869,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_8",
+      "weight": 0.057324235283694625,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "New York, New York, USA - November 7, 2019: Build-A-Bear Workshop on 34th street in Manhattan.\r\ngetty\r\nMost investors associate Build-A-Bear with a ma...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3755869324305756,
+      "avg_quality": 0.6719444444444445,
+      "sources": [
+        "www.forbes.com",
+        "www.businessinsider.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.056075642291006186,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "GE Aerospace, Boeing, Citigroup, Celestica, and Momentus are the five Defense stocks to watch today, according to MarketBeat’s stock screener tool. De...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6809979838709678,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.011168104478893853,
+      "max": 0.11114645475203562,
+      "mean": 0.025990603602528937,
+      "std": 0.022653075594877115
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 19,
+      "high_source_units": 0,
+      "low_toxicity_units": 19
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.22507416516608628,
+      "gini_coefficient": 0.2898368971748244
+    }
+  }
+}

@@ -15,6 +15,54 @@ export interface Analysis {
   source: string;
   text: string;
   enhanced_summary: string;
+  // Optional, present for comprehensive pipeline
+  comprehensive_metrics?: {
+    // Some UI code expects an optional sentiment object
+    sentiment?: {
+      score?: number;
+      confidence?: number;
+    };
+    disagreement_index?: number;
+    polarity_breakdown?: {
+      positive: number;
+      negative: number;
+      neutral: number;
+      wilson_ci?: {
+        positive?: [number, number];
+        negative?: [number, number];
+        neutral?: [number, number];
+      };
+    };
+    tone?: {
+      subjectivity: number;
+      politeness: number;
+      formality: number;
+      assertiveness: number;
+    };
+    sarcasm_rate?: number;
+    toxicity_rate?: number;
+    freshness_score?: number;
+    novelty_score?: number;
+    total_evidence_weight?: number;
+  };
+  calculation_methodology?: {
+    sentiment_calculation?: string;
+    confidence_basis?: string;
+    source_weighting?: string;
+    accuracy_indicators?: {
+      model_agreement?: string;
+      source_diversity?: string;
+      temporal_coverage?: string;
+      data_quality?: string; // 'high' | 'medium' | 'low' etc.
+    };
+  };
+  query_summary?: {
+    query: string;
+    query_type?: string;
+    entities_detected?: string[];
+    recent_events?: Array<Record<string, any>>;
+  };
+  visualizations?: Record<string, any>;
   mathematical_sentiment_analysis: {
     composite_score: {
       value: number;

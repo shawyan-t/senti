@@ -1,0 +1,318 @@
+{
+  "id": "1d7edb77-6c8a-413d-b2dc-2bdb95b4ba3a",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "GE",
+  "timestamp": "2025-09-02T13:24:28.370885",
+  "enhanced_summary": "Comprehensive analysis of 13 content units with 87.8% confidence. Sentiment: 0.386 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9992277157340795,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 13,
+    "average_recency_weight": 0.39928461021779765
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.385509533400731,
+      "confidence_interval": [
+        0.042716599268994494,
+        0.7479416766467064
+      ],
+      "statistical_significance": 0.8677066468582187
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9963,
+        "textblob_score": 0.14891233766233772,
+        "afinn_score": 0.032335329341317366,
+        "consensus": 0.39251588900121837
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.385509533400731
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2609408775589266,
+      "polarization_index": 0.4087165634317813,
+      "model_agreement": 0.5912834365682187
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.4087165634317813,
+    "polarity_breakdown": {
+      "positive": 0.654,
+      "negative": 0.111,
+      "neutral": 0.234,
+      "wilson_ci": {
+        "positive": [
+          0.5542038133602925,
+          0.7542038133602924
+        ],
+        "negative": [
+          0.011449046659926881,
+          0.2114490466599269
+        ],
+        "neutral": [
+          0.13434713997978068,
+          0.3343471399797807
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0007722842659204693,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.39928461021779765,
+    "novelty_score": 0.8512256209714013,
+    "total_evidence_weight": 0.4764859318880599
+  },
+  "vad_analysis": {
+    "valence": 0.693,
+    "arousal": 0.469,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 2,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 13,
+  "recent_developments_identified": 13,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/ge-aerospace-stock-outperforming-dow-055218919.html",
+      "text_sample": "Evendale, Ohio-based GE Aerospace (GE) designs and produces commercial and defense aircraft engines, integrated engine components, electric power, and mechanical aircraft systems. With a market cap of...",
+      "contribution_weight": "100.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/GE/",
+      "text_sample": "GE Aerospace (GE)\n- Previous Close\n273.94 - Open\n273.70 - Bid 274.37 x 100\n- Ask 274.46 x 200\n- Day's Range\n272.23 - 274.70 - 52 Week Range\n159.36 - 281.50 - Volume\n2,178,495 - Avg. Volume\n6,313,201 -...",
+      "contribution_weight": "90.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/jim-cramer-says-ge-aerospace-170134774.html",
+      "text_sample": "GE Aerospace (NYSE:GE) is one of the stocks Jim Cramer put under the spotlight. When a caller inquired about the company, highlighting the institutional support for CEO Larry Culp, Cramer said:\n“Yes, ...",
+      "contribution_weight": "80.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/26/financial-analysis-vertical-aerospace-nyseevtl-and-ge-aerospace-nysege/",
+      "text_sample": "Vertical Aerospace (NYSE:EVTL – Get Free Report) and GE Aerospace (NYSE:GE – Get Free Report) are both aerospace companies, but which is the superior stock? We will contrast the two companies based o…...",
+      "contribution_weight": "70.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/ge-aerospace-nysege-downgraded-by-wall-street-zen-to-hold/",
+      "text_sample": "Wall Street Zen downgraded shares of GE Aerospace (NYSE:GE – Free Report) from a buy rating to a hold rating in a research note released on Saturday morning.\r\nA number of other equities research anal…...",
+      "contribution_weight": "60.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33952036/is-wall-street-bullish-or-bearish-on-ge-aerospace-stock",
+      "text_sample": "Evendale, Ohio-based GE Aerospace (GE) designs and produces commercial and defense aircraft engines, integrated engine components, electric power, and mechanical aircraft systems. With a market cap o…...",
+      "contribution_weight": "50.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/cathay-pacific-purchase-more-ge-003225786.html",
+      "text_sample": "GE Aerospace (NYSE:GE) is among the 11 Best Large Cap Defense Stocks to Buy According to Analysts. On August 6, the company announced that Cathay Pacific has signed an agreement to purchase more GE9X…...",
+      "contribution_weight": "40.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/19/ge-stock-to-500/",
+      "text_sample": "CHONGQING, CHINA - APRIL 20: In this photo illustration, the GE Aerospace logo is displayed on a smartphone screen on April 20, 2025, in Chongqing, China. (Photo illustration by Cheng Xin/Getty Image…...",
+      "contribution_weight": "30.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/bofa-raises-ge-aerospace-ge-191201603.html",
+      "text_sample": "GE Aerospace (NYSE:GE) is one of the best performing S&amp;P 500 stocks to buy now. On July 28, BofA raised the firms price target on GE Aerospace to $310 from $230, while keeping a Buy rating on the…...",
+      "contribution_weight": "20.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/richardson-electronics-gatx-general-motors-194558945.html",
+      "text_sample": "A number of stocks jumped in the afternoon session after the major indices rebounded, as Fed Chair Jerome Powell delivered dovish remarks at the much-awaited Jackson Hole symposium. Powell suggested …...",
+      "contribution_weight": "10.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/jimosman/2025/08/29/build-a-bear-stock-has-quietly-crushed-wall-street-expectations/",
+      "text_sample": "New York, New York, USA - November 7, 2019: Build-A-Bear Workshop on 34th street in Manhattan.\r\ngetty\r\nMost investors associate Build-A-Bear with a mall novelty from a bygone era, not as a serious in…...",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33878974/what-are-wall-street-analysts-target-price-for-boeing-stock",
+      "text_sample": "Arlington, Virginia-based The Boeing Company (BA) is a leading global aerospace and defense manufacturer that designs, produces, and supports commercial jetliners, military aircraft, satellites, and …...",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/GEAerospace/comments/1n2ac3r/union_vs_non_union_at_ge/",
+      "text_sample": "Union vs non union at GE\nSo what positions are union at GE? I just accepted a job, I don’t think it is a union position, and nothing in the job decription or interview process mentioned it. It’s a sup...",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "GE (GE Aerospace)",
+    "query_type": "Industrials, Aerospace, Defense, GE, aerospace, engines, commercial, defense",
+    "entities_detected": [
+      "Aerospace",
+      "Engines",
+      "Stock",
+      "Commercial",
+      "Defense",
+      "Nyse",
+      "Aircraft",
+      "Chars",
+      "Company",
+      "Designs"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 13 related sources",
+        "relevance": "high",
+        "source_count": 13
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "59.1%",
+      "source_diversity": "5 different source types",
+      "temporal_coverage": "Analysis spans 25 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.1562913863582324,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Wall Street Zen downgraded shares of GE Aerospace (NYSE:GE – Free Report) from a buy rating to a hold rating in a research note released on Saturday m...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.463008562911692,
+      "avg_quality": 0.6745573159366263,
+      "sources": [
+        "www.barchart.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.09365026381213995,
+      "sentiment": 0.018024896149411797,
+      "unit_count": 2,
+      "representative_text": "Vertical Aerospace (NYSE:EVTL – Get Free Report) and GE Aerospace (NYSE:GE – Get Free Report) are both aerospace companies, but which is the superior ...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.27613169440765295,
+      "avg_quality": 0.6097023809523809,
+      "sources": [
+        "finance.yahoo.com",
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_5",
+      "weight": 0.07492167341237572,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "New York, New York, USA - November 7, 2019: Build-A-Bear Workshop on 34th street in Manhattan.\r\ngetty\r\nMost investors associate Build-A-Bear with a ma...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.3771027549202741,
+      "avg_quality": 0.685515873015873,
+      "sources": [
+        "www.barchart.com",
+        "www.forbes.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.016271718256414002,
+      "max": 0.125948034945726,
+      "mean": 0.036652763991389226,
+      "std": 0.02911575262903592
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 13,
+      "high_source_units": 0,
+      "low_toxicity_units": 13
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.2643268699385542,
+      "gini_coefficient": 0.2908304408272393
+    }
+  }
+}

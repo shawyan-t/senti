@@ -1,0 +1,425 @@
+{
+  "id": "09dcb495-610e-478a-8a22-9c2908c6b109",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "NVDA",
+  "timestamp": "2025-09-02T14:22:31.574454",
+  "enhanced_summary": "Comprehensive analysis of 29 content units with 86.7% confidence. Sentiment: 0.293 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9951230127418902,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 29,
+    "average_recency_weight": 0.39004113088456316
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.2928203211821824,
+      "confidence_interval": [
+        0.037770960898946146,
+        0.6755670940213495
+      ],
+      "statistical_significance": 0.8105220917304004
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 1.0,
+        "textblob_score": 0.08717449428361482,
+        "afinn_score": 0.05084015510555795,
+        "consensus": 0.3793382164630576
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.2928203211821824
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.267607265823873,
+      "polarization_index": 0.3708903111574066,
+      "model_agreement": 0.6291096888425933
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.3708903111574066,
+    "polarity_breakdown": {
+      "positive": 0.617,
+      "negative": 0.121,
+      "neutral": 0.262,
+      "wilson_ci": {
+        "positive": [
+          0.5171281284728729,
+          0.7171281284728729
+        ],
+        "negative": [
+          0.02071796788178175,
+          0.22071796788178177
+        ],
+        "neutral": [
+          0.16215390364534535,
+          0.3621539036453454
+        ]
+      }
+    },
+    "sarcasm_rate": 0.004876987258109848,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.39004113088456316,
+    "novelty_score": 0.5554809023454951,
+    "total_evidence_weight": 0.45104915555708647
+  },
+  "vad_analysis": {
+    "valence": 0.646,
+    "arousal": 0.441,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 29,
+  "recent_developments_identified": 29,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/nvidia-q2-earnings-highlights-double-204127566.html",
+      "text_sample": "Nvidia Q2 Earnings Highlights: Double Beat, $60B Share Buyback, Huang Says 'AI Race Is On' (CORRECTED)\nEditor's Note: This article has been updated to correct the price action data.\nNVIDIA Corporation...",
+      "contribution_weight": "100.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/25/nvidia-corporation-nvda-stock-position-boosted-by-phoenix-financial-ltd/",
+      "text_sample": "Phoenix Financial Ltd. lifted its stake in shares of NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTicke...",
+      "contribution_weight": "90.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/28/mackenzie-financial-corp-trims-stock-position-in-nvidia-corporation-nvda/",
+      "text_sample": "Mackenzie Financial Corp lessened its stake in NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTickerOptin...",
+      "contribution_weight": "80.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/27/nvidia-corporation-nvda-position-trimmed-by-abbot-financial-management-inc/",
+      "text_sample": "Abbot Financial Management Inc. lessened its holdings in NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/ReportT...",
+      "contribution_weight": "70.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/06/nvidia-corporation-nasdaqnvda-position-boosted-by-seamount-financial-group-inc/",
+      "text_sample": "Seamount Financial Group Inc. grew its holdings in shares of NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/Rep...",
+      "contribution_weight": "60.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/31/nvidia-corporation-nvda-shares-bought-by-menard-financial-group-llc/",
+      "text_sample": "Menard Financial Group LLC boosted its stake in shares of NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/Report...",
+      "contribution_weight": "50.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/29/jsf-financial-llc-sells-683-shares-of-nvidia-corporation-nvda/",
+      "text_sample": "JSF Financial LLC trimmed its stake in shares of NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTickerOpt...",
+      "contribution_weight": "40.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/pax-financial-group-llc-raises-stake-in-nvidia-corporation-nasdaqnvda/",
+      "text_sample": "PAX Financial Group LLC lifted its position in shares of NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/ReportT...",
+      "contribution_weight": "30.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/nvidia-corporation-nvda-shares-purchased-by-richardson-financial-services-inc/",
+      "text_sample": "Richardson Financial Services Inc. increased its stake in NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/Report...",
+      "contribution_weight": "20.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/09/01/altiora-financial-group-llc-boosts-stake-in-nvidia-corporation-nvda/",
+      "text_sample": "Altiora Financial Group LLC grew its stake in NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTickerOptin....",
+      "contribution_weight": "10.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/oppenheimer-maintains-outperform-nvidia-nvda-043834274.html",
+      "text_sample": "Nvidia Corporation (NASDAQ:[NVDA](https://finance.yahoo.com/quote/NVDA)) is one of the [best data center stocks to buy now](https://www.insidermonkey.com/blog/15-best-data-center-stocks-to-buy-now-159...",
+      "contribution_weight": "10.0%",
+      "recency": "10 days ago"
+    },
+    {
+      "source": "gizmodo.com",
+      "url": "https://gizmodo.com/nvidia-earnings-tech-drop-2000647269",
+      "text_sample": "Wall Street is narrowing in on must-watch tech giant [Nvidia (NVDA)](https://finance.yahoo.com/quote/NVDA/) this week, as the $4 trillion semiconductor company reports earnings amid an ongoing skid in...",
+      "contribution_weight": "10.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/nvidia-stock-sinks-after-data-center-sales-miss-forecasts-ceo-calls-blackwell-demand-extraordinary-162719461.html",
+      "text_sample": "Nvidia stock falls after data center sales miss forecasts, CEO calls Blackwell demand 'extraordinary'\nNvidia ([NVDA](https://finance.yahoo.com/quote/NVDA/)) stock dropped on Thursday morning as Wall S...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/nvidia-to-report-second-quarter-earnings-expects-8-billion-hit-from-china-chip-ban-162719205.html",
+      "text_sample": "Nvidia stock falls after data center sales miss forecasts, CEO calls Blackwell demand 'extraordinary'\nNvidia ([NVDA](https://finance.yahoo.com/quote/NVDA/)) stock dropped on Thursday morning as Wall S...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/adamsarhan/2025/08/26/nvidia-earnings-preview-will-ai-momentum-power-another-blowout-report/",
+      "text_sample": "Nvidia Corp. is scheduled to report earnings after Wednesday’s close. The stock just hit a record high of $184.48/share and is currently trading near $180. The stock is prone to big moves after report...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/18/buy-nvidia-stock-ahead-of-earnings/",
+      "text_sample": "[Nvidia (NASDAQ:NVDA)](https://www.trefis.com/data/companies/NVDA/?source=forbes&from=NVDA-2025-08-18) is expected to announce its Q2 2026 earnings at the end of August (January fiscal year). Analysts...",
+      "contribution_weight": "10.0%",
+      "recency": "15 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34284911/nvidia-stock-is-falling-hard-for-no-real-reason-should-you-buy-the-dip-in-nvda-here",
+      "text_sample": "[Your browser of choice has not been tested for use with Barchart.com. If you have issues, please download one of the browsers listed]\n[here](http://outdatedbrowser.com/en).\nJump-Start Your Search For...",
+      "contribution_weight": "10.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.businessinsider.com",
+      "url": "https://www.businessinsider.com/biggest-takeaways-from-the-nvidia-second-quarter-earnings-call-2025-8",
+      "text_sample": "- Nvidia's second-quarter revenue and earnings beat estimates, but shares fell post-earnings.\n- Data center revenue missed forecasts, and H20 chip shipments to China remain uncertain.\n- Nvidia project...",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34308033/bullish-analysts-options-traders-expect-new-highs-for-nvidia-stock-after-earnings",
+      "text_sample": "[Your browser of choice has not been tested for use with Barchart.com. If you have issues, please download one of the browsers listed]\n[here](http://outdatedbrowser.com/en).\nLess than $10/month! View ...",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/34429005/options-traders-are-betting-nvidia-stock-will-move-this-much-after-earnings",
+      "text_sample": "[Your browser of choice has not been tested for use with Barchart.com. If you have issues, please download one of the browsers listed]\n[here](http://outdatedbrowser.com/en).\n- Market Pulse\n- Volatilit...",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n4mk1t/whats_your_highest_earning_stock_ever/",
+      "text_sample": "What's your highest earning stock ever?\nWhat has been your highest earning stock investment ever? Please share the stock ticker, the price you bought it at back then vs what it trades at now, and roug...",
+      "contribution_weight": "10.0%",
+      "recency": "2 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mz4r0e/advice_on_investing_in_tech_stocks_nvidia_rtx/",
+      "text_sample": "Advice on investing in tech stocks (Nvidia, RTX, Palantir, AMD, ASML)\nHi,\nI want to start investing in tech stocks for a couple of hundreds of dollars monthly.\nI am investing with the long term aspect...",
+      "contribution_weight": "10.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1mwvbiq/nvidia_orders_suppliers_to_halt_work_on/",
+      "text_sample": "Nvidia orders suppliers to halt work on China-focussed H20 AI chip\nSo much for the H20. I've posted before that people who thought that Nvidia had the all clear were being premature. Now it seems Nvid...",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mzwfjs/nvda_up_35_into_earnings/",
+      "text_sample": "NVDA Up 35% Into Earnings\nNvidia reports earnings on Wednesday (Aug 27) after the close, and the setup looks like a textbook high-stakes event. The stock is currently trading at $181.30, up over 35% i...",
+      "contribution_weight": "10.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1mx6l7i/nvda_before_or_after_earning_report/",
+      "text_sample": "[\n](/r/stocks/)\nGo to stocks\n[r/stocks](/r/stocks/)\nThe most serious place on Reddit for Stock related discussions! Don't hesitate to tell us about a ticker we should know about, market news, or finan...",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n1s58d/nvda_2q26_earnings_result/",
+      "text_sample": "[\n](/r/stocks/)\nGo to stocks\n[r/stocks](/r/stocks/)\nThe most serious place on Reddit for Stock related discussions! Don't hesitate to tell us about a ticker we should know about, market news, or finan...",
+      "contribution_weight": "10.0%",
+      "recency": "5 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n47cuu/my_8yo_is_destroying_my_returns_and_beating_the_sp/",
+      "text_sample": "[\n](/r/stocks/)\nGo to stocks\n[r/stocks](/r/stocks/)\nThe most serious place on Reddit for Stock related discussions! Don't hesitate to tell us about a ticker we should know about, market news, or finan...",
+      "contribution_weight": "10.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n2ndkr/nvidias_top_two_mystery_customers_made_up_39_of/",
+      "text_sample": "Nvidia’s top two mystery customers made up 39% of the chipmaker’s Q2 revenue\nTwo Nvidia customers made up 39% of Nvidia’s revenue in its July quarter, the company revealed in a financial filing on Wed...",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/stocks/comments/1n3dv7e/alibaba_unveils_homegrown_ai_chip_to_replace/",
+      "text_sample": "[\n](/r/stocks/)\nGo to stocks\n[r/stocks](/r/stocks/)\nThe most serious place on Reddit for Stock related discussions! Don't hesitate to tell us about a ticker we should know about, market news, or finan...",
+      "contribution_weight": "10.0%",
+      "recency": "4 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "NVDA (NVIDIA Corporation)",
+    "query_type": "Technology, NVIDIA, shares, nvidia, stock, quarter, during, com",
+    "entities_detected": [
+      "Nvidia",
+      "Stock",
+      "Shares",
+      "Quarter",
+      "Stocks",
+      "Nvda",
+      "Https",
+      "Company",
+      "Earnings",
+      "During"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 29 related sources",
+        "relevance": "high",
+        "source_count": 29
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "62.9%",
+      "source_diversity": "7 different source types",
+      "temporal_coverage": "Analysis spans 25 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.08448022622796605,
+      "sentiment": -0.011852549055637113,
+      "unit_count": 2,
+      "representative_text": "Nvidia Q2 Earnings Highlights: Double Beat, $60B Share Buyback, Huang Says 'AI Race Is On' (CORRECTED)\nEditor's Note: This article has been updated to...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.37410754032514537,
+      "avg_quality": 0.5031955070055021,
+      "sources": [
+        "www.etfdailynews.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.05587557314136071,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Mackenzie Financial Corp lessened its stake in NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Report](https...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4415832465301919,
+      "avg_quality": 0.48062508728411724,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.04251971684441179,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Menard Financial Group LLC boosted its stake in shares of NVIDIA Corporation ([NASDAQ:NVDA](https://www.marketbeat.com/stocks/NASDAQ/NVDA/) – [Free Re...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4611377343200317,
+      "avg_quality": 0.4757598657111179,
+      "sources": [
+        "www.etfdailynews.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.006082204282259182,
+      "max": 0.05516978521144444,
+      "mean": 0.015553419157140917,
+      "std": 0.010746930228047792
+    },
+    "factor_analysis": {
+      "high_freshness_units": 1,
+      "high_novelty_units": 4,
+      "high_source_units": 0,
+      "low_toxicity_units": 29
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.1958475595148715,
+      "gini_coefficient": 0.32778334790813946
+    }
+  }
+}
