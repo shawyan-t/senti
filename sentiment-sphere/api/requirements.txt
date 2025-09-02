@@ -36,3 +36,6 @@ sympy>=1.12
 
 # Reddit API
 praw>=7.7.1 
+
+# Yahoo Finance API client
+yfinance>=0.2.40
