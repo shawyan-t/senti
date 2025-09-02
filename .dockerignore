@@ -1,25 +1,20 @@
-# Ignore frontend files for backend deployment
-sentiment-sphere/node_modules
-sentiment-sphere/.next
-sentiment-sphere/dist
-
-# Ignore local data files
-sentiment-sphere/data
-sentiment-sphere/api/data
-*.db
-*.sqlite
-*.json
-
-# Ignore git and IDE files
+# Reduce Docker build context size
 .git
 .gitignore
-.vscode
-.idea
-
-# Ignore logs
-*.log
-logs/
-
-# Ignore OS files
 .DS_Store
-Thumbs.db
+node_modules
+**/node_modules
+**/.next
+**/dist
+**/build
+**/.cache
+**/*.log
+sentiment-sphere/.next
+sentiment-sphere/node_modules
+sentiment-sphere/public/*
+!sentiment-sphere/api/**
+docs
+scripts
+test_*
+*.pyc
+__pycache__

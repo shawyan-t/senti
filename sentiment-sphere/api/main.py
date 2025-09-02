@@ -44,11 +44,6 @@ from utils.visualizations import (
 )
 from utils.sentiment_generator import generate_emotion_analysis, generate_embeddings
 
-# New mathematical analysis imports
-from utils.mathematical_sentiment import get_mathematical_analyzer
-from utils.enhanced_analysis import get_enhanced_analyzer
-from utils.comprehensive_sentiment_engine import get_comprehensive_engine, CanonicalUnit
-
 def calculate_polarity_from_mathematical_score(sentiment_score):
     """Convert mathematical sentiment score to polarity distribution"""
     # Mathematical scores range from -1 to 1
@@ -772,7 +767,8 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         search_queries = ticker_validator.generate_search_queries(ticker, company_info)
         print(f"Generated {len(search_queries)} financial search queries for {ticker}")
         
-        # Initialize the comprehensive engine
+        # Initialize the comprehensive engine (import lazily to reduce startup memory)
+        from utils.comprehensive_sentiment_engine import get_comprehensive_engine, CanonicalUnit
         comprehensive_engine = get_comprehensive_engine()
         
         # Use ticker as content for analysis
@@ -1703,6 +1699,9 @@ async def health_check():
 async def health_check_mathematical():
     """Health check for mathematical analysis capabilities"""
     try:
+        # Import lazily to avoid loading heavy libs at startup
+        from utils.mathematical_sentiment import get_mathematical_analyzer
+        from utils.enhanced_analysis import get_enhanced_analyzer
         # Test mathematical analyzer initialization
         math_analyzer = get_mathematical_analyzer()
         enhanced_analyzer = get_enhanced_analyzer()
@@ -1744,4 +1743,5 @@ async def health_check_mathematical():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    port = int(os.getenv("PORT", "8000"))
+    uvicorn.run(app, host="0.0.0.0", port=port)

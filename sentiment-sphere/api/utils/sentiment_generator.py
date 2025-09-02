@@ -8,10 +8,14 @@ import random
 import pycountry
 from datetime import datetime
 from openai import OpenAI
-from transformers import pipeline
 import numpy as np
-from sentence_transformers import SentenceTransformer
-from umap import UMAP
+
+# Lazy, optional heavy imports to reduce memory and speed startup on small instances
+_HF_AVAILABLE = True
+_ST_AVAILABLE = True
+_UMAP_AVAILABLE = True
+if os.getenv("LIGHTWEIGHT_MODE", "false").lower() == "true":
+    _HF_AVAILABLE = _ST_AVAILABLE = _UMAP_AVAILABLE = False
 
 # Initialize OpenAI client with API key
 openai_api_key = os.environ.get("OPENAI_API_KEY")
@@ -25,8 +29,17 @@ _emotion_classifier = None
 
 def get_emotion_classifier():
     global _emotion_classifier
+    if not _HF_AVAILABLE:
+        return None
     if _emotion_classifier is None:
-        _emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=None)
+        # Import locally to avoid loading transformers unless needed
+        from transformers import pipeline
+        _emotion_classifier = pipeline(
+            "text-classification",
+            model="j-hartmann/emotion-english-distilroberta-base",
+            top_k=None,
+            device=-1,
+        )
     return _emotion_classifier
 
 # Map model emotions to Plutchik's 8 emotions
@@ -353,6 +366,9 @@ def generate_emotion_analysis(text):
     Returns a list of dicts: [{emotion: 'Joy', score: ...}, ...] with scores summing to 1.0
     """
     classifier = get_emotion_classifier()
+    if classifier is None:
+        # Lightweight fallback: neutral distribution
+        return [{"emotion": e, "score": 1.0/len(PLUTCHIK_EMOTIONS)} for e in PLUTCHIK_EMOTIONS]
     # Run the classifier
     results = classifier(text)
     # results: list of dicts with 'label' and 'score'
@@ -383,7 +399,11 @@ _embedding_model = None
 
 def get_embedding_model():
     global _embedding_model
+    if not _ST_AVAILABLE:
+        return None
     if _embedding_model is None:
+        # Import locally to avoid loading torch/sentence-transformers unless needed
+        from sentence_transformers import SentenceTransformer
         _embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
     return _embedding_model
 
@@ -394,12 +414,25 @@ def generate_embeddings(texts):
     Returns a list of 3D embedding vectors (list of floats).
     """
     model = get_embedding_model()
+    if model is None or not _UMAP_AVAILABLE:
+        # Lightweight fallback: map text length to simple 3D points deterministically
+        if isinstance(texts, str):
+            texts = [texts]
+        rng = random.Random(42)
+        out = []
+        for t in texts:
+            h = abs(hash(t))
+            # Simple bounded pseudo-embedding
+            out.append([ (h % 997) / 997.0, ((h // 997) % 991) / 991.0, len(t) % 253 / 253.0 ])
+        return out
     if isinstance(texts, str):
         texts = [texts]
     # Generate high-dimensional embeddings
     embeddings = model.encode(texts, show_progress_bar=False, convert_to_numpy=True)
     
     # Process through UMAP to get 3D coordinates
+    # Import locally to avoid loading unless needed
+    from umap import UMAP
     umap = UMAP(n_components=3, n_neighbors=15, min_dist=0.1, random_state=42)
     embeddings_3d = umap.fit_transform(embeddings)
     

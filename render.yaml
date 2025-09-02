@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sentimizer-api
+    env: python
+    rootDir: sentiment-sphere/api
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    healthCheckPath: /api/health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LIGHTWEIGHT_MODE
+        sync: false
