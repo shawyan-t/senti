@@ -1296,13 +1296,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
             "weight_explanations": comprehensive_results.get("explanations", {}).get("weight_factors", {})
         }
         
-        # Step 7: Save analysis
-        analysis_saved_id = save_analysis(comprehensive_analysis)
-        comprehensive_analysis["analysis_id"] = analysis_saved_id
-        
-        print(f"Enhanced mathematical analysis completed with ID: {analysis_saved_id}")
-        
-        # Step 8: Generate professional visualizations (only from real data)
+        # Step 7: Generate professional visualizations (only from real data)
         print("Generating professional financial sentiment visualizations...")
         visualizations = {}
 
@@ -1465,14 +1459,16 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         except Exception as viz_error:
             print(f"Warning: Visualization generation failed: {viz_error}")
             visualizations = {"error": f"Visualization generation failed: {str(viz_error)}"}
-        
-        return {
-            "analysis_id": analysis_saved_id,
-            "status": "success",
-            "analysis_type": "mathematical_enhanced",
-            "visualizations": visualizations,
-            **comprehensive_analysis
-        }
+        # Attach visualizations to analysis object for persistence and response
+        comprehensive_analysis["visualizations"] = visualizations
+
+        # Step 8: Save analysis (now includes visualizations)
+        analysis_saved_id = save_analysis(comprehensive_analysis)
+        comprehensive_analysis["analysis_id"] = analysis_saved_id
+
+        print(f"Enhanced mathematical analysis completed with ID: {analysis_saved_id}")
+
+        return comprehensive_analysis
         
     except Exception as e:
         print(f"Error in mathematical analysis: {str(e)}")
