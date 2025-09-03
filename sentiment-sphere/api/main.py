@@ -212,24 +212,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Optional: background pre-warm on startup (disabled unless explicitly enabled)
-@app.on_event("startup")
-async def _maybe_prewarm():
-    if os.getenv("ENABLE_STARTUP_PREWARM", "false").lower() != "true":
-        return
-    try:
-        import asyncio
-        loop = asyncio.get_event_loop()
-        def _warm():
-            try:
-                from utils.mathematical_sentiment import get_mathematical_analyzer
-                _ = get_mathematical_analyzer()
-            except Exception as e:
-                print("[startup] prewarm failed:", e)
-        await loop.run_in_executor(None, _warm)
-        print("[startup] prewarm completed")
-    except Exception as e:
-        print("[startup] prewarm init error:", e)
+# (No startup prewarm)
 
 # Models for request data
 class TextInput(BaseModel):

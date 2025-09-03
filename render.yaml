@@ -3,17 +3,11 @@ services:
     name: sentimizer-api
     env: python
     rootDir: sentiment-sphere/api
-    buildCommand: |
-      pip install --no-cache-dir -r requirements.txt && \
-      python scripts/prewarm_models.py
+    buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     healthCheckPath: /api/health
     envVars:
-      - key: HF_HOME
-        value: /opt/render/project/src/sentiment-sphere/api/.cache/huggingface
-      - key: TRANSFORMERS_CACHE
-        value: /opt/render/project/src/sentiment-sphere/api/.cache/huggingface
       - key: OPENAI_API_KEY
         sync: false
       - key: LIGHTWEIGHT_MODE
