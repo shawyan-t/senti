@@ -879,10 +879,12 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         search_results = []
         enable_search = (str(os.getenv("ENABLE_SEARCH", "true")).lower() == "true") and input_data.use_search_apis
         enable_reddit = str(os.getenv("ENABLE_REDDIT", "true")).lower() == "true"
-        max_queries = int(os.getenv("MAX_SEARCH_QUERIES", "0") or 0)  # 0 = no cap
-        max_results_total = int(os.getenv("MAX_SEARCH_RESULTS", "0") or 0)  # 0 = no cap
-        max_content_fetch = int(os.getenv("MAX_CONTENT_FETCH", "0") or 0)
-        max_content_fetch = max_content_fetch if max_content_fetch > 0 else 50
+        # Apply 33% stricter defaults (reduce work without cutting features):
+        # If caps are not provided via env, default to conservative values.
+        # e.g., if you previously processed ~9 queries × 50 results, use 6 × 34.
+        max_queries = int(os.getenv("MAX_SEARCH_QUERIES", "6") or 6)
+        max_results_total = int(os.getenv("MAX_SEARCH_RESULTS", "34") or 34)
+        max_content_fetch = int(os.getenv("MAX_CONTENT_FETCH", "34") or 34)
 
         if enable_search:
             print(f"Fetching financial search context for {ticker} with concurrency…")

@@ -1,0 +1,471 @@
+{
+  "id": "5059fd45-325b-4ec9-8dc1-550ed6323025",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "MSFT",
+  "timestamp": "2025-09-02T23:40:04.373283",
+  "enhanced_summary": "Comprehensive analysis of 34 content units with 87.3% confidence. Sentiment: 0.379 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9992774316549949,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 34,
+    "average_recency_weight": 0.2846978400824109
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.3786061863216735,
+      "confidence_interval": [
+        0.03915317559153175,
+        0.7612623944392419
+      ],
+      "statistical_significance": 0.860976757870041
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 1.0,
+        "textblob_score": 0.08726930984189049,
+        "afinn_score": 0.06525529265255292,
+        "consensus": 0.3841748674981478
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.3786061863216735
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2599789270900468,
+      "polarization_index": 0.41073363327393114,
+      "model_agreement": 0.5892663667260689
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.41073363327393114,
+    "polarity_breakdown": {
+      "positive": 0.651,
+      "negative": 0.112,
+      "neutral": 0.236,
+      "wilson_ci": {
+        "positive": [
+          0.5514424745286695,
+          0.7514424745286694
+        ],
+        "negative": [
+          0.01213938136783263,
+          0.21213938136783264
+        ],
+        "neutral": [
+          0.13641814410349792,
+          0.3364181441034979
+        ]
+      }
+    },
+    "sarcasm_rate": 0.000722568345005092,
+    "toxicity_rate": 0.0002810916656964237,
+    "freshness_score": 0.2846978400824109,
+    "novelty_score": 0.7102174700455061,
+    "total_evidence_weight": 0.6318290873503872
+  },
+  "vad_analysis": {
+    "valence": 0.689,
+    "arousal": 0.467,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 34,
+  "recent_developments_identified": 34,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/MSFT/",
+      "text_sample": "- Previous Close\n506.69 - Open\n500.00 - Bid 504.22 x 300\n- Ask 525.32 x 100\n- Day's Range\n496.81 - 505.92 - 52 Week Range\n344.79 - 555.45 - Volume\n17,901,226 - Avg. Volume\n19,979,988 - Market Cap (int...",
+      "contribution_weight": "100.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "uk.finance.yahoo.com",
+      "url": "https://uk.finance.yahoo.com/quote/MSFT/",
+      "text_sample": "Aug 21, 2025 ... Find the latest Microsoft Corporation (MSFT) stock quote, history, news and ... Top Stocks Personal Finance Investing News Earnings Videos. About. Data ...",
+      "contribution_weight": "90.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/equities/microsoft-corp-earnings",
+      "text_sample": "Aug 11, 2025 ... Stocks Picked by AI · Undervalued Stocks. ⏱ ProPicks AI: September's update is now available. See which stocks are in/out >>>See the list. Microsoft Corporation ...",
+      "contribution_weight": "80.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.msn.com",
+      "url": "https://www.msn.com/en-us/money/stockdetails/msft-us-stock/fi-a1xzim",
+      "text_sample": "Aug 21, 2025 ... Track MICROSOFT CORPORATION (MSFT) price, historical values, financial ... Earnings. Revenue Forecast. Down. Next quarter. Investor. Trend. Bought. +17.94% shares.",
+      "contribution_weight": "70.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "appreciatewealth.com",
+      "url": "https://appreciatewealth.com/us-stocks/microsoft-corporation-share-price",
+      "text_sample": "Get the latest share price and comprehensive financial analysis of Microsoft Corporation right here. Stay informed with up-to-date performance metrics, peer comparisons, and analyst recommendations. Y...",
+      "contribution_weight": "60.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/09/01/copperwynd-financial-llc-decreases-stock-holdings-in-microsoft-corporation-msft/",
+      "text_sample": "Copperwynd Financial LLC lowered its stake in shares of Microsoft Corporation ([NASDAQ:MSFT](https://www.marketbeat.com/stocks/NASDAQ/MSFT/) – [Free Report](https://www.marketbeat.com/arnreports/Repor...",
+      "contribution_weight": "50.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/microsoft-corporation-msft-shares-acquired-by-apollon-financial-llc/",
+      "text_sample": "Apollon Financial LLC boosted its stake in Microsoft Corporation ([NASDAQ:MSFT](https://www.marketbeat.com/stocks/NASDAQ/MSFT/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTickerOptin....",
+      "contribution_weight": "40.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/12/microsoft-corporation-nasdaqmsft-shares-sold-by-stonebridge-financial-group-llc/",
+      "text_sample": "Stonebridge Financial Group LLC lowered its position in shares of Microsoft Corporation ([NASDAQ:MSFT](https://www.marketbeat.com/stocks/NASDAQ/MSFT/) – [Free Report](https://www.marketbeat.com/arnrep...",
+      "contribution_weight": "30.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/30/microsoft-corporation-msft-shares-purchased-by-catalyst-financial-partners-llc/",
+      "text_sample": "Catalyst Financial Partners LLC boosted its position in Microsoft Corporation ([NASDAQ:MSFT](https://www.marketbeat.com/stocks/NASDAQ/MSFT/) – [Free Report](https://www.marketbeat.com/arnreports/Repor...",
+      "contribution_weight": "20.0%",
+      "recency": "3 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/21/microsoft-corporation-msft-shares-sold-by-quattro-financial-advisors-llc/",
+      "text_sample": "Quattro Financial Advisors LLC lessened its holdings in Microsoft Corporation ([NASDAQ:MSFT](https://www.marketbeat.com/stocks/NASDAQ/MSFT/) – [Free Report](https://www.marketbeat.com/arnreports/Repor...",
+      "contribution_weight": "10.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.researchgate.net",
+      "url": "https://www.researchgate.net/publication/381564005_Microsoft's_Evolution_in_Digital_Era_A_Financial_Analysis_and_Porter's_Model",
+      "text_sample": "Aug 6, 2025 ... https: //www.microsoft.com/en-us/Investor/earnings/FY-2023-Q4/performance. [12] Microsoft Corporation. Press Release & Webcast. [Internet]. 2023 [cited 2023 ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.jobget.com",
+      "url": "https://www.jobget.com/jobs/job/90230b25-f6b3-4126-b698-fd2fd51da9a1",
+      "text_sample": "Job Description\nThe Enablement & Operations (E&O) team enables Microsoft Customer and Partner Solutions (MCAPS) Team to better serve every person and organization's transformation and economic success...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/stocks/msft/",
+      "text_sample": "|\n[Revenue (ttm)](/stocks/msft/revenue/)[Dividend](/stocks/msft/dividend/)| Volume | 18,124,464 |\n| Open | 500.47 |\n| Previous Close | 506.69 |\n| Day's Range | 496.81 - 506.00 |\n| 52-Week Range | 344....",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/cspi-generates-18-revenue-growth-123000752.html",
+      "text_sample": "Reports Continued Progress Penetrating AZT PROTECT™ Sales Channels as Managed Services and Cloud-Based Businesses Maintain Growth Trajectories\nLOWELL, MA / [ACCESS Newswire](https://www.accessnewswire...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.morningstar.com",
+      "url": "https://www.morningstar.com/news/accesswire/1060726msn/cspi-generates-18-revenue-growth-during-fy-2025-third-quarter",
+      "text_sample": "CSPi Generates 18% Revenue Growth During FY 2025 Third Quarter\nReports Continued Progress Penetrating AZT PROTECT™ Sales Channels as Managed Services and Cloud-Based Businesses Maintain Growth Traject...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.stocktitan.net",
+      "url": "https://www.stocktitan.net/news/CSPI/cs-pi-generates-18-revenue-growth-during-fy-2025-third-00ctwmfm7lai.html",
+      "text_sample": "CSPi Generates 18% Revenue Growth During FY 2025 Third Quarter\nCSP Inc. (NASDAQ:CSPI) reported strong financial results for Q3 FY2025, with total revenue increasing 18% to $15.4 million compared to Q3...",
+      "contribution_weight": "10.0%",
+      "recency": "19 days ago"
+    },
+    {
+      "source": "investorrelations.cspi.com",
+      "url": "https://investorrelations.cspi.com/financials/quarterly-results/",
+      "text_sample": "Aug 14, 2025 ... The TS business remains strong as the cloud-based business continues to exceed our projections including a secured Microsoft ... business performance, revenue ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-hls-therapeutics-q2-2025-sees-revenue-decline-stock-gains-93CH-4192535",
+      "text_sample": "Aug 14, 2025 ... Microsoft · NVIDIA · Netflix · Pfizer · AMD · Boeing · GameStop Corp · AMC ... Let's start with a look at our Q2 and year to date business performance. Revenue ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.britannica.com",
+      "url": "https://www.britannica.com/money/Microsoft-Corporation",
+      "text_sample": "Microsoft Corporation\n[Gregg Pascal Zachary](/money/author/Gregg-Pascal-Zachary/4278)\n[Karl Montevirgen](/money/author/karl-montevirgen/12874516)\n[The Editors of Encyclopaedia Britannica](/money/autho...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.fortunebusinessinsights.com",
+      "url": "https://www.fortunebusinessinsights.com/wearable-technology-market-106000",
+      "text_sample": "The global wearable technology market size was valued at USD 78.40 billion in 2024 and is projected to grow from USD 86.78 billion in 2025 to USD 191.58 billion by 2032, exhibiting a CAGR of 12.0% dur...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.mordorintelligence.com",
+      "url": "https://www.mordorintelligence.com/industry-reports/middle-east-and-africa-it-services-market",
+      "text_sample": "Middle East And Africa IT Services Market Analysis by Mordor Intelligence\nThe Middle East and Africa IT services market stands at USD 232.1 billion in 2025 and is projected to reach USD 364.33 billion...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.fortunebusinessinsights.com",
+      "url": "https://www.fortunebusinessinsights.com/industry-reports/cyber-security-market-101165",
+      "text_sample": "The global cybersecurity market size was valued at USD 193.73 billion in 2024. The market is projected to grow from USD 218.98 billion in 2025 to USD 562.77 billion by 2032, exhibiting a CAGR of 14.4%...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.ibef.org",
+      "url": "https://www.ibef.org/industry/indian-it-and-ites-industry-analysis-presentation",
+      "text_sample": "*Strong growth in demand for export from new verticals.\n*In FY22, the top three Indian IT companies, TCS, Wipro and Infosys, were expected to offer ~1.05 lakh job opportunities due to the increasing d...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "simplywall.st",
+      "url": "https://simplywall.st/markets/us/tech",
+      "text_sample": "In the last week, the Tech industry is flat overall, with NVIDIA standing out by going down 4.2%. As for the the longer term, the industry is up 24% over the past 12 months. Earnings are forecast to g...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.marketsandmarkets.com",
+      "url": "https://www.marketsandmarkets.com/Market-Reports/blockchain-technology-market-90100890.html",
+      "text_sample": "Exhaustive secondary research was done to collect information on the blockchain industry. The next step was to validate these findings, assumptions, and sizing with industry experts across the value c...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/microsoft-corporation-msft-azure-growth-194600905.html",
+      "text_sample": "Microsoft Corporation (MSFT)’s Azure Growth Slowdown Would Mean Amazon “Doesn’t Look Stupid,” Says Jim Cramer\nWe recently published [10 Stocks Jim Cramer Discussed As He Blasted China’s Hostility Towa...",
+      "contribution_weight": "10.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/microsoft-corporation-msft-gains-21-212248738.html",
+      "text_sample": "We recently published [Jim Cramer’s 20 Bold AI Predictions – See How They Played Out!](https://www.insidermonkey.com/blog/jim-cramers-20-bold-ai-predictions-see-how-they-played-out-1596203/) Microsoft...",
+      "contribution_weight": "10.0%",
+      "recency": "7 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-upholds-overweight-microsoft-100358841.html",
+      "text_sample": "Microsoft Corporation (NASDAQ:[MSFT](https://finance.yahoo.com/quote/MSFT)) is one of the [AI Stocks Making Waves on Wall Street](https://www.insidermonkey.com/blog/10-ai-stocks-making-waves-on-wall-s...",
+      "contribution_weight": "10.0%",
+      "recency": "28 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/microsoft-corporation-msft-bull-case-091453110.html",
+      "text_sample": "We came across a [bullish thesis ](https://monopolisticinvestor.substack.com/p/microsoft-the-giant-you-know)on Microsoft Corporation on Monopolistic Investor’s Substack by Antoni Nabzdyk. In this arti...",
+      "contribution_weight": "10.0%",
+      "recency": "6 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/microsoft-msft-gets-650-price-114808155.html",
+      "text_sample": "Microsoft Corporation (NASDAQ:[MSFT](https://finance.yahoo.com/quote/MSFT)) is one of the [Trending AI Stocks on Wall Street](https://www.insidermonkey.com/blog/10-trending-ai-stocks-on-wall-street-3-...",
+      "contribution_weight": "10.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/MSFT/earnings-calls/",
+      "text_sample": "7 days ago ... Microsoft Corporation (MSFT) Stock Earnings Call Transcripts - Yahoo Finance. Oops, something went wrong. Skip to main content. News.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.marketbeat.com",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/MSFT/",
+      "text_sample": "Empowering Individual Investors\n345 N Reid Place, Suite 620, Sioux Falls, SD 57103\ncontact@marketbeat.com\n(844) 978-6257",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.barchart.com",
+      "url": "https://www.barchart.com/story/news/33857896/what-are-wall-street-analysts-target-price-for-microsoft-stock",
+      "text_sample": "[Your browser of choice has not been tested for use with Barchart.com. If you have issues, please download one of the browsers listed]\n[here](http://outdatedbrowser.com/en).\nJoin Barchart Premier to g...",
+      "contribution_weight": "10.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/microsoft-corporation-msft-ai-investment-120637599.html",
+      "text_sample": "Meridian Funds, managed by ArrowMark Partners, released its “Meridian Hedged Equity Fund” second-quarter 2025 investor letter. A copy of the letter can be [downloaded here](https://www.insidermonkey.c...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    }
+  ],
+  "query_summary": {
+    "query": "MSFT (Microsoft Corporation)",
+    "query_type": "Technology, Microsoft, stock, microsoft, are, from, ttm, market",
+    "entities_detected": [
+      "Microsoft",
+      "Msft",
+      "Stock",
+      "Shares",
+      "Market",
+      "Stocks",
+      "Quarter",
+      "Corporation",
+      "Microsoft Corporation",
+      "Nasdaq"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 34 related sources",
+        "relevance": "high",
+        "source_count": 34
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "58.9%",
+      "source_diversity": "20 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.08816400003661598,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 11, 2025 ... Stocks Picked by AI · Undervalued Stocks. ⏱ ProPicks AI: September's update is now available. See which stocks are in/out >>>See the ...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6695833333333334,
+      "sources": [
+        "www.investing.com",
+        "www.msn.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.07889037853605177,
+      "sentiment": -0.004663183737007458,
+      "unit_count": 2,
+      "representative_text": "Aug 21, 2025 ... Find the latest Microsoft Corporation (MSFT) stock quote, history, news and ... Top Stocks Personal Finance Investing News Earnings V...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.607479954180985,
+      "sources": [
+        "finance.yahoo.com",
+        "uk.finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.06697136273328191,
+      "sentiment": 0.007507466095078403,
+      "unit_count": 2,
+      "representative_text": "Copperwynd Financial LLC lowered its stake in shares of Microsoft Corporation ([NASDAQ:MSFT](https://www.marketbeat.com/stocks/NASDAQ/MSFT/) – [Free R...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.4944222337154035,
+      "avg_quality": 0.4734294320137694,
+      "sources": [
+        "www.etfdailynews.com",
+        "appreciatewealth.com"
+      ]
+    }
+  ],
+  "key_evidence": [
+    {
+      "phrase": "failed to meet expectations",
+      "sentiment_impact": "-",
+      "weight": 0.03326447149319455,
+      "source": "finance.yahoo.com"
+    }
+  ],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.0057715633109441215,
+      "max": 0.0492093651061952,
+      "mean": 0.01858320845148198,
+      "std": 0.011317203932487361
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 11,
+      "high_source_units": 0,
+      "low_toxicity_units": 34
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.22321064459569856,
+      "gini_coefficient": 0.3955699024230178
+    }
+  }
+}

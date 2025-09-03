@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button"
 import { Textarea } from "../components/ui/textarea"
 import { cn } from "../lib/utils"
 import SentimizerTitle from "../components/sentimizer-title"
-import { analyzeText, analyzeFile, getAnalysis, Analysis } from "../lib/api"
+import { analyzeText, analyzeFile, getAnalysis, Analysis, submitAnalysis, getAnalysisStatus, getAnalysisResult } from "../lib/api"
 import { VisualizationDashboard } from "../components/visualization-dashboard"
 import { ProfessionalVisualizationDashboard } from "../components/professional-visualization-dashboard"
 import dynamic from 'next/dynamic';
@@ -32,6 +32,8 @@ export default function Home() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [saveStatus, setSaveStatus] = useState<string | null>(null)
   const [removeStatus, setRemoveStatus] = useState<string | null>(null)
+  const [taskId, setTaskId] = useState<string | null>(null)
+  const pollTimerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     // Simulate loading delay for entrance animation
@@ -41,6 +43,48 @@ export default function Home() {
 
     return () => clearTimeout(timer)
   }, [])
+
+  // Polling for background analysis job (Option B)
+  useEffect(() => {
+    if (!taskId) return
+    if (pollTimerRef.current) {
+      clearInterval(pollTimerRef.current)
+      pollTimerRef.current = null
+    }
+    pollTimerRef.current = setInterval(async () => {
+      try {
+        const st = await getAnalysisStatus(taskId)
+        if (st.status === 'done' && st.analysis_id) {
+          const result = await getAnalysisResult(taskId)
+          setTickerAnalysisResult(result)
+          if (activeTab === 'ticker') setAnalysisResult(result)
+          setTaskId(null)
+          if (pollTimerRef.current) {
+            clearInterval(pollTimerRef.current)
+            pollTimerRef.current = null
+          }
+          setIsAnalyzing(false)
+        } else if (st.status === 'error') {
+          setError(st.error || 'Analysis failed')
+          setTaskId(null)
+          if (pollTimerRef.current) {
+            clearInterval(pollTimerRef.current)
+            pollTimerRef.current = null
+          }
+          setIsAnalyzing(false)
+        }
+      } catch (e) {
+        console.warn('Status polling error:', e)
+      }
+    }, 2000)
+
+    return () => {
+      if (pollTimerRef.current) {
+        clearInterval(pollTimerRef.current)
+        pollTimerRef.current = null
+      }
+    }
+  }, [taskId, activeTab])
 
 
   useEffect(() => {
@@ -121,15 +165,13 @@ export default function Home() {
     setIsAnalyzing(true)
     setError(null) // Clear previous errors
     try {
-      const result = await analyzeText(text)
-      setTickerAnalysisResult(result)
-      if (activeTab === "ticker") setAnalysisResult(result)
+      // Submit background job and poll (Option B)
+      const { task_id } = await submitAnalysis(text, true)
+      setTaskId(task_id)
     } catch (error) {
       console.error("Error analyzing text:", error)
       const errorMessage = error instanceof Error ? error.message : 'Analysis failed'
       setError(errorMessage)
-    } finally {
-      setIsAnalyzing(false)
     }
   }
 
