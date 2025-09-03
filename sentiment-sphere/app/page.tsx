@@ -178,6 +178,9 @@ export default function Home() {
     
     setIsAnalyzing(true)
     setError(null) // Clear previous errors
+    setProgress(0) // Reset progress bar
+    setProgressHistory([]) // Reset progress history
+    setAnalysisResult(null) // Clear previous results
     try {
       // Submit background job and poll (Option B)
       const { task_id } = await submitAnalysis(text, true)

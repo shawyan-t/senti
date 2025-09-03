@@ -972,7 +972,20 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
                     break
             search_results = unique_results
             print(f"Final unique search results: {len(search_results)} (including Reddit)")
-            _report_progress(task_id, 35, "fetched", "Fetched sources", {"unique_results": len(search_results)})
+            
+            # Calculate source type breakdown
+            reddit_count = sum(1 for r in search_results if 'reddit.com' in r.get('link', ''))
+            news_count = sum(1 for r in search_results if any(domain in r.get('link', '') for domain in ['reuters.com', 'bloomberg.com', 'marketwatch.com', 'cnbc.com', 'yahoo.com/finance']))
+            search_count = len(search_results) - reddit_count - news_count
+            
+            _report_progress(task_id, 35, "fetched", "Fetched sources", {
+                "unique_results": len(search_results),
+                "reddit_discussions": reddit_count,
+                "news_articles": news_count,
+                "search_results": search_count,
+                "queries_executed": len(queries_to_run),
+                "content_extracted": len([r for r in search_results if r.get('full_content')])
+            })
 
             # Concurrent content extraction for top results to reduce wall-clock time
             def _extract(res):
@@ -1005,14 +1018,19 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
             search_results = enriched + search_results[len(limited):]
         
         # Step 5: Create canonical units ONLY from search results (no ticker unit)
-        print("Creating canonical units for comprehensive analysis...")
-        _report_progress(task_id, 40, "units", "Creating units", {})
+        print(f"DEBUG: About to create canonical units from {len(search_results)} search results...")
+        _report_progress(task_id, 40, "units", "Creating units", {
+            "total_sources": len(search_results),
+            "processing_stage": "content_structuring"
+        })
+        print("DEBUG: Progress reported for units stage")
         units = []
         
         # For financial analysis, we don't include the ticker itself as a unit
         # Only real search results with actual financial content
         
         # Add search result units if available (no synthetic timestamps)
+        print(f"DEBUG: Creating units from {len(search_results)} search results...")
         for i, result in enumerate(search_results):
             snippet = result.get('snippet')
             full_content = result.get('full_content')
@@ -1077,7 +1095,12 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
         
         # Step 4: Run comprehensive analysis pipeline
         print("Running comprehensive sentiment analysis pipeline...")
-        _report_progress(task_id, 55, "engine", "Aggregating & weighting", {})
+        _report_progress(task_id, 55, "engine", "Aggregating & weighting", {
+            "canonical_units": len(units),
+            "text_length_avg": sum(len(u.text) for u in units) // max(len(units), 1),
+            "time_span_days": (max(u.publish_time for u in units if u.publish_time and u.publish_time != datetime.min) - min(u.publish_time for u in units if u.publish_time and u.publish_time != datetime.min)).days if any(u.publish_time and u.publish_time != datetime.min for u in units) else 0,
+            "source_domains": len(set(u.source_domain for u in units))
+        })
         try:
             comprehensive_results = comprehensive_engine.process_query(units)
             print(f"DEBUG: Comprehensive results keys: {list(comprehensive_results.keys())}")
@@ -1107,7 +1130,14 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
             mathematical_results = math_analyzer.analyze_mathematical_sentiment(combined_news_content.strip())
             comp_val = mathematical_results['mathematical_sentiment_analysis']['composite_score']['value']
             print(f"Mathematical sentiment score: {comp_val}")
-            _report_progress(task_id, 75, "model", "Model scoring", {"composite_score": comp_val})
+            _report_progress(task_id, 75, "model", "Model scoring", {
+                "composite_score": comp_val,
+                "confidence_interval_width": mathematical_results['mathematical_sentiment_analysis']['composite_score']['confidence_interval'][1] - mathematical_results['mathematical_sentiment_analysis']['composite_score']['confidence_interval'][0],
+                "statistical_significance": mathematical_results['mathematical_sentiment_analysis']['composite_score']['statistical_significance'],
+                "emotion_entropy": mathematical_results['emotion_vector_analysis']['emotion_entropy'],
+                "dominant_emotion": mathematical_results['emotion_vector_analysis']['dominant_emotions'][0] if mathematical_results['emotion_vector_analysis']['dominant_emotions'] else 'neutral',
+                "content_analyzed_chars": len(combined_news_content)
+            })
         else:
             print("No news content found for mathematical analysis")
             mathematical_results = None
@@ -1487,7 +1517,13 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
                 }
             
             print(f"✓ Generated {len(visualizations)} professional visualizations")
-            _report_progress(task_id, 90, "visuals", "Building visuals", {"visual_count": len(visualizations)})
+            _report_progress(task_id, 90, "visuals", "Building visuals", {
+                "visual_count": len(visualizations),
+                "charts_generated": list(visualizations.keys()),
+                "sentiment_timeline": "included" if "sentiment_timeline" in visualizations else "no_dated_sources",
+                "source_quality_matrix": "included" if "source_quality" in visualizations else "insufficient_sources",
+                "vad_compass": "included" if "vad_compass" in visualizations else "no_mathematical_analysis"
+            })
 
         except Exception as viz_error:
             print(f"Warning: Visualization generation failed: {viz_error}")
