@@ -62,7 +62,7 @@ export default function Home() {
         const st = await getAnalysisStatus(taskId)
         const prog = (st as any).progress
         if (prog && typeof prog.percent === 'number') {
-          setProgress(Math.max(progress, prog.percent))
+          setProgress(prog.percent)
         }
         if (Array.isArray((st as any).history)) {
           setProgressHistory((st as any).history)
@@ -178,6 +178,8 @@ export default function Home() {
     
     setIsAnalyzing(true)
     setError(null) // Clear previous errors
+    setProgress(0) // Reset progress bar
+    setProgressHistory([]) // Reset progress history
     try {
       // Submit background job and poll (Option B)
       const { task_id } = await submitAnalysis(text, true)
@@ -388,8 +390,8 @@ export default function Home() {
                         </span>
                       </div>
                     </div>
-                    {/* Progress bar appears when analyzing */}
-                    {isAnalyzing && (
+                    {/* Progress bar appears when analyzing or after completion */}
+                    {(isAnalyzing || progress > 0) && (
                       <AnalysisProgress percent={progress} history={progressHistory} />
                     )}
                     <div className="flex justify-between items-center">

@@ -1006,7 +1006,11 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
         
         # Step 5: Create canonical units ONLY from search results (no ticker unit)
         print("Creating canonical units for comprehensive analysis...")
-        _report_progress(task_id, 40, "units", "Creating units", {})
+        _report_progress(task_id, 40, "units", "Creating units", {
+            "search_results_count": len(search_results),
+            "domains_found": len(set(r.get('source_domain', 'unknown') for r in search_results)),
+            "total_content_chars": sum(len(r.get('snippet', '') + r.get('full_content', '')) for r in search_results)
+        })
         units = []
         
         # For financial analysis, we don't include the ticker itself as a unit
@@ -1077,9 +1081,20 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
         
         # Step 4: Run comprehensive analysis pipeline
         print("Running comprehensive sentiment analysis pipeline...")
-        _report_progress(task_id, 55, "engine", "Aggregating & weighting", {})
         try:
             comprehensive_results = comprehensive_engine.process_query(units)
+            
+            # Send real aggregation data
+            _report_progress(task_id, 55, "engine", "Aggregating & weighting", {
+                "total_units_processed": len(units),
+                "clusters_formed": comprehensive_results.get('coverage', {}).get('total_clusters', 0),
+                "domains_analyzed": comprehensive_results.get('breakdown', {}).get('domain_counts', 0),
+                "total_weight": comprehensive_results.get('coverage', {}).get('total_weight', 0.0),
+                "weight_concentration": comprehensive_results.get('coverage', {}).get('weight_concentration', 0.0),
+                "tukey_biweight_aggregation": True,
+                "freshness_score": comprehensive_results.get('freshness_score', 0.0),
+                "composite_sentiment": comprehensive_results.get('sentiment', {}).get('score', 0.0)
+            })
             print(f"DEBUG: Comprehensive results keys: {list(comprehensive_results.keys())}")
             if 'coverage' in comprehensive_results:
                 print(f"DEBUG: Coverage keys: {list(comprehensive_results['coverage'].keys())}")
@@ -1487,7 +1502,14 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
                 }
             
             print(f"✓ Generated {len(visualizations)} professional visualizations")
-            _report_progress(task_id, 90, "visuals", "Building visuals", {"visual_count": len(visualizations)})
+            _report_progress(task_id, 90, "visuals", "Building visuals", {
+                "chart_types_generated": list(visualizations.keys()),
+                "data_points_plotted": sum(len(comprehensive_analysis.get('timeline_data', [])) for _ in visualizations if 'timeline' in visualizations),
+                "embedding_dimensions": 3 if any('umap' in k.lower() for k in visualizations.keys()) else 0,
+                "sentiment_distribution_calculated": 'polarity_breakdown' in str(comprehensive_analysis),
+                "vad_analysis_complete": bool(comprehensive_analysis.get('vad_analysis')),
+                "total_visualizations": len(visualizations)
+            })
 
         except Exception as viz_error:
             print(f"Warning: Visualization generation failed: {viz_error}")
