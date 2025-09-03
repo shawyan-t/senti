@@ -12,6 +12,7 @@ import { VisualizationDashboard } from "../components/visualization-dashboard"
 import { ProfessionalVisualizationDashboard } from "../components/professional-visualization-dashboard"
 import dynamic from 'next/dynamic';
 const UMAP3DScatter = dynamic(() => import('../components/charts/umap-3d-scatter').then(mod => mod.UMAP3DScatter), { ssr: false });
+import { AnalysisProgress } from "../components/analysis-progress"
 
 type AnalysisData = Record<string, any>
 
@@ -34,6 +35,8 @@ export default function Home() {
   const [removeStatus, setRemoveStatus] = useState<string | null>(null)
   const [taskId, setTaskId] = useState<string | null>(null)
   const pollTimerRef = useRef<NodeJS.Timeout | null>(null)
+  const [progress, setProgress] = useState<number>(0)
+  const [progressHistory, setProgressHistory] = useState<any[]>([])
 
   useEffect(() => {
     // Simulate loading delay for entrance animation
@@ -51,9 +54,19 @@ export default function Home() {
       clearInterval(pollTimerRef.current)
       pollTimerRef.current = null
     }
+    // Start a local progress animation that advances gradually while polling
+    setProgress(0)
+    setProgressHistory([])
     pollTimerRef.current = setInterval(async () => {
       try {
         const st = await getAnalysisStatus(taskId)
+        const prog = (st as any).progress
+        if (prog && typeof prog.percent === 'number') {
+          setProgress(Math.max(progress, prog.percent))
+        }
+        if (Array.isArray((st as any).history)) {
+          setProgressHistory((st as any).history)
+        }
         if (st.status === 'done' && st.analysis_id) {
           const result = await getAnalysisResult(taskId)
           setTickerAnalysisResult(result)
@@ -63,6 +76,7 @@ export default function Home() {
             clearInterval(pollTimerRef.current)
             pollTimerRef.current = null
           }
+          setProgress(100)
           setIsAnalyzing(false)
         } else if (st.status === 'error') {
           setError(st.error || 'Analysis failed')
@@ -359,11 +373,11 @@ export default function Home() {
                     >
                       Enter a NASDAQ or NYSE Stock Ticker:
                     </motion.p>
-                    <div className="relative">
-                      <input
+                  <div className="relative">
+                    <input
                         type="text"
                         placeholder="Enter ticker symbol (e.g., AAPL, NVDA, META, VOO)..."
-                        className="w-full h-14 bg-slate-800/70 backdrop-blur-sm border border-slate-700 focus:border-emerald-500 transition-all duration-300 rounded-lg px-4 text-lg font-mono uppercase placeholder:normal-case placeholder:font-sans"
+                        className="w-full h-14 bg-purple-900/40 backdrop-blur-sm border border-slate-700 focus:border-emerald-500 transition-all duration-300 rounded-lg px-4 text-lg font-mono uppercase placeholder:normal-case placeholder:font-sans"
                         value={text}
                         onChange={(e) => setText(e.target.value.toUpperCase())}
                         maxLength={5}
@@ -374,6 +388,10 @@ export default function Home() {
                         </span>
                       </div>
                     </div>
+                    {/* Progress bar appears when analyzing */}
+                    {isAnalyzing && (
+                      <AnalysisProgress percent={progress} history={progressHistory} />
+                    )}
                     <div className="flex justify-between items-center">
                       <div className="space-y-1">
                         <p className="text-sm text-emerald-200/70">
@@ -419,7 +437,7 @@ export default function Home() {
                     </motion.p>
                     <div className="relative">
                       <select
-                        className="w-full bg-slate-800/70 backdrop-blur-sm border-slate-700 rounded-lg p-3 appearance-none text-emerald-100 focus:border-emerald-500 transition-all duration-300"
+                        className="w-full bg-purple-900/40 backdrop-blur-sm border-slate-700 rounded-lg p-3 appearance-none text-emerald-100 focus:border-emerald-500 transition-all duration-300"
                         disabled={Object.keys(previousAnalyses).length === 0}
                         value={selectedAnalysisId}
                         onChange={(e) => setSelectedAnalysisId(e.target.value)}
@@ -462,7 +480,7 @@ export default function Home() {
                       </Button>
                       <Button
                         variant="secondary"
-                        className="text-sm bg-slate-700/60 border border-slate-600 hover:bg-slate-700"
+                        className="text-sm bg-purple-800/40 border border-purple-600/50 hover:bg-purple-800/60"
                         disabled={!selectedAnalysisId}
                         onClick={() => selectedAnalysisId && removeSavedAnalysisFromLocal(selectedAnalysisId)}
                       >
@@ -660,12 +678,12 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2, duration: 0.5 }}
-                  className="mt-8 bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20"
+                  className="mt-8 bg-purple-900/30 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20"
                 >
                   <div className="flex items-center justify-end mb-2 gap-3">
                     <Button
                       variant="secondary"
-                      className="text-sm bg-slate-700/60 border border-slate-600 hover:bg-slate-700"
+                      className="text-sm bg-purple-800/40 border border-purple-600/50 hover:bg-purple-800/60"
                       onClick={saveCurrentAnalysisToLocal}
                     >
                       Save Analysis
@@ -682,7 +700,7 @@ export default function Home() {
                     
                     {/* Core Sentiment */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Sentiment Score</div>
                         <div className={`text-lg font-bold ${
                           (analysisResult.comprehensive_metrics?.sentiment?.score || 0) > 0.1 ? "text-green-500" : 
@@ -694,7 +712,7 @@ export default function Home() {
                         <div className="text-xs text-gray-400">Range: [-1, +1]</div>
                       </div>
                       
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Confidence</div>
                         <div className="text-lg font-bold text-blue-400">
                           {((analysisResult.comprehensive_metrics?.sentiment?.confidence || analysisResult.mathematical_sentiment_analysis?.composite_score?.statistical_significance || 0) * 100).toFixed(1)}%
@@ -702,7 +720,7 @@ export default function Home() {
                         <div className="text-xs text-gray-400">Statistical significance</div>
                       </div>
                       
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Disagreement</div>
                         <div className="text-lg font-bold text-purple-400">
                           {((analysisResult.comprehensive_metrics?.disagreement_index || analysisResult.mathematical_sentiment_analysis?.uncertainty_metrics?.polarization_index || 0) * 100).toFixed(1)}%
@@ -750,25 +768,25 @@ export default function Home() {
                     <div className="mb-6">
                       <h3 className="text-xl font-semibold text-emerald-300 mb-2">Tone & Style Analysis</h3>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Subjectivity</div>
                           <div className="text-lg font-bold text-indigo-400">
                             {(analysisResult.comprehensive_metrics.tone.subjectivity * 100).toFixed(0)}%
                           </div>
                         </div>
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Politeness</div>
                           <div className="text-lg font-bold text-pink-400">
                             {(analysisResult.comprehensive_metrics.tone.politeness * 100).toFixed(0)}%
                           </div>
                         </div>
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Formality</div>
                           <div className="text-lg font-bold text-cyan-400">
                             {(analysisResult.comprehensive_metrics.tone.formality * 100).toFixed(0)}%
                           </div>
                         </div>
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Assertiveness</div>
                           <div className="text-lg font-bold text-orange-400">
                             {(analysisResult.comprehensive_metrics.tone.assertiveness * 100).toFixed(0)}%
@@ -782,25 +800,25 @@ export default function Home() {
                   <div className="mb-6">
                     <h3 className="text-xl font-semibold text-emerald-300 mb-2">Risk & Quality Metrics</h3>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Sarcasm Rate</div>
                         <div className="text-lg font-bold text-yellow-400">
                           {((analysisResult.comprehensive_metrics?.sarcasm_rate || 0) * 100).toFixed(1)}%
                         </div>
                       </div>
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Toxicity Rate</div>
                         <div className="text-lg font-bold text-red-400">
                           {((analysisResult.comprehensive_metrics?.toxicity_rate || 0) * 100).toFixed(1)}%
                         </div>
                       </div>
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Freshness Score</div>
                         <div className="text-lg font-bold text-green-400">
                           {((analysisResult.comprehensive_metrics?.freshness_score || 0) * 100).toFixed(0)}%
                         </div>
                       </div>
-                      <div className="bg-slate-700/50 p-3 rounded-lg">
+                      <div className="bg-purple-800/30 p-3 rounded-lg">
                         <div className="text-sm text-gray-400">Evidence Weight</div>
                         <div className="text-lg font-bold text-blue-400">
                           {(analysisResult.comprehensive_metrics?.total_evidence_weight || 0).toFixed(2)}
@@ -822,7 +840,7 @@ export default function Home() {
                     <div className="mb-6">
                       <h3 className="text-xl font-semibold text-emerald-300 mb-2">Evidence Sources & Quality</h3>
                       {analysisResult.explanatory_clusters.map((cluster: any, i: number) => (
-                        <div key={i} className="bg-slate-700/50 p-3 rounded-lg mb-3">
+                        <div key={i} className="bg-purple-800/30 p-3 rounded-lg mb-3">
                           <div className="flex justify-between items-start mb-2">
                             <div className="text-sm font-medium text-emerald-200">
                               Cluster {i + 1} (Weight: {cluster.weight?.toFixed(3)})
@@ -853,21 +871,21 @@ export default function Home() {
                     <div className="mb-6">
                       <h3 className="text-xl font-semibold text-emerald-300 mb-2">VAD Emotional Dimensions</h3>
                       <div className="grid grid-cols-3 gap-3">
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Valence</div>
                           <div className="text-lg font-bold text-purple-400">
                             {(analysisResult.vad_analysis.valence * 100).toFixed(0)}%
                           </div>
                           <div className="text-xs text-gray-400">Pleasure/Displeasure</div>
                         </div>
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Arousal</div>
                           <div className="text-lg font-bold text-red-400">
                             {(analysisResult.vad_analysis.arousal * 100).toFixed(0)}%
                           </div>
                           <div className="text-xs text-gray-400">Activation/Calm</div>
                         </div>
-                        <div className="bg-slate-700/50 p-3 rounded-lg">
+                        <div className="bg-purple-800/30 p-3 rounded-lg">
                           <div className="text-sm text-gray-400">Dominance</div>
                           <div className="text-lg font-bold text-yellow-400">
                             {(analysisResult.vad_analysis.dominance * 100).toFixed(0)}%
@@ -885,7 +903,7 @@ export default function Home() {
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {/* Topics */}
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">Topics</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.metadata.topics?.length > 0 ? (
@@ -901,7 +919,7 @@ export default function Home() {
                         </div>
                         
                         {/* Regions */}
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">Regions</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.metadata.regions?.length > 0 ? (
@@ -917,7 +935,7 @@ export default function Home() {
                         </div>
                         
                         {/* Entities/Keywords */}
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">Entities/Keywords</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.metadata.entities?.length > 0 ? (
@@ -941,7 +959,7 @@ export default function Home() {
                       <h3 className="text-xl font-semibold text-emerald-300 mb-4">Query Analysis & Recent Context</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">Query Type</h4>
                           <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                             analysisResult.query_summary.query_type === 'financial' 
@@ -953,7 +971,7 @@ export default function Home() {
                           <p className="text-sm text-gray-300 mt-2">"{analysisResult.query_summary.query}"</p>
                         </div>
                         
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">Entities Detected</h4>
                           <div className="flex flex-wrap gap-2">
                             {analysisResult.query_summary.entities_detected?.length > 0 ? (
@@ -969,10 +987,10 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      <div className="bg-slate-700/50 p-4 rounded-lg">
+                      <div className="bg-purple-800/30 p-4 rounded-lg">
                         <h4 className="font-medium text-emerald-200 mb-3">Recent Events Context</h4>
                         {analysisResult.query_summary.recent_events?.map((event: any, i: number) => (
-                          <div key={i} className="flex items-center justify-between py-2 border-b border-slate-600 last:border-b-0">
+                          <div key={i} className="flex items-center justify-between py-2 border-b border-purple-600/50 last:border-b-0">
                             <div className="flex items-center">
                               <span className={`w-2 h-2 rounded-full mr-3 ${
                                 event.relevance === 'high' ? 'bg-green-400' : 
@@ -996,7 +1014,7 @@ export default function Home() {
                       
                       <div className="space-y-3">
                         {analysisResult.source_citations.map((citation: any, i: number) => (
-                          <div key={i} className="bg-slate-700/50 p-4 rounded-lg border-l-4 border-emerald-500">
+                          <div key={i} className="bg-purple-800/30 p-4 rounded-lg border-l-4 border-emerald-500">
                             <div className="flex justify-between items-start mb-2">
                               <div className="flex items-center gap-2">
                                 <span className="font-medium text-emerald-200">
@@ -1027,23 +1045,23 @@ export default function Home() {
                       <h3 className="text-xl font-semibold text-emerald-300 mb-4">How Scores Are Calculated</h3>
                       
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">🧮 Sentiment Calculation</h4>
                           <p className="text-sm text-gray-300">{analysisResult.calculation_methodology.sentiment_calculation}</p>
                         </div>
                         
-                        <div className="bg-slate-700/50 p-4 rounded-lg">
+                        <div className="bg-purple-800/30 p-4 rounded-lg">
                           <h4 className="font-medium text-emerald-200 mb-2">🎯 Confidence Basis</h4>
                           <p className="text-sm text-gray-300">{analysisResult.calculation_methodology.confidence_basis}</p>
                         </div>
                       </div>
                       
-                      <div className="bg-slate-700/50 p-4 rounded-lg mb-4">
+                      <div className="bg-purple-800/30 p-4 rounded-lg mb-4">
                         <h4 className="font-medium text-emerald-200 mb-2">⚖️ Source Weighting</h4>
                         <p className="text-sm text-gray-300">{analysisResult.calculation_methodology.source_weighting}</p>
                       </div>
                       
-                      <div className="bg-slate-700/50 p-4 rounded-lg">
+                      <div className="bg-purple-800/30 p-4 rounded-lg">
                         <h4 className="font-medium text-emerald-200 mb-3">📊 Accuracy Indicators</h4>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                           <div className="text-center">
@@ -1086,7 +1104,7 @@ export default function Home() {
                     />
                   ) : (
                     /* Fallback to old dashboard if no professional visualizations */
-                    <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">
+                    <div className="bg-purple-900/40 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">
                       <p className="text-gray-400">No visualization data available.</p>
                     </div>
                   )}
@@ -1102,7 +1120,7 @@ export default function Home() {
                         hovertexts={(analysisResult as any).embedding_hovertexts}
                       />
                     ) : (
-                      <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">
+                      <div className="bg-purple-900/40 backdrop-blur-sm rounded-lg p-6 border border-emerald-500/20 text-center">
                         <p className="text-gray-400">No embedding data available for UMAP visualization.</p>
                       </div>
                     )}

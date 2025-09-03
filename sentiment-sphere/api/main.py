@@ -223,6 +223,23 @@ app.add_middleware(
 TASKS: Dict[str, Dict[str, Any]] = {}
 TASK_TTL_SEC = 60 * 60  # 1 hour TTL for completed tasks
 
+def _report_progress(task_id: Optional[str], percent: int, stage: str, label: str, metrics: Optional[Dict[str, Any]] = None):
+    if not task_id:
+        return
+    try:
+        task = TASKS.get(task_id)
+        if not task:
+            return
+        prog = {"percent": max(0, min(100, percent)), "stage": stage, "label": label}
+        if metrics:
+            prog["metrics"] = metrics
+        task["progress"] = prog
+        hist = task.get("history") or []
+        hist.append({"percent": prog["percent"], "stage": stage, "label": label, "metrics": metrics or {}})
+        task["history"] = hist
+    except Exception:
+        pass
+
 def _cleanup_tasks():
     now = time.time()
     to_delete = []
@@ -238,7 +255,7 @@ async def _run_comprehensive_task(task_id: str, input_data: "TextInput"):
     TASKS[task_id]["started_at"] = time.time()
     try:
         # Reuse the existing analysis route logic directly
-        result = await analyze_comprehensive_sentiment(input_data)  # type: ignore
+        result = await analyze_comprehensive_sentiment(input_data, task_id=task_id)  # type: ignore
         analysis_id = result.get("analysis_id")
         TASKS[task_id].update({
             "status": "done",
@@ -272,6 +289,10 @@ async def submit_analysis_job(payload: SubmitRequest):
         "status": "queued",
         "created_at": time.time(),
         "analysis_id": None,
+        "progress": {"percent": 0, "stage": "queued", "label": "Queued"},
+        "history": [
+            {"percent": 0, "stage": "queued", "label": "Queued", "metrics": {}}
+        ],
     }
     # Schedule background task
     input_data = TextInput(text=payload.text, use_search_apis=payload.use_search_apis)
@@ -288,6 +309,8 @@ async def get_analysis_status(task_id: str):
         "status": info.get("status"),
         "analysis_id": info.get("analysis_id"),
         "error": info.get("error"),
+        "progress": info.get("progress"),
+        "history": info.get("history", []),
     }
 
 @app.get("/api/analyze/result/{task_id}")
@@ -835,12 +858,13 @@ async def analyze_file(
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/api/analyze/comprehensive")
-async def analyze_comprehensive_sentiment(input_data: TextInput):
+async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Optional[str] = None):
     """
     Financial Sentiment Analysis for NASDAQ/NYSE Tickers Only
     Validates ticker and performs comprehensive sentiment analysis using financial sources
     """
     try:
+        _report_progress(task_id, 5, "start", "Starting analysis", {"use_search": bool(input_data.use_search_apis)})
         print(f"Received ticker analysis request: {input_data.text[:20]}...")
         
         # Step 1: Validate that input is a NASDAQ/NYSE ticker
@@ -864,6 +888,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         # Step 3: Generate specialized financial search queries
         search_queries = ticker_validator.generate_search_queries(ticker, company_info)
         print(f"Generated {len(search_queries)} financial search queries for {ticker}")
+        _report_progress(task_id, 10, "validate", "Validated ticker", {"ticker": ticker, "queries_planned": len(search_queries)})
         
         # Initialize the comprehensive engine (import lazily to reduce startup memory)
         from utils.comprehensive_sentiment_engine import get_comprehensive_engine, CanonicalUnit
@@ -945,6 +970,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                     break
             search_results = unique_results
             print(f"Final unique search results: {len(search_results)} (including Reddit)")
+            _report_progress(task_id, 35, "fetched", "Fetched sources", {"unique_results": len(search_results)})
 
             # Concurrent content extraction for top results to reduce wall-clock time
             def _extract(res):
@@ -978,6 +1004,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         
         # Step 5: Create canonical units ONLY from search results (no ticker unit)
         print("Creating canonical units for comprehensive analysis...")
+        _report_progress(task_id, 40, "units", "Creating units", {})
         units = []
         
         # For financial analysis, we don't include the ticker itself as a unit
@@ -1048,6 +1075,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         
         # Step 4: Run comprehensive analysis pipeline
         print("Running comprehensive sentiment analysis pipeline...")
+        _report_progress(task_id, 55, "engine", "Aggregating & weighting", {})
         try:
             comprehensive_results = comprehensive_engine.process_query(units)
             print(f"DEBUG: Comprehensive results keys: {list(comprehensive_results.keys())}")
@@ -1075,7 +1103,9 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         if combined_news_content.strip():
             print(f"Analyzing {len(combined_news_content)} characters of news content...")
             mathematical_results = math_analyzer.analyze_mathematical_sentiment(combined_news_content.strip())
-            print(f"Mathematical sentiment score: {mathematical_results['mathematical_sentiment_analysis']['composite_score']['value']}")
+            comp_val = mathematical_results['mathematical_sentiment_analysis']['composite_score']['value']
+            print(f"Mathematical sentiment score: {comp_val}")
+            _report_progress(task_id, 75, "model", "Model scoring", {"composite_score": comp_val})
         else:
             print("No news content found for mathematical analysis")
             mathematical_results = None
@@ -1455,6 +1485,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
                 }
             
             print(f"✓ Generated {len(visualizations)} professional visualizations")
+            _report_progress(task_id, 90, "visuals", "Building visuals", {"visual_count": len(visualizations)})
 
         except Exception as viz_error:
             print(f"Warning: Visualization generation failed: {viz_error}")
@@ -1467,6 +1498,7 @@ async def analyze_comprehensive_sentiment(input_data: TextInput):
         comprehensive_analysis["analysis_id"] = analysis_saved_id
 
         print(f"Enhanced mathematical analysis completed with ID: {analysis_saved_id}")
+        _report_progress(task_id, 100, "final", "Completed", {"analysis_id": analysis_saved_id})
 
         return comprehensive_analysis
         

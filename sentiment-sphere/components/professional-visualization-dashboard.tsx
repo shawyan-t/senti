@@ -8,7 +8,7 @@ import { Loader2 } from 'lucide-react'
 const Plot = dynamic(() => import('react-plotly.js'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[300px] flex items-center justify-center bg-slate-800/50 rounded-lg">
+    <div className="w-full h-[300px] flex items-center justify-center bg-slate-800/30 rounded-lg">
       <Loader2 className="h-8 w-8 text-emerald-500 animate-spin" />
     </div>
   )
@@ -98,7 +98,7 @@ export function ProfessionalVisualizationDashboard({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Sentiment Index */}
             {visualizations.sentiment_index ? (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
+              <div className="bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
                   <h5 className="text-lg font-semibold text-emerald-300">Sentiment Index</h5>
@@ -110,14 +110,14 @@ export function ProfessionalVisualizationDashboard({
                 />
               </div>
             ) : (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+              <div className="bg-slate-800/30 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
                 No Sentiment Index data available
               </div>
             )}
 
             {/* Polarity Distribution */}
             {visualizations.polarity_distribution ? (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
+              <div className="bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-blue-400 rounded-full"></div>
                   <h5 className="text-lg font-semibold text-emerald-300">Polarity Distribution</h5>
@@ -129,14 +129,14 @@ export function ProfessionalVisualizationDashboard({
                 />
               </div>
             ) : (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+              <div className="bg-slate-800/30 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
                 No polarity distribution data available
               </div>
             )}
 
             {/* VAD Compass */}
             {visualizations.vad_compass ? (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
+              <div className="bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-purple-400 rounded-full"></div>
                   <h5 className="text-lg font-semibold text-emerald-300">VAD Compass</h5>
@@ -148,7 +148,7 @@ export function ProfessionalVisualizationDashboard({
                 />
               </div>
             ) : (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+              <div className="bg-slate-800/30 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
                 No VAD data available
               </div>
             )}
@@ -161,7 +161,7 @@ export function ProfessionalVisualizationDashboard({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Source Quality Matrix */}
             {visualizations.source_quality ? (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
+              <div className="bg-slate-800/40 backdrop-blur-sm rounded-lg p-4 border border-emerald-500/20">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
                   <h5 className="text-lg font-semibold text-emerald-300">Source Quality Matrix</h5>
@@ -173,7 +173,7 @@ export function ProfessionalVisualizationDashboard({
                 />
               </div>
             ) : (
-              <div className="bg-slate-800/70 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
+              <div className="bg-slate-800/30 backdrop-blur-sm rounded-lg p-4 border border-slate-600/30 text-gray-400">
                 No source quality data available
               </div>
             )}
