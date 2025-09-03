@@ -204,8 +204,10 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "https://localhost:3000",
-        # Add your production Vercel domain(s) explicitly if known
-        # e.g., "https://sentimizer.vercel.app",
+        "https://sentimizer.vercel.app",
+        "https://sentimizer.app",
+        "https://www.sentimizer.app",
+
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
@@ -1840,6 +1842,36 @@ async def delete_analysis_endpoint(analysis_id: str):
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/debug/cors")
+async def debug_cors():
+    """Debug endpoint to check actual CORS configuration"""
+    try:
+        # Get the actual CORS middleware from the app
+        for middleware in app.user_middleware:
+            if middleware.cls.__name__ == 'CORSMiddleware':
+                # Access the actual middleware options
+                cors_options = middleware.options
+                return {
+                    "cors_configured": True,
+                    "actual_allowed_origins": cors_options.get('allow_origins', []),
+                    "allow_origin_regex": cors_options.get('allow_origin_regex'),
+                    "allow_credentials": cors_options.get('allow_credentials', False),
+                    "allow_methods": cors_options.get('allow_methods', []),
+                    "allow_headers": cors_options.get('allow_headers', []),
+                    "timestamp": datetime.now().isoformat(),
+                    "middleware_count": len(app.user_middleware)
+                }
+        return {
+            "cors_configured": False, 
+            "middleware_count": len(app.user_middleware),
+            "middleware_types": [m.cls.__name__ for m in app.user_middleware]
+        }
+    except Exception as e:
+        return {
+            "error": f"Failed to inspect CORS: {str(e)}",
+            "timestamp": datetime.now().isoformat()
+        }
 
 @app.get("/api/health")
 async def health_check():
