@@ -7,6 +7,7 @@ import json
 import os
 import tempfile
 import time
+import asyncio
 import pandas as pd
 import numpy as np
 import random
@@ -213,6 +214,93 @@ app.add_middleware(
 )
 
 # (No startup prewarm)
+
+# ------------------------------------------------------------
+# In-process background tasks for analysis (Option B: polling)
+# ------------------------------------------------------------
+# Minimal, in-memory task registry. For production-grade durability,
+# store tasks in a database or object store.
+TASKS: Dict[str, Dict[str, Any]] = {}
+TASK_TTL_SEC = 60 * 60  # 1 hour TTL for completed tasks
+
+def _cleanup_tasks():
+    now = time.time()
+    to_delete = []
+    for tid, info in TASKS.items():
+        finished = info.get("finished_at")
+        if finished and (now - finished) > TASK_TTL_SEC:
+            to_delete.append(tid)
+    for tid in to_delete:
+        TASKS.pop(tid, None)
+
+async def _run_comprehensive_task(task_id: str, input_data: "TextInput"):
+    TASKS[task_id]["status"] = "running"
+    TASKS[task_id]["started_at"] = time.time()
+    try:
+        # Reuse the existing analysis route logic directly
+        result = await analyze_comprehensive_sentiment(input_data)  # type: ignore
+        analysis_id = result.get("analysis_id")
+        TASKS[task_id].update({
+            "status": "done",
+            "analysis_id": analysis_id,
+            "finished_at": time.time(),
+        })
+    except HTTPException as he:
+        TASKS[task_id].update({
+            "status": "error",
+            "error": he.detail,
+            "finished_at": time.time(),
+        })
+    except Exception as e:
+        TASKS[task_id].update({
+            "status": "error",
+            "error": str(e),
+            "finished_at": time.time(),
+        })
+    finally:
+        _cleanup_tasks()
+
+class SubmitRequest(BaseModel):
+    text: str
+    use_search_apis: bool = True
+
+@app.post("/api/analyze/submit")
+async def submit_analysis_job(payload: SubmitRequest):
+    """Submit a comprehensive analysis job and return a task_id immediately."""
+    task_id = str(uuid.uuid4())
+    TASKS[task_id] = {
+        "status": "queued",
+        "created_at": time.time(),
+        "analysis_id": None,
+    }
+    # Schedule background task
+    input_data = TextInput(text=payload.text, use_search_apis=payload.use_search_apis)
+    asyncio.create_task(_run_comprehensive_task(task_id, input_data))
+    return {"task_id": task_id}
+
+@app.get("/api/analyze/status/{task_id}")
+async def get_analysis_status(task_id: str):
+    info = TASKS.get(task_id)
+    if not info:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return {
+        "task_id": task_id,
+        "status": info.get("status"),
+        "analysis_id": info.get("analysis_id"),
+        "error": info.get("error"),
+    }
+
+@app.get("/api/analyze/result/{task_id}")
+async def get_analysis_result(task_id: str):
+    info = TASKS.get(task_id)
+    if not info:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if info.get("status") != "done" or not info.get("analysis_id"):
+        raise HTTPException(status_code=202, detail="Task not completed")
+    analysis = load_analysis(info["analysis_id"])  # type: ignore
+    if not analysis:
+        raise HTTPException(status_code=404, detail="Analysis not found")
+    return analysis
 
 # Models for request data
 class TextInput(BaseModel):

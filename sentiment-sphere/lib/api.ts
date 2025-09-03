@@ -165,4 +165,28 @@ export const getOnlineSentiment = async (query: string): Promise<any> => {
   });
 
   return handleResponse(response);
-}; 
+};
+
+// Option B: background job + polling helpers
+export const submitAnalysis = async (text: string, use_search_apis = true): Promise<{ task_id: string }> => {
+  const response = await fetch(`${API_BASE_URL}/api/analyze/submit`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text, use_search_apis }),
+  });
+  return handleResponse(response);
+};
+
+export const getAnalysisStatus = async (taskId: string): Promise<{ task_id: string; status: string; analysis_id?: string; error?: string }> => {
+  const response = await fetch(`${API_BASE_URL}/api/analyze/status/${taskId}`);
+  return handleResponse(response);
+};
+
+export const getAnalysisResult = async (taskId: string): Promise<Analysis> => {
+  const response = await fetch(`${API_BASE_URL}/api/analyze/result/${taskId}`);
+  // If task not completed, server returns 202
+  if (response.status === 202) {
+    throw new Error('Task not completed');
+  }
+  return handleResponse(response);
+};
