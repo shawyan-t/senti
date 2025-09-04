@@ -1,0 +1,958 @@
+{
+  "id": "f5d701ce-5203-48bb-82e1-7e754743b367",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "VOO",
+  "timestamp": "2025-09-04T11:20:10.631045",
+  "enhanced_summary": "Comprehensive analysis of 34 content units with 86.2% confidence. Sentiment: 0.266 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9996903706416822,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 34,
+    "average_recency_weight": 0.24823372109055925
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.26609778727523187,
+      "confidence_interval": [
+        0.03005560812104441,
+        0.6341406539559731
+      ],
+      "statistical_significance": 0.7722050967301585
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 0.9999,
+        "textblob_score": 0.08550163488993281,
+        "afinn_score": 0.032640949554896145,
+        "consensus": 0.37268086148160967
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.26609778727523187
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.2653407651521498,
+      "polarization_index": 0.37397038964114643,
+      "model_agreement": 0.6260296103588536
+    },
+    "polarity_distribution": {
+      "positive": 61.8,
+      "neutral": 23.5,
+      "negative": 14.7
+    },
+    "vad_analysis": {
+      "valence": 63.3,
+      "arousal": 43.3,
+      "dominance": 60.0
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.37397038964114643,
+    "polarity_breakdown": {
+      "positive": 0.606,
+      "negative": 0.123,
+      "neutral": 0.27,
+      "wilson_ci": {
+        "positive": [
+          0.5064391149100927,
+          0.7064391149100927
+        ],
+        "negative": [
+          0.023390221272476808,
+          0.22339022127247682
+        ],
+        "neutral": [
+          0.17017066381743048,
+          0.37017066381743047
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0003096293583177987,
+    "toxicity_rate": 0.0035205273747781467,
+    "freshness_score": 0.24823372109055925,
+    "novelty_score": 0.796468995226442,
+    "total_evidence_weight": 0.6237787210863119
+  },
+  "vad_analysis": {
+    "valence": 0.633,
+    "arousal": 0.433,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 3,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 34,
+  "recent_developments_identified": 34,
+  "source_citations": [
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/SPY/",
+      "text_sample": "SPDR S&P 500 ETF (SPY)\n- Previous Close\n643.74 - Open\n644.42 - Bid 645.38 x 700\n- Ask 645.45 x 500\n- Day's Range\n643.51 - 645.88 - 52 Week Range\n481.80 - 649.48 - Volume\n18,843,081 - Avg. Volume\n70,47...",
+      "contribution_weight": "100.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/XLF/",
+      "text_sample": "The Financial Select Sector SPDR Fund (XLF)\n- Previous Close\n53.50 - Open\n53.69 - Bid 53.67 x 63400\n- Ask 53.68 x 27200\n- Day's Range\n53.57 - 53.85 - 52 Week Range\n42.21 - 54.14 - Volume\n6,813,582 - A...",
+      "contribution_weight": "90.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "investor.vanguard.com",
+      "url": "https://investor.vanguard.com/investment-products/etfs/profile/voo",
+      "text_sample": "6 days ago ... Vanguard S&P 500 ETF (VOO) - Find objective, share price, performance ... stock trading generally. Performance could be hurt by: Stock market risk: The ...",
+      "contribution_weight": "80.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/articles/vanguard-value-etf-simplest-way-consistently-collect-more-passive-income-sp-500",
+      "text_sample": "Key PointsThe Vanguard Value ETF has a much lower valuation than the Vanguard S&P 500 ETF.\nThe Value ETF is a wealth compounder first and a passive income tool second.\nThe ETF can be an effective tool...",
+      "contribution_weight": "70.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.vanguard.com",
+      "url": "https://www.vanguard.com/pub/Pdf/sai040.pdf",
+      "text_sample": "7 days ago ... ... earnings/stock price) will be weighed against reduced shareholder rights ... Vanguard S&P 500 ETF. Charles Schwab & Co., Inc. 16.87%. National Financial ...",
+      "contribution_weight": "60.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/VTI/",
+      "text_sample": "Vanguard Total Stock Market Index Fund ETF Shares (VTI)\n- Previous Close\n317.33 - Open\n317.84 - Bid 317.54 x 300\n- Ask 317.62 x 1100\n- Day's Range\n317.33 - 318.20 - 52 Week Range\n236.42 - 320.40 - Vol...",
+      "contribution_weight": "50.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.etftrends.com",
+      "url": "https://www.etftrends.com/making-sense-nvidia-earnings-etf-impact/",
+      "text_sample": "Aug 27, 2025 ... What we learn today about the company's earnings and forward guidance will impact many metrics. ... For example, the Vanguard S&P 500 ETF (VOO) — the year's most ...",
+      "contribution_weight": "40.0%",
+      "recency": "8 days ago"
+    },
+    {
+      "source": "www.morningstar.com",
+      "url": "https://www.morningstar.com/news/accesswire/1060726msn/cspi-generates-18-revenue-growth-during-fy-2025-third-quarter",
+      "text_sample": "CSPi Generates 18% Revenue Growth During FY 2025 Third Quarter\nReports Continued Progress Penetrating AZT PROTECT™ Sales Channels as Managed Services and Cloud-Based Businesses Maintain Growth Traject...",
+      "contribution_weight": "30.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-hls-therapeutics-q2-2025-sees-revenue-decline-stock-gains-93CH-4192535",
+      "text_sample": "Aug 14, 2025 ... Vanguard 500 Index Admiral · Vanguard Total Bond Market II Index Fund Investor ... Our flagship Tech Titans strategy doubled the S&P 500 within 18 months ...",
+      "contribution_weight": "20.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "en.macromicro.me",
+      "url": "https://en.macromicro.me/collections/34/us-stock-relative/404/us-corporate-profits-after-tax-gspc",
+      "text_sample": "1 day ago ... The stock price essentially reflects a company's profitability. Profits after tax indicate the profitability of the companies in the US.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.marketwatch.com",
+      "url": "https://www.marketwatch.com/investing/fund/voo",
+      "text_sample": "6 hours ago ... VOO | A complete Vanguard S&P 500 ETF exchange traded fund overview by MarketWatch. View the latest ETF prices and news for better ETF investing.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.etftrends.com",
+      "url": "https://www.etftrends.com/",
+      "text_sample": "2 hours ago ... ... Vanguard S&P 500 ETF · QQQ – Invesco QQQ ETF · GLD – SPDR Gold Shares ETF · IVV ... ETF ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/VOO/news/",
+      "text_sample": "4 hours ago ... Warren Buffett Says Most Investors Should Buy This Brilliant Index Fund. It Could Turn $500. Warren Buffett Says Most Investors Should Buy This Brilliant Index ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/2635181af4a12c24",
+      "text_sample": "Markets\nFear & Greed 51/100\n[Why is John Deere struggling with tariffs and demand?](https://gist.ai/prompt?q=Why+is+John+Deere+struggling+with+tariffs+and+demand%3F&utm_medium=partner&utm_campaign=biz...",
+      "contribution_weight": "10.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/c507523d9a8d8823",
+      "text_sample": "This article will be updated throughout the day, so check back often for more daily updates.The Vanguard S&amp;P 500 ETF (NYSEMKT: VOO) is up 0.1% premarket as investors digest President Trumps lates…...",
+      "contribution_weight": "10.0%",
+      "recency": "23 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/430765b25a895fe0",
+      "text_sample": "Markets\nFear & Greed 51/100\n[Why is John Deere struggling with tariffs and demand?](https://gist.ai/prompt?q=Why+is+John+Deere+struggling+with+tariffs+and+demand%3F&utm_medium=partner&utm_campaign=biz...",
+      "contribution_weight": "10.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/e52b4bc845b7a977",
+      "text_sample": "Markets\nFear & Greed 51/100\n[Why is John Deere struggling with tariffs and demand?](https://gist.ai/prompt?q=Why+is+John+Deere+struggling+with+tariffs+and+demand%3F&utm_medium=partner&utm_campaign=biz...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "biztoc.com",
+      "url": "https://biztoc.com/x/3d7f2311a69ed7e6",
+      "text_sample": "This article will be updated throughout the day, so check back often for more daily updates.A tame inflation report set the stock market on fire yesterday, sending the Vanguard S&amp;P 500 ETF (NYSEM…...",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/etf/voo/",
+      "text_sample": "| Assets | $734.21B |\n| Expense Ratio | 0.03% |\n| PE Ratio | 26.81 |\n| Shares Out | 2.95B |\n| Dividend (ttm) | $6.93 |\n| Dividend Yield | 1.17% |\n| Ex-Dividend Date | Jun 30, 2025 |\n| Payout Frequency...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "research.investors.com",
+      "url": "https://research.investors.com/stock-quotes/nyse-vanguard-sandp-500-etf-voo.htm",
+      "text_sample": "STOCK/COMPANY DATA FOR VOO\n- Today's Range\n-\n591.60\n-\n593.79\n- 52-Week Range\n- 442.80\n-\n597.07\n- Price % Chg. Last 4 Weeks\n- 3.59%\n- 50-Day Avg. Volume\n- 6,396,500\n- Shares Outstanding\n- 1191.8 Mil\n- ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.webull.com",
+      "url": "https://www.webull.com/newslist/nysearca-voo",
+      "text_sample": "Securities trading is offered to self-directed customers by Webull Financial LLC, a broker dealer registered with the Securities and Exchange Commission (SEC). Webull Financial LLC is a member of the ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/VOO/performance/",
+      "text_sample": "6 hours ago ... Current and Historical Performance Performance for Vanguard S&P 500 ETF on Yahoo Finance.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/consider-vanguard-p-500-etf-082600091.html",
+      "text_sample": "Key Points\n-\nThe Vanguard S&P 500 ETF passively tracks the S&P 500 for a tiny fee.\n-\nIt’s a simple alternative to choosing individual stocks or investing in a sector-based ETF.\n-\nIt’s often smarter to...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/prediction-buying-vanguard-p-500-134500299.html",
+      "text_sample": "Key Points\n-\nThe Vanguard S&P 500 ETF tracks the movements of the broad-based index.\n-\nThe popular ETF has historically achieved annual gains of about 10%.\n-\nIf you avoid market timing, you can take a...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.reuters.com",
+      "url": "https://www.reuters.com/markets/quote/VUSA.L/",
+      "text_sample": "1 day ago ... Get Vanguard S&P 500 UCITS ETF (VUSA.L) real-time stock quotes, news, price and financial information from Reuters to inform your trading and investments.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.reuters.com",
+      "url": "https://www.reuters.com/markets/quote/VGMS.N",
+      "text_sample": "2 days ago ... Stocks. Index, Last, % Change. S&P 500, 6,415.54, --. Euro STOXX 50, 5,336.45, +0.86%Positive. FTSE 100, 9,151.97, +0.39%Positive. Nikkei 225, 41,938.89, -0.88% ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "links.message.bloomberg.com",
+      "url": "https://links.message.bloomberg.com/s/c/NW7xb1kC1PqK7ilWZwWnImvQvxavj1hebfBqJmgLdcbjoytKCtyvG18o6kcABcwW8Nrn1qwX38FqACXpHPu_9cPh82yrSo1DBBF5YkvnY6qVTJBj-_RoIv9adywMBaXabHs3mZC9AnueWHgoHHs3niOHibcMRjCx17pQm72MMt5X3chnLiQRNVPpha_aSanOgxns9KMyySMkZAAmqmzke3Z5AsPCC8KxzkGet2p3K9T6mwLwub5nQbeB9zjX0axEj7XIt5gbrFkXv0_1dKfMXwKqR4SffWlXAoUG355FR5VLX-2BmIOFmhVhHcmbR08SrPjd8ArGQy7Y9MyZRFJUc-tAeAq5XTEzKo7OsRqJad43qnGiOEngjFYtOUzBdJainKT7SDfo4_yyDMGtE60oqyb5W1qpsVpJ2BL1GL66x1AHnn75_lF913PNJT5mGXjeT1ft8y7CklwYPtObK7e_pDz387PLQTXiKR7c_BPYfwQTjQ2rg9Yxbdn5XcD5_u9f2D303j05Ftg/kEYJTyv68LedDVoCVuIG3wWq_rwohX3n/6",
+      "text_sample": "6 days ago ... VFIAX Vanguard 500 Index Fund Admiral Shares. Also available as an ETF (starting at the price of $1). Buy",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.reuters.com",
+      "url": "https://www.reuters.com/markets/quote/VGGE.DE/",
+      "text_sample": "2 days ago ... Get Vanguard Funds PLC - Vanguard Global Government Bond UCITS ETF EUR Hedged Distributing (VGGE.DE) real-time stock quotes, news, price and financial ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "seekingalpha.com",
+      "url": "https://seekingalpha.com/symbol/VOO",
+      "text_sample": "VOO Vanguard S&P 500 ETFETF Price & Overview\nETF Price & Overview\n$593.32\nCharts\nQuant Ranking\nVOO Analysis\nVOO News\nVOO Latest Headlines\nVOO Seasonality\nDisplays mean and median monthly returns for\ni...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/prem-watsas-strategic-moves-vanguard-120051929.html",
+      "text_sample": "Exploring [Prem Watsa](https://www.gurufocus.com/StockBuy.php?GuruName=Prem+Watsa) ([Trades](https://www.gurufocus.com/StockBuy.php?GuruName=Prem+Watsa), [Portfolio](https://www.gurufocus.com/holdings...",
+      "contribution_weight": "10.0%",
+      "recency": "20 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n04iys/should_i_invest_in_voo_right_now/",
+      "text_sample": "Should I invest in VOO right now?\nI’m 18 years old and I have 10k in savings.\nMy dad is big on investing (only been into it for nearly a year) we are pretty poor and he wants to have money.\nWell, he w...",
+      "contribution_weight": "10.0%",
+      "recency": "9 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n7dcs8/vanguard_and_blackrock_interesting_10_year_outlook/",
+      "text_sample": "Vanguard and Blackrock: interesting 10 year outlook\nVanguard\nVanguard doesn’t think U.S. equities can repeat the last decade’s dominance. Valuations and profit margins are already stretched, leaving l...",
+      "contribution_weight": "10.0%",
+      "recency": "1 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1n7n5oi/gold_at_ath_and_im_scared_with_vanguard_and_the/",
+      "text_sample": "Gold at ath and I'm scared with Vanguard and the rates, time to take profits?\nI've been holding gold almost all year and its been a few times at ath or close to it but now it just skyrocketed and tbh ...",
+      "contribution_weight": "10.0%",
+      "recency": "0 days ago"
+    },
+    {
+      "source": "reddit.com",
+      "url": "https://reddit.com/r/investing/comments/1my51sp/fidelity_vs_vanguard_which_would_you_recommend_to/",
+      "text_sample": "Fidelity vs vanguard, which would you recommend to put money all in one place\nHi, my former employer 401k was moved to fidelity, but my Roth IRA and brokerage are in vanguard, would anyone recommend f...",
+      "contribution_weight": "10.0%",
+      "recency": "11 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "VOO (Vanguard S&P 500 ETF)",
+    "query_type": "ETF, Vanguard, services, etf, google, revenue, has, from",
+    "entities_detected": [
+      "Https",
+      "Vanguard",
+      "Market",
+      "Biztoc",
+      "Stock",
+      "Fund",
+      "Index",
+      "Google",
+      "Services",
+      "Financial"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 34 related sources",
+        "relevance": "high",
+        "source_count": 34
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "62.6%",
+      "source_diversity": "17 different source types",
+      "temporal_coverage": "Analysis spans 27 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_3",
+      "weight": 0.06702218196924228,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 27, 2025 ... What we learn today about the company's earnings and forward guidance will impact many metrics. ... For example, the Vanguard S&P 500...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.25914378804517557,
+      "avg_quality": 0.6346666666666667,
+      "sources": [
+        "www.morningstar.com",
+        "www.etftrends.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.059826334717574654,
+      "sentiment": 0.020090196660782076,
+      "unit_count": 2,
+      "representative_text": "6 days ago ... Vanguard S&P 500 ETF (VOO) - Find objective, share price, performance ... stock trading generally. Performance could be hurt by: Stock ...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5556857807051531,
+      "sources": [
+        "www.nasdaq.com",
+        "investor.vanguard.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.05377048874037291,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "7 days ago ... ... earnings/stock price) will be weighed against reduced shareholder rights ... Vanguard S&P 500 ETF. Charles Schwab & Co., Inc. 16.87...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5766141609482222,
+      "sources": [
+        "www.vanguard.com",
+        "finance.yahoo.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.00791137599835603,
+      "max": 0.046213116573155445,
+      "mean": 0.018346432973126818,
+      "std": 0.009181949341965551
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 21,
+      "high_source_units": 0,
+      "low_toxicity_units": 34
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.19750934117024993,
+      "gini_coefficient": 0.4784006142896279
+    }
+  },
+  "sources": [
+    {
+      "title": "https://finance.yahoo.com/quote/SPY/",
+      "url": "https://finance.yahoo.com/quote/SPY/",
+      "sentiment": 0.3293058201058201
+    },
+    {
+      "title": "https://finance.yahoo.com/quote/XLF/",
+      "url": "https://finance.yahoo.com/quote/XLF/",
+      "sentiment": 0.38247559565627576
+    },
+    {
+      "title": "https://investor.vanguard.com/investment-products/etfs/profile/voo",
+      "url": "https://investor.vanguard.com/investment-products/etfs/profile/voo",
+      "sentiment": -0.19634942528735633
+    },
+    {
+      "title": "https://www.nasdaq.com/articles/vanguard-value-etf-simplest-way-consistently-collect-more-passive-income-sp-500",
+      "url": "https://www.nasdaq.com/articles/vanguard-value-etf-simplest-way-consistently-collect-more-passive-income-sp-500",
+      "sentiment": 0.4523879079721776
+    },
+    {
+      "title": "https://www.vanguard.com/pub/Pdf/sai040.pdf",
+      "url": "https://www.vanguard.com/pub/Pdf/sai040.pdf",
+      "sentiment": 0.0
+    },
+    {
+      "title": "https://finance.yahoo.com/quote/VTI/",
+      "url": "https://finance.yahoo.com/quote/VTI/",
+      "sentiment": 0.3425854252255999
+    },
+    {
+      "title": "https://www.etftrends.com/making-sense-nvidia-earnings-etf-impact/",
+      "url": "https://www.etftrends.com/making-sense-nvidia-earnings-etf-impact/",
+      "sentiment": 0.16666666666666666,
+      "published_at": "2025-08-27T11:00:35"
+    },
+    {
+      "title": "https://www.morningstar.com/news/accesswire/1060726msn/cspi-generates-18-revenue-growth-during-fy-2025-third-quarter",
+      "url": "https://www.morningstar.com/news/accesswire/1060726msn/cspi-generates-18-revenue-growth-during-fy-2025-third-quarter",
+      "sentiment": 0.36360370370370365
+    },
+    {
+      "title": "https://www.investing.com/news/transcripts/earnings-call-transcript-hls-therapeutics-q2-2025-sees-revenue-decline-stock-gains-93CH-4192535",
+      "url": "https://www.investing.com/news/transcripts/earnings-call-transcript-hls-therapeutics-q2-2025-sees-revenue-decline-stock-gains-93CH-4192535",
+      "sentiment": 0.15547204301075268
+    },
+    {
+      "title": "https://en.macromicro.me/collections/34/us-stock-relative/404/us-corporate-profits-after-tax-gspc",
+      "url": "https://en.macromicro.me/collections/34/us-stock-relative/404/us-corporate-profits-after-tax-gspc",
+      "sentiment": 0.2700777777777778
+    },
+    {
+      "title": "https://www.marketwatch.com/investing/fund/voo",
+      "url": "https://www.marketwatch.com/investing/fund/voo",
+      "sentiment": 0.2920107279693487
+    },
+    {
+      "title": "https://www.etftrends.com/",
+      "url": "https://www.etftrends.com/",
+      "sentiment": 0.1357037037037037
+    },
+    {
+      "title": "https://finance.yahoo.com/quote/VOO/news/",
+      "url": "https://finance.yahoo.com/quote/VOO/news/",
+      "sentiment": 0.6138888888888888
+    },
+    {
+      "title": "https://biztoc.com/x/2635181af4a12c24",
+      "url": "https://biztoc.com/x/2635181af4a12c24",
+      "sentiment": -0.29246933066933073,
+      "published_at": "2025-08-07T13:30:17"
+    },
+    {
+      "title": "https://biztoc.com/x/c507523d9a8d8823",
+      "url": "https://biztoc.com/x/c507523d9a8d8823",
+      "sentiment": 0.05555555555555555,
+      "published_at": "2025-08-11T13:35:25"
+    },
+    {
+      "title": "https://biztoc.com/x/430765b25a895fe0",
+      "url": "https://biztoc.com/x/430765b25a895fe0",
+      "sentiment": -0.29246933066933073,
+      "published_at": "2025-08-25T13:44:44"
+    },
+    {
+      "title": "https://biztoc.com/x/e52b4bc845b7a977",
+      "url": "https://biztoc.com/x/e52b4bc845b7a977",
+      "sentiment": -0.29246933066933073,
+      "published_at": "2025-08-08T14:34:38"
+    },
+    {
+      "title": "https://biztoc.com/x/3d7f2311a69ed7e6",
+      "url": "https://biztoc.com/x/3d7f2311a69ed7e6",
+      "sentiment": -0.10876984126984128,
+      "published_at": "2025-08-13T13:26:16"
+    },
+    {
+      "title": "https://stockanalysis.com/etf/voo/",
+      "url": "https://stockanalysis.com/etf/voo/",
+      "sentiment": 0.3518007747668297
+    },
+    {
+      "title": "https://research.investors.com/stock-quotes/nyse-vanguard-sandp-500-etf-voo.htm",
+      "url": "https://research.investors.com/stock-quotes/nyse-vanguard-sandp-500-etf-voo.htm",
+      "sentiment": 0.37575968992248066
+    },
+    {
+      "title": "https://www.webull.com/newslist/nysearca-voo",
+      "url": "https://www.webull.com/newslist/nysearca-voo",
+      "sentiment": 0.30544684845509584
+    },
+    {
+      "title": "https://finance.yahoo.com/quote/VOO/performance/",
+      "url": "https://finance.yahoo.com/quote/VOO/performance/",
+      "sentiment": 0.0
+    },
+    {
+      "title": "https://finance.yahoo.com/news/consider-vanguard-p-500-etf-082600091.html",
+      "url": "https://finance.yahoo.com/news/consider-vanguard-p-500-etf-082600091.html",
+      "sentiment": 0.32693821727068406
+    },
+    {
+      "title": "https://finance.yahoo.com/news/prediction-buying-vanguard-p-500-134500299.html",
+      "url": "https://finance.yahoo.com/news/prediction-buying-vanguard-p-500-134500299.html",
+      "sentiment": 0.4071347881918352
+    },
+    {
+      "title": "https://www.reuters.com/markets/quote/VUSA.L/",
+      "url": "https://www.reuters.com/markets/quote/VUSA.L/",
+      "sentiment": 0.0
+    },
+    {
+      "title": "https://www.reuters.com/markets/quote/VGMS.N",
+      "url": "https://www.reuters.com/markets/quote/VGMS.N",
+      "sentiment": 0.04938271604938271
+    },
+    {
+      "title": "https://links.message.bloomberg.com/s/c/NW7xb1kC1PqK7ilWZwWnImvQvxavj1hebfBqJmgLdcbjoytKCtyvG18o6kcABcwW8Nrn1qwX38FqACXpHPu_9cPh82yrSo1DBBF5YkvnY6qVTJBj-_RoIv9adywMBaXabHs3mZC9AnueWHgoHHs3niOHibcMRjCx17pQm72MMt5X3chnLiQRNVPpha_aSanOgxns9KMyySMkZAAmqmzke3Z5AsPCC8KxzkGet2p3K9T6mwLwub5nQbeB9zjX0axEj7XIt5gbrFkXv0_1dKfMXwKqR4SffWlXAoUG355FR5VLX-2BmIOFmhVhHcmbR08SrPjd8ArGQy7Y9MyZRFJUc-tAeAq5XTEzKo7OsRqJad43qnGiOEngjFYtOUzBdJainKT7SDfo4_yyDMGtE60oqyb5W1qpsVpJ2BL1GL66x1AHnn75_lF913PNJT5mGXjeT1ft8y7CklwYPtObK7e_pDz387PLQTXiKR7c_BPYfwQTjQ2rg9Yxbdn5XcD5_u9f2D303j05Ftg/kEYJTyv68LedDVoCVuIG3wWq_rwohX3n/6",
+      "url": "https://links.message.bloomberg.com/s/c/NW7xb1kC1PqK7ilWZwWnImvQvxavj1hebfBqJmgLdcbjoytKCtyvG18o6kcABcwW8Nrn1qwX38FqACXpHPu_9cPh82yrSo1DBBF5YkvnY6qVTJBj-_RoIv9adywMBaXabHs3mZC9AnueWHgoHHs3niOHibcMRjCx17pQm72MMt5X3chnLiQRNVPpha_aSanOgxns9KMyySMkZAAmqmzke3Z5AsPCC8KxzkGet2p3K9T6mwLwub5nQbeB9zjX0axEj7XIt5gbrFkXv0_1dKfMXwKqR4SffWlXAoUG355FR5VLX-2BmIOFmhVhHcmbR08SrPjd8ArGQy7Y9MyZRFJUc-tAeAq5XTEzKo7OsRqJad43qnGiOEngjFYtOUzBdJainKT7SDfo4_yyDMGtE60oqyb5W1qpsVpJ2BL1GL66x1AHnn75_lF913PNJT5mGXjeT1ft8y7CklwYPtObK7e_pDz387PLQTXiKR7c_BPYfwQTjQ2rg9Yxbdn5XcD5_u9f2D303j05Ftg/kEYJTyv68LedDVoCVuIG3wWq_rwohX3n/6",
+      "sentiment": 0.2619260869565217
+    },
+    {
+      "title": "https://www.reuters.com/markets/quote/VGGE.DE/",
+      "url": "https://www.reuters.com/markets/quote/VGGE.DE/",
+      "sentiment": 0.0
+    },
+    {
+      "title": "https://seekingalpha.com/symbol/VOO",
+      "url": "https://seekingalpha.com/symbol/VOO",
+      "sentiment": 0.03125
+    },
+    {
+      "title": "https://finance.yahoo.com/news/prem-watsas-strategic-moves-vanguard-120051929.html",
+      "url": "https://finance.yahoo.com/news/prem-watsas-strategic-moves-vanguard-120051929.html",
+      "sentiment": 0.3865600358952472,
+      "published_at": "2025-08-14T12:00:51"
+    },
+    {
+      "title": "https://reddit.com/r/investing/comments/1n04iys/should_i_invest_in_voo_right_now/",
+      "url": "https://reddit.com/r/investing/comments/1n04iys/should_i_invest_in_voo_right_now/",
+      "sentiment": -0.06532732664161238,
+      "published_at": "2025-08-25T18:18:23"
+    },
+    {
+      "title": "https://reddit.com/r/investing/comments/1n7dcs8/vanguard_and_blackrock_interesting_10_year_outlook/",
+      "url": "https://reddit.com/r/investing/comments/1n7dcs8/vanguard_and_blackrock_interesting_10_year_outlook/",
+      "sentiment": 0.33613858940054714,
+      "published_at": "2025-09-03T08:24:10"
+    },
+    {
+      "title": "https://reddit.com/r/investing/comments/1n7n5oi/gold_at_ath_and_im_scared_with_vanguard_and_the/",
+      "url": "https://reddit.com/r/investing/comments/1n7n5oi/gold_at_ath_and_im_scared_with_vanguard_and_the/",
+      "sentiment": 0.23034629014396457,
+      "published_at": "2025-09-03T14:41:27"
+    },
+    {
+      "title": "https://reddit.com/r/investing/comments/1my51sp/fidelity_vs_vanguard_which_would_you_recommend_to/",
+      "url": "https://reddit.com/r/investing/comments/1my51sp/fidelity_vs_vanguard_which_would_you_recommend_to/",
+      "sentiment": 0.4208915343915344,
+      "published_at": "2025-08-23T11:53:10"
+    }
+  ],
+  "embeddings": [
+    [
+      3.736441135406494,
+      19.842182159423828,
+      0.4287630021572113
+    ],
+    [
+      3.9224581718444824,
+      19.24297332763672,
+      0.4792931377887726
+    ],
+    [
+      3.400510549545288,
+      19.710092544555664,
+      -1.6330987215042114
+    ],
+    [
+      3.6581404209136963,
+      21.053316116333008,
+      -1.5983009338378906
+    ],
+    [
+      3.3852622509002686,
+      19.973995208740234,
+      -0.8642563223838806
+    ],
+    [
+      3.37874436378479,
+      20.057262420654297,
+      0.227994903922081
+    ],
+    [
+      3.798351526260376,
+      20.359554290771484,
+      -1.74885094165802
+    ],
+    [
+      3.904808521270752,
+      20.186296463012695,
+      0.22312112152576447
+    ],
+    [
+      4.044781684875488,
+      20.35951042175293,
+      -1.257772445678711
+    ],
+    [
+      2.757761001586914,
+      19.40224838256836,
+      -0.6312715411186218
+    ],
+    [
+      2.9371695518493652,
+      20.334604263305664,
+      -1.9763282537460327
+    ],
+    [
+      2.7382006645202637,
+      20.1519832611084,
+      -0.8345076441764832
+    ],
+    [
+      4.4191741943359375,
+      20.410757064819336,
+      -0.6167755722999573
+    ],
+    [
+      4.488771438598633,
+      19.000795364379883,
+      0.7020063400268555
+    ],
+    [
+      2.9895527362823486,
+      20.74582290649414,
+      -1.794273853302002
+    ],
+    [
+      4.652159690856934,
+      19.034042358398438,
+      1.0125081539154053
+    ],
+    [
+      4.487022876739502,
+      19.213397979736328,
+      0.9076662659645081
+    ],
+    [
+      3.0519590377807617,
+      20.647348403930664,
+      -1.2742723226547241
+    ],
+    [
+      3.526284694671631,
+      20.200071334838867,
+      -2.3316338062286377
+    ],
+    [
+      3.339181900024414,
+      19.423015594482422,
+      -2.190774440765381
+    ],
+    [
+      3.679959297180176,
+      19.201627731323242,
+      -0.25019699335098267
+    ],
+    [
+      2.409184694290161,
+      20.096969604492188,
+      -1.4119796752929688
+    ],
+    [
+      4.103237152099609,
+      21.085039138793945,
+      -1.2464995384216309
+    ],
+    [
+      3.82672381401062,
+      21.493669509887695,
+      -1.3662912845611572
+    ],
+    [
+      2.1986989974975586,
+      20.618839263916016,
+      -1.2949045896530151
+    ],
+    [
+      2.6879539489746094,
+      19.475126266479492,
+      -1.1523847579956055
+    ],
+    [
+      2.0877187252044678,
+      20.19458770751953,
+      -0.9288583397865295
+    ],
+    [
+      2.3387675285339355,
+      20.819538116455078,
+      -0.9318878054618835
+    ],
+    [
+      2.9153337478637695,
+      20.037355422973633,
+      -2.342040538787842
+    ],
+    [
+      4.1152496337890625,
+      19.255910873413086,
+      -0.11131231486797333
+    ],
+    [
+      3.7224714756011963,
+      19.6216983795166,
+      -2.058225393295288
+    ],
+    [
+      3.4470784664154053,
+      21.372079849243164,
+      -0.6529170870780945
+    ],
+    [
+      2.9415929317474365,
+      21.386703491210938,
+      -0.7517563104629517
+    ],
+    [
+      3.2743749618530273,
+      21.627151489257812,
+      -1.4160557985305786
+    ]
+  ],
+  "embedding_labels": [
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "investor.vanguard.com",
+    "www.nasdaq.com",
+    "www.vanguard.com",
+    "finance.yahoo.com",
+    "www.etftrends.com",
+    "www.morningstar.com",
+    "www.investing.com",
+    "en.macromicro.me",
+    "www.marketwatch.com",
+    "www.etftrends.com",
+    "finance.yahoo.com",
+    "biztoc.com",
+    "biztoc.com",
+    "biztoc.com",
+    "biztoc.com",
+    "biztoc.com",
+    "stockanalysis.com",
+    "research.investors.com",
+    "www.webull.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "www.reuters.com",
+    "www.reuters.com",
+    "links.message.bloomberg.com",
+    "www.reuters.com",
+    "seekingalpha.com",
+    "finance.yahoo.com",
+    "reddit.com",
+    "reddit.com",
+    "reddit.com",
+    "reddit.com"
+  ],
+  "embedding_colors": [
+    "#10B981",
+    "#10B981",
+    "#EF4444",
+    "#10B981",
+    "#FBBF24",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#EF4444",
+    "#FBBF24",
+    "#EF4444",
+    "#EF4444",
+    "#EF4444",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#FBBF24",
+    "#10B981",
+    "#10B981",
+    "#FBBF24",
+    "#FBBF24",
+    "#10B981",
+    "#FBBF24",
+    "#FBBF24",
+    "#10B981",
+    "#FBBF24",
+    "#10B981",
+    "#10B981",
+    "#10B981"
+  ],
+  "embedding_hovertexts": [
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/quote/SPY/<br>Date: Unknown<br>Sent: 0.329 • Score: 1.00<br>SPDR S&amp;P 500 ETF (SPY)\n- Previous Close\n643.74 - Open\n644.42 - Bid 645.38 x 700\n- Ask 645.45 x 500\n- Day&#x27;s Range\n643.51 - 645.88 - 52 Week R…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/quote/XLF/<br>Date: Unknown<br>Sent: 0.382 • Score: 0.90<br>The Financial Select Sector SPDR Fund (XLF)\n- Previous Close\n53.50 - Open\n53.69 - Bid 53.67 x 63400\n- Ask 53.68 x 27200\n- Day&#x27;s Range\n53.57 …",
+    "<b>investor.vanguard.com</b><br>https://investor.vanguard.com/investment-products/etfs/profile/voo<br>Date: Unknown<br>Sent: -0.196 • Score: 0.80<br>6 days ago ... Vanguard S&amp;P 500 ETF (VOO) - Find objective, share price, performance ... stock trading generally. Performance could be hurt …",
+    "<b>www.nasdaq.com</b><br>https://www.nasdaq.com/articles/vanguard-value-etf-simplest-way-consistently-collect-more-passive-income-sp-500<br>Date: Unknown<br>Sent: 0.452 • Score: 0.70<br>Key PointsThe Vanguard Value ETF has a much lower valuation than the Vanguard S&amp;P 500 ETF.\nThe Value ETF is a wealth compounder first and a …",
+    "<b>www.vanguard.com</b><br>https://www.vanguard.com/pub/Pdf/sai040.pdf<br>Date: Unknown<br>Sent: 0.000 • Score: 0.60<br>7 days ago ... ... earnings/stock price) will be weighed against reduced shareholder rights ... Vanguard S&amp;P 500 ETF. Charles Schwab &amp; Co., …",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/quote/VTI/<br>Date: Unknown<br>Sent: 0.343 • Score: 0.50<br>Vanguard Total Stock Market Index Fund ETF Shares (VTI)\n- Previous Close\n317.33 - Open\n317.84 - Bid 317.54 x 300\n- Ask 317.62 x 1100\n- Day&#x27;s…",
+    "<b>www.etftrends.com</b><br>https://www.etftrends.com/making-sense-nvidia-earnings-etf-impact/<br>Date: 2025-08-27T11:00:35<br>Sent: 0.167 • Score: 0.40<br>Aug 27, 2025 ... What we learn today about the company&#x27;s earnings and forward guidance will impact many metrics. ... For example, the Vangua…",
+    "<b>www.morningstar.com</b><br>https://www.morningstar.com/news/accesswire/1060726msn/cspi-generates-18-revenue-growth-during-fy-2025-third-quarter<br>Date: Unknown<br>Sent: 0.364 • Score: 0.30<br>CSPi Generates 18% Revenue Growth During FY 2025 Third Quarter\nReports Continued Progress Penetrating AZT PROTECT™ Sales Channels as Managed…",
+    "<b>www.investing.com</b><br>https://www.investing.com/news/transcripts/earnings-call-transcript-hls-therapeutics-q2-2025-sees-revenue-decline-stock-gains-93CH-4192535<br>Date: Unknown<br>Sent: 0.155 • Score: 0.20<br>Aug 14, 2025 ... Vanguard 500 Index Admiral · Vanguard Total Bond Market II Index Fund Investor ... Our flagship Tech Titans strategy double…",
+    "<b>en.macromicro.me</b><br>https://en.macromicro.me/collections/34/us-stock-relative/404/us-corporate-profits-after-tax-gspc<br>Date: Unknown<br>Sent: 0.270 • Score: 0.10<br>1 day ago ... The stock price essentially reflects a company&#x27;s profitability. Profits after tax indicate the profitability of the companies in the US.",
+    "<b>www.marketwatch.com</b><br>https://www.marketwatch.com/investing/fund/voo<br>Date: Unknown<br>Sent: 0.292 • Score: 0.10<br>6 hours ago ... VOO | A complete Vanguard S&amp;P 500 ETF exchange traded fund overview by MarketWatch. View the latest ETF prices and news for …",
+    "<b>www.etftrends.com</b><br>https://www.etftrends.com/<br>Date: Unknown<br>Sent: 0.136 • Score: 0.10<br>2 hours ago ... ... Vanguard S&amp;P 500 ETF · QQQ – Invesco QQQ ETF · GLD – SPDR Gold Shares ETF · IVV ... ETF ...",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/quote/VOO/news/<br>Date: Unknown<br>Sent: 0.614 • Score: 0.10<br>4 hours ago ... Warren Buffett Says Most Investors Should Buy This Brilliant Index Fund. It Could Turn $500. Warren Buffett Says Most Invest…",
+    "<b>biztoc.com</b><br>https://biztoc.com/x/2635181af4a12c24<br>Date: 2025-08-07T13:30:17<br>Sent: -0.292 • Score: 0.10<br>Markets\nFear &amp; Greed 51/100\n[Why is John Deere struggling with tariffs and demand?](https://gist.ai/prompt?q=Why+is+John+Deere+struggling+wi…",
+    "<b>biztoc.com</b><br>https://biztoc.com/x/c507523d9a8d8823<br>Date: 2025-08-11T13:35:25<br>Sent: 0.056 • Score: 0.10<br>This article will be updated throughout the day, so check back often for more daily updates.The Vanguard S&amp;amp;P 500 ETF (NYSEMKT: VOO) is u…",
+    "<b>biztoc.com</b><br>https://biztoc.com/x/430765b25a895fe0<br>Date: 2025-08-25T13:44:44<br>Sent: -0.292 • Score: 0.10<br>Markets\nFear &amp; Greed 51/100\n[Why is John Deere struggling with tariffs and demand?](https://gist.ai/prompt?q=Why+is+John+Deere+struggling+wi…",
+    "<b>biztoc.com</b><br>https://biztoc.com/x/e52b4bc845b7a977<br>Date: 2025-08-08T14:34:38<br>Sent: -0.292 • Score: 0.10<br>Markets\nFear &amp; Greed 51/100\n[Why is John Deere struggling with tariffs and demand?](https://gist.ai/prompt?q=Why+is+John+Deere+struggling+wi…",
+    "<b>biztoc.com</b><br>https://biztoc.com/x/3d7f2311a69ed7e6<br>Date: 2025-08-13T13:26:16<br>Sent: -0.109 • Score: 0.10<br>This article will be updated throughout the day, so check back often for more daily updates.A tame inflation report set the stock market on …",
+    "<b>stockanalysis.com</b><br>https://stockanalysis.com/etf/voo/<br>Date: Unknown<br>Sent: 0.352 • Score: 0.10<br>| Assets | $734.21B |\n| Expense Ratio | 0.03% |\n| PE Ratio | 26.81 |\n| Shares Out | 2.95B |\n| Dividend (ttm) | $6.93 |\n| Dividend Yield | 1.…",
+    "<b>research.investors.com</b><br>https://research.investors.com/stock-quotes/nyse-vanguard-sandp-500-etf-voo.htm<br>Date: Unknown<br>Sent: 0.376 • Score: 0.10<br>STOCK/COMPANY DATA FOR VOO\n- Today&#x27;s Range\n-\n591.60\n-\n593.79\n- 52-Week Range\n- 442.80\n-\n597.07\n- Price % Chg. Last 4 Weeks\n- 3.59%\n- 50-Day …",
+    "<b>www.webull.com</b><br>https://www.webull.com/newslist/nysearca-voo<br>Date: Unknown<br>Sent: 0.305 • Score: 0.10<br>Securities trading is offered to self-directed customers by Webull Financial LLC, a broker dealer registered with the Securities and Exchang…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/quote/VOO/performance/<br>Date: Unknown<br>Sent: 0.000 • Score: 0.10<br>6 hours ago ... Current and Historical Performance Performance for Vanguard S&amp;P 500 ETF on Yahoo Finance.",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/consider-vanguard-p-500-etf-082600091.html<br>Date: Unknown<br>Sent: 0.327 • Score: 0.10<br>Key Points\n-\nThe Vanguard S&amp;P 500 ETF passively tracks the S&amp;P 500 for a tiny fee.\n-\nIt’s a simple alternative to choosing individual stocks…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/prediction-buying-vanguard-p-500-134500299.html<br>Date: Unknown<br>Sent: 0.407 • Score: 0.10<br>Key Points\n-\nThe Vanguard S&amp;P 500 ETF tracks the movements of the broad-based index.\n-\nThe popular ETF has historically achieved annual gain…",
+    "<b>www.reuters.com</b><br>https://www.reuters.com/markets/quote/VUSA.L/<br>Date: Unknown<br>Sent: 0.000 • Score: 0.10<br>1 day ago ... Get Vanguard S&amp;P 500 UCITS ETF (VUSA.L) real-time stock quotes, news, price and financial information from Reuters to inform y…",
+    "<b>www.reuters.com</b><br>https://www.reuters.com/markets/quote/VGMS.N<br>Date: Unknown<br>Sent: 0.049 • Score: 0.10<br>2 days ago ... Stocks. Index, Last, % Change. S&amp;P 500, 6,415.54, --. Euro STOXX 50, 5,336.45, +0.86%Positive. FTSE 100, 9,151.97, +0.39%Posi…",
+    "<b>links.message.bloomberg.com</b><br>https://links.message.bloomberg.com/s/c/NW7xb1kC1PqK7ilWZwWnImvQvxavj1hebfBqJmgLdcbjoytKCtyvG18o6kcABcwW8Nrn1qwX38FqACXpHPu_9cPh82yrSo1DBBF5YkvnY6qVTJBj-_RoIv9adywMBaXabHs3mZC9AnueWHgoHHs3niOHibcMRjCx17pQm72MMt5X3chnLiQRNVPpha_aSanOgxns9KMyySMkZAAmqmzke3Z5AsPCC8KxzkGet2p3K9T6mwLwub5nQbeB9zjX0axEj7XIt5gbrFkXv0_1dKfMXwKqR4SffWlXAoUG355FR5VLX-2BmIOFmhVhHcmbR08SrPjd8ArGQy7Y9MyZRFJUc-tAeAq5XTEzKo7OsRqJad43qnGiOEngjFYtOUzBdJainKT7SDfo4_yyDMGtE60oqyb5W1qpsVpJ2BL1GL66x1AHnn75_lF913PNJT5mGXjeT1ft8y7CklwYPtObK7e_pDz387PLQTXiKR7c_BPYfwQTjQ2rg9Yxbdn5XcD5_u9f2D303j05Ftg/kEYJTyv68LedDVoCVuIG3wWq_rwohX3n/6<br>Date: Unknown<br>Sent: 0.262 • Score: 0.10<br>6 days ago ... VFIAX Vanguard 500 Index Fund Admiral Shares. Also available as an ETF (starting at the price of $1). Buy",
+    "<b>www.reuters.com</b><br>https://www.reuters.com/markets/quote/VGGE.DE/<br>Date: Unknown<br>Sent: 0.000 • Score: 0.10<br>2 days ago ... Get Vanguard Funds PLC - Vanguard Global Government Bond UCITS ETF EUR Hedged Distributing (VGGE.DE) real-time stock quotes, …",
+    "<b>seekingalpha.com</b><br>https://seekingalpha.com/symbol/VOO<br>Date: Unknown<br>Sent: 0.031 • Score: 0.10<br>VOO Vanguard S&amp;P 500 ETFETF Price &amp; Overview\nETF Price &amp; Overview\n$593.32\nCharts\nQuant Ranking\nVOO Analysis\nVOO News\nVOO Latest Headlines\nVO…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/prem-watsas-strategic-moves-vanguard-120051929.html<br>Date: 2025-08-14T12:00:51<br>Sent: 0.387 • Score: 0.10<br>Exploring [Prem Watsa](https://www.gurufocus.com/StockBuy.php?GuruName=Prem+Watsa) ([Trades](https://www.gurufocus.com/StockBuy.php?GuruName…",
+    "<b>reddit.com</b><br>https://reddit.com/r/investing/comments/1n04iys/should_i_invest_in_voo_right_now/<br>Date: 2025-08-25T18:18:23<br>Sent: -0.065 • Score: 0.10<br>Should I invest in VOO right now?\nI’m 18 years old and I have 10k in savings.\nMy dad is big on investing (only been into it for nearly a yea…",
+    "<b>reddit.com</b><br>https://reddit.com/r/investing/comments/1n7dcs8/vanguard_and_blackrock_interesting_10_year_outlook/<br>Date: 2025-09-03T08:24:10<br>Sent: 0.336 • Score: 0.10<br>Vanguard and Blackrock: interesting 10 year outlook\nVanguard\nVanguard doesn’t think U.S. equities can repeat the last decade’s dominance. Va…",
+    "<b>reddit.com</b><br>https://reddit.com/r/investing/comments/1n7n5oi/gold_at_ath_and_im_scared_with_vanguard_and_the/<br>Date: 2025-09-03T14:41:27<br>Sent: 0.230 • Score: 0.10<br>Gold at ath and I&#x27;m scared with Vanguard and the rates, time to take profits?\nI&#x27;ve been holding gold almost all year and its been a few time…",
+    "<b>reddit.com</b><br>https://reddit.com/r/investing/comments/1my51sp/fidelity_vs_vanguard_which_would_you_recommend_to/<br>Date: 2025-08-23T11:53:10<br>Sent: 0.421 • Score: 0.10<br>Fidelity vs vanguard, which would you recommend to put money all in one place\nHi, my former employer 401k was moved to fidelity, but my Roth…"
+  ],
+  "visualizations": {
+    "sentiment_index": {
+      "chart_data": "{\"data\":[{\"delta\":{\"position\":\"top\",\"reference\":50,\"relative\":true},\"domain\":{\"x\":[0,1],\"y\":[0,1]},\"gauge\":{\"axis\":{\"range\":[null,100],\"tickcolor\":\"darkblue\",\"tickwidth\":1},\"bar\":{\"color\":\"#10B981\",\"thickness\":0.8},\"bgcolor\":\"white\",\"bordercolor\":\"gray\",\"borderwidth\":2,\"steps\":[{\"color\":\"rgba(239, 68, 68, 0.2)\",\"range\":[0,30]},{\"color\":\"rgba(107, 114, 128, 0.2)\",\"range\":[30,70]},{\"color\":\"rgba(16, 185, 129, 0.2)\",\"range\":[70,100]}],\"threshold\":{\"line\":{\"color\":\"red\",\"width\":4},\"thickness\":0.75,\"value\":58.52272765069646}},\"mode\":\"gauge+number+delta\",\"title\":{\"text\":\"SENTIMENT INDEX\\u003cbr\\u003e\\u003cspan style='font-size:0.8em;color:gray'\\u003en=34 sources\\u003c\\u002fspan\\u003e\"},\"value\":58.52272765069646,\"type\":\"indicator\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"shapes\":[{\"fillcolor\":\"rgba(16, 185, 129, 0.3)\",\"line\":{\"color\":\"#10B981\",\"width\":1},\"name\":\"Confidence Interval\",\"type\":\"rect\",\"x0\":0.85,\"x1\":0.9,\"xref\":\"paper\",\"y0\":0.5455554476069591,\"y1\":0.6215114035039325,\"yref\":\"paper\"}],\"annotations\":[{\"align\":\"center\",\"font\":{\"color\":\"#10B981\",\"size\":10},\"showarrow\":false,\"text\":\"\\u00b10.08\\u003cbr\\u003e95% CI\",\"x\":0.875,\"xref\":\"paper\",\"y\":0.1,\"yref\":\"paper\"},{\"font\":{\"color\":\"#10B981\",\"size\":20},\"showarrow\":false,\"text\":\"\\u003cb\\u003ePOSITIVE\\u003c\\u002fb\\u003e\",\"x\":0.5,\"xref\":\"paper\",\"y\":0.15,\"yref\":\"paper\"}],\"margin\":{\"l\":20,\"r\":20,\"t\":40,\"b\":20},\"font\":{\"color\":\"darkblue\",\"size\":12},\"height\":350,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Primary sentiment indicator with statistical confidence bands"
+    },
+    "polarity_distribution": {
+      "chart_data": "{\"data\":[{\"error_y\":{\"array\":[11.920842770371834,13.298388051163592,14.299816675491101],\"arrayminus\":[10.028553335117664,13.150473100968087,16.758982655569298],\"color\":\"black\",\"symmetric\":false,\"thickness\":2,\"type\":\"data\",\"visible\":true,\"width\":3},\"marker\":{\"color\":[\"#EF4444\",\"#6B7280\",\"#10B981\"]},\"name\":\"Sentiment Distribution\",\"text\":[\"14.7%\\u003cbr\\u003e\\u00b111.0%\",\"23.5%\\u003cbr\\u003e\\u00b113.2%\",\"61.8%\\u003cbr\\u003e\\u00b115.5%\"],\"textposition\":\"outside\",\"x\":[\"Negative\",\"Neutral\",\"Positive\"],\"y\":[14.7,23.5,61.8],\"type\":\"bar\",\"textfont\":{\"size\":11}}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"annotations\":[{\"align\":\"left\",\"bgcolor\":\"rgba(0,0,0,0)\",\"font\":{\"color\":\"#666\",\"size\":11},\"showarrow\":false,\"text\":\"n=34 units\",\"x\":0.01,\"xanchor\":\"left\",\"xref\":\"paper\",\"y\":1,\"yanchor\":\"top\",\"yref\":\"paper\"}],\"title\":{\"font\":{\"size\":14},\"text\":\"Polarity Distribution (95% CI)\"},\"xaxis\":{\"title\":{\"text\":\"Sentiment Category\",\"standoff\":10}},\"yaxis\":{\"title\":{\"text\":\"Percentage (%)\",\"standoff\":10},\"range\":[0,83.70979834304022]},\"margin\":{\"l\":60,\"r\":60,\"t\":80,\"b\":70},\"height\":360,\"paper_bgcolor\":\"rgba(0,0,0,0)\",\"showlegend\":false}}",
+      "description": "Sentiment distribution with Wilson confidence intervals"
+    },
+    "vad_compass": {
+      "chart_data": "{\"data\":[{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hovertemplate\":\"\\u003cb\\u003eVAD Analysis\\u003c\\u002fb\\u003e\\u003cbr\\u003eArousal (r): %{r:.2f}\\u003cbr\\u003eAngle (\\u03b8): %{theta:.1f}\\u00b0\\u003cextra\\u003e\\u003c\\u002fextra\\u003e\",\"marker\":{\"cmax\":1,\"cmin\":-1,\"color\":0.2,\"colorbar\":{\"len\":0.85,\"thickness\":12,\"tickfont\":{\"size\":9},\"title\":{\"text\":\"Dominance\"},\"x\":1.24},\"colorscale\":[[0.0,\"rgb(165,0,38)\"],[0.1,\"rgb(215,48,39)\"],[0.2,\"rgb(244,109,67)\"],[0.3,\"rgb(253,174,97)\"],[0.4,\"rgb(254,224,139)\"],[0.5,\"rgb(255,255,191)\"],[0.6,\"rgb(217,239,139)\"],[0.7,\"rgb(166,217,106)\"],[0.8,\"rgb(102,189,99)\"],[0.9,\"rgb(26,152,80)\"],[1.0,\"rgb(0,104,55)\"]],\"line\":{\"color\":\"black\",\"width\":2},\"size\":20},\"mode\":\"markers\",\"name\":\"VAD Position\",\"r\":[0.2978455975837145],\"theta\":[-26.737110057805886],\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"marker\":{\"color\":\"black\",\"size\":8},\"mode\":\"markers\",\"r\":[0],\"showlegend\":false,\"theta\":[0],\"type\":\"scatterpolar\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"annotations\":[{\"align\":\"center\",\"font\":{\"color\":\"#e2e8f0\",\"size\":12},\"showarrow\":false,\"text\":\"V: 0.27  |  A: -0.13  |  D: 0.20\",\"x\":0.5,\"xref\":\"paper\",\"y\":1.08,\"yref\":\"paper\"}],\"title\":{\"font\":{\"size\":14},\"text\":\"VAD Emotional Compass\"},\"polar\":{\"angularaxis\":{\"tickfont\":{\"size\":8},\"tickvals\":[0,90,180,270],\"ticktext\":[\"High\\u003cbr\\u003eValence\",\"High\\u003cbr\\u003eArousal\",\"Low\\u003cbr\\u003eValence\",\"Low\\u003cbr\\u003eArousal\"],\"direction\":\"counterclockwise\",\"rotation\":90},\"domain\":{\"x\":[0.0,1.0],\"y\":[0.0,1.0]}},\"margin\":{\"l\":70,\"r\":120,\"t\":90,\"b\":70},\"height\":460,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Emotional dimensions analysis (Valence-Arousal-Dominance)"
+    },
+    "source_quality": {
+      "chart_data": "{\"data\":[{\"colorbar\":{\"title\":{\"text\":\"Quality Score\"}},\"colorscale\":[[0.0,\"rgb(165,0,38)\"],[0.1,\"rgb(215,48,39)\"],[0.2,\"rgb(244,109,67)\"],[0.3,\"rgb(253,174,97)\"],[0.4,\"rgb(254,224,139)\"],[0.5,\"rgb(255,255,191)\"],[0.6,\"rgb(217,239,139)\"],[0.7,\"rgb(166,217,106)\"],[0.8,\"rgb(102,189,99)\"],[0.9,\"rgb(26,152,80)\"],[1.0,\"rgb(0,104,55)\"]],\"hoverongaps\":false,\"hovertemplate\":\"\\u003cb\\u003e%{y}\\u003c\\u002fb\\u003e\\u003cbr\\u003e%{x}: %{z:.2f}\\u003cextra\\u003e\\u003c\\u002fextra\\u003e\",\"text\":[[\"0.90\",\"0.24\",\"1.00\",\"0.80\"],[\"0.50\",\"0.53\",\"1.00\",\"0.40\"],[\"0.70\",\"0.06\",\"1.00\",\"0.60\"],[\"0.50\",\"0.54\",\"1.00\",\"0.40\"]],\"textfont\":{\"size\":12},\"texttemplate\":\"%{text}\",\"x\":[\"Reliability\",\"Sentiment Impact\",\"Recency\",\"Authority\"],\"y\":[\"Financial News (n=5)\",\"Social Media (n=4)\",\"Research (n=1)\",\"Other (n=24)\"],\"z\":[[0.9,0.2413278123901012,1.0,0.8],[0.5,0.5263518702888292,1.0,0.4],[0.7,0.0625,1.0,0.6],[0.5,0.5408334843704496,1.0,0.4000000000000001]],\"zmax\":1,\"zmin\":0,\"type\":\"heatmap\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"title\":{\"font\":{\"size\":16},\"text\":\"Source Quality Matrix\"},\"margin\":{\"l\":120,\"r\":80,\"t\":60,\"b\":40},\"xaxis\":{\"title\":{\"text\":\"Quality Metrics\"}},\"yaxis\":{\"title\":{\"text\":\"Source Types\"}},\"height\":300,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Source reliability and quality assessment matrix"
+    },
+    "sentiment_timeline": {
+      "chart_data": "{\"data\":[{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"hovertemplate\":\"\\u003cb\\u003e%{text}\\u003c\\u002fb\\u003e\\u003cbr\\u003e%{x|%b %d, %H:%M}\\u003cbr\\u003eSentiment: %{y:.3f}\\u003cextra\\u003e\\u003c\\u002fextra\\u003e\",\"marker\":{\"color\":[\"#EF4444\",\"#EF4444\",\"#6B7280\",\"#EF4444\",\"#10B981\",\"#10B981\",\"#EF4444\",\"#6B7280\",\"#10B981\",\"#10B981\",\"#10B981\"],\"line\":{\"width\":0},\"opacity\":0.5,\"size\":6},\"mode\":\"markers\",\"name\":\"Sources\",\"text\":[\"https:\\u002f\\u002fbiztoc.com\\u002fx\\u002f2635181af4a12c24\",\"https:\\u002f\\u002fbiztoc.com\\u002fx\\u002fe52b4bc845b7a977\",\"https:\\u002f\\u002fbiztoc.com\\u002fx\\u002fc507523d9a8d8823\",\"https:\\u002f\\u002fbiztoc.com\\u002fx\\u002f3d7f2311a69ed7e6\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fprem-watsas-strategic-moves-vanguard-120051929\\u2026\",\"https:\\u002f\\u002freddit.com\\u002fr\\u002finvesting\\u002fcomments\\u002f1my51sp\\u002ffidelity_vs_vanguard_which_wo\\u2026\",\"https:\\u002f\\u002fbiztoc.com\\u002fx\\u002f430765b25a895fe0\",\"https:\\u002f\\u002freddit.com\\u002fr\\u002finvesting\\u002fcomments\\u002f1n04iys\\u002fshould_i_invest_in_voo_right_\\u2026\",\"https:\\u002f\\u002fwww.etftrends.com\\u002fmaking-sense-nvidia-earnings-etf-impact\\u002f\",\"https:\\u002f\\u002freddit.com\\u002fr\\u002finvesting\\u002fcomments\\u002f1n7dcs8\\u002fvanguard_and_blackrock_intere\\u2026\",\"https:\\u002f\\u002freddit.com\\u002fr\\u002finvesting\\u002fcomments\\u002f1n7n5oi\\u002fgold_at_ath_and_im_scared_wit\\u2026\"],\"x\":[\"2025-08-07T13:30:17.000000000\",\"2025-08-08T14:34:38.000000000\",\"2025-08-11T13:35:25.000000000\",\"2025-08-13T13:26:16.000000000\",\"2025-08-14T12:00:51.000000000\",\"2025-08-23T11:53:10.000000000\",\"2025-08-25T13:44:44.000000000\",\"2025-08-25T18:18:23.000000000\",\"2025-08-27T11:00:35.000000000\",\"2025-09-03T08:24:10.000000000\",\"2025-09-03T14:41:27.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"wbKTSNG30r\\u002fBspNI0bfSvxzHcRzHcaw\\u002fU4oLH1fYu79DFQdOZr3YP1v+1wvj79o\\u002fwbKTSNG30r9D+XWrSrmwv1VVVVVVVcU\\u002f8YcZbkuD1T84LXa7\\u002fHvNPw==\"},\"type\":\"scattergl\"},{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"line\":{\"dash\":\"solid\",\"width\":3},\"mode\":\"lines\",\"name\":\"3-Source Rolling Avg\",\"opacity\":0.95,\"x\":[\"2025-08-07T13:30:17.000000000\",\"2025-08-08T14:34:38.000000000\",\"2025-08-11T13:35:25.000000000\",\"2025-08-13T13:26:16.000000000\",\"2025-08-14T12:00:51.000000000\",\"2025-08-23T11:53:10.000000000\",\"2025-08-25T13:44:44.000000000\",\"2025-08-25T18:18:23.000000000\",\"2025-08-27T11:00:35.000000000\",\"2025-09-03T08:24:10.000000000\",\"2025-09-03T14:41:27.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAA+H8Uc7tzRpbGv0N7YOaSf72\\u002fbY8YjQxyvD8Fdr22d8\\u002fNP5RAMrb6+MU\\u002f3EYkglCJlT81swhhTE+wv9wi7\\u002fNsqsI\\u002fJYb\\u002fTvhHzz8AAAAAAAD4fw==\"},\"type\":\"scatter\"},{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"line\":{\"color\":\"white\",\"dash\":\"dot\",\"width\":2},\"mode\":\"lines\",\"name\":\"Trend (Improving)\",\"opacity\":0.8,\"x\":[\"2025-08-07T13:30:17.000000000\",\"2025-08-08T14:34:38.000000000\",\"2025-08-11T13:35:25.000000000\",\"2025-08-13T13:26:16.000000000\",\"2025-08-14T12:00:51.000000000\",\"2025-08-23T11:53:10.000000000\",\"2025-08-25T13:44:44.000000000\",\"2025-08-25T18:18:23.000000000\",\"2025-08-27T11:00:35.000000000\",\"2025-09-03T08:24:10.000000000\",\"2025-09-03T14:41:27.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"bCfEPZ8Rwb8efKT972W+v6IuRb+MzrO\\u002fuCfhO1FXqb\\u002fqOl6YUJuiv+qSX1iq5LY\\u002flKlnLGBUvj+8jD3rgwK\\u002fP+pmO8pQisI\\u002ftAdW08vfzj9cO9cK11fPPw==\"},\"type\":\"scatter\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"shapes\":[{\"line\":{\"color\":\"gray\",\"dash\":\"dot\"},\"opacity\":0.5,\"type\":\"line\",\"x0\":0,\"x1\":1,\"xref\":\"x domain\",\"y0\":0,\"y1\":0,\"yref\":\"y\"},{\"line\":{\"color\":\"green\",\"dash\":\"dot\"},\"opacity\":0.3,\"type\":\"line\",\"x0\":0,\"x1\":1,\"xref\":\"x domain\",\"y0\":0.1,\"y1\":0.1,\"yref\":\"y\"},{\"line\":{\"color\":\"red\",\"dash\":\"dot\"},\"opacity\":0.3,\"type\":\"line\",\"x0\":0,\"x1\":1,\"xref\":\"x domain\",\"y0\":-0.1,\"y1\":-0.1,\"yref\":\"y\"}],\"title\":{\"font\":{\"size\":14},\"text\":\"Time\",\"x\":0.5,\"y\":0.98},\"hoverlabel\":{\"font\":{\"color\":\"#FFFFFF\"},\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\"},\"xaxis\":{\"title\":{\"text\":\"\",\"standoff\":30},\"rangeslider\":{\"visible\":true,\"thickness\":0.1,\"bgcolor\":\"rgba(0,0,0,0.7)\",\"bordercolor\":\"rgba(255,255,255,0.1)\",\"borderwidth\":1},\"rangeselector\":{\"font\":{\"color\":\"#e5e7eb\",\"size\":10},\"buttons\":[{\"count\":24,\"label\":\"1D\",\"step\":\"hour\",\"stepmode\":\"backward\"},{\"count\":7,\"label\":\"1W\",\"step\":\"day\",\"stepmode\":\"backward\"},{\"label\":\"ALL\",\"step\":\"all\"}],\"x\":0.5,\"xanchor\":\"center\",\"y\":-0.22,\"yanchor\":\"top\",\"bgcolor\":\"rgba(0,0,0,0.85)\",\"activecolor\":\"#1f2937\",\"bordercolor\":\"rgba(255,255,255,0.1)\",\"borderwidth\":1},\"showgrid\":true,\"gridcolor\":\"lightgray\",\"automargin\":true,\"nticks\":8,\"tickformat\":\"%b %d\"},\"yaxis\":{\"title\":{\"text\":\"Sentiment Score\"},\"range\":[-1,1],\"tickmode\":\"array\",\"tickvals\":[-1,-0.75,-0.5,-0.25,0,0.25,0.5,0.75,1],\"ticktext\":[\"-1.00\",\"-0.75\",\"-0.50\",\"-0.25\",\"0\",\"0.25\",\"0.50\",\"0.75\",\"1.00\"],\"ticks\":\"outside\",\"ticklen\":8,\"showgrid\":true,\"gridcolor\":\"lightgray\"},\"margin\":{\"l\":60,\"r\":60,\"t\":160,\"b\":140},\"legend\":{\"font\":{\"size\":10},\"orientation\":\"h\",\"yanchor\":\"bottom\",\"y\":1.1,\"xanchor\":\"center\",\"x\":0.5,\"bgcolor\":\"rgba(0,0,0,0)\",\"bordercolor\":\"rgba(255,255,255,0.1)\",\"borderwidth\":0},\"hovermode\":\"closest\",\"height\":420,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Rolling sentiment timeline with trend analysis"
+    }
+  }
+}

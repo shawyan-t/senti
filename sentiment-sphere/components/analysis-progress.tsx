@@ -17,11 +17,11 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
 
   return (
     <div className="mt-3">
-      <div className="flex items-center justify-between text-xs text-emerald-200/80 mb-1">
+      <div className="flex items-center justify-between text-xs sm:text-sm text-emerald-200/80 mb-1 sm:mb-2">
         <span>Analysis Progress</span>
-        <span>{Math.floor(clamped)}%</span>
+        <span className="font-mono">{Math.floor(clamped)}%</span>
       </div>
-      <div className="relative h-3 w-full rounded-full bg-emerald-900/30 overflow-hidden border border-emerald-700/30">
+      <div className="relative h-3 sm:h-4 w-full rounded-full bg-emerald-900/30 overflow-hidden border border-emerald-700/30">
         <div
           className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-700"
           style={{ width: `${clamped}%` }}
@@ -35,14 +35,14 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
             <Dialog key={`${cp.stage}-${idx}`}>
               <DialogTrigger asChild>
                 <button
-                  className={`absolute -top-1 h-6 w-6 rounded-full border-2 transition-all duration-500 transform hover:scale-110 ${
+                  className={`absolute -top-1 sm:-top-1.5 h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 transition-all duration-500 transform hover:scale-110 active:scale-95 ${
                     done
                       ? 'bg-gradient-to-br from-emerald-400 to-teal-500 border-emerald-200 shadow-lg shadow-emerald-900/60'
                       : current
                         ? 'bg-gradient-to-br from-emerald-400 to-teal-500 border-emerald-200 shadow-lg shadow-emerald-900/60 animate-pulse'
                         : 'bg-gradient-to-br from-slate-600 to-slate-800 border-slate-400 hover:from-slate-500 hover:to-slate-700 hover:border-slate-300 shadow-md'
                   }`}
-                  style={{ left: `calc(${left}% - 12px)` }}
+                  style={{ left: `calc(${left}% - 14px)` }}
                   title={`${cp.label} — click to view detailed metrics`}
                 >
                   <div className={`w-full h-full rounded-full flex items-center justify-center ${
@@ -60,27 +60,27 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
                   </div>
                 </button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-2xl bg-slate-900 border-emerald-700/30">
-                <DialogHeader className="pb-4">
+              <DialogContent className="max-w-[95vw] sm:max-w-2xl bg-slate-900 border-emerald-700/30 max-h-[90vh] overflow-hidden">
+                <DialogHeader className="pb-3 sm:pb-4">
                   <div className="flex items-center justify-between">
-                    <DialogTitle className="text-emerald-400 flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center">
-                        <svg className="w-4 h-4 text-emerald-900" fill="currentColor" viewBox="0 0 20 20">
+                    <DialogTitle className="text-emerald-400 flex items-center gap-2 sm:gap-3 text-sm sm:text-base">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center">
+                        <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-900" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       </div>
                       {cp.label}
                     </DialogTitle>
-                    <Badge variant="secondary" className="bg-emerald-900/50 text-emerald-200 border-emerald-700">
+                    <Badge variant="secondary" className="bg-emerald-900/50 text-emerald-200 border-emerald-700 text-xs sm:text-sm">
                       {cp.percent}%
                     </Badge>
                   </div>
                 </DialogHeader>
-                <div className="text-sm text-gray-100 leading-relaxed max-h-96 overflow-y-auto">
+                <div className="text-xs sm:text-sm text-gray-100 leading-relaxed max-h-[60vh] sm:max-h-96 overflow-y-auto">
                   {cp.metrics && Object.keys(cp.metrics).length > 0 ? (
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       {/* Pipeline Stage Information */}
-                      <div className="bg-slate-800/50 rounded-lg p-3 border border-emerald-700/30">
+                      <div className="bg-slate-800/50 rounded-lg p-2 sm:p-3 border border-emerald-700/30">
                         <div className="flex items-center gap-2 mb-2">
                           <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                           <span className="text-emerald-300 font-semibold text-xs uppercase tracking-wide">
@@ -103,7 +103,7 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
                           
                           
                           return (
-                            <div key={key} className="bg-slate-900/40 rounded-md p-3 border border-slate-700/50">
+                            <div key={key} className="bg-slate-900/40 rounded-md p-2 sm:p-3 border border-slate-700/50">
                               <div className="flex items-start justify-between mb-1">
                                 <span className="text-emerald-300 font-medium text-xs capitalize">
                                   {key === 'unique_results' ? 'Sources Found' :

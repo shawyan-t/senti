@@ -45,7 +45,7 @@ export default function SentimizerTitle({ onAnimationComplete }: SentimizerTitle
     let animationFrameId: number
     let progress = 0
     const text = "SENTIMIZER"
-    const fontSize = Math.min(width / 8, 80)
+    const fontSize = Math.min(width / 8, width < 640 ? 48 : 80) // Smaller on mobile
     const particles: Particle[] = []
     const particleCount = 200
 
@@ -182,7 +182,7 @@ export default function SentimizerTitle({ onAnimationComplete }: SentimizerTitle
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 tracking-wider uppercase font-tech">
+            <h1 className="text-3xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 tracking-wider uppercase font-tech">
               SENTIMIZER
             </h1>
           </motion.div>

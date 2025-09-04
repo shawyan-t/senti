@@ -308,16 +308,16 @@ export default function Home() {
         ) : null}
       </AnimatePresence>
 
-      <main className="flex-1 container mx-auto px-4 py-8 max-w-6xl">
+      <main className="flex-1 container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-6xl">
         {/* Title Section */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="mb-12 h-32 flex items-center justify-center"
+          className="mb-6 sm:mb-12 h-20 sm:h-32 flex items-center justify-center"
         >
           <SentimizerTitle onAnimationComplete={() => setTitleAnimationComplete(true)} />
-          <p className="absolute mt-32 text-center text-emerald-300 font-light tracking-wide">
+          <p className="absolute mt-16 sm:mt-32 text-center text-emerald-300 font-light tracking-wide text-sm sm:text-base">
             Stock Market Sentiment Analysis
           </p>
         </motion.div>
@@ -329,38 +329,48 @@ export default function Home() {
               <div className="bg-white/5 backdrop-blur-sm h-16 rounded-lg mb-8 shadow-lg shadow-purple-900/20"></div>
 
               <div className="w-full">
-                <div className="grid grid-cols-3 mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-6 sm:mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
                   {["ticker", "analyses", "about"].map((tab) => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
                       className={cn(
-                        "py-2 px-4 rounded-md transition-all duration-300",
+                        "py-3 sm:py-2 px-3 sm:px-4 rounded-md transition-all duration-300 text-sm sm:text-base min-h-[44px]",
                         activeTab === tab
                           ? "bg-gradient-to-r from-emerald-600 to-teal-500 text-white"
                           : "text-gray-400 hover:text-gray-200",
                       )}
                     >
-                      {tab === "ticker" && "📈 Stock Ticker Analysis"}
-                      {tab === "analyses" && "📊 Saved Analyses"}
+                      {tab === "ticker" && (
+                        <>
+                          <span className="sm:hidden">📈 Analysis</span>
+                          <span className="hidden sm:inline">📈 Stock Ticker Analysis</span>
+                        </>
+                      )}
+                      {tab === "analyses" && (
+                        <>
+                          <span className="sm:hidden">📊 Saved</span>
+                          <span className="hidden sm:inline">📊 Saved Analyses</span>
+                        </>
+                      )}
                       {tab === "about" && "ℹ️ About"}
                     </button>
                   ))}
                 </div>
 
                 {activeTab === "ticker" && (
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5 }}
-                      className="bg-slate-800/50 border border-amber-500/30 rounded-lg p-4 mb-4"
+                      className="bg-slate-800/50 border border-amber-500/30 rounded-lg p-3 sm:p-4 mb-3 sm:mb-4"
                     >
                       <div className="flex items-center gap-2 mb-2">
                         <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
-                        <h3 className="text-amber-300 font-semibold">Stock Market Sentiment Analysis</h3>
+                        <h3 className="text-amber-300 font-semibold text-sm sm:text-base">Stock Market Sentiment Analysis</h3>
                       </div>
-                      <p className="text-sm text-gray-300">
+                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
                         This system analyzes <strong>NASDAQ and NYSE stock tickers only</strong>. 
                         Enter a valid ticker symbol (e.g., AAPL, NVDA, META, VOO) to get comprehensive sentiment analysis 
                         from financial news sources, analyst reports, and market discussions.
@@ -371,7 +381,7 @@ export default function Home() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5 }}
-                      className="text-emerald-300 font-medium"
+                      className="text-emerald-300 font-medium text-sm sm:text-base"
                     >
                       Enter a NASDAQ or NYSE Stock Ticker:
                     </motion.p>
@@ -379,13 +389,13 @@ export default function Home() {
                     <input
                         type="text"
                         placeholder="Enter ticker symbol (e.g., AAPL, NVDA, META, VOO)..."
-                        className="w-full h-14 bg-purple-900/40 backdrop-blur-sm border border-slate-700 focus:border-emerald-500 transition-all duration-300 rounded-lg px-4 text-lg font-mono uppercase placeholder:normal-case placeholder:font-sans"
+                        className="w-full h-12 sm:h-14 bg-purple-900/40 backdrop-blur-sm border border-slate-700 focus:border-emerald-500 transition-all duration-300 rounded-lg px-3 sm:px-4 text-base sm:text-lg font-mono uppercase placeholder:normal-case placeholder:font-sans placeholder:text-xs sm:placeholder:text-sm"
                         value={text}
                         onChange={(e) => setText(e.target.value.toUpperCase())}
                         maxLength={5}
                       />
-                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                        <span className="text-xs text-gray-500 bg-slate-700 px-2 py-1 rounded">
+                      <div className="absolute right-2 sm:right-3 top-1/2 transform -translate-y-1/2">
+                        <span className="text-xs text-gray-500 bg-slate-700 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded">
                           {text.length}/5
                         </span>
                       </div>
@@ -394,9 +404,9 @@ export default function Home() {
                     {(isAnalyzing || progress > 0) && (
                       <AnalysisProgress percent={progress} history={progressHistory} />
                     )}
-                    <div className="flex justify-between items-center">
-                      <div className="space-y-1">
-                        <p className="text-sm text-emerald-200/70">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0">
+                      <div className="space-y-1 order-2 sm:order-1">
+                        <p className="text-xs sm:text-sm text-emerald-200/70">
                           Examples: AAPL (Apple), NVDA (NVIDIA), META (Meta), VOO (Vanguard S&P 500 ETF)
                         </p>
                         
@@ -406,9 +416,10 @@ export default function Home() {
                         disabled={!text.trim() || isAnalyzing}
                         className={cn(
                           "bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400",
-                          "text-white font-medium px-8 py-3 rounded-lg shadow-lg shadow-emerald-900/30",
+                          "text-white font-medium px-6 sm:px-8 py-3 sm:py-3 rounded-lg shadow-lg shadow-emerald-900/30",
                           "transition-all duration-300 transform hover:scale-105 active:scale-95",
                           "disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none",
+                          "w-full sm:w-auto min-h-[44px] order-1 sm:order-2",
                         )}
                       >
                         {isAnalyzing ? (
