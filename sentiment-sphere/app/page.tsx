@@ -883,27 +883,27 @@ export default function Home() {
                   {analysisResult.vad_analysis && (
                     <div className="mb-6">
                       <h3 className="text-xl font-semibold text-emerald-300 mb-2">VAD Emotional Dimensions</h3>
-                      <div className="grid grid-cols-3 gap-3">
-                        <div className="bg-purple-800/30 p-3 rounded-lg">
-                          <div className="text-sm text-gray-400">Valence</div>
-                          <div className="text-lg font-bold text-purple-400">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                        <div className="bg-purple-800/30 p-2 sm:p-3 rounded-lg min-w-0">
+                          <div className="text-xs sm:text-sm text-gray-400">Valence</div>
+                          <div className="text-base sm:text-lg font-bold text-purple-400">
                             {(analysisResult.vad_analysis.valence * 100).toFixed(0)}%
                           </div>
-                          <div className="text-xs text-gray-400">Pleasure/Displeasure</div>
+                          <div className="text-xs text-gray-400 leading-tight">Pleasure/<br className="sm:hidden"/>Displeasure</div>
                         </div>
-                        <div className="bg-purple-800/30 p-3 rounded-lg">
-                          <div className="text-sm text-gray-400">Arousal</div>
-                          <div className="text-lg font-bold text-red-400">
+                        <div className="bg-purple-800/30 p-2 sm:p-3 rounded-lg min-w-0">
+                          <div className="text-xs sm:text-sm text-gray-400">Arousal</div>
+                          <div className="text-base sm:text-lg font-bold text-red-400">
                             {(analysisResult.vad_analysis.arousal * 100).toFixed(0)}%
                           </div>
-                          <div className="text-xs text-gray-400">Activation/Calm</div>
+                          <div className="text-xs text-gray-400 leading-tight">Activation/<br className="sm:hidden"/>Calm</div>
                         </div>
-                        <div className="bg-purple-800/30 p-3 rounded-lg">
-                          <div className="text-sm text-gray-400">Dominance</div>
-                          <div className="text-lg font-bold text-yellow-400">
+                        <div className="bg-purple-800/30 p-2 sm:p-3 rounded-lg min-w-0">
+                          <div className="text-xs sm:text-sm text-gray-400">Dominance</div>
+                          <div className="text-base sm:text-lg font-bold text-yellow-400">
                             {(analysisResult.vad_analysis.dominance * 100).toFixed(0)}%
                           </div>
-                          <div className="text-xs text-gray-400">Control/Submission</div>
+                          <div className="text-xs text-gray-400 leading-tight">Control/<br className="sm:hidden"/>Submission</div>
                         </div>
                       </div>
                     </div>
@@ -1027,22 +1027,22 @@ export default function Home() {
                       
                       <div className="space-y-3">
                         {analysisResult.source_citations.map((citation: any, i: number) => (
-                          <div key={i} className="bg-purple-800/30 p-4 rounded-lg border-l-4 border-emerald-500">
-                            <div className="flex justify-between items-start mb-2">
-                              <div className="flex items-center gap-2">
-                                <span className="font-medium text-emerald-200">
+                          <div key={i} className="bg-purple-800/30 p-3 sm:p-4 rounded-lg border-l-4 border-emerald-500 min-w-0">
+                            <div className="flex justify-between items-start mb-2 gap-2">
+                              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0 flex-1">
+                                <span className="font-medium text-emerald-200 text-sm truncate">
                                   {citation.source === 'user_input' ? '👤 User Input' : `🌐 ${citation.source}`}
                                 </span>
-                                <span className="px-2 py-1 bg-emerald-900/50 text-emerald-300 rounded text-xs">
+                                <span className="px-2 py-1 bg-emerald-900/50 text-emerald-300 rounded text-xs whitespace-nowrap">
                                   Weight: {citation.contribution_weight}
                                 </span>
                               </div>
-                              <span className="text-xs text-gray-400">{citation.recency}</span>
+                              <span className="text-xs text-gray-400 whitespace-nowrap shrink-0">{citation.recency}</span>
                             </div>
-                            <p className="text-sm text-gray-300 mb-2">"{citation.text_sample}"</p>
+                            <p className="text-sm text-gray-300 mb-2 break-words">"{citation.text_sample}"</p>
                             {citation.url && (
                               <a href={citation.url} target="_blank" rel="noopener noreferrer" 
-                                 className="text-xs text-blue-400 hover:text-blue-300 underline">
+                                 className="text-xs text-blue-400 hover:text-blue-300 underline break-all">
                                 View Source →
                               </a>
                             )}

@@ -21,30 +21,31 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
         <span>Analysis Progress</span>
         <span className="font-mono">{Math.floor(clamped)}%</span>
       </div>
-      <div className="relative h-3 sm:h-4 w-full rounded-full bg-emerald-900/30 overflow-hidden border border-emerald-700/30">
-        <div
-          className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-700"
-          style={{ width: `${clamped}%` }}
-        />
-        {/* Dynamic checkpoints from backend history */}
-        {checkpoints.map((cp, idx) => {
-          const left = cp.percent
-          const done = cp.percent < clamped
-          const current = cp.percent <= clamped && (idx === checkpoints.length - 1 || checkpoints[idx + 1].percent > clamped) && clamped < 100
-          return (
-            <Dialog key={`${cp.stage}-${idx}`}>
-              <DialogTrigger asChild>
-                <button
-                  className={`absolute -top-1 sm:-top-1.5 h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 transition-all duration-500 transform hover:scale-110 active:scale-95 ${
-                    done
-                      ? 'bg-gradient-to-br from-emerald-400 to-teal-500 border-emerald-200 shadow-lg shadow-emerald-900/60'
-                      : current
-                        ? 'bg-gradient-to-br from-emerald-400 to-teal-500 border-emerald-200 shadow-lg shadow-emerald-900/60 animate-pulse'
-                        : 'bg-gradient-to-br from-slate-600 to-slate-800 border-slate-400 hover:from-slate-500 hover:to-slate-700 hover:border-slate-300 shadow-md'
-                  }`}
-                  style={{ left: `calc(${left}% - 14px)` }}
-                  title={`${cp.label} — click to view detailed metrics`}
-                >
+      <div className="px-2 sm:px-0">
+        <div className="relative h-3 sm:h-4 w-full rounded-full bg-emerald-900/30 overflow-visible border border-emerald-700/30">
+          <div
+            className="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-700 rounded-full"
+            style={{ width: `${clamped}%` }}
+          />
+          {/* Dynamic checkpoints from backend history */}
+          {checkpoints.map((cp, idx) => {
+            const left = cp.percent
+            const done = cp.percent <= clamped
+            const current = cp.percent <= clamped && (idx === checkpoints.length - 1 || checkpoints[idx + 1].percent > clamped) && clamped < 100
+            return (
+              <Dialog key={`${cp.stage}-${idx}`}>
+                <DialogTrigger asChild>
+                  <button
+                    className={`absolute -top-1 sm:-top-1.5 h-7 w-7 sm:h-8 sm:w-8 rounded-full border-2 transition-all duration-500 transform hover:scale-110 active:scale-95 z-10 ${
+                      done
+                        ? 'bg-gradient-to-br from-emerald-400 to-teal-500 border-emerald-200 shadow-lg shadow-emerald-900/60'
+                        : current
+                          ? 'bg-gradient-to-br from-emerald-400 to-teal-500 border-emerald-200 shadow-lg shadow-emerald-900/60 animate-pulse'
+                          : 'bg-gradient-to-br from-slate-600 to-slate-800 border-slate-400 hover:from-slate-500 hover:to-slate-700 hover:border-slate-300 shadow-md'
+                    }`}
+                    style={{ left: `calc(${left}% - 14px)` }}
+                    title={`${cp.label} — click to view detailed metrics`}
+                  >
                   <div className={`w-full h-full rounded-full flex items-center justify-center ${
                     done || current ? 'text-emerald-900' : 'text-slate-300'
                   }`}>
@@ -118,9 +119,12 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
                                    key === 'tukey_biweight_aggregation' ? 'Tukey Biweight' :
                                    key === 'freshness_score' ? 'Freshness Score' :
                                    key === 'composite_sentiment' ? 'Composite Sentiment' :
-                                   key === 'chart_types_generated' ? 'Chart Types' :
-                                   key === 'data_points_plotted' ? 'Data Points Plotted' :
-                                   key === 'embedding_dimensions' ? 'Embedding Dimensions' :
+                                   key === 'sources_processed_for_plots' ? 'Sources Processed' :
+                                   key === 'sentiment_data_points' ? 'Sentiment Data Points' :
+                                   key === 'timeline_data_points' ? 'Timeline Data Points' :
+                                   key === 'polarity_categories_computed' ? 'Polarity Categories' :
+                                   key === 'confidence_intervals_calculated' ? 'Confidence Intervals' :
+                                   key === 'vad_dimensions_computed' ? 'VAD Dimensions' :
                                    key === 'sentiment_distribution_calculated' ? 'Distribution Calculated' :
                                    key === 'vad_analysis_complete' ? 'VAD Analysis' :
                                    key === 'total_visualizations' ? 'Total Visualizations' :
@@ -217,7 +221,7 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
                             ].map((timelineStage, idx) => {
                               // Use OVERALL progress percentage, not individual bubble percentage
                               const isCurrentStage = Math.abs(clamped - timelineStage.percent) <= 5 && clamped < 100;
-                              const isPastStage = clamped > timelineStage.percent;
+                              const isPastStage = clamped >= timelineStage.percent;
                               const isFutureStage = clamped < timelineStage.percent;
                               
                               return (
@@ -291,7 +295,8 @@ export function AnalysisProgress({ percent, history }: { percent: number; histor
               </DialogContent>
             </Dialog>
           )
-        })}
+          })}
+        </div>
       </div>
     </div>
   )

@@ -33,14 +33,19 @@ interface ProfessionalVisualizationDashboardProps {
 function PlotlyChart({ 
   chartData, 
   height = 300, 
+  mobileHeight,
   className = "" 
 }: { 
   chartData: string
   height?: number
+  mobileHeight?: number
   className?: string 
 }) {
   try {
     const plotlyData = JSON.parse(chartData)
+    
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 640
+    const effectiveHeight = isMobile && mobileHeight ? mobileHeight : height
     
     return (
       <div className={`w-full ${className}`}>
@@ -48,7 +53,7 @@ function PlotlyChart({
           data={plotlyData.data}
           layout={{
             ...plotlyData.layout,
-            height,
+            height: effectiveHeight,
             paper_bgcolor: 'rgba(0,0,0,0)',
             plot_bgcolor: 'rgba(0,0,0,0)',
             font: {
@@ -59,7 +64,7 @@ function PlotlyChart({
             displayModeBar: false,
             responsive: true
           }}
-          style={{ width: '100%', height: `${height}px` }}
+          style={{ width: '100%', height: `${effectiveHeight}px` }}
         />
       </div>
     )
@@ -170,6 +175,7 @@ export function ProfessionalVisualizationDashboard({
                 <PlotlyChart 
                   chartData={visualizations.source_quality.chart_data} 
                   height={600}
+                  mobileHeight={400}
                 />
               </div>
             ) : (
@@ -189,6 +195,7 @@ export function ProfessionalVisualizationDashboard({
                 <PlotlyChart 
                   chartData={visualizations.sentiment_timeline.chart_data} 
                   height={600}
+                  mobileHeight={350}
                 />
               </div>
             ) : (

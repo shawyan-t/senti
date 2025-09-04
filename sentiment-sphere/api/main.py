@@ -1503,11 +1503,12 @@ async def analyze_comprehensive_sentiment(input_data: TextInput, task_id: Option
             
             print(f"✓ Generated {len(visualizations)} professional visualizations")
             _report_progress(task_id, 90, "visuals", "Building visuals", {
-                "chart_types_generated": list(visualizations.keys()),
-                "data_points_plotted": sum(len(comprehensive_analysis.get('timeline_data', [])) for _ in visualizations if 'timeline' in visualizations),
-                "embedding_dimensions": 3 if any('umap' in k.lower() for k in visualizations.keys()) else 0,
-                "sentiment_distribution_calculated": 'polarity_breakdown' in str(comprehensive_analysis),
-                "vad_analysis_complete": bool(comprehensive_analysis.get('vad_analysis')),
+                "sources_processed_for_plots": len(comprehensive_analysis.get('sources', [])),
+                "sentiment_data_points": len([s for s in comprehensive_analysis.get('sources', []) if s.get('url') and 'user_input' not in s.get('source', '')]),
+                "timeline_data_points": len([s for s in comprehensive_analysis.get('sources', []) if s.get('published_at')]),
+                "polarity_categories_computed": len(comprehensive_analysis.get('comprehensive_metrics', {}).get('polarity_breakdown', {})) if comprehensive_analysis.get('comprehensive_metrics', {}).get('polarity_breakdown') else 0,
+                "confidence_intervals_calculated": bool(comprehensive_analysis.get('mathematical_sentiment_analysis', {}).get('composite_score', {}).get('confidence_interval')),
+                "vad_dimensions_computed": 3 if comprehensive_analysis.get('mathematical_sentiment_analysis', {}).get('vad_analysis') else 0,
                 "total_visualizations": len(visualizations)
             })
 

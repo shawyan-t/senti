@@ -1,0 +1,962 @@
+{
+  "id": "1630548d-832b-440b-9d05-d90bb4c6a174",
+  "status": "success",
+  "analysis_type": "comprehensive_rigorous",
+  "source": "ticker_symbol",
+  "source_type": "financial_ticker",
+  "text": "META",
+  "timestamp": "2025-09-04T12:29:41.698979",
+  "enhanced_summary": "Comprehensive analysis of 34 content units with 86.0% confidence. Sentiment: 0.311 (positive)",
+  "content_metrics": {
+    "word_count": 1,
+    "reading_level": "intermediate",
+    "factual_density": 0.9988876571943357,
+    "complexity_score": 1.0,
+    "information_entropy": 1.0888999750452237,
+    "recent_events_count": 34,
+    "average_recency_weight": 0.19999999999999998
+  },
+  "mathematical_sentiment_analysis": {
+    "composite_score": {
+      "value": 0.31107385045698804,
+      "confidence_interval": [
+        0.036622573004672955,
+        0.6845303867403315
+      ],
+      "statistical_significance": 0.8273208822614837
+    },
+    "multi_model_validation": {
+      "lexicon_based": {
+        "vader_score": 1.0,
+        "textblob_score": 0.0823217721432007,
+        "afinn_score": 0.05039554644008204,
+        "consensus": 0.37757243952776093
+      },
+      "transformer_based": {
+        "roberta_sentiment": 0.0,
+        "consensus": 0.0
+      },
+      "all_models_consensus": 0.31107385045698804
+    },
+    "uncertainty_metrics": {
+      "sentiment_entropy": 2.267001401094399,
+      "polarization_index": 0.37526431755253764,
+      "model_agreement": 0.6247356824474624
+    },
+    "polarity_distribution": {
+      "positive": 94.1,
+      "neutral": 5.9,
+      "negative": 0.0
+    },
+    "vad_analysis": {
+      "valence": 65.6,
+      "arousal": 44.7,
+      "dominance": 60.0
+    }
+  },
+  "emotion_vector_analysis": {
+    "plutchik_coordinates": {
+      "joy": 0.125,
+      "trust": 0.125,
+      "fear": 0.125,
+      "surprise": 0.125,
+      "sadness": 0.125,
+      "disgust": 0.125,
+      "anger": 0.125,
+      "anticipation": 0.125
+    },
+    "dominant_emotions": [
+      "anticipation",
+      "anger",
+      "disgust"
+    ],
+    "emotion_entropy": 2.9999999988458437,
+    "emotional_coherence": 3.847188123629053e-10,
+    "emotion_mathematics": {
+      "vector_magnitude": 0.3535533905932738,
+      "emotional_distance_from_neutral": 0.0,
+      "primary_emotion_vector": [
+        0.125,
+        0.125,
+        0.125
+      ]
+    }
+  },
+  "comprehensive_metrics": {
+    "disagreement_index": 0.37526431755253764,
+    "polarity_breakdown": {
+      "positive": 0.624,
+      "negative": 0.119,
+      "neutral": 0.257,
+      "wilson_ci": {
+        "positive": [
+          0.5244295401827953,
+          0.7244295401827953
+        ],
+        "negative": [
+          0.018892614954301182,
+          0.21889261495430118
+        ],
+        "neutral": [
+          0.1566778448629035,
+          0.35667784486290355
+        ]
+      }
+    },
+    "sarcasm_rate": 0.0011123428056642837,
+    "toxicity_rate": 0.0,
+    "freshness_score": 0.19999999999999998,
+    "novelty_score": 0.758953850467211,
+    "total_evidence_weight": 0.5558443296589104
+  },
+  "vad_analysis": {
+    "valence": 0.656,
+    "arousal": 0.447,
+    "dominance": 0.6
+  },
+  "document_analysis": {
+    "total_length": 4,
+    "word_count": 1,
+    "sentence_count": 1,
+    "paragraph_count": 1,
+    "file_type": "financial_ticker"
+  },
+  "context_sources": 34,
+  "recent_developments_identified": 34,
+  "source_citations": [
+    {
+      "source": "www.forbes.com",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/18/meta-stock-path-to-2x-growth/",
+      "text_sample": "[META stock](https://www.trefis.com/data/companies/META?source=forbes&from=META-2025-08-18) (NASDAQ: META) has delivered 2x returns, rising from $370 in early 2024 to roughly $785 today. The company’s...",
+      "contribution_weight": "100.0%",
+      "recency": "16 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/invested-10k-meta-platforms-stock-020108992.html",
+      "text_sample": "Benzinga and Yahoo Finance LLC may earn commission or revenue on some items through the links below.\nMeta Platforms Inc. (NASDAQ:[META](https://www.benzinga.com/stock/META#NASDAQ?utm_campaign=partner_...",
+      "contribution_weight": "90.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "ca.finance.yahoo.com",
+      "url": "https://ca.finance.yahoo.com/quote/META/",
+      "text_sample": "Aug 12, 2025 ... Find the latest Meta Platforms, Inc. (META) stock quote, history, news and other vital information to help you with your stock trading and investing.",
+      "contribution_weight": "80.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "bradfordtaxinstitute.com",
+      "url": "https://bradfordtaxinstitute.com/video/Is-Meta-Platforms-Inc.-stock-showing-strong-momentum",
+      "text_sample": "Aug 13, 2025 ... Is Meta Platforms Inc. stock showing strong momentum ✌️【Real-Time Stock Group】✌️Invest $100 in our safe platform and start earning passive income every month.",
+      "contribution_weight": "70.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.cnn.com",
+      "url": "https://www.cnn.com/markets/stocks/META",
+      "text_sample": "-\nPrice Momentum\nMETA is trading near the top of its 52-week range and above its 200-day simple moving average.\n-\nPrice change\nThe price of META shares has increased $10.99 since the market last close...",
+      "contribution_weight": "60.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/hundreds-microsoft-employees-just-revealed-183103012.html",
+      "text_sample": "Hundreds Of Microsoft Employees Just Revealed Their Pay — From $111K To $340K — As Company Fights To Keep AI Talent From Meta\nBenzinga and Yahoo Finance LLC may earn commission or revenue on some item...",
+      "contribution_weight": "50.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/10/rep-cleo-fields-purchases-shares-of-meta-platforms-inc-nasdaqmeta-2/",
+      "text_sample": "Representative Cleo Fields (D-Louisiana) recently bought shares of Meta Platforms, Inc. (NASDAQ:META). In a filing disclosed on August 06th, the Representative disclosed that they had bought between $...",
+      "contribution_weight": "40.0%",
+      "recency": "25 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/06/sen-shelley-moore-capito-buys-meta-platforms-inc-nasdaqmeta-shares/",
+      "text_sample": "Senator Shelley Moore Capito (R-West Virginia) recently bought shares of Meta Platforms, Inc. (NASDAQ:META). In a filing disclosed on August 04th, the Senator disclosed that they had bought between $1...",
+      "contribution_weight": "30.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-roth-capital/",
+      "text_sample": "Meta Platforms, Inc. ([NASDAQ:META](https://www.marketbeat.com/stocks/NASDAQ/META/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTickerOptin.aspx?RegistrationCode=TickerHyperlink&Prefix...",
+      "contribution_weight": "20.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "www.etfdailynews.com",
+      "url": "https://www.etfdailynews.com/2025/08/14/meta-platforms-inc-nasdaqmeta-stock-position-boosted-by-smart-money-group-llc/",
+      "text_sample": "Smart Money Group LLC raised its holdings in Meta Platforms, Inc. ([NASDAQ:META](https://www.marketbeat.com/stocks/NASDAQ/META/) – [Free Report](https://www.marketbeat.com/arnreports/ReportTickerOptin...",
+      "contribution_weight": "10.0%",
+      "recency": "21 days ago"
+    },
+    {
+      "source": "www.morningstar.com",
+      "url": "https://www.morningstar.com/news/marketwatch/2025082688/metas-gravity-defying-growth-means-its-getting-closer-to-this-intriguing-milestone",
+      "text_sample": "Meta's 'gravity-defying' growth means it's getting closer to this intriguing milestone\nBy Christine Ji\nThe company has successfully utilized artificial intelligence to grow its ad business and take sh...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.tradingview.com",
+      "url": "https://www.tradingview.com/symbols/NASDAQ-META/",
+      "text_sample": "Key facts today\nMeta Platforms faces an antitrust lawsuit from the FTC, alleging monopoly maintenance through its 2012 Instagram and 2014 WhatsApp acquisitions. The trial is set for April 2025.\nMeta P...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "roboforex.com",
+      "url": "https://roboforex.com/beginners/analytics/forex-forecast/stocks/stocks-forecast-meta-platforms-meta/",
+      "text_sample": "Investors purchasing Meta [shares](https://roboforex.com/beginners/info/charts/stocks/) are taking on risk in the hope that the company will successfully execute its ambitious strategy, despite the cu...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "stockanalysis.com",
+      "url": "https://stockanalysis.com/stocks/meta/",
+      "text_sample": "|\n[Revenue (ttm)](/stocks/meta/revenue/)[Dividend](/stocks/meta/dividend/)| Volume | 6,761,214 |\n| Open | 748.57 |\n| Previous Close | 737.05 |\n| Day's Range | 745.82 - 761.16 |\n| 52-Week Range | 479.8...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investing.com",
+      "url": "https://www.investing.com/equities/facebook-inc",
+      "text_sample": "2 days ago ... Meta Platforms Inc News & Analysis · Technical Analysis · Meta Platforms Inc Company Profile · Meta Platforms Inc SWOT Analysis · Meta Platforms Inc Earnings Call ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.nasdaq.com",
+      "url": "https://www.nasdaq.com/market-activity/stocks/meta",
+      "text_sample": "3 days ago ... About Meta Platforms, Inc. 1601 WILLOW ROAD, MENLO PARK, California, 94025 ... Data Link's cloud-based technology platform allows you to search ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "cmte.ieee.org",
+      "url": "https://cmte.ieee.org/futuredirections/future-tech-forum/the-twin-drivers-of-the-electronics-industrys-accelerated-growth-fabless-design-and-foundry-manufacturing/",
+      "text_sample": "The Twin Drivers of the Electronics Industry’s Accelerated Growth: Fabless Design and Foundry Manufacturing\nThis complimentary live, special 60-minute event was hosted virtually on\n07 Aug 2025 at 10 A...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "markets.ft.com",
+      "url": "https://markets.ft.com/data/equities/tearsheet/summary?s=META:NSQ",
+      "text_sample": "All content on FT.com is for your general information and use only and is not intended to address your particular requirements. In particular, the content does not constitute any form of advice, recom...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/mark-zuckerberg-halts-ai-hiring-114618997.html",
+      "text_sample": "Mark Zuckerberg Halts AI Hiring After Million-Dollar Talent Poaching Sparks Investor Backlash Amid Meta's 'Superintelligence Efforts:' Report\nBenzinga and Yahoo Finance LLC may earn commission or reve...",
+      "contribution_weight": "10.0%",
+      "recency": "13 days ago"
+    },
+    {
+      "source": "uk.finance.yahoo.com",
+      "url": "https://uk.finance.yahoo.com/quote/META/",
+      "text_sample": "Meta Platforms, Inc. (META)\n- Previous close\n737.05 - Open\n748.15 - Bid 711.14 x 100\n- Ask 759.98 x 200\n- Day's range\n745.82 - 761.15 - 52-week range\n479.80 - 796.25 - Volume\n7,011,245 - Avg. Volume\n1...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.marketbeat.com",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/META/",
+      "text_sample": "He Called Nvidia at $1.10. Now, He Says THIS Stock Will…\nThe original Magnificent Seven returned 16,894%—turning $7K into $1.18 million.\nNow, the man who called Nvi...\nThe Oxford Club",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "research.investors.com",
+      "url": "https://research.investors.com/stock-quotes/nasdaq-meta-platforms-meta.htm",
+      "text_sample": "STOCK/COMPANY DATA FOR META\n- Today's Range\n-\n745.82\n-\n761.16\n- 52-Week Range\n- 479.80\n-\n796.25\n- Price % Chg. Last 4 Weeks\n- 1.23%\n- 50-Day Avg. Volume\n- 12,299,000\n- Shares Outstanding\n- 2171.1 Mil\n...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "www.investors.com",
+      "url": "https://www.investors.com/news/technology/meta-platforms-meta-stock-quotes-company-news-chart-analysis/",
+      "text_sample": "META Stock Quote | Meta Platforms Ratings\nAre These Magnificent Seven Stocks A Buy Now?\nAlphabet | Amazon | Apple | Meta | Microsoft | Nvidia | Tesla\nMeta Stock News & Analysis\nView More Meta Stock Ne...",
+      "contribution_weight": "10.0%",
+      "recency": "90 days ago"
+    },
+    {
+      "source": "stockinvest.us",
+      "url": "https://stockinvest.us/stock/META",
+      "text_sample": "8 hours ago ... Generate. AI-Powered. META Stock Analysis PRO. ×. Give Feedback. Issue details. Cancel Submit. Evaluating technical indicators... Please allow up to 60 seconds.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/elon-musk-meta-platforms-inc-034241305.html",
+      "text_sample": "Meta Platforms Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is [one of the best Robinhood stocks to buy right now](https://www.insidermonkey.com/blog/10-best-robinhood-stocks-to-buy-righ...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/trending-stock-meta-platforms-inc-130006364.html",
+      "text_sample": "Meta Platforms (META) has recently been on Zacks.com's list of the most searched stocks. Therefore, you might want to consider some of the key factors that could influence the stock's performance in t...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/meta-platforms-inc-meta-bull-091009934.html",
+      "text_sample": "We came across a [bullish thesis ](https://antoniolinares.substack.com/p/meta-and-tesla-ai-is-accelerating)on Meta Platforms, Inc. on Investment Ideas by Antonio’s Substack by Antonio Linares. In this...",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/quote/META.TO/",
+      "text_sample": "4 hours ago ... Find the latest Meta Platforms, Inc. (META.TO) stock quote, history, news and other vital information to help you with your stock trading and investing.",
+      "contribution_weight": "10.0%",
+      "recency": "Unknown"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/barclays-lifts-meta-platforms-meta-164001738.html",
+      "text_sample": "Meta Platforms Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of [the most profitable growth stocks to buy according to billionaires](https://www.insidermonkey.com/blog/12-most-prof...",
+      "contribution_weight": "10.0%",
+      "recency": "27 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/meta-meta-gets-825-price-114255047.html",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the [Trending AI Stocks on Wall Street.](https://www.insidermonkey.com/blog/10-trending-ai-stocks-on-wall-street-3-...",
+      "contribution_weight": "10.0%",
+      "recency": "29 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/meta-platforms-meta-plotting-futuristic-035704287.html",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:[MET](https://finance.yahoo.com/quote/META)A) is [one of the best stocks to buy according to billionaire Ken Fisher](https://www.insidermonkey.com/blog/ken-fisher-stock-po...",
+      "contribution_weight": "10.0%",
+      "recency": "12 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-boosts-meta-target-095950430.html",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the [AI Stocks Making Waves on Wall Street](https://www.insidermonkey.com/blog/10-ai-stocks-making-waves-on-wall-st...",
+      "contribution_weight": "10.0%",
+      "recency": "30 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/meta-meta-downgraded-growth-priced-200857377.html",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the [High Flying AI Stocks This Week](https://www.insidermonkey.com/blog/10-high-flying-ai-stocks-this-week-3-15850...",
+      "contribution_weight": "10.0%",
+      "recency": "26 days ago"
+    },
+    {
+      "source": "finance.yahoo.com",
+      "url": "https://finance.yahoo.com/news/meta-platforms-meta-accelerates-ai-232601396.html",
+      "text_sample": "Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the[ AI Stocks In The Spotlight For Investors.](https://www.insidermonkey.com/blog/10-ai-stocks-in-the-spotlight-fo...",
+      "contribution_weight": "10.0%",
+      "recency": "15 days ago"
+    }
+  ],
+  "query_summary": {
+    "query": "META (Meta Platforms Inc.)",
+    "query_type": "Technology, Meta, Platforms, utm, com, https, www, source",
+    "entities_detected": [
+      "Meta",
+      "Platforms",
+      "Stock",
+      "Meta Platforms",
+      "Https",
+      "Nasdaq",
+      "Company",
+      "Stocks",
+      "Shares",
+      "Price"
+    ],
+    "recent_events": [
+      {
+        "event": "Found 34 related sources",
+        "relevance": "high",
+        "source_count": 34
+      }
+    ]
+  },
+  "calculation_methodology": {
+    "sentiment_calculation": "Weighted average of VADER, TextBlob, and AFINN lexicon scores combined with transformer model outputs",
+    "confidence_basis": "Based on agreement between VADER, TextBlob, AFINN, and RoBERTa (cardiffnlp/twitter-roberta-base-sentiment-latest)",
+    "source_weighting": "Sources weighted by recency, domain authority, and retrieval relevance score",
+    "accuracy_indicators": {
+      "model_agreement": "62.5%",
+      "source_diversity": "19 different source types",
+      "temporal_coverage": "Analysis spans 77 days",
+      "data_quality": "high"
+    }
+  },
+  "explanatory_clusters": [
+    {
+      "cluster_id": "search_cluster_1",
+      "weight": 0.09030181773821191,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "Aug 12, 2025 ... Find the latest Meta Platforms, Inc. (META) stock quote, history, news and other vital information to help you with your stock tradin...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.703505291005291,
+      "sources": [
+        "bradfordtaxinstitute.com",
+        "ca.finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_0",
+      "weight": 0.06657498604104856,
+      "sentiment": 0.0,
+      "unit_count": 2,
+      "representative_text": "[META stock](https://www.trefis.com/data/companies/META?source=forbes&from=META-2025-08-18) (NASDAQ: META) has delivered 2x returns, rising from $370 ...",
+      "why_important": [
+        "above average weight ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.5738303695004823,
+      "sources": [
+        "www.forbes.com",
+        "finance.yahoo.com"
+      ]
+    },
+    {
+      "cluster_id": "search_cluster_2",
+      "weight": 0.05390163296934686,
+      "sentiment": 0.003613095221402294,
+      "unit_count": 2,
+      "representative_text": "-\nPrice Momentum\nMETA is trading near the top of its 52-week range and above its 200-day simple moving average.\n-\nPrice change\nThe price of META share...",
+      "why_important": [
+        "above average weight ✓",
+        "high language quality ✓",
+        "low toxicity ✓"
+      ],
+      "avg_freshness": 0.2,
+      "avg_quality": 0.6017506062960608,
+      "sources": [
+        "www.cnn.com",
+        "finance.yahoo.com"
+      ]
+    }
+  ],
+  "key_evidence": [],
+  "weight_explanations": {
+    "weight_range": {
+      "min": 0.005143344082363445,
+      "max": 0.04527437585928213,
+      "mean": 0.016348362637026777,
+      "std": 0.01004500563165864
+    },
+    "factor_analysis": {
+      "high_freshness_units": 0,
+      "high_novelty_units": 19,
+      "high_source_units": 0,
+      "low_toxicity_units": 34
+    },
+    "weight_concentration": {
+      "top_10_percent_weight_share": 0.22826234319762714,
+      "gini_coefficient": 0.3890442573620416
+    }
+  },
+  "sources": [
+    {
+      "title": "https://www.forbes.com/sites/greatspeculations/2025/08/18/meta-stock-path-to-2x-growth/",
+      "url": "https://www.forbes.com/sites/greatspeculations/2025/08/18/meta-stock-path-to-2x-growth/",
+      "sentiment": 0.3841957619916798,
+      "published_at": "2025-08-18T14:10:21"
+    },
+    {
+      "title": "https://finance.yahoo.com/news/invested-10k-meta-platforms-stock-020108992.html",
+      "url": "https://finance.yahoo.com/news/invested-10k-meta-platforms-stock-020108992.html",
+      "sentiment": 0.3352816610631777
+    },
+    {
+      "title": "https://ca.finance.yahoo.com/quote/META/",
+      "url": "https://ca.finance.yahoo.com/quote/META/",
+      "sentiment": 0.27638730158730157
+    },
+    {
+      "title": "https://bradfordtaxinstitute.com/video/Is-Meta-Platforms-Inc.-stock-showing-strong-momentum",
+      "url": "https://bradfordtaxinstitute.com/video/Is-Meta-Platforms-Inc.-stock-showing-strong-momentum",
+      "sentiment": 0.44378024691358026
+    },
+    {
+      "title": "https://www.cnn.com/markets/stocks/META",
+      "url": "https://www.cnn.com/markets/stocks/META",
+      "sentiment": 0.34497758462685996
+    },
+    {
+      "title": "https://finance.yahoo.com/news/hundreds-microsoft-employees-just-revealed-183103012.html",
+      "url": "https://finance.yahoo.com/news/hundreds-microsoft-employees-just-revealed-183103012.html",
+      "sentiment": 0.27208784318134965,
+      "published_at": "2025-08-22T18:31:03"
+    },
+    {
+      "title": "https://www.etfdailynews.com/2025/08/10/rep-cleo-fields-purchases-shares-of-meta-platforms-inc-nasdaqmeta-2/",
+      "url": "https://www.etfdailynews.com/2025/08/10/rep-cleo-fields-purchases-shares-of-meta-platforms-inc-nasdaqmeta-2/",
+      "sentiment": 0.3476069456441757,
+      "published_at": "2025-08-10T06:05:06"
+    },
+    {
+      "title": "https://www.etfdailynews.com/2025/08/06/sen-shelley-moore-capito-buys-meta-platforms-inc-nasdaqmeta-shares/",
+      "url": "https://www.etfdailynews.com/2025/08/06/sen-shelley-moore-capito-buys-meta-platforms-inc-nasdaqmeta-shares/",
+      "sentiment": 0.3569416105440331,
+      "published_at": "2025-08-06T06:04:54"
+    },
+    {
+      "title": "https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-roth-capital/",
+      "url": "https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-roth-capital/",
+      "sentiment": 0.33755515515515516,
+      "published_at": "2025-08-05T06:46:51"
+    },
+    {
+      "title": "https://www.etfdailynews.com/2025/08/14/meta-platforms-inc-nasdaqmeta-stock-position-boosted-by-smart-money-group-llc/",
+      "url": "https://www.etfdailynews.com/2025/08/14/meta-platforms-inc-nasdaqmeta-stock-position-boosted-by-smart-money-group-llc/",
+      "sentiment": 0.3775691093125875,
+      "published_at": "2025-08-14T07:03:08"
+    },
+    {
+      "title": "https://www.morningstar.com/news/marketwatch/2025082688/metas-gravity-defying-growth-means-its-getting-closer-to-this-intriguing-milestone",
+      "url": "https://www.morningstar.com/news/marketwatch/2025082688/metas-gravity-defying-growth-means-its-getting-closer-to-this-intriguing-milestone",
+      "sentiment": 0.3444904761904762
+    },
+    {
+      "title": "https://www.tradingview.com/symbols/NASDAQ-META/",
+      "url": "https://www.tradingview.com/symbols/NASDAQ-META/",
+      "sentiment": 0.411130463980464
+    },
+    {
+      "title": "https://roboforex.com/beginners/analytics/forex-forecast/stocks/stocks-forecast-meta-platforms-meta/",
+      "url": "https://roboforex.com/beginners/analytics/forex-forecast/stocks/stocks-forecast-meta-platforms-meta/",
+      "sentiment": 0.3780737765487394
+    },
+    {
+      "title": "https://stockanalysis.com/stocks/meta/",
+      "url": "https://stockanalysis.com/stocks/meta/",
+      "sentiment": 0.35673310017038823
+    },
+    {
+      "title": "https://www.investing.com/equities/facebook-inc",
+      "url": "https://www.investing.com/equities/facebook-inc",
+      "sentiment": 0.0
+    },
+    {
+      "title": "https://www.nasdaq.com/market-activity/stocks/meta",
+      "url": "https://www.nasdaq.com/market-activity/stocks/meta",
+      "sentiment": 0.0
+    },
+    {
+      "title": "https://cmte.ieee.org/futuredirections/future-tech-forum/the-twin-drivers-of-the-electronics-industrys-accelerated-growth-fabless-design-and-foundry-manufacturing/",
+      "url": "https://cmte.ieee.org/futuredirections/future-tech-forum/the-twin-drivers-of-the-electronics-industrys-accelerated-growth-fabless-design-and-foundry-manufacturing/",
+      "sentiment": 0.3703520034398822
+    },
+    {
+      "title": "https://markets.ft.com/data/equities/tearsheet/summary?s=META:NSQ",
+      "url": "https://markets.ft.com/data/equities/tearsheet/summary?s=META:NSQ",
+      "sentiment": 0.3640891105411482
+    },
+    {
+      "title": "https://finance.yahoo.com/news/mark-zuckerberg-halts-ai-hiring-114618997.html",
+      "url": "https://finance.yahoo.com/news/mark-zuckerberg-halts-ai-hiring-114618997.html",
+      "sentiment": 0.3133574734872978,
+      "published_at": "2025-08-22T11:46:18"
+    },
+    {
+      "title": "https://uk.finance.yahoo.com/quote/META/",
+      "url": "https://uk.finance.yahoo.com/quote/META/",
+      "sentiment": 0.1857040404040404
+    },
+    {
+      "title": "https://www.marketbeat.com/stocks/NASDAQ/META/",
+      "url": "https://www.marketbeat.com/stocks/NASDAQ/META/",
+      "sentiment": 0.5075333333333334
+    },
+    {
+      "title": "https://research.investors.com/stock-quotes/nasdaq-meta-platforms-meta.htm",
+      "url": "https://research.investors.com/stock-quotes/nasdaq-meta-platforms-meta.htm",
+      "sentiment": 0.37136426116838495
+    },
+    {
+      "title": "https://www.investors.com/news/technology/meta-platforms-meta-stock-quotes-company-news-chart-analysis/",
+      "url": "https://www.investors.com/news/technology/meta-platforms-meta-stock-quotes-company-news-chart-analysis/",
+      "sentiment": 0.5184172248803828,
+      "published_at": "2025-06-06T11:02:03"
+    },
+    {
+      "title": "https://stockinvest.us/stock/META",
+      "url": "https://stockinvest.us/stock/META",
+      "sentiment": 0.1114871794871795
+    },
+    {
+      "title": "https://finance.yahoo.com/news/elon-musk-meta-platforms-inc-034241305.html",
+      "url": "https://finance.yahoo.com/news/elon-musk-meta-platforms-inc-034241305.html",
+      "sentiment": 0.4229663417256937
+    },
+    {
+      "title": "https://finance.yahoo.com/news/trending-stock-meta-platforms-inc-130006364.html",
+      "url": "https://finance.yahoo.com/news/trending-stock-meta-platforms-inc-130006364.html",
+      "sentiment": 0.3766932105677907
+    },
+    {
+      "title": "https://finance.yahoo.com/news/meta-platforms-inc-meta-bull-091009934.html",
+      "url": "https://finance.yahoo.com/news/meta-platforms-inc-meta-bull-091009934.html",
+      "sentiment": 0.3639602360731844
+    },
+    {
+      "title": "https://finance.yahoo.com/quote/META.TO/",
+      "url": "https://finance.yahoo.com/quote/META.TO/",
+      "sentiment": 0.27638730158730157
+    },
+    {
+      "title": "https://finance.yahoo.com/news/barclays-lifts-meta-platforms-meta-164001738.html",
+      "url": "https://finance.yahoo.com/news/barclays-lifts-meta-platforms-meta-164001738.html",
+      "sentiment": 0.3906902129182322,
+      "published_at": "2025-08-07T16:40:01"
+    },
+    {
+      "title": "https://finance.yahoo.com/news/meta-meta-gets-825-price-114255047.html",
+      "url": "https://finance.yahoo.com/news/meta-meta-gets-825-price-114255047.html",
+      "sentiment": 0.4051417331206804,
+      "published_at": "2025-08-06T11:42:55"
+    },
+    {
+      "title": "https://finance.yahoo.com/news/meta-platforms-meta-plotting-futuristic-035704287.html",
+      "url": "https://finance.yahoo.com/news/meta-platforms-meta-plotting-futuristic-035704287.html",
+      "sentiment": 0.4335481518873745,
+      "published_at": "2025-08-23T03:57:04"
+    },
+    {
+      "title": "https://finance.yahoo.com/news/morgan-stanley-boosts-meta-target-095950430.html",
+      "url": "https://finance.yahoo.com/news/morgan-stanley-boosts-meta-target-095950430.html",
+      "sentiment": 0.3981859704357312,
+      "published_at": "2025-08-05T09:59:50"
+    },
+    {
+      "title": "https://finance.yahoo.com/news/meta-meta-downgraded-growth-priced-200857377.html",
+      "url": "https://finance.yahoo.com/news/meta-meta-downgraded-growth-priced-200857377.html",
+      "sentiment": 0.40802001818577166,
+      "published_at": "2025-08-08T20:08:57"
+    },
+    {
+      "title": "https://finance.yahoo.com/news/meta-platforms-meta-accelerates-ai-232601396.html",
+      "url": "https://finance.yahoo.com/news/meta-platforms-meta-accelerates-ai-232601396.html",
+      "sentiment": 0.36914866244866246,
+      "published_at": "2025-08-19T23:26:01"
+    }
+  ],
+  "embeddings": [
+    [
+      -3.555274248123169,
+      16.09947395324707,
+      4.3096232414245605
+    ],
+    [
+      -3.009425640106201,
+      16.269479751586914,
+      5.308930397033691
+    ],
+    [
+      -2.2237863540649414,
+      14.69119930267334,
+      3.0382845401763916
+    ],
+    [
+      -2.6483778953552246,
+      15.044760704040527,
+      3.2424051761627197
+    ],
+    [
+      -2.6003761291503906,
+      16.3463134765625,
+      3.5732147693634033
+    ],
+    [
+      -3.5125410556793213,
+      14.995283126831055,
+      4.79901123046875
+    ],
+    [
+      -1.94008469581604,
+      16.14340591430664,
+      5.126807689666748
+    ],
+    [
+      -2.2530438899993896,
+      15.822479248046875,
+      4.864231586456299
+    ],
+    [
+      -2.554753303527832,
+      16.60024070739746,
+      5.193295955657959
+    ],
+    [
+      -2.471203327178955,
+      16.577756881713867,
+      4.336133003234863
+    ],
+    [
+      -3.6477534770965576,
+      16.357894897460938,
+      4.808380126953125
+    ],
+    [
+      -2.379734754562378,
+      15.681964874267578,
+      3.5415680408477783
+    ],
+    [
+      -4.034691333770752,
+      16.56838035583496,
+      4.4945878982543945
+    ],
+    [
+      -2.1956288814544678,
+      15.912824630737305,
+      2.9891412258148193
+    ],
+    [
+      -2.518953561782837,
+      14.775259971618652,
+      2.838496208190918
+    ],
+    [
+      -2.456909656524658,
+      15.469014167785645,
+      3.02601957321167
+    ],
+    [
+      -3.680419445037842,
+      16.054950714111328,
+      3.4842920303344727
+    ],
+    [
+      -2.2775962352752686,
+      15.745424270629883,
+      5.573066711425781
+    ],
+    [
+      -3.72137713432312,
+      14.705172538757324,
+      4.485320568084717
+    ],
+    [
+      -2.741736650466919,
+      15.82572078704834,
+      2.8783178329467773
+    ],
+    [
+      -4.063427448272705,
+      15.741779327392578,
+      5.008021354675293
+    ],
+    [
+      -2.1141715049743652,
+      16.245100021362305,
+      5.636361598968506
+    ],
+    [
+      -2.0989112854003906,
+      14.503447532653809,
+      3.5382959842681885
+    ],
+    [
+      -2.969905138015747,
+      14.454503059387207,
+      3.6681125164031982
+    ],
+    [
+      -2.4071600437164307,
+      15.42694091796875,
+      4.415177345275879
+    ],
+    [
+      -3.1177079677581787,
+      16.775577545166016,
+      5.155810356140137
+    ],
+    [
+      -3.4432923793792725,
+      15.4624605178833,
+      4.214471817016602
+    ],
+    [
+      -2.4556310176849365,
+      14.248597145080566,
+      3.3321499824523926
+    ],
+    [
+      -3.0825185775756836,
+      16.72271156311035,
+      4.5090203285217285
+    ],
+    [
+      -3.9627089500427246,
+      16.10517692565918,
+      3.944458484649658
+    ],
+    [
+      -3.352386474609375,
+      16.350513458251953,
+      3.354011297225952
+    ],
+    [
+      -4.16632604598999,
+      15.54151725769043,
+      4.296037197113037
+    ],
+    [
+      -4.295285701751709,
+      16.036712646484375,
+      4.493988037109375
+    ],
+    [
+      -3.639648675918579,
+      15.123398780822754,
+      3.8110508918762207
+    ]
+  ],
+  "embedding_labels": [
+    "www.forbes.com",
+    "finance.yahoo.com",
+    "ca.finance.yahoo.com",
+    "bradfordtaxinstitute.com",
+    "www.cnn.com",
+    "finance.yahoo.com",
+    "www.etfdailynews.com",
+    "www.etfdailynews.com",
+    "www.etfdailynews.com",
+    "www.etfdailynews.com",
+    "www.morningstar.com",
+    "www.tradingview.com",
+    "roboforex.com",
+    "stockanalysis.com",
+    "www.investing.com",
+    "www.nasdaq.com",
+    "cmte.ieee.org",
+    "markets.ft.com",
+    "finance.yahoo.com",
+    "uk.finance.yahoo.com",
+    "www.marketbeat.com",
+    "research.investors.com",
+    "www.investors.com",
+    "stockinvest.us",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com",
+    "finance.yahoo.com"
+  ],
+  "embedding_colors": [
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#FBBF24",
+    "#FBBF24",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981",
+    "#10B981"
+  ],
+  "embedding_hovertexts": [
+    "<b>www.forbes.com</b><br>https://www.forbes.com/sites/greatspeculations/2025/08/18/meta-stock-path-to-2x-growth/<br>Date: 2025-08-18T14:10:21<br>Sent: 0.384 • Score: 1.00<br>[META stock](https://www.trefis.com/data/companies/META?source=forbes&amp;from=META-2025-08-18) (NASDAQ: META) has delivered 2x returns, rising …",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/invested-10k-meta-platforms-stock-020108992.html<br>Date: Unknown<br>Sent: 0.335 • Score: 0.90<br>Benzinga and Yahoo Finance LLC may earn commission or revenue on some items through the links below.\nMeta Platforms Inc. (NASDAQ:[META](http…",
+    "<b>ca.finance.yahoo.com</b><br>https://ca.finance.yahoo.com/quote/META/<br>Date: Unknown<br>Sent: 0.276 • Score: 0.80<br>Aug 12, 2025 ... Find the latest Meta Platforms, Inc. (META) stock quote, history, news and other vital information to help you with your st…",
+    "<b>bradfordtaxinstitute.com</b><br>https://bradfordtaxinstitute.com/video/Is-Meta-Platforms-Inc.-stock-showing-strong-momentum<br>Date: Unknown<br>Sent: 0.444 • Score: 0.70<br>Aug 13, 2025 ... Is Meta Platforms Inc. stock showing strong momentum ✌️【Real-Time Stock Group】✌️Invest $100 in our safe platform and start …",
+    "<b>www.cnn.com</b><br>https://www.cnn.com/markets/stocks/META<br>Date: Unknown<br>Sent: 0.345 • Score: 0.60<br>-\nPrice Momentum\nMETA is trading near the top of its 52-week range and above its 200-day simple moving average.\n-\nPrice change\nThe price of …",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/hundreds-microsoft-employees-just-revealed-183103012.html<br>Date: 2025-08-22T18:31:03<br>Sent: 0.272 • Score: 0.50<br>Hundreds Of Microsoft Employees Just Revealed Their Pay — From $111K To $340K — As Company Fights To Keep AI Talent From Meta\nBenzinga and Y…",
+    "<b>www.etfdailynews.com</b><br>https://www.etfdailynews.com/2025/08/10/rep-cleo-fields-purchases-shares-of-meta-platforms-inc-nasdaqmeta-2/<br>Date: 2025-08-10T06:05:06<br>Sent: 0.348 • Score: 0.40<br>Representative Cleo Fields (D-Louisiana) recently bought shares of Meta Platforms, Inc. (NASDAQ:META). In a filing disclosed on August 06th,…",
+    "<b>www.etfdailynews.com</b><br>https://www.etfdailynews.com/2025/08/06/sen-shelley-moore-capito-buys-meta-platforms-inc-nasdaqmeta-shares/<br>Date: 2025-08-06T06:04:54<br>Sent: 0.357 • Score: 0.30<br>Senator Shelley Moore Capito (R-West Virginia) recently bought shares of Meta Platforms, Inc. (NASDAQ:META). In a filing disclosed on August…",
+    "<b>www.etfdailynews.com</b><br>https://www.etfdailynews.com/2025/08/05/q3-eps-estimates-for-meta-platforms-lifted-by-roth-capital/<br>Date: 2025-08-05T06:46:51<br>Sent: 0.338 • Score: 0.20<br>Meta Platforms, Inc. ([NASDAQ:META](https://www.marketbeat.com/stocks/NASDAQ/META/) – [Free Report](https://www.marketbeat.com/arnreports/Re…",
+    "<b>www.etfdailynews.com</b><br>https://www.etfdailynews.com/2025/08/14/meta-platforms-inc-nasdaqmeta-stock-position-boosted-by-smart-money-group-llc/<br>Date: 2025-08-14T07:03:08<br>Sent: 0.378 • Score: 0.10<br>Smart Money Group LLC raised its holdings in Meta Platforms, Inc. ([NASDAQ:META](https://www.marketbeat.com/stocks/NASDAQ/META/) – [Free Rep…",
+    "<b>www.morningstar.com</b><br>https://www.morningstar.com/news/marketwatch/2025082688/metas-gravity-defying-growth-means-its-getting-closer-to-this-intriguing-milestone<br>Date: Unknown<br>Sent: 0.344 • Score: 0.10<br>Meta&#x27;s &#x27;gravity-defying&#x27; growth means it&#x27;s getting closer to this intriguing milestone\nBy Christine Ji\nThe company has successfully utilized…",
+    "<b>www.tradingview.com</b><br>https://www.tradingview.com/symbols/NASDAQ-META/<br>Date: Unknown<br>Sent: 0.411 • Score: 0.10<br>Key facts today\nMeta Platforms faces an antitrust lawsuit from the FTC, alleging monopoly maintenance through its 2012 Instagram and 2014 Wh…",
+    "<b>roboforex.com</b><br>https://roboforex.com/beginners/analytics/forex-forecast/stocks/stocks-forecast-meta-platforms-meta/<br>Date: Unknown<br>Sent: 0.378 • Score: 0.10<br>Investors purchasing Meta [shares](https://roboforex.com/beginners/info/charts/stocks/) are taking on risk in the hope that the company will…",
+    "<b>stockanalysis.com</b><br>https://stockanalysis.com/stocks/meta/<br>Date: Unknown<br>Sent: 0.357 • Score: 0.10<br>|\n[Revenue (ttm)](/stocks/meta/revenue/)[Dividend](/stocks/meta/dividend/)| Volume | 6,761,214 |\n| Open | 748.57 |\n| Previous Close | 737.05…",
+    "<b>www.investing.com</b><br>https://www.investing.com/equities/facebook-inc<br>Date: Unknown<br>Sent: 0.000 • Score: 0.10<br>2 days ago ... Meta Platforms Inc News &amp; Analysis · Technical Analysis · Meta Platforms Inc Company Profile · Meta Platforms Inc SWOT Analys…",
+    "<b>www.nasdaq.com</b><br>https://www.nasdaq.com/market-activity/stocks/meta<br>Date: Unknown<br>Sent: 0.000 • Score: 0.10<br>3 days ago ... About Meta Platforms, Inc. 1601 WILLOW ROAD, MENLO PARK, California, 94025 ... Data Link&#x27;s cloud-based technology platform al…",
+    "<b>cmte.ieee.org</b><br>https://cmte.ieee.org/futuredirections/future-tech-forum/the-twin-drivers-of-the-electronics-industrys-accelerated-growth-fabless-design-and-foundry-manufacturing/<br>Date: Unknown<br>Sent: 0.370 • Score: 0.10<br>The Twin Drivers of the Electronics Industry’s Accelerated Growth: Fabless Design and Foundry Manufacturing\nThis complimentary live, special…",
+    "<b>markets.ft.com</b><br>https://markets.ft.com/data/equities/tearsheet/summary?s=META:NSQ<br>Date: Unknown<br>Sent: 0.364 • Score: 0.10<br>All content on FT.com is for your general information and use only and is not intended to address your particular requirements. In particula…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/mark-zuckerberg-halts-ai-hiring-114618997.html<br>Date: 2025-08-22T11:46:18<br>Sent: 0.313 • Score: 0.10<br>Mark Zuckerberg Halts AI Hiring After Million-Dollar Talent Poaching Sparks Investor Backlash Amid Meta&#x27;s &#x27;Superintelligence Efforts:&#x27; Repor…",
+    "<b>uk.finance.yahoo.com</b><br>https://uk.finance.yahoo.com/quote/META/<br>Date: Unknown<br>Sent: 0.186 • Score: 0.10<br>Meta Platforms, Inc. (META)\n- Previous close\n737.05 - Open\n748.15 - Bid 711.14 x 100\n- Ask 759.98 x 200\n- Day&#x27;s range\n745.82 - 761.15 - 52-w…",
+    "<b>www.marketbeat.com</b><br>https://www.marketbeat.com/stocks/NASDAQ/META/<br>Date: Unknown<br>Sent: 0.508 • Score: 0.10<br>He Called Nvidia at $1.10. Now, He Says THIS Stock Will…\nThe original Magnificent Seven returned 16,894%—turning $7K into $1.18 million.\nNow…",
+    "<b>research.investors.com</b><br>https://research.investors.com/stock-quotes/nasdaq-meta-platforms-meta.htm<br>Date: Unknown<br>Sent: 0.371 • Score: 0.10<br>STOCK/COMPANY DATA FOR META\n- Today&#x27;s Range\n-\n745.82\n-\n761.16\n- 52-Week Range\n- 479.80\n-\n796.25\n- Price % Chg. Last 4 Weeks\n- 1.23%\n- 50-Day…",
+    "<b>www.investors.com</b><br>https://www.investors.com/news/technology/meta-platforms-meta-stock-quotes-company-news-chart-analysis/<br>Date: 2025-06-06T11:02:03<br>Sent: 0.518 • Score: 0.10<br>META Stock Quote | Meta Platforms Ratings\nAre These Magnificent Seven Stocks A Buy Now?\nAlphabet | Amazon | Apple | Meta | Microsoft | Nvidi…",
+    "<b>stockinvest.us</b><br>https://stockinvest.us/stock/META<br>Date: Unknown<br>Sent: 0.111 • Score: 0.10<br>8 hours ago ... Generate. AI-Powered. META Stock Analysis PRO. ×. Give Feedback. Issue details. Cancel Submit. Evaluating technical indicato…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/elon-musk-meta-platforms-inc-034241305.html<br>Date: Unknown<br>Sent: 0.423 • Score: 0.10<br>Meta Platforms Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is [one of the best Robinhood stocks to buy right now](https://www…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/trending-stock-meta-platforms-inc-130006364.html<br>Date: Unknown<br>Sent: 0.377 • Score: 0.10<br>Meta Platforms (META) has recently been on Zacks.com&#x27;s list of the most searched stocks. Therefore, you might want to consider some of the k…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/meta-platforms-inc-meta-bull-091009934.html<br>Date: Unknown<br>Sent: 0.364 • Score: 0.10<br>We came across a [bullish thesis ](https://antoniolinares.substack.com/p/meta-and-tesla-ai-is-accelerating)on Meta Platforms, Inc. on Invest…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/quote/META.TO/<br>Date: Unknown<br>Sent: 0.276 • Score: 0.10<br>4 hours ago ... Find the latest Meta Platforms, Inc. (META.TO) stock quote, history, news and other vital information to help you with your …",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/barclays-lifts-meta-platforms-meta-164001738.html<br>Date: 2025-08-07T16:40:01<br>Sent: 0.391 • Score: 0.10<br>Meta Platforms Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of [the most profitable growth stocks to buy according to b…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/meta-meta-gets-825-price-114255047.html<br>Date: 2025-08-06T11:42:55<br>Sent: 0.405 • Score: 0.10<br>Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the [Trending AI Stocks on Wall Street.](https://www.in…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/meta-platforms-meta-plotting-futuristic-035704287.html<br>Date: 2025-08-23T03:57:04<br>Sent: 0.434 • Score: 0.10<br>Meta Platforms, Inc. (NASDAQ:[MET](https://finance.yahoo.com/quote/META)A) is [one of the best stocks to buy according to billionaire Ken Fi…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/morgan-stanley-boosts-meta-target-095950430.html<br>Date: 2025-08-05T09:59:50<br>Sent: 0.398 • Score: 0.10<br>Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the [AI Stocks Making Waves on Wall Street](https://www…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/meta-meta-downgraded-growth-priced-200857377.html<br>Date: 2025-08-08T20:08:57<br>Sent: 0.408 • Score: 0.10<br>Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the [High Flying AI Stocks This Week](https://www.insid…",
+    "<b>finance.yahoo.com</b><br>https://finance.yahoo.com/news/meta-platforms-meta-accelerates-ai-232601396.html<br>Date: 2025-08-19T23:26:01<br>Sent: 0.369 • Score: 0.10<br>Meta Platforms, Inc. (NASDAQ:[META](https://finance.yahoo.com/quote/META)) is one of the[ AI Stocks In The Spotlight For Investors.](https:/…"
+  ],
+  "visualizations": {
+    "sentiment_index": {
+      "chart_data": "{\"data\":[{\"delta\":{\"position\":\"top\",\"reference\":50,\"relative\":true},\"domain\":{\"x\":[0,1],\"y\":[0,1]},\"gauge\":{\"axis\":{\"range\":[null,100],\"tickcolor\":\"darkblue\",\"tickwidth\":1},\"bar\":{\"color\":\"#10B981\",\"thickness\":0.8},\"bgcolor\":\"white\",\"bordercolor\":\"gray\",\"borderwidth\":2,\"steps\":[{\"color\":\"rgba(239, 68, 68, 0.2)\",\"range\":[0,30]},{\"color\":\"rgba(107, 114, 128, 0.2)\",\"range\":[30,70]},{\"color\":\"rgba(16, 185, 129, 0.2)\",\"range\":[70,100]}],\"threshold\":{\"line\":{\"color\":\"red\",\"width\":4},\"thickness\":0.75,\"value\":66.99096691559123}},\"mode\":\"gauge+number+delta\",\"title\":{\"text\":\"SENTIMENT INDEX\\u003cbr\\u003e\\u003cspan style='font-size:0.8em;color:gray'\\u003en=34 sources\\u003c\\u002fspan\\u003e\"},\"value\":66.99096691559123,\"type\":\"indicator\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"shapes\":[{\"fillcolor\":\"rgba(16, 185, 129, 0.3)\",\"line\":{\"color\":\"#10B981\",\"width\":1},\"name\":\"Confidence Interval\",\"type\":\"rect\",\"x0\":0.85,\"x1\":0.9,\"xref\":\"paper\",\"y0\":0.650448459124036,\"y1\":0.6871374348715229,\"yref\":\"paper\"}],\"annotations\":[{\"align\":\"center\",\"font\":{\"color\":\"#10B981\",\"size\":10},\"showarrow\":false,\"text\":\"\\u00b10.04\\u003cbr\\u003e95% CI\",\"x\":0.875,\"xref\":\"paper\",\"y\":0.1,\"yref\":\"paper\"},{\"font\":{\"color\":\"#10B981\",\"size\":20},\"showarrow\":false,\"text\":\"\\u003cb\\u003ePOSITIVE\\u003c\\u002fb\\u003e\",\"x\":0.5,\"xref\":\"paper\",\"y\":0.15,\"yref\":\"paper\"}],\"margin\":{\"l\":20,\"r\":20,\"t\":40,\"b\":20},\"font\":{\"color\":\"darkblue\",\"size\":12},\"height\":350,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Primary sentiment indicator with statistical confidence bands"
+    },
+    "polarity_distribution": {
+      "chart_data": "{\"data\":[{\"error_y\":{\"array\":[10.151455415332377,13.193606904281,2.853405632535143],\"arrayminus\":[0.0,4.271734478987727,17.060486562808862],\"color\":\"black\",\"symmetric\":false,\"thickness\":2,\"type\":\"data\",\"visible\":true,\"width\":3},\"marker\":{\"color\":[\"#EF4444\",\"#6B7280\",\"#10B981\"]},\"name\":\"Sentiment Distribution\",\"text\":[\"0.0%\\u003cbr\\u003e\\u00b15.1%\",\"5.9%\\u003cbr\\u003e\\u00b18.7%\",\"94.1%\\u003cbr\\u003e\\u00b110.0%\"],\"textposition\":\"outside\",\"x\":[\"Negative\",\"Neutral\",\"Positive\"],\"y\":[0.0,5.9,94.1],\"type\":\"bar\",\"textfont\":{\"size\":11}}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"annotations\":[{\"align\":\"left\",\"bgcolor\":\"rgba(0,0,0,0)\",\"font\":{\"color\":\"#666\",\"size\":11},\"showarrow\":false,\"text\":\"n=34 units\",\"x\":0.01,\"xanchor\":\"left\",\"xref\":\"paper\",\"y\":1,\"yanchor\":\"top\",\"yref\":\"paper\"}],\"title\":{\"font\":{\"size\":14},\"text\":\"Polarity Distribution (95% CI)\"},\"xaxis\":{\"title\":{\"text\":\"Sentiment Category\",\"standoff\":10}},\"yaxis\":{\"title\":{\"text\":\"Percentage (%)\",\"standoff\":10},\"range\":[0,106.64874619578866]},\"margin\":{\"l\":60,\"r\":60,\"t\":80,\"b\":70},\"height\":360,\"paper_bgcolor\":\"rgba(0,0,0,0)\",\"showlegend\":false}}",
+      "description": "Sentiment distribution with Wilson confidence intervals"
+    },
+    "vad_compass": {
+      "chart_data": "{\"data\":[{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25,0.25],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75,0.75],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"line\":{\"color\":\"lightgray\",\"width\":1},\"mode\":\"lines\",\"r\":[1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0],\"showlegend\":false,\"theta\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAAAAAYXXTRRRcNQBhddNFFFx1A0kUXXXTRJUAYXXTRRRctQC+66KKLLjJA0kUXXXTRNUB10UUXXXQ5QBhddNFFFz1AXXTRRRddQEAvuuiiiy5CQAAAAAAAAERA0kUXXXTRRUCkiy666KJHQHXRRRdddElARhdddNFFS0AYXXTRRRdNQOqiiy666E5AXXTRRRddUEBGF1100UVRQC+66KKLLlJAF1100UUXU0AAAAAAAABUQOmiiy666FRA0kUXXXTRVUC76KKLLrpWQKSLLrrooldAjS666KKLWEB10UUXXXRZQF100UUXXVpARhdddNFFW0Avuuiiiy5cQBhddNFFF11AAQAAAAAAXkDqoosuuuheQNJFF1100V9AXXTRRRddYEDSRRdddNFgQEYXXXTRRWFAuuiiiy66YUAvuuiiiy5iQKOLLrroomJAF1100UUXY0CMLrroootjQAAAAAAAAGRAddFFF110ZEDpoosuuuhkQF500UUXXWVA0kUXXXTRZUBGF1100UVmQLvooosuumZAL7rooosuZ0Ckiy666KJnQBdddNFFF2hAjS666KKLaEAAAAAAAABpQHXRRRdddGlA6aKLLrroaUBddNFFF11qQNFFF1100WpARhdddNFFa0C66KKLLrprQC+66KKLLmxAo4suuuiibEAYXXTRRRdtQIwuuuiii21AAQAAAAAAbkB00UUXXXRuQOqiiy666G5AXXTRRRddb0DSRRdddNFvQKOLLrroInBAXXTRRRddcEAXXXTRRZdwQNJFF1100XBAjC666KILcUBGF1100UVxQAAAAAAAgHFAuuiiiy66cUB00UUXXfRxQC+66KKLLnJA6aKLLrpockCjiy666KJyQF100UUX3XJAF1100UUXc0DSRRdddFFzQIwuuuiii3NARhdddNHFc0AAAAAAAAB0QLvooosuOnRAddFFF110dEAuuuiii650QOmiiy666HRAo4suuugidUBedNFFF111QBdddNFFl3VA0kUXXXTRdUCMLrroogt2QEYXXXTRRXZAAAAAAACAdkA=\"},\"type\":\"scatterpolar\"},{\"hovertemplate\":\"\\u003cb\\u003eVAD Analysis\\u003c\\u002fb\\u003e\\u003cbr\\u003eArousal (r): %{r:.2f}\\u003cbr\\u003eAngle (\\u03b8): %{theta:.1f}\\u00b0\\u003cextra\\u003e\\u003c\\u002fextra\\u003e\",\"marker\":{\"cmax\":1,\"cmin\":-1,\"color\":0.2,\"colorbar\":{\"len\":0.85,\"thickness\":12,\"tickfont\":{\"size\":9},\"title\":{\"text\":\"Dominance\"},\"x\":1.24},\"colorscale\":[[0.0,\"rgb(165,0,38)\"],[0.1,\"rgb(215,48,39)\"],[0.2,\"rgb(244,109,67)\"],[0.3,\"rgb(253,174,97)\"],[0.4,\"rgb(254,224,139)\"],[0.5,\"rgb(255,255,191)\"],[0.6,\"rgb(217,239,139)\"],[0.7,\"rgb(166,217,106)\"],[0.8,\"rgb(102,189,99)\"],[0.9,\"rgb(26,152,80)\"],[1.0,\"rgb(0,104,55)\"]],\"line\":{\"color\":\"black\",\"width\":2},\"size\":20},\"mode\":\"markers\",\"name\":\"VAD Position\",\"r\":[0.3295147948120083],\"theta\":[-18.764863292896287],\"type\":\"scatterpolar\"},{\"hoverinfo\":\"skip\",\"marker\":{\"color\":\"black\",\"size\":8},\"mode\":\"markers\",\"r\":[0],\"showlegend\":false,\"theta\":[0],\"type\":\"scatterpolar\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"annotations\":[{\"align\":\"center\",\"font\":{\"color\":\"#e2e8f0\",\"size\":12},\"showarrow\":false,\"text\":\"V: 0.31  |  A: -0.11  |  D: 0.20\",\"x\":0.5,\"xref\":\"paper\",\"y\":1.08,\"yref\":\"paper\"}],\"title\":{\"font\":{\"size\":14},\"text\":\"VAD Emotional Compass\"},\"polar\":{\"angularaxis\":{\"tickfont\":{\"size\":8},\"tickvals\":[0,90,180,270],\"ticktext\":[\"High\\u003cbr\\u003eValence\",\"High\\u003cbr\\u003eArousal\",\"Low\\u003cbr\\u003eValence\",\"Low\\u003cbr\\u003eArousal\"],\"direction\":\"counterclockwise\",\"rotation\":90},\"domain\":{\"x\":[0.0,1.0],\"y\":[0.0,1.0]}},\"margin\":{\"l\":70,\"r\":120,\"t\":90,\"b\":70},\"height\":460,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Emotional dimensions analysis (Valence-Arousal-Dominance)"
+    },
+    "source_quality": {
+      "chart_data": "{\"data\":[{\"colorbar\":{\"title\":{\"text\":\"Quality Score\"}},\"colorscale\":[[0.0,\"rgb(165,0,38)\"],[0.1,\"rgb(215,48,39)\"],[0.2,\"rgb(244,109,67)\"],[0.3,\"rgb(253,174,97)\"],[0.4,\"rgb(254,224,139)\"],[0.5,\"rgb(255,255,191)\"],[0.6,\"rgb(217,239,139)\"],[0.7,\"rgb(166,217,106)\"],[0.8,\"rgb(102,189,99)\"],[0.9,\"rgb(26,152,80)\"],[1.0,\"rgb(0,104,55)\"]],\"hoverongaps\":false,\"hovertemplate\":\"\\u003cb\\u003e%{y}\\u003c\\u002fb\\u003e\\u003cbr\\u003e%{x}: %{z:.2f}\\u003cextra\\u003e\\u003c\\u002fextra\\u003e\",\"text\":[[\"0.90\",\"0.69\",\"1.00\",\"0.80\"],[\"0.50\",\"0.00\",\"1.00\",\"0.40\"],[\"0.50\",\"0.74\",\"1.00\",\"0.40\"],[\"0.50\",\"0.70\",\"1.00\",\"0.40\"]],\"textfont\":{\"size\":12},\"texttemplate\":\"%{text}\",\"x\":[\"Reliability\",\"Sentiment Impact\",\"Recency\",\"Authority\"],\"y\":[\"Financial News (n=1)\",\"Social Media (n=1)\",\"Forums (n=1)\",\"Other (n=31)\"],\"z\":[[0.9,0.6889809523809524,1.0,0.8],[0.5,0.0,1.0,0.4],[0.5,0.7407040068797645,1.0,0.4],[0.5,0.6976170622424495,1.0,0.40000000000000013]],\"zmax\":1,\"zmin\":0,\"type\":\"heatmap\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"title\":{\"font\":{\"size\":16},\"text\":\"Source Quality Matrix\"},\"margin\":{\"l\":120,\"r\":80,\"t\":60,\"b\":40},\"xaxis\":{\"title\":{\"text\":\"Quality Metrics\"}},\"yaxis\":{\"title\":{\"text\":\"Source Types\"}},\"height\":300,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Source reliability and quality assessment matrix"
+    },
+    "sentiment_timeline": {
+      "chart_data": "{\"data\":[{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"hovertemplate\":\"\\u003cb\\u003e%{text}\\u003c\\u002fb\\u003e\\u003cbr\\u003e%{x|%b %d, %H:%M}\\u003cbr\\u003eSentiment: %{y:.3f}\\u003cextra\\u003e\\u003c\\u002fextra\\u003e\",\"marker\":{\"color\":[\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\",\"#10B981\"],\"line\":{\"width\":0},\"opacity\":0.5,\"size\":6},\"mode\":\"markers\",\"name\":\"Sources\",\"text\":[\"https:\\u002f\\u002fwww.investors.com\\u002fnews\\u002ftechnology\\u002fmeta-platforms-meta-stock-quotes-co\\u2026\",\"https:\\u002f\\u002fwww.etfdailynews.com\\u002f2025\\u002f08\\u002f05\\u002fq3-eps-estimates-for-meta-platforms-l\\u2026\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fmorgan-stanley-boosts-meta-target-095950430.html\",\"https:\\u002f\\u002fwww.etfdailynews.com\\u002f2025\\u002f08\\u002f06\\u002fsen-shelley-moore-capito-buys-meta-pl\\u2026\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fmeta-meta-gets-825-price-114255047.html\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fbarclays-lifts-meta-platforms-meta-164001738.html\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fmeta-meta-downgraded-growth-priced-200857377.html\",\"https:\\u002f\\u002fwww.etfdailynews.com\\u002f2025\\u002f08\\u002f10\\u002frep-cleo-fields-purchases-shares-of-m\\u2026\",\"https:\\u002f\\u002fwww.etfdailynews.com\\u002f2025\\u002f08\\u002f14\\u002fmeta-platforms-inc-nasdaqmeta-stock-p\\u2026\",\"https:\\u002f\\u002fwww.forbes.com\\u002fsites\\u002fgreatspeculations\\u002f2025\\u002f08\\u002f18\\u002fmeta-stock-path-to-\\u2026\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fmeta-platforms-meta-accelerates-ai-232601396.html\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fmark-zuckerberg-halts-ai-hiring-114618997.html\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fhundreds-microsoft-employees-just-revealed-183\\u2026\",\"https:\\u002f\\u002ffinance.yahoo.com\\u002fnews\\u002fmeta-platforms-meta-plotting-futuristic-035704\\u2026\"],\"x\":[\"2025-06-06T11:02:03.000000000\",\"2025-08-05T06:46:51.000000000\",\"2025-08-05T09:59:50.000000000\",\"2025-08-06T06:04:54.000000000\",\"2025-08-06T11:42:55.000000000\",\"2025-08-07T16:40:01.000000000\",\"2025-08-08T20:08:57.000000000\",\"2025-08-10T06:05:06.000000000\",\"2025-08-14T07:03:08.000000000\",\"2025-08-18T14:10:21.000000000\",\"2025-08-19T23:26:01.000000000\",\"2025-08-22T11:46:18.000000000\",\"2025-08-22T18:31:03.000000000\",\"2025-08-23T03:57:04.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"FWtRuN+W4D\\u002fLNP\\u002fvgJrVP9nWLwLhe9k\\u002fcZD3nyHY1j+V4H+X1+3ZPyl41oURAdk\\u002fYSiO\\u002fv8c2j8o3tkzMT\\u002fWP+2NHqAXKtg\\u002fNAdB0qmW2D\\u002fFECW2IaDXP8pyJYEMDtQ\\u002fwZgGIeNp0T+sPWa\\u002fQL\\u002fbPw==\"},\"type\":\"scattergl\"},{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"line\":{\"dash\":\"solid\",\"width\":3},\"mode\":\"lines\",\"name\":\"3-Source Rolling Avg\",\"opacity\":0.95,\"x\":[\"2025-06-06T11:02:03.000000000\",\"2025-08-05T06:46:51.000000000\",\"2025-08-05T09:59:50.000000000\",\"2025-08-06T06:04:54.000000000\",\"2025-08-06T11:42:55.000000000\",\"2025-08-07T16:40:01.000000000\",\"2025-08-08T20:08:57.000000000\",\"2025-08-10T06:05:06.000000000\",\"2025-08-14T07:03:08.000000000\",\"2025-08-18T14:10:21.000000000\",\"2025-08-19T23:26:01.000000000\",\"2025-08-22T11:46:18.000000000\",\"2025-08-22T18:31:03.000000000\",\"2025-08-23T03:57:04.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAA+H\\u002fw9UV2YMHaP1yJtzCBT9c\\u002foMI3E57A2D9l+Bk\\u002frpfYPwsrTAmjrtk\\u002fkH+\\u002fkmt02D\\u002fThtfwwizYP8N7aDemqtc\\u002fTTcsuEsg2D\\u002fs2INYncHWP8VecB1bXdQ\\u002faBiGIBC91T8AAAAAAAD4fw==\"},\"type\":\"scatter\"},{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"line\":{\"dash\":\"dash\",\"width\":3},\"mode\":\"lines\",\"name\":\"6-Source Rolling Avg\",\"opacity\":0.95,\"x\":[\"2025-06-06T11:02:03.000000000\",\"2025-08-05T06:46:51.000000000\",\"2025-08-05T09:59:50.000000000\",\"2025-08-06T06:04:54.000000000\",\"2025-08-06T11:42:55.000000000\",\"2025-08-07T16:40:01.000000000\",\"2025-08-08T20:08:57.000000000\",\"2025-08-10T06:05:06.000000000\",\"2025-08-14T07:03:08.000000000\",\"2025-08-18T14:10:21.000000000\",\"2025-08-19T23:26:01.000000000\",\"2025-08-22T11:46:18.000000000\",\"2025-08-22T18:31:03.000000000\",\"2025-08-23T03:57:04.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAA+H8AAAAAAAD4fwAAAAAAAPh\\u002fK\\u002fevWoes2T802gEdEn\\u002fYPxih+9KEmtg\\u002fnL\\u002f4lzhi2D9nU1qgpKzYP2\\u002fbdaVbStg\\u002f36+tJDB31z9EbWyqAATWP9snWeyt7tY\\u002fAAAAAAAA+H8AAAAAAAD4fw==\"},\"type\":\"scatter\"},{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"line\":{\"dash\":\"dash\",\"width\":3},\"mode\":\"lines\",\"name\":\"12-Source Rolling Avg\",\"opacity\":0.95,\"x\":[\"2025-06-06T11:02:03.000000000\",\"2025-08-05T06:46:51.000000000\",\"2025-08-05T09:59:50.000000000\",\"2025-08-06T06:04:54.000000000\",\"2025-08-06T11:42:55.000000000\",\"2025-08-07T16:40:01.000000000\",\"2025-08-08T20:08:57.000000000\",\"2025-08-10T06:05:06.000000000\",\"2025-08-14T07:03:08.000000000\",\"2025-08-18T14:10:21.000000000\",\"2025-08-19T23:26:01.000000000\",\"2025-08-22T11:46:18.000000000\",\"2025-08-22T18:31:03.000000000\",\"2025-08-23T03:57:04.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"AAAAAAAA+H8AAAAAAAD4fwAAAAAAAPh\\u002fAAAAAAAA+H8AAAAAAAD4fwAAAAAAAPh\\u002fhNOuv9uR2D+7I7djiUHXP3lkql+ZxNc\\u002fAAAAAAAA+H8AAAAAAAD4fwAAAAAAAPh\\u002fAAAAAAAA+H8AAAAAAAD4fw==\"},\"type\":\"scatter\"},{\"hoverlabel\":{\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\",\"font\":{\"color\":\"#FFFFFF\"}},\"line\":{\"color\":\"white\",\"dash\":\"dot\",\"width\":2},\"mode\":\"lines\",\"name\":\"Trend (Declining)\",\"opacity\":0.8,\"x\":[\"2025-06-06T11:02:03.000000000\",\"2025-08-05T06:46:51.000000000\",\"2025-08-05T09:59:50.000000000\",\"2025-08-06T06:04:54.000000000\",\"2025-08-06T11:42:55.000000000\",\"2025-08-07T16:40:01.000000000\",\"2025-08-08T20:08:57.000000000\",\"2025-08-10T06:05:06.000000000\",\"2025-08-14T07:03:08.000000000\",\"2025-08-18T14:10:21.000000000\",\"2025-08-19T23:26:01.000000000\",\"2025-08-22T11:46:18.000000000\",\"2025-08-22T18:31:03.000000000\",\"2025-08-23T03:57:04.000000000\"],\"y\":{\"dtype\":\"f8\",\"bdata\":\"10fvGLJ14D9NayvoFrXYP2rgiz5hsNg\\u002f6U1gmPiS2D\\u002fYUWTWuIrYP6Z28U9UYNg\\u002fXJCkmxY42D9StuXEZQbYP6SaKKFpeNc\\u002fHH6\\u002fBGvh1j\\u002fwZmIZt7DWPymPzGRdWNY\\u002f6ppCuHxO1j9k3m6IrEDWPw==\"},\"type\":\"scatter\"}],\"layout\":{\"template\":{\"data\":{\"histogram2dcontour\":[{\"type\":\"histogram2dcontour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"choropleth\":[{\"type\":\"choropleth\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"histogram2d\":[{\"type\":\"histogram2d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"heatmap\":[{\"type\":\"heatmap\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"contourcarpet\":[{\"type\":\"contourcarpet\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"contour\":[{\"type\":\"contour\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"surface\":[{\"type\":\"surface\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"},\"colorscale\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]]}],\"mesh3d\":[{\"type\":\"mesh3d\",\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}],\"scatter\":[{\"fillpattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2},\"type\":\"scatter\"}],\"parcoords\":[{\"type\":\"parcoords\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolargl\":[{\"type\":\"scatterpolargl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"bar\":[{\"error_x\":{\"color\":\"#2a3f5f\"},\"error_y\":{\"color\":\"#2a3f5f\"},\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"bar\"}],\"scattergeo\":[{\"type\":\"scattergeo\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterpolar\":[{\"type\":\"scatterpolar\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"histogram\":[{\"marker\":{\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"histogram\"}],\"scattergl\":[{\"type\":\"scattergl\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatter3d\":[{\"type\":\"scatter3d\",\"line\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermap\":[{\"type\":\"scattermap\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattermapbox\":[{\"type\":\"scattermapbox\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scatterternary\":[{\"type\":\"scatterternary\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"scattercarpet\":[{\"type\":\"scattercarpet\",\"marker\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}}}],\"carpet\":[{\"aaxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"baxis\":{\"endlinecolor\":\"#2a3f5f\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"minorgridcolor\":\"white\",\"startlinecolor\":\"#2a3f5f\"},\"type\":\"carpet\"}],\"table\":[{\"cells\":{\"fill\":{\"color\":\"#EBF0F8\"},\"line\":{\"color\":\"white\"}},\"header\":{\"fill\":{\"color\":\"#C8D4E3\"},\"line\":{\"color\":\"white\"}},\"type\":\"table\"}],\"barpolar\":[{\"marker\":{\"line\":{\"color\":\"#E5ECF6\",\"width\":0.5},\"pattern\":{\"fillmode\":\"overlay\",\"size\":10,\"solidity\":0.2}},\"type\":\"barpolar\"}],\"pie\":[{\"automargin\":true,\"type\":\"pie\"}]},\"layout\":{\"autotypenumbers\":\"strict\",\"colorway\":[\"#636efa\",\"#EF553B\",\"#00cc96\",\"#ab63fa\",\"#FFA15A\",\"#19d3f3\",\"#FF6692\",\"#B6E880\",\"#FF97FF\",\"#FECB52\"],\"font\":{\"color\":\"#2a3f5f\"},\"hovermode\":\"closest\",\"hoverlabel\":{\"align\":\"left\"},\"paper_bgcolor\":\"white\",\"plot_bgcolor\":\"#E5ECF6\",\"polar\":{\"bgcolor\":\"#E5ECF6\",\"angularaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"radialaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"ternary\":{\"bgcolor\":\"#E5ECF6\",\"aaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"baxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"},\"caxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\"}},\"coloraxis\":{\"colorbar\":{\"outlinewidth\":0,\"ticks\":\"\"}},\"colorscale\":{\"sequential\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"sequentialminus\":[[0.0,\"#0d0887\"],[0.1111111111111111,\"#46039f\"],[0.2222222222222222,\"#7201a8\"],[0.3333333333333333,\"#9c179e\"],[0.4444444444444444,\"#bd3786\"],[0.5555555555555556,\"#d8576b\"],[0.6666666666666666,\"#ed7953\"],[0.7777777777777778,\"#fb9f3a\"],[0.8888888888888888,\"#fdca26\"],[1.0,\"#f0f921\"]],\"diverging\":[[0,\"#8e0152\"],[0.1,\"#c51b7d\"],[0.2,\"#de77ae\"],[0.3,\"#f1b6da\"],[0.4,\"#fde0ef\"],[0.5,\"#f7f7f7\"],[0.6,\"#e6f5d0\"],[0.7,\"#b8e186\"],[0.8,\"#7fbc41\"],[0.9,\"#4d9221\"],[1,\"#276419\"]]},\"xaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"yaxis\":{\"gridcolor\":\"white\",\"linecolor\":\"white\",\"ticks\":\"\",\"title\":{\"standoff\":15},\"zerolinecolor\":\"white\",\"automargin\":true,\"zerolinewidth\":2},\"scene\":{\"xaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"yaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2},\"zaxis\":{\"backgroundcolor\":\"#E5ECF6\",\"gridcolor\":\"white\",\"linecolor\":\"white\",\"showbackground\":true,\"ticks\":\"\",\"zerolinecolor\":\"white\",\"gridwidth\":2}},\"shapedefaults\":{\"line\":{\"color\":\"#2a3f5f\"}},\"annotationdefaults\":{\"arrowcolor\":\"#2a3f5f\",\"arrowhead\":0,\"arrowwidth\":1},\"geo\":{\"bgcolor\":\"white\",\"landcolor\":\"#E5ECF6\",\"subunitcolor\":\"white\",\"showland\":true,\"showlakes\":true,\"lakecolor\":\"white\"},\"title\":{\"x\":0.05},\"mapbox\":{\"style\":\"light\"}}},\"shapes\":[{\"line\":{\"color\":\"gray\",\"dash\":\"dot\"},\"opacity\":0.5,\"type\":\"line\",\"x0\":0,\"x1\":1,\"xref\":\"x domain\",\"y0\":0,\"y1\":0,\"yref\":\"y\"},{\"line\":{\"color\":\"green\",\"dash\":\"dot\"},\"opacity\":0.3,\"type\":\"line\",\"x0\":0,\"x1\":1,\"xref\":\"x domain\",\"y0\":0.1,\"y1\":0.1,\"yref\":\"y\"},{\"line\":{\"color\":\"red\",\"dash\":\"dot\"},\"opacity\":0.3,\"type\":\"line\",\"x0\":0,\"x1\":1,\"xref\":\"x domain\",\"y0\":-0.1,\"y1\":-0.1,\"yref\":\"y\"}],\"title\":{\"font\":{\"size\":14},\"text\":\"Time\",\"x\":0.5,\"y\":0.98},\"hoverlabel\":{\"font\":{\"color\":\"#FFFFFF\"},\"bgcolor\":\"#000000\",\"bordercolor\":\"#FFFFFF\"},\"xaxis\":{\"title\":{\"text\":\"\",\"standoff\":30},\"rangeslider\":{\"visible\":true,\"thickness\":0.1,\"bgcolor\":\"rgba(0,0,0,0.7)\",\"bordercolor\":\"rgba(255,255,255,0.1)\",\"borderwidth\":1},\"rangeselector\":{\"font\":{\"color\":\"#e5e7eb\",\"size\":10},\"buttons\":[{\"count\":24,\"label\":\"1D\",\"step\":\"hour\",\"stepmode\":\"backward\"},{\"count\":7,\"label\":\"1W\",\"step\":\"day\",\"stepmode\":\"backward\"},{\"label\":\"ALL\",\"step\":\"all\"}],\"x\":0.5,\"xanchor\":\"center\",\"y\":-0.22,\"yanchor\":\"top\",\"bgcolor\":\"rgba(0,0,0,0.85)\",\"activecolor\":\"#1f2937\",\"bordercolor\":\"rgba(255,255,255,0.1)\",\"borderwidth\":1},\"showgrid\":true,\"gridcolor\":\"lightgray\",\"automargin\":true,\"nticks\":8,\"tickformat\":\"%b %d\"},\"yaxis\":{\"title\":{\"text\":\"Sentiment Score\"},\"range\":[-1,1],\"tickmode\":\"array\",\"tickvals\":[-1,-0.75,-0.5,-0.25,0,0.25,0.5,0.75,1],\"ticktext\":[\"-1.00\",\"-0.75\",\"-0.50\",\"-0.25\",\"0\",\"0.25\",\"0.50\",\"0.75\",\"1.00\"],\"ticks\":\"outside\",\"ticklen\":8,\"showgrid\":true,\"gridcolor\":\"lightgray\"},\"margin\":{\"l\":60,\"r\":60,\"t\":160,\"b\":140},\"legend\":{\"font\":{\"size\":10},\"orientation\":\"h\",\"yanchor\":\"bottom\",\"y\":1.1,\"xanchor\":\"center\",\"x\":0.5,\"bgcolor\":\"rgba(0,0,0,0)\",\"bordercolor\":\"rgba(255,255,255,0.1)\",\"borderwidth\":0},\"hovermode\":\"closest\",\"height\":420,\"paper_bgcolor\":\"rgba(0,0,0,0)\"}}",
+      "description": "Rolling sentiment timeline with trend analysis"
+    }
+  }
+}
