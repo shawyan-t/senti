@@ -326,7 +326,7 @@ export default function Home() {
         <AnimatePresence>
           {titleAnimationComplete && (
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-              <div className="bg-white/5 backdrop-blur-sm h-16 rounded-lg mb-8 shadow-lg shadow-purple-900/20"></div>
+              <div className="bg-white/5 backdrop-blur-sm h-8 sm:h-16 rounded-lg mb-6 sm:mb-8 shadow-lg shadow-purple-900/20"></div>
 
               <div className="w-full">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-0 mb-6 sm:mb-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-1">
@@ -1145,7 +1145,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
-                className="bg-gradient-to-br from-slate-800/80 to-purple-900/80 backdrop-blur-md rounded-xl p-10 mt-12 text-center border border-emerald-500/20 shadow-2xl shadow-emerald-500/10"
+                className="bg-gradient-to-br from-slate-800/80 to-purple-900/80 backdrop-blur-md rounded-xl p-6 sm:p-10 mt-8 sm:mt-12 text-center border border-emerald-500/20 shadow-2xl shadow-emerald-500/10"
               >
                 <motion.h2
                   initial={{ opacity: 0 }}

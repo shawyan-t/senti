@@ -43,7 +43,7 @@ export default function EnhancedPage() {
           <p className="text-gray-400">Advanced AI-Powered Sentiment Analysis Platform</p>
         </div>
 
-        <div className="bg-white/5 h-16 rounded-lg mb-6"></div>
+        <div className="bg-white/5 h-8 sm:h-16 rounded-lg mb-6"></div>
 
         <Tabs defaultValue="text" onValueChange={handleTabChange} className="w-full">
           <TabsList className="border-b border-gray-700 bg-transparent w-full justify-start rounded-none h-auto p-0 mb-6">
@@ -80,7 +80,7 @@ export default function EnhancedPage() {
           </TabsContent>
         </Tabs>
 
-        <div className="bg-white rounded-lg p-8 mt-8 text-center text-gray-700">
+        <div className="bg-white rounded-lg p-6 sm:p-8 mt-6 sm:mt-8 text-center text-gray-700">
           <h2 className="text-2xl font-semibold text-gray-600 mb-4">Welcome to Sentimizer!</h2>
           <p>Enter text, a URL, or upload a file above to begin analyzing sentiment.</p>
         </div>

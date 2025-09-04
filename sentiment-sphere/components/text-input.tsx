@@ -28,11 +28,11 @@ export function TextInput() {
         value={text}
         onChange={handleTextChange}
       />
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row gap-3 sm:justify-between sm:items-center">
         <p className="text-sm text-gray-400">
           Type or paste text, enter a URL, or simply ask a question about a topic.
         </p>
-        <Button className="bg-[#F05D5E] hover:bg-[#e04a4a] text-white" onClick={handleAnalyze} disabled={!text.trim()}>
+        <Button className="bg-[#F05D5E] hover:bg-[#e04a4a] text-white w-full sm:w-auto" onClick={handleAnalyze} disabled={!text.trim()}>
           <Search className="mr-2 h-4 w-4" />
           Analyze
         </Button>

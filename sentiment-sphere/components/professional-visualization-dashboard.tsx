@@ -112,6 +112,7 @@ export function ProfessionalVisualizationDashboard({
                 <PlotlyChart 
                   chartData={visualizations.sentiment_index.chart_data} 
                   height={350}
+                  mobileHeight={260}
                 />
               </div>
             ) : (
@@ -131,6 +132,7 @@ export function ProfessionalVisualizationDashboard({
                 <PlotlyChart 
                   chartData={visualizations.polarity_distribution.chart_data} 
                   height={350}
+                  mobileHeight={260}
                 />
               </div>
             ) : (

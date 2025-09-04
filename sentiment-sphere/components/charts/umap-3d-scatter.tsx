@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import React from 'react';
 import { UMAP } from 'umap-js';
+import { useIsMobile } from '../ui/use-mobile'
 
 interface UMAP3DScatterProps {
   embeddings: number[][]; // shape: [n_samples, n_features]
@@ -14,6 +15,7 @@ const Plot = dynamic(() => import('./plotly-wrapper'), { ssr: false })
 export const UMAP3DScatter: React.FC<UMAP3DScatterProps> = ({ embeddings, labels, colors, hovertexts }) => {
   // Only run UMAP if embeddings are present and have enough dimensions
   const [umapResult, setUmapResult] = React.useState<number[][]>([]);
+  const isMobile = useIsMobile();
 
   React.useEffect(() => {
     if (embeddings && embeddings.length > 0 && embeddings[0].length > 3) {
@@ -139,26 +141,37 @@ export const UMAP3DScatter: React.FC<UMAP3DScatterProps> = ({ embeddings, labels
     });
   }
 
+  const height = isMobile ? 320 : 500;
+  const paperBg = isMobile ? 'rgba(0,0,0,0)' : '#ffffff';
+  const plotBg = paperBg;
+  const fontColor = isMobile ? '#e2e8f0' : '#334155';
+  const axisDark = {
+    backgroundcolor: isMobile ? 'rgba(0,0,0,0)' : '#ffffff',
+    gridcolor: isMobile ? '#334155' : '#000000',
+    zerolinecolor: isMobile ? '#334155' : '#000000',
+    color: fontColor,
+  } as const;
+
   return (
     <Plot
       data={traces}
       layout={{
         autosize: true,
-        height: 500,
+        height,
         title: '3D UMAP Topic/Sentiment Landscape',
         scene: {
-          bgcolor: '#ffffff',
-          xaxis: { title: 'UMAP-1', backgroundcolor: '#ffffff', gridcolor: '#000000', zerolinecolor: '#000000', color: '#000000' },
-          yaxis: { title: 'UMAP-2', backgroundcolor: '#ffffff', gridcolor: '#000000', zerolinecolor: '#000000', color: '#000000' },
-          zaxis: { title: 'UMAP-3', backgroundcolor: '#ffffff', gridcolor: '#000000', zerolinecolor: '#000000', color: '#000000' },
+          bgcolor: paperBg,
+          xaxis: { title: 'UMAP-1', ...axisDark },
+          yaxis: { title: 'UMAP-2', ...axisDark },
+          zaxis: { title: 'UMAP-3', ...axisDark },
         },
         margin: { l: 0, r: 0, b: 0, t: 40 },
-        paper_bgcolor: '#ffffff',
-        plot_bgcolor: '#ffffff',
-        font: { color: '#334155' },
+        paper_bgcolor: paperBg,
+        plot_bgcolor: plotBg,
+        font: { color: fontColor },
       }}
       config={{ responsive: true }}
-      style={{ width: '100%', minHeight: 500, background: 'white' }}
+      style={{ width: '100%', minHeight: height, background: isMobile ? 'transparent' : 'white' }}
     />
   );
 };
